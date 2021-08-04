@@ -1,0 +1,105 @@
+// FONT VARIABLES
+$font-display: 'Comfortaa', cursive;
+
+:root {
+  --color-primary: #e01435;
+  --color-primary-light: #ff1940;
+  --color-primary-dark: #c01330;
+
+  --color-secondary: #e7d9bb;
+  --color-secondary-light: #fdf0d5;
+  --color-secondary-dark: #bbaf95;
+
+  --color-grey-light-1: #faf9f9;
+  --color-grey-light-2: #f4f2f2;
+  --color-grey-light-3: #f0eeee;
+  --color-grey-light-4: #ccc;
+
+  --color-grey-dark-1: #333;
+  --color-grey-dark-2: #777;
+  --color-grey-dark-3: #999;
+
+  --shadow-dark: 0 2rem 6rem rgba(0, 0, 0, 0.3);
+  --shadow-light: 0 2rem 5rem rgba(0, 0, 0, 0.06);
+
+  --line: 1px solid var(--color-grey-light-2);
+}
+
+*,
+*::before,
+*:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  /* width */
+  // ::-webkit-scrollbar {
+  //   width: 10px;
+  // }
+
+  /* Track */
+  // ::-webkit-scrollbar-track {
+  //   background: #f1f1f1;
+  //   border-radius: 50px;
+  // }
+
+  /* Handle */
+  // ::-webkit-scrollbar-thumb {
+  //   background: var(--color-primary);
+  //   border-radius: 50px;
+  // }
+
+  /* Handle on hover */
+  // ::-webkit-scrollbar-thumb:hover {
+  //   background: var(--color-primary-light);
+  // }
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  textarea:-webkit-autofill,
+  textarea:-webkit-autofill:hover,
+  textarea:-webkit-autofill:focus,
+  select:-webkit-autofill,
+  select:-webkit-autofill:hover,
+  select:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0px 1000px #ffffff inset !important;
+    box-shadow: 0 0 0px 1000px #ffffff inset !important;
+  }
+
+  box-sizing: border-box;
+  font-size: 10px; /* 1 rem = 10px - 62.5%*/
+}
+
+body {
+  font-family: $font-display;
+  -webkit-text-size-adjust: none;
+}
+
+input,
+textarea,
+button,
+select,
+svg,
+a {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+main {
+  height: 50vh;
+}
+
+.container {
+  display: grid;
+  grid-template-rows: 1fr;
+
+  grid-template-columns:
+    [full-start] minmax(6rem, 1fr) [center-start] repeat(
+      8,
+      [col-start] minmax(min-content, 14rem) [col-end]
+    )
+    [center-end] minmax(6rem, 1fr) [full-end];
+}

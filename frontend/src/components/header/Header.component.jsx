@@ -19,20 +19,26 @@ const Header = () => {
   return (
     <HeaderContainer>
       <NavContainer>
-        <NavLogoLink to='/'>
+        <NavLogoLink to='/' exact>
           <NavLogo src={logo} />
         </NavLogoLink>
         <NavItems>
           <NavItem>
-            <NavbarLink to='/'>Muebles</NavbarLink>
+            <NavbarLink activeClassName='is-active' to='/' exact>
+              Muebles
+            </NavbarLink>
           </NavItem>
           <NavItem>
-            <ImCart />
-            <NavbarLink to='/'>Carrito</NavbarLink>
+            <NavbarLink activeClassName='is-active' to='/carrito' exact>
+              <ImCart />
+              Carrito
+            </NavbarLink>
           </NavItem>
           <NavItem>
-            <FaUser />
-            <NavbarLink to='/'>Iniciar Sesión</NavbarLink>
+            <NavbarLink activeClassName='is-active' to='/login' exact>
+              <FaUser />
+              Iniciar Sesión
+            </NavbarLink>
           </NavItem>
         </NavItems>
       </NavContainer>

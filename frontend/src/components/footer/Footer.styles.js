@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const FooterContainer = styled.footer`
   background-color: var(--color-secondary-light);
   height: 40rem;
-  padding: 5rem;
+  padding: 5rem 4rem;
 
   display: grid;
   grid-template-rows: max-content min-content;
@@ -27,7 +27,7 @@ export const Item = styled.div`
 
 export const ItemTitle = styled.h2`
   text-transform: uppercase;
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: 1.5px;
 `;
 
@@ -53,7 +53,7 @@ export const List = styled.ul`
 `;
 export const ListItem = styled.li`
   line-height: 1.6;
-  font-weight: 300;
+  font-weight: 400;
   font-size: 1.3rem;
   margin: 1.5rem 0;
 `;

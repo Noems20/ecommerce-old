@@ -28,7 +28,7 @@ const Product = ({ product }) => {
       </CardHead>
       <CardBody>
         <CardPrice>Desde ${product.price}</CardPrice>
-        <CardTitle to='/'>{product.name}</CardTitle>
+        <CardTitle to={`/product/${product._id}`}>{product.name}</CardTitle>
         <CardReview>
           <Rating
             value={product.rating}

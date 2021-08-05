@@ -5,56 +5,58 @@ import PropTypes from 'prop-types';
 import { FaStar, FaRegStar, FaStarHalfAlt } from 'react-icons/fa';
 
 // Styles
-import { Container, IconContainer, Text } from './Rating.styles';
+import { Container, IconContainer, Text, Icons } from './Rating.styles';
 
 const Rating = ({ value, text, color }) => {
   return (
     <Container>
-      <IconContainer color={color}>
-        {value >= 1 ? (
-          <FaStar />
-        ) : value >= 0.5 ? (
-          <FaStarHalfAlt />
-        ) : (
-          <FaRegStar />
-        )}
-      </IconContainer>
-      <IconContainer color={color}>
-        {value >= 2 ? (
-          <FaStar />
-        ) : value >= 1.5 ? (
-          <FaStarHalfAlt />
-        ) : (
-          <FaRegStar />
-        )}
-      </IconContainer>
-      <IconContainer color={color}>
-        {value >= 3 ? (
-          <FaStar />
-        ) : value >= 2.5 ? (
-          <FaStarHalfAlt />
-        ) : (
-          <FaRegStar />
-        )}
-      </IconContainer>
-      <IconContainer color={color}>
-        {value >= 4 ? (
-          <FaStar />
-        ) : value >= 3.5 ? (
-          <FaStarHalfAlt />
-        ) : (
-          <FaRegStar />
-        )}
-      </IconContainer>
-      <IconContainer color={color}>
-        {value >= 5 ? (
-          <FaStar />
-        ) : value >= 4.5 ? (
-          <FaStarHalfAlt />
-        ) : (
-          <FaRegStar />
-        )}
-      </IconContainer>
+      <Icons>
+        <IconContainer color={color}>
+          {value >= 1 ? (
+            <FaStar />
+          ) : value >= 0.5 ? (
+            <FaStarHalfAlt />
+          ) : (
+            <FaRegStar />
+          )}
+        </IconContainer>
+        <IconContainer color={color}>
+          {value >= 2 ? (
+            <FaStar />
+          ) : value >= 1.5 ? (
+            <FaStarHalfAlt />
+          ) : (
+            <FaRegStar />
+          )}
+        </IconContainer>
+        <IconContainer color={color}>
+          {value >= 3 ? (
+            <FaStar />
+          ) : value >= 2.5 ? (
+            <FaStarHalfAlt />
+          ) : (
+            <FaRegStar />
+          )}
+        </IconContainer>
+        <IconContainer color={color}>
+          {value >= 4 ? (
+            <FaStar />
+          ) : value >= 3.5 ? (
+            <FaStarHalfAlt />
+          ) : (
+            <FaRegStar />
+          )}
+        </IconContainer>
+        <IconContainer color={color}>
+          {value >= 5 ? (
+            <FaStar />
+          ) : value >= 4.5 ? (
+            <FaStarHalfAlt />
+          ) : (
+            <FaRegStar />
+          )}
+        </IconContainer>
+      </Icons>
       <Text>{text && text}</Text>
     </Container>
   );

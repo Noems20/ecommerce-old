@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import CustomButton from '../customButton/CustomButton';
+import CustomButton from '../customButton/CustomButton.component';
 
 export const Card = styled.div`
   display: grid;
@@ -104,7 +104,7 @@ export const CardPrice = styled.h2`
 export const CardTitle = styled(Link)`
   text-decoration: none;
   color: #000;
-  font-weight: 300;
+  font-weight: 400;
   font-size: 1.6rem;
   line-height: 1.6;
   transition: all 0.2s ease-in-out;
@@ -115,6 +115,6 @@ export const CardTitle = styled(Link)`
   }
 `;
 export const CardReview = styled.h2`
-  font-weight: 300;
+  font-weight: 400;
   align-self: end;
 `;

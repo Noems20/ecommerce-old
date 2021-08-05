@@ -1,5 +1,51 @@
 // FONT VARIABLES
-$font-display: 'Comfortaa', cursive;
+$font-display: 'Metropolis', sans-serif;
+
+// FUENTE METROPOLIC
+@font-face {
+  font-family: 'Metropolis';
+  src: url('./Fonts/Metropolis-Bold.otf');
+  font-style: normal;
+  font-weight: 700;
+}
+@font-face {
+  font-family: 'Metropolis';
+  src: url('./Fonts/Metropolis-Regular.otf');
+  font-style: normal;
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'Metropolis';
+  src: url('./Fonts/Metropolis-Light.otf');
+  font-style: normal;
+  font-weight: 300;
+}
+
+// FUENTE OPTIMA NOVA
+@font-face {
+  font-family: 'Optima Nova';
+  src: url('./Fonts/OptimaNovaLTProBold.otf');
+  font-style: normal;
+  font-weight: 700;
+}
+@font-face {
+  font-family: 'Optima Nova';
+  src: url('./Fonts/OptimaNovaLTProDemi.otf');
+  font-style: normal;
+  font-weight: 500;
+}
+@font-face {
+  font-family: 'Optima Nova';
+  src: url('./Fonts/OptimaNovaLTProRegular.otf');
+  font-style: normal;
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'Optima Nova';
+  src: url('./Fonts/OptimaNovaLTProLight.otf');
+  font-style: normal;
+  font-weight: 300;
+}
 
 :root {
   --color-primary: #e01435;
@@ -12,7 +58,7 @@ $font-display: 'Comfortaa', cursive;
 
   --color-grey-light-1: #faf9f9;
   --color-grey-light-2: #f4f2f2;
-  --color-grey-light-3: #f0eeee;
+  --color-grey-light-3: #e2e1e1;
   --color-grey-light-4: #ccc;
 
   --color-grey-dark-1: #333;
@@ -90,16 +136,4 @@ a {
 
 main {
   height: 50vh;
-}
-
-.container {
-  display: grid;
-  grid-template-rows: 1fr;
-
-  grid-template-columns:
-    [full-start] minmax(6rem, 1fr) [center-start] repeat(
-      8,
-      [col-start] minmax(min-content, 14rem) [col-end]
-    )
-    [center-end] minmax(6rem, 1fr) [full-end];
 }

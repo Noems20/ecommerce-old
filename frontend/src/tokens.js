@@ -1,6 +1,6 @@
 const tokens = {
-  fontPrimary: "'Fredoka One', sans-serif",
-  fontDisplay: "'Comfortaa', cursive",
+  fontPrimary: "'Optima Nova', sans-serif",
+  fontDisplay: "'Metropolis', sans-serif",
   fontHand: "'Kalam', cursive",
 };
 

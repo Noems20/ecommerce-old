@@ -1,7 +1,5 @@
-import React from 'react';
-
-// Data
-import products from '../../products';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 // Components
 import CustomButton from '../../components/customButton/CustomButton.component';
@@ -26,7 +24,18 @@ import {
 } from './Product.styles';
 
 const Product = ({ match }) => {
-  const product = products.find((p) => p._id === match.params.id);
+  const [product, setProduct] = useState({});
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+      const { data } = await axios.get(`/api/products/${match.params.id}`);
+      // const res = await axios.get('/api/products');
+      // setProducts(res.data);
+      setProduct(data);
+    };
+
+    fetchProduct();
+  }, [match]);
 
   return (
     <Container>
@@ -67,13 +76,13 @@ const Product = ({ match }) => {
           <InfoTitle>Medidas</InfoTitle>
           <List>
             <ListItem>
-              <strong>Ancho:</strong> 150cm
+              <strong>Ancho:</strong> {product?.measures?.width}
             </ListItem>
             <ListItem>
-              <strong>Alto:</strong> 150cm
+              <strong>Alto:</strong> {product?.measures?.height}
             </ListItem>
             <ListItem>
-              <strong>Profundidad:</strong> 150cm
+              <strong>Profundidad:</strong> {product?.measures?.depth}
             </ListItem>
           </List>
         </Description>

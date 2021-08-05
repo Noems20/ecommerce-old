@@ -22,9 +22,8 @@ const Product = ({ product }) => {
     <Card>
       <CardHead>
         <CardImg src={product.image} />
-        <ImageCaption>
-          <AddItem>Añadir a carrito</AddItem>
-        </ImageCaption>
+        <AddItem>Añadir a carrito</AddItem>
+        <ImageCaption to={`/product/${product._id}`} />
       </CardHead>
       <CardBody>
         <CardPrice>Desde ${product.price}</CardPrice>
@@ -32,7 +31,7 @@ const Product = ({ product }) => {
         <CardReview>
           <Rating
             value={product.rating}
-            text={`${product.numReviews} reviews`}
+            text={`${product.numReviews} reseñas`}
           />
         </CardReview>
       </CardBody>

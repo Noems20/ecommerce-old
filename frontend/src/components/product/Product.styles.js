@@ -14,8 +14,17 @@ export const CardHead = styled.div`
 
   &:hover,
   &:active {
-    div button {
-      display: block;
+    button {
+      display: inline-block; /* Display inline block */
+      position: absolute; /* Position absolute */
+      top: 50%; /* position the top  edge of the element at the middle of the parent */
+      left: 50%; /* position the left edge of the element at the middle of the parent */
+
+      transform: translate(
+        -50%,
+        -50%
+      ); /* This is a shorthand of translateX(-50%) and translateY(-50%) */
+
       animation: fadeIn 0.5s;
 
       -webkit-transition: opacity 600ms, visibility 600ms;
@@ -25,7 +34,7 @@ export const CardHead = styled.div`
   }
 `;
 
-export const ImageCaption = styled.div`
+export const ImageCaption = styled(Link)`
   position: absolute;
   height: 100%;
   width: 100%;
@@ -47,9 +56,12 @@ export const ImageCaption = styled.div`
 
 export const AddItem = styled(CustomButton)`
   display: none;
+  white-space: nowrap;
   background-color: rgba(255, 255, 255, 0.7);
   color: #000;
   border: 1px solid #000;
+
+  z-index: 2;
 
   &:hover {
     background-color: var(--color-primary);
@@ -63,15 +75,20 @@ export const AddItem = styled(CustomButton)`
     border: 1px solid var(--color-primary);
   }
 
+  &:hover + a {
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease-in-out;
+  }
+
   @keyframes fadeIn {
     0% {
       opacity: 0;
-      transform: translateY(-100%);
+      transform: translate(-50%, -100%);
     }
 
     100% {
       opacity: 1;
-      transform: translateY(0);
+      transform: translate(-50%, -50%);
     }
   }
   @keyframes fadeOut {

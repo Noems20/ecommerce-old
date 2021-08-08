@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import tokens from '../../tokens';
+import { motion } from 'framer-motion';
 
 const marginRightLeft = '4rem';
 const marginTopBottom = '3rem';
@@ -22,10 +23,39 @@ export const ImageContainer = styled.div`
   margin-left: ${marginRightLeft};
   margin-top: ${marginTopBottom};
   margin-bottom: ${marginTopBottom};
+
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: max-content max-content;
+  grid-gap: 2rem;
+`;
+export const ProductImage = styled(motion.img)`
+  width: 100%;
+  transition: all 0.2s ease;
 `;
 
-export const ProductImage = styled.img`
-  width: 100%;
+export const SecondaryImagesContainer = styled.div`
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+
+  & img {
+    border: 2px solid transparent;
+  }
+
+  & img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 8px #5e5e5e;
+    transition: all 0.2s ease;
+  }
+
+  & .active {
+    /* transform: scale(1.1); */
+    /* box-shadow: 0 0 5px #5e5e5e; */
+    border: 2px solid var(--color-primary);
+    padding: 1px;
+    transition: all 0.2s ease;
+  }
 `;
 
 export const InfoContainer = styled.div`

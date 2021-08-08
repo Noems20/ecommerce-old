@@ -21,7 +21,7 @@ const Product = ({ product }) => {
   return (
     <Card>
       <CardHead>
-        <CardImg src={product.image} />
+        <CardImg src={product.mainImage} />
         <AddItem>Añadir a carrito</AddItem>
         <ImageCaption to={`/product/${product._id}`} />
       </CardHead>

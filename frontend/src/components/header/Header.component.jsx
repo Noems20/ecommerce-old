@@ -29,7 +29,7 @@ const Header = () => {
             </NavbarLink>
           </NavItem>
           <NavItem>
-            <NavbarLink activeClassName='is-active' to='/carrito' exact>
+            <NavbarLink activeClassName='is-active' to='/carrito'>
               <ImCart />
               Carrito
             </NavbarLink>

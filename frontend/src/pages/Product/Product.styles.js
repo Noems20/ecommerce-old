@@ -77,19 +77,22 @@ export const ProductTitle = styled.h1`
 export const ProductPrice = styled.h1``;
 
 export const AddToCart = styled.div`
+  height: 120%;
   width: 100%;
   display: grid;
-  grid-template-columns: 0.2fr 0.8fr;
+  grid-template-columns: 0.2fr 1fr;
   grid-gap: 1.5rem;
 `;
 
-export const DropDown = styled.div`
-  position: relative;
-`;
-
-export const Selector = styled.select`
-  width: 100%;
-  height: 100%;
+export const NoExistenceText = styled.h1`
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 2px;
+  font-weight: 400;
+  color: #fff;
+  background-color: var(--color-grey-dark-3);
+  border: 1px solid var(--color-grey-dark-3);
+  padding: 1rem 0.5rem;
 `;
 
 export const InfoTitle = styled.h2`

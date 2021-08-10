@@ -6,12 +6,14 @@ import {
   listProductDetails,
   clearProductDetails,
 } from '../../redux/product/productActions';
+import { addToCart } from '../../redux/cart/cartActions';
 
 // Components
 import CustomButton from '../../components/customButton/CustomButton.component';
 import Rating from '../../components/rating/Rating';
 import Message from '../../components/message/message.component';
 import Loader from '../../components/loader/loader.component';
+import DropDown from '../../components/Inputs/dropDown/DropDown.component';
 
 // Styles
 import {
@@ -23,8 +25,7 @@ import {
   ProductTitle,
   ProductPrice,
   AddToCart,
-  DropDown,
-  Selector,
+  NoExistenceText,
   InfoTitle,
   Description,
   DescriptionText,
@@ -45,7 +46,8 @@ const imageVariants = {
   },
 };
 
-const Product = ({ match }) => {
+const Product = ({ match, history }) => {
+  const [qty, setQty] = useState(1);
   const dispatch = useDispatch();
   const productDetails = useSelector((state) => state.productDetails);
   const { loading, error, product } = productDetails;
@@ -57,6 +59,11 @@ const Product = ({ match }) => {
       dispatch(clearProductDetails());
     };
   }, [dispatch, match]);
+
+  const addToCartHandler = () => {
+    dispatch(addToCart(product._id, qty));
+    history.push('/carrito');
+  };
 
   return (
     <Container>
@@ -98,30 +105,36 @@ const Product = ({ match }) => {
             <ProductTitle>{product.name}</ProductTitle>
             <ProductPrice>${product.price}</ProductPrice>
             {/* ADD TO CART */}
-            <AddToCart>
-              <DropDown>
-                <label style={{ position: 'absolute' }}>Cantidad</label>
-                <Selector
-                  id='cars'
-                  name='cars'
+            {product.countInStock > 0 ? (
+              <AddToCart>
+                <DropDown
+                  label='Cantidad'
+                  value={qty}
+                  onChange={(e) => setQty(e.target.value)}
                   disabled={product.countInStock === 0}
                 >
-                  <option value='1'>1</option>
-                  <option value='2'>2</option>
-                  <option value='3'>3</option>
-                  <option value='4'>4</option>
-                </Selector>
-              </DropDown>
-              <CustomButton disabled={product.countInStock === 0}>
-                {product.countInStock === 0
-                  ? 'Sin existencia'
-                  : 'Añadir a carrito'}
-              </CustomButton>
-            </AddToCart>
+                  {[...Array(product.countInStock).keys()].map((x) => (
+                    <option key={x + 1} value={x + 1}>
+                      {x + 1}
+                    </option>
+                  ))}
+                </DropDown>
+                <CustomButton
+                  onClick={addToCartHandler}
+                  disabled={product.countInStock === 0}
+                >
+                  {product.countInStock === 0
+                    ? 'Sin existencia'
+                    : 'Añadir a carrito'}
+                </CustomButton>
+              </AddToCart>
+            ) : (
+              <NoExistenceText>Sin existencia</NoExistenceText>
+            )}
             {/* RATING */}
             <Rating
               value={product.rating}
-              text={`${product.numReviews} reviews`}
+              text={`${product.numReviews} reseñas`}
             />
             {/* DESCRIPTION */}
             <Description>

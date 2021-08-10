@@ -23,11 +23,11 @@ const Product = ({ product }) => {
       <CardHead>
         <CardImg src={product.mainImage} />
         <AddItem>Añadir a carrito</AddItem>
-        <ImageCaption to={`/product/${product._id}`} />
+        <ImageCaption to={`/producto/${product._id}`} />
       </CardHead>
       <CardBody>
         <CardPrice>Desde ${product.price}</CardPrice>
-        <CardTitle to={`/product/${product._id}`}>{product.name}</CardTitle>
+        <CardTitle to={`/producto/${product._id}`}>{product.name}</CardTitle>
         <CardReview>
           <Rating
             value={product.rating}

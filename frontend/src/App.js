@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 // Pages
 import Home from './pages/Home/Home';
 import Product from './pages/Product/Product';
+import Cart from './pages/Cart/Cart';
 
 // Components
 import Header from './components/header/Header.component';
@@ -15,7 +16,8 @@ const App = () => {
       <div className='container'>
         <Switch>
           <Route exact path='/' component={Home} />
-          <Route path='/product/:id' component={Product} />
+          <Route path='/producto/:id' component={Product} />
+          <Route path='/carrito' component={Cart} />
         </Switch>
       </div>
       <Footer />

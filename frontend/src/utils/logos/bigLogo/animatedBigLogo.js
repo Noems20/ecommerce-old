@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-import './bigLogoStyles.scss';
+import './LogoStyles.scss';
 
 const svgVariants = {
   hidden: {

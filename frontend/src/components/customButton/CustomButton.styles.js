@@ -28,4 +28,10 @@ export const Button = styled.button`
     color: #fff;
     border: 1px solid var(--color-grey-dark-3);
   }
+
+  &:disabled:hover {
+    background-color: var(--color-grey-dark-3);
+    color: #fff;
+    border: 1px solid var(--color-grey-dark-3);
+  }
 `;

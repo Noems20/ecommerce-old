@@ -6,7 +6,7 @@ import { listProducts } from '../../redux/product/productActions';
 
 // Components
 import Product from '../../components/product/Product.component';
-import Message from '../../components/message/message.component';
+import FullScreenMessage from '../../components/messages/FullScreenMessage/FullScreenMessage.component';
 import Loader from '../../components/loader/loader.component';
 
 // Styles
@@ -27,7 +27,7 @@ const Home = () => {
       {loading ? (
         <Loader />
       ) : error ? (
-        <Message>{error}</Message>
+        <FullScreenMessage>{error}</FullScreenMessage>
       ) : (
         <ProductsContainer>
           {products.map((product) => (

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import tokens from '../../tokens';
+import tokens from '../../../tokens';
 
 export const Container = styled.div`
   width: 100vw;

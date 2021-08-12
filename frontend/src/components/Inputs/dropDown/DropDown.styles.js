@@ -27,7 +27,7 @@ export const Selector = styled.select`
 
   border: 1px solid #a1a6a4;
   border-radius: 2px;
-  padding: 0 12px;
+  padding: 0 11px;
   background-color: transparent;
 
   -webkit-appearance: none;
@@ -39,6 +39,6 @@ export const Arrow = styled(RiArrowDownSLine)`
   right: 12px;
   width: 1.5rem;
   height: 1.5rem;
-  z-index: -1;
   transform: translateY(-50%);
+  z-index: -1;
 `;

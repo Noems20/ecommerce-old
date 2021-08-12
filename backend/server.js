@@ -16,17 +16,21 @@ connectDB();
 
 const app = express();
 
+// Allow send json on body
 app.use(express.json());
 
 app.get('/', (req, res) => {
   res.send('API is running...');
 });
 
+// Mount routes
 app.use('/api/products', productRoutes);
 app.use('/api/users', userRoutes);
 
+// Route not found
 app.use(notFound);
 
+// Error handler
 app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;

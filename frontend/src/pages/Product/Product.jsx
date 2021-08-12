@@ -6,12 +6,12 @@ import {
   listProductDetails,
   clearProductDetails,
 } from '../../redux/product/productActions';
-import { addToCart } from '../../redux/cart/cartActions';
+import { addToCartFromProduct } from '../../redux/cart/cartActions';
 
 // Components
 import CustomButton from '../../components/customButton/CustomButton.component';
 import Rating from '../../components/rating/Rating';
-import Message from '../../components/message/message.component';
+import FullScreenMessage from '../../components/messages/FullScreenMessage/FullScreenMessage.component';
 import Loader from '../../components/loader/loader.component';
 import DropDown from '../../components/Inputs/dropDown/DropDown.component';
 
@@ -61,16 +61,15 @@ const Product = ({ match, history }) => {
   }, [dispatch, match]);
 
   const addToCartHandler = () => {
-    dispatch(addToCart(product._id, qty));
+    dispatch(addToCartFromProduct(product, Number(qty)));
     history.push('/carrito');
   };
-
   return (
     <Container>
       {loading ? (
         <Loader />
       ) : error ? (
-        <Message>{error}</Message>
+        <FullScreenMessage>{error}</FullScreenMessage>
       ) : (
         <>
           <ImageContainer>
@@ -81,7 +80,7 @@ const Product = ({ match, history }) => {
               animate='visible'
             />
             <SecondaryImagesContainer>
-              {product.productImages.map((productImage) => {
+              {product.productImages.map((productImage, index) => {
                 let spanClass;
                 if (focusImage.length > 0) {
                   spanClass = productImage === focusImage ? 'active' : '';
@@ -90,6 +89,7 @@ const Product = ({ match, history }) => {
                 }
                 return (
                   <ProductImage
+                    key={index}
                     src={productImage}
                     onClick={() => setFocusImage(productImage)}
                     style={{ cursor: 'pointer' }}

@@ -33,30 +33,113 @@ export const NavItems = styled.ul`
 
   align-self: center;
   display: flex;
+  align-items: center;
 `;
 
 export const NavItem = styled.li`
   margin-left: 3rem;
+  position: relative;
   transition: all 0.2s ease;
 `;
 
 export const NavbarLink = styled(NavLink)`
-  display: flex;
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 1.5px;
   color: inherit;
   font-size: 1.4rem;
   font-weight: 300;
+  transition: all 0.2s ease;
+  position: relative;
+
+  display: flex;
+  align-items: center;
 
   & svg {
     font-size: 1.5rem;
     margin-right: 1rem;
   }
 
+  & .cart {
+    font-size: 2.5rem;
+    margin-right: 0rem;
+  }
+
   &:hover,
   &.is-active {
     color: var(--color-primary);
     transition: all 0.2s ease;
+
+    & div {
+      background-color: #000;
+    }
+  }
+`;
+
+export const NoLinkContainer = styled.div`
+  color: #000;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  display: flex;
+  align-items: center;
+
+  & svg {
+    font-size: 1.2rem;
+    margin-right: 1rem;
+  }
+
+  &:hover {
+    color: var(--color-primary);
+    transition: all 0.2s ease;
+  }
+`;
+
+export const DropDownItem = styled.div`
+  padding: 1rem 2rem;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+
+  display: grid;
+  grid-template-columns: max-content max-content;
+  align-items: center;
+  align-content: center;
+  grid-gap: 1rem;
+
+  & * {
+    text-decoration: none;
+    color: #000;
+    font-size: 1.6rem;
+    cursor: pointer;
+  }
+
+  &:hover {
+    background-color: #f9f9f9;
+  }
+`;
+
+export const CartCount = styled.div`
+  border-radius: 100%;
+  width: 1.7rem;
+  height: 1.7rem;
+  background-color: var(--color-primary);
+
+  position: absolute;
+  top: -0.8rem;
+  left: 1.5rem;
+
+  display: grid;
+  align-content: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+
+  & p {
+    color: #fff;
+    font-size: 1rem;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    padding-top: 0.5px;
+    padding-left: 1px;
   }
 `;

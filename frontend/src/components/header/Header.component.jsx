@@ -34,10 +34,10 @@ const Header = () => {
 
   const dispatch = useDispatch();
 
-  const userLogin = useSelector((state) => state.userLogin);
+  const user = useSelector((state) => state.user);
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
-  const { userInfo } = userLogin;
+  const { userInfo } = user;
   const itemCount = cartItems.reduce((acc, item) => acc + item.qty, 0);
 
   const logoutHandler = () => {

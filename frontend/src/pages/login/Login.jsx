@@ -4,6 +4,7 @@ import { useLocation, useHistory } from 'react-router-dom';
 // // Redux
 import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../../redux/user/userActions';
+import { clearErrors } from '../../redux/ui/uiActions';
 
 // // Components
 import FormContainer from '../../components/FormContainer/FormContainer.component';
@@ -19,6 +20,7 @@ const Login = () => {
   let location = useLocation();
   let history = useHistory();
 
+  const [uiErrors, setUiErrors] = useState({});
   const [userCredentials, setUserCredentials] = useState({
     email: '',
     password: '',
@@ -27,16 +29,29 @@ const Login = () => {
 
   const dispatch = useDispatch();
 
-  const userLogin = useSelector((state) => state.userLogin);
-  const { loading, error, userInfo } = userLogin;
+  useEffect(() => {
+    return () => {
+      dispatch(clearErrors());
+    };
+  }, [dispatch]);
 
+  const user = useSelector((state) => state.user);
+  const UI = useSelector((state) => state.UI);
+  const { userInfo } = user;
+  const { loading, errors } = UI;
   const redirect = location.search ? location.search.split('=')[1] : '/';
 
   useEffect(() => {
     if (userInfo) {
       history.push(redirect);
     }
-  }, [history, userInfo, redirect]);
+    if (errors) {
+      setUiErrors(errors);
+    }
+    if (!errors && !loading) {
+      setUiErrors({});
+    }
+  }, [history, userInfo, redirect, errors, loading]);
 
   const SubmitHandler = (e) => {
     e.preventDefault();
@@ -52,14 +67,15 @@ const Login = () => {
 
   return (
     <FormContainer title='Iniciar Sesión'>
-      {error && <Message>{error}</Message>}
       {loading && <Spinner />}
+      {uiErrors.general && <Message>{uiErrors.general}</Message>}
       <TextField
         name='email'
         type='text'
         handleChange={handleChange}
         value={email}
         label='Email'
+        error={uiErrors.email}
         required
       />
       <TextField
@@ -68,6 +84,7 @@ const Login = () => {
         handleChange={handleChange}
         value={password}
         label='Contraseña'
+        error={uiErrors.password}
         required
       />
       <CustomButton type='submit' onClick={SubmitHandler}>

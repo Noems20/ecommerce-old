@@ -9,14 +9,15 @@ import Product from './pages/Product/Product';
 import Cart from './pages/Cart/Cart';
 import Login from './pages/login/Login';
 import Register from './pages/register/Register';
+import Profile from './pages/profile/Profile';
 
 // Components
 import Header from './components/header/Header.component';
 import Footer from './components/footer/Footer.component';
 
 const App = () => {
-  const userLogin = useSelector((state) => state.userLogin);
-  const { userInfo } = userLogin;
+  const user = useSelector((state) => state.user);
+  const { userInfo } = user;
 
   return (
     <>
@@ -25,6 +26,7 @@ const App = () => {
         <Switch>
           <Route exact path='/' component={Home} />
           <Route exact path='/carrito' component={Cart} />
+          <Route path='/producto/:id' component={Product} />
           <Route
             exact
             path='/login'
@@ -35,7 +37,11 @@ const App = () => {
             path='/registro'
             render={() => (userInfo ? <Redirect to='/' /> : <Register />)}
           />
-          <Route path='/producto/:id' component={Product} />
+          <Route
+            exact
+            path='/perfil'
+            render={() => (userInfo ? <Profile /> : <Redirect to='/login' />)}
+          />
         </Switch>
       </div>
       <Footer />

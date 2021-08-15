@@ -1,12 +1,23 @@
 import asyncHandler from 'express-async-handler';
-import generateToken from '../utils/generateToken.js';
 import User from '../models/userModel.js';
+
+// Utils
+import {
+  validateLoginData,
+  validateRegisterData,
+  validateUpdateUserData,
+} from '../utils/validators.js';
+import generateToken from '../utils/generateToken.js';
 
 // @route   POST /api/users/login
 // @desc    Log in user and get token
 // @access  Public
 const authUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
+
+  const { valid, errors } = validateLoginData(email, password);
+
+  if (!valid) return res.status(400).json(errors);
 
   const user = await User.findOne({ email });
 
@@ -19,8 +30,7 @@ const authUser = asyncHandler(async (req, res) => {
       token: generateToken(user._id),
     });
   } else {
-    res.status(401);
-    throw new Error('Email o contraseña invalidos');
+    res.status(403).json({ general: 'Email o contraseña invalidos' });
   }
 });
 
@@ -28,13 +38,21 @@ const authUser = asyncHandler(async (req, res) => {
 // @desc    Register a new user
 // @access  Public
 const registerUser = asyncHandler(async (req, res) => {
-  const { name, email, password } = req.body;
+  const { name, email, password, confirmPassword } = req.body;
+
+  const { valid, errors } = validateRegisterData(
+    name,
+    email,
+    password,
+    confirmPassword
+  );
+
+  if (!valid) return res.status(400).json(errors);
 
   const userExists = await User.findOne({ email });
 
   if (userExists) {
-    res.status(400);
-    throw new Error('User already exists');
+    return res.status(400).json({ email: 'Este email ya ha sido tomado' });
   }
 
   const user = await User.create({
@@ -76,4 +94,40 @@ const getUserProfile = asyncHandler(async (req, res) => {
   }
 });
 
-export { authUser, getUserProfile, registerUser };
+// @route   PUT /api/users/profile
+// @desc    Update user profile
+// @access  Private
+const updateUserProfile = asyncHandler(async (req, res) => {
+  const user = req.user;
+
+  const { valid, errors } = validateUpdateUserData(
+    req.body.name,
+    req.body.password,
+    req.body.confirmPassword
+  );
+
+  if (!valid) return res.status(400).json(errors);
+
+  if (user) {
+    user.name = req.body.name;
+
+    if (req.body.password && req.body.confirmPassword) {
+      user.password = req.body.password;
+    }
+
+    const updatedUser = await user.save();
+
+    res.json({
+      _id: updatedUser._id,
+      name: updatedUser.name,
+      email: updatedUser.email,
+      isAdmin: updatedUser.isAdmin,
+      token: generateToken(updatedUser._id),
+    });
+  } else {
+    res.status(404);
+    throw new Error('User not found');
+  }
+});
+
+export { authUser, getUserProfile, registerUser, updateUserProfile };

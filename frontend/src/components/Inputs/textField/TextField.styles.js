@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { motion } from 'framer-motion';
 
 const shrinkLabelStyles = css`
   top: -0.1rem;
@@ -7,20 +8,28 @@ const shrinkLabelStyles = css`
   padding: 0 0.5rem;
 `;
 
-export const Container = styled.div`
+export const Container = styled(motion.div)`
+  display: grid;
+  grid-gap: 1rem;
+`;
+
+export const InputContainer = styled(motion.div)`
   position: relative;
   input[type='password'] {
     letter-spacing: 0.3em;
   }
 `;
 
-export const Input = styled.input`
+export const Input = styled(motion.input)`
   font-size: 1.5rem;
   font-weight: 300;
   background-color: white;
   padding: 1.5rem 1.7rem;
-  border: 1px solid #a1a6a4;
+  border: ${({ error }) =>
+    error ? '1px solid var(--color-primary)' : '1px solid #a1a6a4'};
   border-radius: 2px;
+  /* box-shadow: ${({ error }) =>
+    error ? 'var(--color-primary) 0px 1px 4px' : 'none'}; */
 
   display: block;
   width: 100%;
@@ -48,4 +57,9 @@ export const FormInputLabel = styled.label`
   &.shrink {
     ${shrinkLabelStyles}
   }
+`;
+
+export const ErrorText = styled.p`
+  color: var(--color-primary);
+  font-size: 1.2rem;
 `;

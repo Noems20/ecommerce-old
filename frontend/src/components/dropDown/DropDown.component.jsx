@@ -1,15 +1,48 @@
 import React from 'react';
+import { AnimatePresence } from 'framer-motion';
 
 // Styles
-import { Selector, SelectLabel, Container, Arrow } from './dropdown.styles';
+import { Container, Arrow, Items } from './dropdown.styles';
 
-const DropDown = ({ label, children, ...otherProps }) => {
+const containerVariants = {
+  hidden: {
+    height: 0,
+    transition: {
+      ease: 'easeInOut',
+    },
+  },
+  visible: {
+    height: 'auto',
+    transition: {
+      ease: 'easeInOut',
+    },
+  },
+};
+
+const DropDown = ({ open, children }) => {
   return (
-    <Container>
-      <SelectLabel>{label}</SelectLabel>
-      <Selector {...otherProps}>{children}</Selector>
-      <Arrow />
-    </Container>
+    <>
+      <AnimatePresence>
+        {open && (
+          <>
+            <Container
+              variants={containerVariants}
+              initial='hidden'
+              animate='visible'
+              exit='hidden'
+            >
+              <Items>{children}</Items>
+            </Container>
+            <Arrow
+              variants={containerVariants}
+              initial='hidden'
+              animate='visible'
+              exit='hidden'
+            />
+          </>
+        )}
+      </AnimatePresence>
+    </>
   );
 };
 

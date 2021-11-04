@@ -1,0 +1,68 @@
+------------------------------------------------------------------
+                                USER
+------------------------------------------------------------------
+Name - String
+Email - String, unique
+Photo - String
+Verified - Boolean
+Role - String
+Password - String
+PasswordConfirm - String
+Cart - [{cartProductId}]
+Addresses - [{
+    State - String, default: Zacatecas
+    City - String
+    Suburb - String
+    PostalCode - Number, length: 5
+    Address - String
+    References - String
+}]
+
+------------------------------------------------------------------
+                           CART PRODUCT
+------------------------------------------------------------------
+Product - ProductId
+Quantity - Number
+
+------------------------------------------------------------------
+        CART PRODUCT CLOTHES (INHERIT FROM CART PRODUCT)
+------------------------------------------------------------------
+ColorCode - String
+Size - String
+
+------------------------------------------------------------------
+                            PRODUCT
+------------------------------------------------------------------
+Name - String
+Slug - String
+Description - String
+Category - String
+Catalog -  String
+ratingsAverage - Number
+ratingsQuantity - Number
+Price - Number
+
+------------------------------------------------------------------
+                CLOTHES PRODUCT (INHERIT FROM PRODUCT)
+------------------------------------------------------------------
+Genre - String, enum: [male, female]
+Variants - [{
+    ColorName - String
+    ColorCode - String, unique
+    Images - [String]
+    XS - Number
+    S - Number
+    M - Number
+    L - Number
+    XL - Number
+    XXL - Number
+}]
+
+------------------------------------------------------------------
+                            REVIEW
+------------------------------------------------------------------
+Product - ProductId
+User - UserId
+Review - String
+Rating - Number
+CreatedAt -  date

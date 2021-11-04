@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import CustomButton from '../customButton/CustomButton.component';
+import CustomButton from '../custom-button/custom-button.component';
 
 export const Card = styled.div`
   display: grid;

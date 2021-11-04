@@ -8,7 +8,7 @@ import {
   List,
   ListItem,
   WebsiteRights,
-} from './Footer.styles';
+} from './footer.styles';
 
 import { FaFacebookF, FaInstagram, FaWhatsapp } from 'react-icons/fa';
 

@@ -2,7 +2,7 @@ import {
   CART_ADD_ITEM,
   CART_REMOVE_ITEM,
   CART_ADD_ONE_ITEM,
-} from '../constants/cartConstants';
+} from './cartConstants';
 
 import { addItemToCart } from './cartUtils';
 
@@ -40,3 +40,5 @@ export const cartReducer = (state = { cartItems: [] }, action) => {
       return state;
   }
 };
+
+export default cartReducer;

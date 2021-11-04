@@ -1,133 +1,178 @@
-import asyncHandler from 'express-async-handler';
 import User from '../models/userModel.js';
+import Appointment from '../models/appointmentModel.js';
 
-// Utils
-import {
-  validateLoginData,
-  validateRegisterData,
-  validateUpdateUserData,
-} from '../utils/validators.js';
-import generateToken from '../utils/generateToken.js';
+import catchAsync from '../utils/catchAsync.js';
+import AppError from '../utils/appError.js';
+import Email from '../utils/email.js';
+import multer from 'multer';
+import sharp from 'sharp';
+import { getAll } from './handlerFactory.js';
+import { validateMailData } from '../utils/validators.js';
 
-// @route   POST /api/users/login
-// @desc    Log in user and get token
-// @access  Public
-const authUser = asyncHandler(async (req, res) => {
-  const { email, password } = req.body;
+// ----------------- FILE UPLOAD ----------------
 
-  const { valid, errors } = validateLoginData(email, password);
+// Image stores as a buffer
+const multerStorage = multer.memoryStorage();
 
-  if (!valid) return res.status(400).json(errors);
-
-  const user = await User.findOne({ email });
-
-  if (user && (await user.matchPassword(password))) {
-    res.json({
-      _id: user._id,
-      name: user.name,
-      email: user.email,
-      isAdmin: user.isAdmin,
-      token: generateToken(user._id),
-    });
+const multerFilter = (req, file, cb) => {
+  if (file.mimetype.startsWith('image')) {
+    cb(null, true);
   } else {
-    res.status(403).json({ general: 'Email o contraseña invalidos' });
+    cb(
+      new AppError('Not an image! Please upload only images.', 400, {
+        photo: 'Por favor selecciona una imagen',
+      }),
+      false
+    );
   }
+};
+
+export const upload = multer({
+  storage: multerStorage,
+  fileFilter: multerFilter,
 });
 
-// @route   POST /api/users/login
-// @desc    Register a new user
-// @access  Public
-const registerUser = asyncHandler(async (req, res) => {
-  const { name, email, password, confirmPassword } = req.body;
+export const uploadUserPhoto = upload.single('photo');
 
-  const { valid, errors } = validateRegisterData(
-    name,
-    email,
-    password,
-    confirmPassword
-  );
+// ----------------- RESIZE USER PHOTO ----------------
+export const resizeUserPhoto = (req, res, next) => {
+  // As we saved image in memory filename doesn't exist but updateMe needs it
+  if (req.file) {
+    req.file.filename = `user-${req.doc.id}.jpg`;
 
-  if (!valid) return res.status(400).json(errors);
+    sharp(req.file.buffer)
+      .resize(500, 500)
+      .withMetadata()
+      .toFormat('jpg')
+      .jpeg({ quality: 90 })
+      .toFile(`backend/public/img/users/${req.file.filename}`)
+      .then(() => {
+        return res.status(200).json({
+          status: 'success',
+          user: req.doc,
+        });
+      });
+  } else {
+    res.status(200).json({
+      status: 'success',
+      user: req.doc,
+    });
+  }
+};
 
-  const userExists = await User.findOne({ email });
+// ------------------ FILTER OBJECT -------------
+const filterObj = (obj, ...allowedFields) => {
+  const newObj = {};
+  Object.keys(obj).forEach((el) => {
+    if (allowedFields.includes(el)) newObj[el] = obj[el];
+  });
+  return newObj;
+};
 
-  if (userExists) {
-    return res.status(400).json({ email: 'Este email ya ha sido tomado' });
+// ------------------ GET ALL USERS --------------
+export const getAllUsers = getAll(User);
+
+// ------------------- UPDATE USER -------------------
+export const updateMe = catchAsync(async (req, res, next) => {
+  // 1) Create error if user POSTs password data
+  if (req.body.password || req.body.confirmPassword) {
+    return next(
+      new AppError(
+        'This route is not for password updates. Please use /updateMyPassword',
+        400
+      )
+    );
   }
 
-  const user = await User.create({
-    name,
-    email,
-    password,
+  // console.log(req.body);
+  // 2) Filtered out unwanted fields names that are not allowed to be updated
+  const filteredBody = filterObj(req.body, 'name');
+  if (req.file) filteredBody.photo = `user-${req.user.id}.jpg`;
+
+  // 3) Update user document
+  const updatedUser = await User.findByIdAndUpdate(req.user.id, filteredBody, {
+    new: true,
+    runValidators: true,
   });
 
-  if (user) {
-    res.status(201).json({
-      _id: user._id,
-      name: user.name,
-      email: user.email,
-      isAdmin: user.isAdmin,
-      token: generateToken(user._id),
-    });
-  } else {
-    res.status(400);
-    throw new Error('Invalid user data');
-  }
+  req.doc = updatedUser;
+  next();
 });
 
-// @route   GET /api/users/profile
-// @desc    Get user profile
-// @access  Private
-const getUserProfile = asyncHandler(async (req, res) => {
-  const user = req.user;
+// ------------------- SEND MAIL -------------------
+export const sendContactMail = catchAsync(async (req, res, next) => {
+  const { name, email, subject, message } = req.body;
 
-  if (user) {
-    res.json({
-      _id: user._id,
-      name: user.name,
-      email: user.email,
-      isAdmin: user.isAdmin,
-    });
-  } else {
-    res.status(404);
-    throw new Error('User not found');
+  // 1) Check Data
+  const { errors, valid } = validateMailData(name, email, subject, message);
+
+  if (!valid) {
+    return next(new AppError('Mail details must be valid', 400, errors));
   }
+
+  const user = { name, email: process.env.EMAIL_FROM };
+  const content = { subject, message, email };
+  let url;
+  if (process.env.NODE_ENV === 'development') {
+    url = `${req.protocol}://localhost:3000/`;
+  } else {
+    url = `${req.protocol}://${req.get('host')}/`;
+  }
+
+  // 4) Send it to own email
+  try {
+    await new Email(user, url, content).sendContactMail();
+  } catch (error) {
+    console.log(error);
+
+    return next(
+      new AppError(
+        'There was an error sending the email. Try again later!',
+        500,
+        {
+          email: 'Ocurrio un error enviando el email',
+        }
+      )
+    );
+  }
+
+  res.status(200).json({
+    status: 'success',
+    message: 'Mail sent!',
+  });
 });
 
-// @route   PUT /api/users/profile
-// @desc    Update user profile
-// @access  Private
-const updateUserProfile = asyncHandler(async (req, res) => {
-  const user = req.user;
-
-  const { valid, errors } = validateUpdateUserData(
-    req.body.name,
-    req.body.password,
-    req.body.confirmPassword
+// ------------------------------- CHANGE USER ROLE --------------------------------
+export const changeUserRole = catchAsync(async (req, res, next) => {
+  const updatedUser = await User.findByIdAndUpdate(
+    req.params.id,
+    { role: req.body.role },
+    {
+      new: true,
+      runValidators: true,
+    }
   );
 
-  if (!valid) return res.status(400).json(errors);
-
-  if (user) {
-    user.name = req.body.name;
-
-    if (req.body.password && req.body.confirmPassword) {
-      user.password = req.body.password;
-    }
-
-    const updatedUser = await user.save();
-
-    res.json({
-      _id: updatedUser._id,
-      name: updatedUser.name,
-      email: updatedUser.email,
-      isAdmin: updatedUser.isAdmin,
-      token: generateToken(updatedUser._id),
-    });
-  } else {
-    res.status(404);
-    throw new Error('User not found');
+  if (!updatedUser) {
+    return next(new AppError('No document found with that ID', 404));
   }
+
+  res.status(200).json({
+    status: 'success',
+    data: updatedUser,
+  });
 });
 
-export { authUser, getUserProfile, registerUser, updateUserProfile };
+// ------------------------------- DELETE USER AND HIS APPOINTMENTS --------------------
+export const deleteUser = catchAsync(async (req, res, next) => {
+  const userDeleted = await User.findByIdAndDelete(req.params.id);
+
+  if (!userDeleted) {
+    return next(new AppError('No document found with that ID', 404));
+  }
+  await Appointment.deleteMany({
+    user: req.params.id,
+  });
+
+  res.status(204).json({ status: 'success', data: null });
+});

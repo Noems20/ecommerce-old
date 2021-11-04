@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  height: 80vh;
+  height: calc(100vh - 8rem);
   width: 100vw;
 
   display: grid;

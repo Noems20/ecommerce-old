@@ -1,14 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-// Redux
-import { useDispatch, useSelector } from 'react-redux';
-import { addToCartOne } from '../../redux/cart/cartActions';
+// REDUX
 
-// Components
-import Rating from '../rating/Rating';
+// COMPONENTS
+import Rating from '../rating/rating.component';
 
-// Styles
+// STYLES
 import {
   Card,
   CardImg,
@@ -19,29 +17,12 @@ import {
   CardTitle,
   CardReview,
   CardPrice,
-} from './Product.styles';
+} from './product.styles';
 
 const Product = ({ product }) => {
   const [counter, setCounter] = useState(0);
-  const dispatch = useDispatch();
-  const cart = useSelector((state) => state.cart);
-
-  const { cartItems } = cart;
-
-  const existingCartItem = cartItems.find(
-    (cartItem) => cartItem._id === product._id
-  );
-
-  useEffect(() => {
-    if (existingCartItem) {
-      setCounter(existingCartItem.qty);
-    } else {
-      setCounter(0);
-    }
-  }, [existingCartItem]);
 
   const handleClick = () => {
-    dispatch(addToCartOne(product));
     setCounter(counter + 1);
   };
 

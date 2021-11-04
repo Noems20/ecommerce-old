@@ -1,37 +1,44 @@
 import styled from 'styled-components';
-import { motion } from 'framer-motion';
+import tokens from '../../tokens';
+import { RiArrowDownSLine } from 'react-icons/ri';
 
-export const Container = styled(motion.div)`
+export const Container = styled.div`
+  position: relative;
+  max-height: 5rem;
+`;
+
+export const SelectLabel = styled.label`
   position: absolute;
-  top: 4.5rem;
-  right: 0;
-  background-color: #fff;
-  border-radius: var(--border-radius);
-  border: #f5f5f5;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 4px;
-
-  padding: 1rem;
-  overflow: hidden;
-`;
-
-export const Text = styled.p`
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  color: inherit;
-  font-size: 1.4rem;
+  top: -5px;
+  left: 8px;
+  letter-spacing: 0.5px;
+  font-size: 1.1rem;
   font-weight: 300;
-  cursor: pointer;
-
-  -webkit-touch-callout: none; /* iOS Safari */
-  -webkit-user-select: none; /* Safari */
-  -khtml-user-select: none; /* Konqueror HTML */
-  -moz-user-select: none; /* Old versions of Firefox */
-  -ms-user-select: none; /* Internet Explorer/Edge */
-  user-select: none;
+  background-color: #fff;
+  padding: 0 3px;
+  z-index: 1;
 `;
 
-export const Items = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  align-items: center;
+export const Selector = styled.select`
+  font-family: ${tokens.fontDisplay};
+  font-weight: 300;
+  width: 100%;
+  height: 100%;
+
+  border: 1px solid #a1a6a4;
+  border-radius: 2px;
+  padding: 0 11px;
+  background-color: transparent;
+
+  -webkit-appearance: none;
+`;
+
+export const Arrow = styled(RiArrowDownSLine)`
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  width: 1.5rem;
+  height: 1.5rem;
+  transform: translateY(-50%);
+  z-index: -1;
 `;

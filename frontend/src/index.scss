@@ -48,13 +48,13 @@ $font-display: 'Metropolis', sans-serif;
 }
 
 :root {
-  --color-primary: #e01435;
-  --color-primary-light: #ff1940;
+  --color-primary: #0053a2;
+  --color-primary-light: #023aaa;
   --color-primary-dark: #c01330;
 
-  --color-secondary: #e7d9bb;
-  --color-secondary-light: #fdf0d5;
-  --color-secondary-dark: #bbaf95;
+  --color-secondary: #007fc3;
+  --color-secondary-light: #007fc3;
+  --color-secondary-dark: #007fc3;
 
   --color-grey-light-1: #faf9f9;
   --color-grey-light-2: #f4f2f2;
@@ -90,26 +90,26 @@ $font-display: 'Metropolis', sans-serif;
 
 html {
   /* width */
-  // ::-webkit-scrollbar {
-  //   width: 10px;
-  // }
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
 
   /* Track */
-  // ::-webkit-scrollbar-track {
-  //   background: #f1f1f1;
-  //   border-radius: 50px;
-  // }
+  ::-webkit-scrollbar-track {
+    background: #fff;
+    border-radius: 50px;
+  }
 
   /* Handle */
-  // ::-webkit-scrollbar-thumb {
-  //   background: var(--color-primary);
-  //   border-radius: 50px;
-  // }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-primary);
+    border-radius: 50px;
+  }
 
   /* Handle on hover */
-  // ::-webkit-scrollbar-thumb:hover {
-  //   background: var(--color-primary-light);
-  // }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-primary-light);
+  }
 
   input:-webkit-autofill,
   input:-webkit-autofill:hover,

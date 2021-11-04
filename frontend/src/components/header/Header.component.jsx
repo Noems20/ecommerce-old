@@ -1,100 +1,116 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import logo from './logo.svg';
-import { useHistory } from 'react-router-dom';
 
-// Redux
-import { useDispatch, useSelector } from 'react-redux';
-import { logout } from '../../redux/user/userActions';
+// REDUX
 
-// Components
-import DropDown from '../dropDown/DropDown.component';
+// COMPONENTS
 
-// Styles
+// STYLES
 import {
   HeaderContainer,
-  NavContainer,
   NavLogoLink,
   NavLogo,
-  NavItems,
+  MenuIcon,
+  MenuIconLine,
+  NavMenu,
   NavItem,
   NavbarLink,
-  NoLinkContainer,
-  DropDownItem,
   CartCount,
-} from './Header.styles';
+} from './header.styles';
 
-import { FaUser } from 'react-icons/fa';
 import { FiShoppingCart } from 'react-icons/fi';
-import { RiLogoutCircleLine } from 'react-icons/ri';
-import { BsFillCaretDownFill } from 'react-icons/bs';
 
 const Header = () => {
-  let history = useHistory();
-  const [open, setOpen] = useState(false);
+  const [collapse, setCollapse] = useState(false);
+  const [burguerClass, setBurguerClass] = useState('');
+  // ------------------------------ USE EFFECT --------------------------
+  useEffect(() => {
+    if (window.innerWidth > 800) {
+      setCollapse(false);
+      setBurguerClass('');
+    } else {
+      setCollapse(true);
+    }
 
-  const dispatch = useDispatch();
+    function handleResize() {
+      if (window.innerWidth > 800) {
+        setCollapse(false);
+        setBurguerClass('');
+      } else {
+        setCollapse(true);
+      }
+    }
+    window.addEventListener('resize', handleResize);
 
-  const user = useSelector((state) => state.user);
-  const cart = useSelector((state) => state.cart);
-  const { cartItems } = cart;
-  const { userInfo } = user;
-  const itemCount = cartItems.reduce((acc, item) => acc + item.qty, 0);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+  // ------------------------------ HANDLERS --------------------------
+  // const logoutHandler = () => {};
 
-  const logoutHandler = () => {
-    dispatch(logout());
-    setOpen(false);
+  const handleBurgerClass = () => {
+    if (burguerClass === '') {
+      setBurguerClass('active');
+    } else if (burguerClass === 'active') {
+      setBurguerClass('unactive');
+    } else {
+      setBurguerClass('active');
+    }
   };
 
   return (
     <HeaderContainer>
-      <NavContainer>
-        <NavLogoLink to='/' exact>
-          <NavLogo src={logo} />
-        </NavLogoLink>
-        <NavItems>
-          <NavItem>
-            <NavbarLink activeClassName='is-active' to='/' exact>
-              Muebles
-            </NavbarLink>
-          </NavItem>
-          <NavItem>
-            {userInfo ? (
-              <NoLinkContainer onClick={() => setOpen(!open)}>
-                <BsFillCaretDownFill />
-                <DropDown title={userInfo.name} open={open}>
-                  <DropDownItem
-                    onClick={() => {
-                      history.push('/perfil');
-                    }}
-                  >
-                    <FaUser />
-                    <p>Perfil</p>
-                  </DropDownItem>
-                  <DropDownItem onClick={logoutHandler}>
-                    <RiLogoutCircleLine />
-                    <p>Cerrar Sesión</p>
-                  </DropDownItem>
-                </DropDown>
-              </NoLinkContainer>
+      {/* ------------------- LOGO ------------------ */}
+      <NavLogoLink to='/' exact>
+        <NavLogo src={logo} />
+      </NavLogoLink>
+      {/* --------------- BURGER BUTTON ------------- */}
+      <MenuIcon
+        htmlFor='menu-btn'
+        className={burguerClass}
+        onClick={handleBurgerClass}
+      >
+        <MenuIconLine className={burguerClass} onClick={handleBurgerClass} />
+      </MenuIcon>
+
+      {/* ----------------- NAV ITEMS ------------------ */}
+      <NavMenu className={burguerClass}>
+        <NavItem>
+          <NavbarLink activeClassName='is-active' to='/agendas' exact>
+            Agendas
+          </NavbarLink>
+        </NavItem>
+        <NavItem>
+          <NavbarLink activeClassName='is-active' to='/encuadernacion' exact>
+            Encuadernación
+          </NavbarLink>
+        </NavItem>
+        <NavItem>
+          <NavbarLink activeClassName='is-active' to='/ropa' exact>
+            Ropa
+          </NavbarLink>
+        </NavItem>
+        <NavItem>
+          <NavbarLink activeClassName='is-active' to='/regalos' exact>
+            Regalos
+          </NavbarLink>
+        </NavItem>
+        <NavItem>
+          <NavbarLink activeClassName='is-active' to='/carrito' exact>
+            {collapse ? (
+              'Carrito'
             ) : (
-              <NavbarLink activeClassName='is-active' to='/login' exact>
-                <FaUser />
-                Iniciar Sesión
-              </NavbarLink>
-            )}
-          </NavItem>
-          <NavItem>
-            <NavbarLink activeClassName='is-active' to='/carrito'>
-              <FiShoppingCart className='cart' />
-              {cart.cartItems.length > 0 && (
+              <>
+                <FiShoppingCart className='cart' />
                 <CartCount>
-                  <p>{itemCount}</p>
+                  <p>5</p>
                 </CartCount>
-              )}
-            </NavbarLink>
-          </NavItem>
-        </NavItems>
-      </NavContainer>
+              </>
+            )}
+          </NavbarLink>
+        </NavItem>
+      </NavMenu>
     </HeaderContainer>
   );
 };

@@ -1,5 +1,12 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import { motion } from 'framer-motion';
+
+export const Container = styled.div`
+  position: sticky;
+  top: 0;
+  z-index: 10;
+`;
 
 export const HeaderContainer = styled.header`
   font-size: 1.6rem;
@@ -15,11 +22,22 @@ export const HeaderContainer = styled.header`
 
   display: flex;
   align-items: center;
+
+  @media only screen and (max-width: 650px) {
+    flex-wrap: wrap;
+    height: 13rem;
+    padding: 1rem 4rem;
+    /* align-content: space-around; */
+  }
 `;
 
 export const NavLogoLink = styled(NavLink)`
   height: 100%;
-  z-index: 10;
+  z-index: 3;
+
+  @media only screen and (max-width: 650px) {
+    height: 4rem;
+  }
 `;
 
 export const NavLogo = styled.img`
@@ -38,6 +56,14 @@ export const UserInfo = styled(NavLink)`
   margin-bottom: 1rem;
   border-bottom: var(--border);
   display: flex;
+
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
 `;
 export const UserImage = styled.img`
   height: 3.5rem;
@@ -58,8 +84,13 @@ export const SearchBar = styled.form`
   align-items: center;
   justify-content: center;
 
-  @media only screen and (max-width: 1250px) {
+  @media only screen and (max-width: 1300px) {
     flex: 0 0 70%;
+  }
+
+  @media only screen and (max-width: 650px) {
+    flex: 0 0 100%;
+    order: 1;
   }
 `;
 export const SearchInput = styled.input`
@@ -83,6 +114,13 @@ export const SearchInput = styled.input`
   &::-webkit-input-placeholder {
     font-weight: 300;
     color: var(--color-grey-light-4);
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
   }
 `;
 
@@ -109,14 +147,21 @@ export const SearchButton = styled.button`
 //                              NAVIGATION MENU
 //------------------------------------------------------------------------
 
-export const NavMenu = styled.ul`
+export const NavMenu = styled(motion.ul)`
   list-style: none;
   display: flex;
   align-self: center;
   align-items: center;
   z-index: 2;
+  overflow: auto;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
-  @media only screen and (max-width: 1250px) {
+  @media only screen and (max-width: 1300px) {
+    visibility: hidden;
     position: absolute;
     overflow-x: hidden;
     top: 0;
@@ -129,13 +174,20 @@ export const NavMenu = styled.ul`
     height: 100vh;
     color: var(--color-grey-dark-1);
     clip-path: circle(200px at top right);
-    background: rgba(255, 255, 255, 0.99);
+    background: rgba(255, 255, 255, 0.97);
   }
 `;
 
-export const NavItem = styled.li`
+export const NavItem = styled(motion.li)`
   cursor: pointer;
-  @media only screen and (max-width: 1250px) {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+  @media only screen and (max-width: 1300px) {
     opacity: 0;
     transform: translateX(100%);
     width: 100%;
@@ -156,6 +208,12 @@ export const NavItem = styled.li`
     &:nth-of-type(5) {
       transition-delay: 0.4s;
     }
+    &:nth-of-type(6) {
+      transition-delay: 0.5s;
+    }
+    &:nth-of-type(7) {
+      transition-delay: 0.6s;
+    }
   }
 `;
 
@@ -170,6 +228,9 @@ export const NavbarLink = styled(NavLink)`
   transition: color 0.2s ease, background-color 0.2s ease;
   position: relative;
 
+  display: flex;
+  align-items: center;
+
   & svg {
     color: var(--color-grey-dark-1);
     font-size: 2.5rem;
@@ -180,10 +241,10 @@ export const NavbarLink = styled(NavLink)`
   &:hover,
   &.is-active {
     color: var(--color-primary);
-    transition: color 0.2s ease, background-color 0.2s ease;
+    /* transition: color 0.2s ease, background-color 0.2s ease; */
 
     & svg {
-      color: inherit;
+      color: var(--color-primary);
     }
 
     & span {
@@ -191,7 +252,9 @@ export const NavbarLink = styled(NavLink)`
     }
   }
 
-  @media only screen and (max-width: 1250px) {
+  @media only screen and (max-width: 1300px) {
+    font-weight: 500;
+
     font-size: 3rem;
     display: block;
     padding: 2rem 0;
@@ -213,7 +276,7 @@ export const CartCount = styled.span`
   background-color: var(--color-primary);
 
   position: absolute;
-  top: -0.8rem;
+  top: 0rem;
   right: 0.3rem;
 
   display: flex;
@@ -235,25 +298,26 @@ export const MenuIcon = styled.div`
   height: 100%;
   cursor: pointer;
   display: none;
-  z-index: 10;
+  z-index: 3;
 
-  @media only screen and (max-width: 1250px) {
+  @media only screen and (max-width: 1300px) {
     display: flex;
     align-items: center;
 
     &.active {
       border-radius: 50%;
-      /* animation: pulse 1s; */
+      animation: pulse 1s;
     }
 
     &.unactive ~ ul {
-      transition: opacity 0.8s 0.5s, clip-path 1s 0.5s;
+      transition: opacity 0.8s 0.5s, clip-path 1s 0.5s, visibility 1s 0.5s;
     }
 
     &.active ~ ul {
       transition: opacity 0.8s 0.5s, clip-path 1s 0.5s;
       opacity: 1;
       clip-path: circle(100% at center);
+      visibility: visible;
 
       li {
         opacity: 1;
@@ -276,8 +340,18 @@ export const MenuIcon = styled.div`
         &:nth-of-type(5) {
           transition-delay: 1.1s;
         }
+        &:nth-of-type(6) {
+          transition-delay: 1.2s;
+        }
+        &:nth-of-type(7) {
+          transition-delay: 1.3s;
+        }
       }
     }
+  }
+
+  @media only screen and (max-width: 650px) {
+    height: 4rem;
   }
 
   @keyframes pulse {

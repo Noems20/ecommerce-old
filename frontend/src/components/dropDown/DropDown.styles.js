@@ -15,6 +15,7 @@ export const Container = styled(motion.div)`
   left: 90%; /* position the left edge of the element at the middle of the parent */
 
   box-shadow: 5px 5px 5px rgb(0 0 0 / 50%);
+  z-index: 2;
 
   transform: translate(
     -90%,
@@ -38,7 +39,7 @@ export const Arrow = styled.div`
   right: 0;
   margin-left: auto;
   margin-right: auto;
-  z-index: 1;
+  z-index: 2;
 `;
 
 export const Items = styled.div`

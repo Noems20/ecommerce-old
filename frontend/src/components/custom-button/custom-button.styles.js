@@ -1,38 +1,120 @@
-import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import styled, { css } from 'styled-components';
+// import tokens from '../../tokens';
+// import Loader from '../loaders/loader/loader.component';
 
-export const Button = styled(motion.button)`
-  background-color: var(--color-primary);
-  letter-spacing: 2px;
-  cursor: pointer;
+// ------------------ PRIMARY BUTTON STYLES ------------
+const primaryButtonStyles = css`
   color: #fff;
-  text-transform: uppercase;
-  padding: 1rem 3rem;
-  transition: all 0.2s ease;
-
-  border: 1px solid var(--color-primary);
+  background-color: var(--color-primary);
+  border: 0.2px solid var(--color-primary);
 
   &:hover {
-    background-color: #fff;
-    color: var(--color-primary);
-    transition: all 0.2s ease;
-  }
-
-  &:active {
-    background-color: var(--color-primary);
-    color: #fff;
-    transition: all 0.2s ease;
+    border: 0.2px solid var(--color-primary-dark);
+    background-color: var(--color-primary-dark);
   }
 
   &:disabled {
-    background-color: var(--color-grey-dark-3);
-    color: #fff;
-    border: 1px solid var(--color-grey-dark-3);
-  }
-
-  &:disabled:hover {
-    background-color: var(--color-grey-dark-3);
-    color: #fff;
-    border: 1px solid var(--color-grey-dark-3);
+    background-color: var(--color-primary);
   }
 `;
+
+// ------------------ SECONDARY BUTTON STYLES ------------
+const secondaryButtonStyles = css`
+  border: 0.2px solid var(--color-primary);
+  color: var(--color-primary);
+  background-color: #fff;
+
+  &:hover {
+    background-color: var(--color-primary);
+    color: #fff;
+  }
+
+  &:disabled {
+    background-color: var(--color-primary);
+  }
+`;
+// ------------------ BLACK BUTTON STYLES ------------
+const blackButtonStyles = css`
+  border: 0.2px solid var(--color-grey-dark-1);
+  color: var(--color-grey-dark-1);
+  background-color: #fff;
+
+  &:hover {
+    background-color: var(--color-grey-dark-1);
+    color: #fff;
+  }
+
+  &:disabled {
+    background-color: var(--color-grey-dark-1);
+  }
+`;
+
+// ------------------ DANGER BUTTON STYLES ------------
+const dangerButtonStyles = css`
+  color: #fff;
+  background-color: #f94415;
+  border: 0.2px solid #f94415;
+
+  &:hover {
+    background-color: #e03e14;
+    color: #fff;
+    border: 0.2px solid #e03e14;
+  }
+
+  &:disabled {
+    background-color: #f94415;
+  }
+`;
+
+const getButtonStyles = (props) => {
+  if (props.primary) {
+    return primaryButtonStyles;
+  } else if (props.danger) {
+    return dangerButtonStyles;
+  } else if (props.black) {
+    return blackButtonStyles;
+  } else {
+    return secondaryButtonStyles;
+  }
+};
+
+export const CustomButtonContainer = styled(motion.button)`
+  font-family: inherit;
+  font-size: 1.8rem;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1rem 2rem;
+  border: none;
+  /* border-radius: 100px; */
+  cursor: pointer;
+  transition-property: color, background-color;
+  transition-duration: 0.2s;
+  transition-timing-function: ease;
+
+  &:hover {
+    transition-property: color, background-color;
+    transition-duration: 0.2s;
+    transition-timing-function: ease;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+
+  ${getButtonStyles}
+`;
+
+export const ChildrenContainer = styled.div`
+  height: 2.4rem;
+  display: grid;
+  align-content: center;
+`;
+
+// export const ButtonLoader = styled(Loader)`
+//   /* font-size: 10rem; */
+//   margin: 0 auto;
+//   font-size: 0.5rem;
+// `;

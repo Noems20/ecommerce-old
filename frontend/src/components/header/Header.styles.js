@@ -153,14 +153,14 @@ export const NavMenu = styled(motion.ul)`
   align-self: center;
   align-items: center;
   z-index: 2;
-  overflow: auto;
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-  &::-webkit-scrollbar {
-    display: none;
-  }
 
   @media only screen and (max-width: 1300px) {
+    overflow: auto;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+    &::-webkit-scrollbar {
+      display: none;
+    }
     visibility: hidden;
     position: absolute;
     overflow-x: hidden;

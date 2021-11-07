@@ -54,7 +54,7 @@ const Login = () => {
         // error={uiErrors.password}
         required
       />
-      <CustomButton type='submit' onClick={SubmitHandler}>
+      <CustomButton primary type='submit' onClick={SubmitHandler}>
         Iniciar Sesión
       </CustomButton>
       <NoAccountText>

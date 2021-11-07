@@ -1,10 +1,23 @@
 import React from 'react';
 
-// Styles
-import { Button } from './custom-button.styles';
+// STYLES
+import {
+  CustomButtonContainer,
+  ChildrenContainer,
+  // ButtonLoader,
+} from './custom-button.styles';
 
-const CustomButton = ({ children, ...props }) => {
-  return <Button {...props}>{children}</Button>;
+// ICONS
+
+const CustomButton = ({ children, loading, className, ...props }) => {
+  return (
+    <CustomButtonContainer className={className} {...props}>
+      <ChildrenContainer>
+        {/* {loading ? <ButtonLoader /> : children} */}
+        {children}
+      </ChildrenContainer>
+    </CustomButtonContainer>
+  );
 };
 
 export default CustomButton;

@@ -50,9 +50,13 @@ export const Items = styled.div`
 
 // --------------------------- CHILD COMPONENTS ----------------
 
-export const DropDownItem = styled.div`
+export const DropDownItemContainer = styled.div`
+  font-size: 1.7rem;
+  font-weight: 400;
   padding: 1rem 2rem;
-  margin-bottom: 3px;
+  &:not(:last-child) {
+    margin-bottom: 3px;
+  }
   border-radius: var(--border-radius);
   text-decoration: none;
   cursor: pointer;
@@ -72,11 +76,9 @@ export const DropDownItem = styled.div`
   }
 
   & svg {
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 100px;
-    height: 3.5rem;
-    width: 3.5rem;
-    padding: 7px;
+    height: 2.5rem;
+    width: 2.5rem;
+    padding: 2px;
   }
 
   &.is-active {
@@ -87,4 +89,15 @@ export const DropDownItem = styled.div`
     background-color: rgba(255, 255, 255, 0.1);
     transition: background-color 0.2s ease;
   }
+`;
+
+export const IconContainer = styled.div`
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 100px;
+  height: 3.5rem;
+  width: 3.5rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;

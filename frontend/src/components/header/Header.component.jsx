@@ -13,8 +13,8 @@ import niñoImg from './images/niño.png';
 // REDUX
 
 // COMPONENTS
-import DropDown from '../dropdown/dropdown.component';
-import { DropDownItem } from '../dropdown/dropdown.styles';
+import DropDown, { DropDownItem } from '../dropdown/dropdown.component';
+// import { DropDownItem } from '../dropdown/dropdown.styles';
 import ExpandItem from './expand-item/expand-item.component';
 import {
   Column,
@@ -44,13 +44,16 @@ import {
   CartCount,
 } from './header.styles';
 
-import { FiShoppingCart, FiLogOut } from 'react-icons/fi';
+// ICONS
+import { FiShoppingCart, FiLogOut, FiLogIn } from 'react-icons/fi';
 import {
   FaUserCircle,
   FaUser,
+  FaUserPlus,
   FaSearch,
   FaChevronDown,
   FaChevronRight,
+  FaChevronLeft,
 } from 'react-icons/fa';
 
 function useOutsideAlerter(closer, ref, secondRef) {
@@ -91,6 +94,8 @@ const Header = () => {
   const [collapse, setCollapse] = useState(false);
   const [itemExpanded, setItemExpanded] = useState(false);
   const [burguerClass, setBurguerClass] = useState('');
+  const [activeMenu, setActiveMenu] = useState('main');
+  const [changeDisplay, setChangeDisplay] = useState(true);
   const user = false;
   const body = document.querySelector('body');
   useOutsideAlerter(setOpen, dropdownRef);
@@ -100,7 +105,9 @@ const Header = () => {
   useEffect(() => {
     if (window.innerWidth > 1300) {
       setCollapse(false);
+      setActiveMenu('main');
       setBurguerClass('');
+      body.style.overflow = 'auto';
     } else {
       setCollapse(true);
     }
@@ -108,7 +115,9 @@ const Header = () => {
     function handleResize() {
       if (window.innerWidth > 1300) {
         setCollapse(false);
+        setActiveMenu('main');
         setBurguerClass('');
+        body.style.overflow = 'auto';
       } else {
         setCollapse(true);
       }
@@ -118,7 +127,7 @@ const Header = () => {
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, []);
+  }, [body]);
   // ------------------------------ HANDLERS --------------------------
   // const logoutHandler = () => {};
 
@@ -128,11 +137,30 @@ const Header = () => {
       body.style.overflow = 'hidden';
     } else if (burguerClass === 'active') {
       setBurguerClass('unactive');
+      setItemExpanded(false);
       body.style.overflow = 'auto';
+      setTimeout(() => {
+        setActiveMenu('main');
+      }, 600);
     } else {
       setBurguerClass('active');
       body.style.overflow = 'hidden';
     }
+  };
+
+  const handleMenu = () => {
+    if (changeDisplay) {
+      setItemExpanded(itemExpanded === 'clothes' ? false : 'clothes');
+    }
+    if (collapse) {
+      setActiveMenu('clothes');
+    }
+  };
+
+  const handleHover = () => {
+    setChangeDisplay(false);
+    setItemExpanded('clothes');
+    setTimeout(() => setChangeDisplay(true), 250);
   };
 
   return (
@@ -157,69 +185,73 @@ const Header = () => {
           className={burguerClass}
           onClick={handleBurgerClass}
         >
-          <MenuIconLine className={burguerClass} onClick={handleBurgerClass} />
+          <MenuIconLine className={burguerClass} />
         </MenuIcon>
 
         {/* ----------------- NAV ITEMS ------------------ */}
 
         <NavMenu className={burguerClass}>
-          <NavItem>
-            <NavbarLink
-              as='p'
-              ref={itemExpandedRef2}
-              onMouseEnter={() => setItemExpanded('clothes')}
-              onClick={() =>
-                setItemExpanded(itemExpanded === 'clothes' ? false : 'clothes')
-              }
-            >
-              Ropa
-              {collapse ? (
-                <FaChevronRight
-                  style={{
-                    fontSize: '2rem',
-                    marginLeft: '0.5rem',
-                  }}
-                />
-              ) : (
-                <FaChevronDown
-                  style={{ fontSize: '1.5rem', marginLeft: '0.2rem' }}
-                />
-              )}
-            </NavbarLink>
-          </NavItem>
-          <NavItem>
-            <NavbarLink
-              onMouseEnter={() => setItemExpanded(false)}
-              activeClassName='is-active'
-              to='/agendas'
-              exact
-            >
-              Agendas
-            </NavbarLink>
-          </NavItem>
-
-          <NavItem>
-            <NavbarLink
-              onMouseEnter={() => setItemExpanded(false)}
-              activeClassName='is-active'
-              to='/encuadernacion'
-              exact
-            >
-              Encuadernación
-            </NavbarLink>
-          </NavItem>
-          <NavItem>
-            <NavbarLink
-              onMouseEnter={() => setItemExpanded(false)}
-              activeClassName='is-active'
-              to='/regalos'
-              exact
-            >
-              Regalos
-            </NavbarLink>
-          </NavItem>
-          {user ? (
+          {/* ------------------------ MAIN MENU --------------------- */}
+          {activeMenu === 'main' ? (
             <>
+              {/* ----------- ROPA ---------  */}
+              <NavItem>
+                <NavbarLink
+                  as='p'
+                  ref={itemExpandedRef2}
+                  onClick={handleMenu}
+                  onMouseEnter={handleHover}
+                  className={!collapse && itemExpanded && 'is-active'}
+                >
+                  Ropa
+                  {collapse ? (
+                    <FaChevronRight
+                      style={{
+                        fontSize: '2rem',
+                        marginLeft: '0.5rem',
+                      }}
+                    />
+                  ) : (
+                    <FaChevronDown
+                      style={{ fontSize: '1.5rem', marginLeft: '0.2rem' }}
+                    />
+                  )}
+                </NavbarLink>
+              </NavItem>
+              {/* ----------- AGENDAS ---------  */}
+              <NavItem>
+                <NavbarLink
+                  onMouseEnter={() => setItemExpanded(false)}
+                  activeClassName='is-active'
+                  to='/agendas'
+                  exact
+                >
+                  Agendas
+                </NavbarLink>
+              </NavItem>
+              {/* ----------- ENCUADERNACION ---------  */}
+              <NavItem>
+                <NavbarLink
+                  onMouseEnter={() => setItemExpanded(false)}
+                  activeClassName='is-active'
+                  to='/encuadernacion'
+                  exact
+                >
+                  Encuadernación
+                </NavbarLink>
+              </NavItem>
+              {/* ----------- REGALOS ---------  */}
+              <NavItem>
+                <NavbarLink
+                  onMouseEnter={() => setItemExpanded(false)}
+                  activeClassName='is-active'
+                  to='/regalos'
+                  exact
+                >
+                  Regalos
+                </NavbarLink>
+              </NavItem>
+              {/* ----------- CARRITO ---------  */}
               <NavItem>
                 <NavbarLink
                   onMouseEnter={() => setItemExpanded(false)}
@@ -239,18 +271,35 @@ const Header = () => {
                   )}
                 </NavbarLink>
               </NavItem>
+
+              {/* ------------------ MENU PARA MOVIL -----------------  */}
+
               {collapse ? (
-                <>
+                user ? (
+                  <>
+                    <NavItem>
+                      <NavbarLink
+                        activeClassName='is-active'
+                        to='/perfil'
+                        exact
+                      >
+                        Perfil
+                      </NavbarLink>
+                    </NavItem>
+                    <NavItem>
+                      <NavbarLink as='p'>Cerrar sesión</NavbarLink>
+                    </NavItem>
+                  </>
+                ) : (
                   <NavItem>
-                    <NavbarLink activeClassName='is-active' to='/perfil' exact>
-                      Perfil
+                    <NavbarLink activeClassName='is-active' to='/login' exact>
+                      Iniciar sesión
                     </NavbarLink>
                   </NavItem>
-                  <NavItem>
-                    <NavbarLink as='p'>Cerrar sesión</NavbarLink>
-                  </NavItem>
-                </>
+                )
               ) : (
+                // ----------------------- MENU GRANDE ----------------
+                // ------------ USUARIO ---------------
                 <NavItem>
                   <NavbarLink
                     onMouseEnter={() => setItemExpanded(false)}
@@ -260,41 +309,87 @@ const Header = () => {
                   >
                     <FaUserCircle />
                     <DropDown open={open} setOpen={setOpen}>
-                      <UserInfo to='/perfil' exact>
-                        <UserImage src={userImage} />
-                        <UserName>Jonas</UserName>
-                      </UserInfo>
+                      {user ? (
+                        <>
+                          <UserInfo to='/perfil' exact>
+                            <UserImage src={userImage} />
+                            <UserName>Jonas</UserName>
+                          </UserInfo>
 
-                      <DropDownItem
-                        as={NavLink}
-                        to='/perfil'
-                        exact
-                        activeClassName='is-active'
-                      >
-                        <FaUser />
-                        <p>Perfil</p>
-                      </DropDownItem>
-                      <DropDownItem>
-                        <FiLogOut />
-                        <p>Cerrar Sesión</p>
-                      </DropDownItem>
+                          <DropDownItem
+                            as={NavLink}
+                            to='/perfil'
+                            exact
+                            activeClassName='is-active'
+                            icon={<FaUser />}
+                          >
+                            <p>Perfil</p>
+                          </DropDownItem>
+                          <DropDownItem icon={<FiLogOut />}>
+                            <p>Cerrar Sesión</p>
+                          </DropDownItem>
+                        </>
+                      ) : (
+                        <>
+                          <DropDownItem
+                            as={NavLink}
+                            to='/registro'
+                            exact
+                            activeClassName='is-active'
+                            icon={<FaUserPlus />}
+                          >
+                            <p>Registrarse</p>
+                          </DropDownItem>
+                          <DropDownItem
+                            as={NavLink}
+                            to='/login'
+                            exact
+                            activeClassName='is-active'
+                            icon={<FiLogIn />}
+                          >
+                            <p>Iniciar Sesión</p>
+                          </DropDownItem>
+                        </>
+                      )}
                     </DropDown>
                   </NavbarLink>
                 </NavItem>
               )}
             </>
-          ) : collapse ? (
-            <NavItem>
-              <NavbarLink activeClassName='is-active' to='/login' exact>
-                Iniciar sesión cerrado
-              </NavbarLink>
-            </NavItem>
           ) : (
-            <NavItem>
-              <NavbarLink activeClassName='is-active' to='/login' exact>
-                Iniciar sesión
-              </NavbarLink>
-            </NavItem>
+            <>
+              {/* ------------------------ MENU ROPA ------------------ */}
+              <NavItem>
+                <NavbarLink as='div' onClick={() => setActiveMenu('main')}>
+                  <FaChevronLeft style={{ fontSize: '3rem' }} />
+                </NavbarLink>
+              </NavItem>
+              <NavItem>
+                <NavbarLink activeClassName='is-active' to='/general' exact>
+                  General
+                </NavbarLink>
+              </NavItem>
+              <NavItem>
+                <NavbarLink activeClassName='is-active' to='/hombre' exact>
+                  Hombre
+                </NavbarLink>
+              </NavItem>
+              <NavItem>
+                <NavbarLink activeClassName='is-active' to='/mujer' exact>
+                  Mujer
+                </NavbarLink>
+              </NavItem>
+              <NavItem>
+                <NavbarLink activeClassName='is-active' to='/niño' exact>
+                  Niño
+                </NavbarLink>
+              </NavItem>
+              <NavItem>
+                <NavbarLink activeClassName='is-active' to='/niña' exact>
+                  Niña
+                </NavbarLink>
+              </NavItem>
+            </>
           )}
         </NavMenu>
       </HeaderContainer>

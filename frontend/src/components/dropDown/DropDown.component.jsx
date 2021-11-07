@@ -2,7 +2,13 @@ import React from 'react';
 import { AnimatePresence } from 'framer-motion';
 
 // Styles
-import { Container, Arrow, Items } from './dropdown.styles';
+import {
+  Container,
+  Arrow,
+  Items,
+  DropDownItemContainer,
+  IconContainer,
+} from './dropdown.styles';
 
 const containerVariants = {
   hidden: {
@@ -43,6 +49,15 @@ const DropDown = ({ open, children }) => {
         )}
       </AnimatePresence>
     </>
+  );
+};
+
+export const DropDownItem = ({ icon, children, ...props }) => {
+  return (
+    <DropDownItemContainer {...props}>
+      {icon && <IconContainer>{icon}</IconContainer>}
+      {children}
+    </DropDownItemContainer>
   );
 };
 

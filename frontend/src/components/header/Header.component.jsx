@@ -96,7 +96,7 @@ const Header = () => {
   const [burguerClass, setBurguerClass] = useState('');
   const [activeMenu, setActiveMenu] = useState('main');
   const [changeDisplay, setChangeDisplay] = useState(true);
-  const user = false;
+  const user = true;
   const body = document.querySelector('body');
   useOutsideAlerter(setOpen, dropdownRef);
   useOutsideAlerter(setItemExpanded, itemExpandedRef, itemExpandedRef2);

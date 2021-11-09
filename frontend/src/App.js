@@ -13,7 +13,7 @@ import Shipping from './pages/shipping/shipping.page';
 
 // COMPONENTS
 import Header from './components/header/header.component';
-// import Footer from './components/footer/footer.component';
+import Footer from './components/footer/footer.component';
 
 const App = () => {
   return (
@@ -48,7 +48,7 @@ const App = () => {
           // render={() => (userInfo ? <Shipping /> : <Redirect to='/login' />)}
         />
       </Switch>
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 };

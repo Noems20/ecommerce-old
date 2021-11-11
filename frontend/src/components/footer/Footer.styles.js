@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 export const FooterContainer = styled.footer`
   background-color: #000;
@@ -30,10 +31,19 @@ export const ContentContainer = styled.div`
 `;
 
 export const Item = styled.div`
+  transition: height 0.2s ease;
+
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: max-content max-content;
   grid-gap: 1rem;
+
+  @media only screen and (max-width: 447px) {
+    &.social {
+      justify-items: center;
+      grid-row: 5 / 6;
+    }
+  }
 `;
 
 export const ItemTitle = styled.h2`
@@ -41,6 +51,21 @@ export const ItemTitle = styled.h2`
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1.5px;
+
+  & svg {
+    display: none;
+  }
+
+  @media only screen and (max-width: 447px) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    & svg {
+      display: inline-block;
+      font-size: 2rem;
+    }
+  }
 `;
 
 export const IconsContainer = styled.div`
@@ -59,21 +84,30 @@ export const IconsContainer = styled.div`
     border-radius: 100%;
     padding: 5px;
   }
+
+  @media only screen and (max-width: 447px) {
+    margin: 0;
+    grid-gap: 3rem;
+  }
 `;
 
-export const List = styled.ul`
+export const List = styled(motion.ul)`
   list-style: none;
+  overflow: hidden;
 `;
 export const ListItem = styled.li`
   line-height: 1.6;
   font-weight: 400;
   font-size: 1.6rem;
+  width: 100%;
   margin: 1.5rem 0;
 `;
 export const ListItemLink = styled(Link)`
   color: #fff;
   text-decoration: none;
   position: relative;
+
+  width: 100%;
 `;
 
 export const StartContainer = styled.div`
@@ -219,4 +253,8 @@ export const Button = styled(Link)`
 
 export const WebsiteRights = styled.p`
   font-size: 1.2rem;
+
+  @media only screen and (max-width: 447px) {
+    text-align: center;
+  }
 `;

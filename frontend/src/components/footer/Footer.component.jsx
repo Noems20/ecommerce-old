@@ -1,4 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { AnimatePresence } from 'framer-motion';
+
+// STYLES
 import {
   FooterContainer,
   ContentContainer,
@@ -18,10 +21,86 @@ import {
   Button,
 } from './footer.styles';
 
-import { FaFacebookF, FaInstagram, FaWhatsapp } from 'react-icons/fa';
+// ICONS
+import {
+  FaFacebookF,
+  FaInstagram,
+  FaWhatsapp,
+  FaCaretDown,
+} from 'react-icons/fa';
 import { BsArrowRight, BsCheck2 } from 'react-icons/bs';
 
 const Footer = () => {
+  // -------------------------- STATE AND CONSTANTS
+  const [open, setOpen] = useState({
+    help: true,
+    clothes: true,
+    explore: true,
+    about: true,
+  });
+  const [collapse, setCollapse] = useState(false);
+
+  const containerVariants = {
+    hidden: {
+      height: 0,
+      transition: {
+        ease: 'easeInOut',
+      },
+    },
+    visible: {
+      height: 'auto',
+      transition: {
+        ease: 'easeInOut',
+      },
+    },
+  };
+
+  // ------------------------- USE EFFECT ------------------------
+  useEffect(() => {
+    if (window.innerWidth > 447) {
+      setOpen({
+        help: true,
+        clothes: true,
+        explore: true,
+        about: true,
+      });
+      setCollapse(false);
+    } else {
+      setOpen({
+        help: false,
+        clothes: false,
+        explore: false,
+        about: false,
+      });
+      setCollapse(true);
+    }
+
+    function handleResize() {
+      if (window.innerWidth > 447) {
+        setOpen({
+          help: true,
+          clothes: true,
+          explore: true,
+          about: true,
+        });
+        setCollapse(false);
+      } else {
+        setOpen({
+          help: false,
+          clothes: false,
+          explore: false,
+          about: false,
+        });
+        setCollapse(true);
+      }
+    }
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   return (
     <FooterContainer>
       <StartContainer>
@@ -50,64 +129,107 @@ const Footer = () => {
       </StartContainer>
       <ContentContainer>
         <Item>
-          <ItemTitle>¿Necesitas ayuda?</ItemTitle>
-          <List>
-            <ListItem>
-              <ListItemLink>Estatus de orden</ListItemLink>
-            </ListItem>
-            <ListItem>
-              <ListItemLink>Envio</ListItemLink>
-            </ListItem>
-            <ListItem>
-              <ListItemLink>Contáctanos</ListItemLink>
-            </ListItem>
-            <ListItem>
-              <ListItemLink>Devoluciones</ListItemLink>
-            </ListItem>
-            <ListItem>
-              <ListItemLink>Centro de ayuda</ListItemLink>
-            </ListItem>
-            {/* <ListItem><ListItemLink>Terminos de venta</ListItemLink></ListItem> */}
-          </List>
+          <ItemTitle
+            onClick={() => collapse && setOpen({ ...open, help: !open.help })}
+          >
+            ¿Necesitas ayuda? <FaCaretDown />
+          </ItemTitle>
+          <AnimatePresence>
+            {open.help && (
+              <List
+                variants={containerVariants}
+                initial='hidden'
+                animate='visible'
+                exit='hidden'
+              >
+                <ListItem>
+                  <ListItemLink>Estatus de orden</ListItemLink>
+                </ListItem>
+                <ListItem>
+                  <ListItemLink>Envio</ListItemLink>
+                </ListItem>
+                <ListItem>
+                  <ListItemLink>Contáctanos</ListItemLink>
+                </ListItem>
+                <ListItem>
+                  <ListItemLink>Devoluciones</ListItemLink>
+                </ListItem>
+                <ListItem>
+                  <ListItemLink>Centro de ayuda</ListItemLink>
+                </ListItem>
+                {/* <ListItem><ListItemLink>Terminos de venta</ListItemLink></ListItem> */}
+              </List>
+            )}
+          </AnimatePresence>
         </Item>
         <Item>
-          <ItemTitle>Ropa</ItemTitle>
-          <List>
-            <ListItem>
-              <ListItemLink>General</ListItemLink>
-            </ListItem>
-            <ListItem>
-              <ListItemLink>Hombre</ListItemLink>
-            </ListItem>
-            <ListItem>
-              <ListItemLink>Mujer</ListItemLink>
-            </ListItem>
-            <ListItem>
-              <ListItemLink>Niño</ListItemLink>
-            </ListItem>
-            <ListItem>
-              <ListItemLink>Niña</ListItemLink>
-            </ListItem>
-          </List>
+          <ItemTitle
+            onClick={() =>
+              collapse && setOpen({ ...open, clothes: !open.clothes })
+            }
+          >
+            Ropa <FaCaretDown />
+          </ItemTitle>
+          <AnimatePresence>
+            {open.clothes && (
+              <List
+                variants={containerVariants}
+                initial='hidden'
+                animate='visible'
+                exit='hidden'
+              >
+                <ListItem>
+                  <ListItemLink>General</ListItemLink>
+                </ListItem>
+                <ListItem>
+                  <ListItemLink>Hombre</ListItemLink>
+                </ListItem>
+                <ListItem>
+                  <ListItemLink>Mujer</ListItemLink>
+                </ListItem>
+                <ListItem>
+                  <ListItemLink>Niño</ListItemLink>
+                </ListItem>
+                <ListItem>
+                  <ListItemLink>Niña</ListItemLink>
+                </ListItem>
+              </List>
+            )}
+          </AnimatePresence>
         </Item>
         <Item>
-          <ItemTitle>Explorar</ItemTitle>
-          <List>
-            <ListItem>
-              <ListItemLink>Agendas</ListItemLink>
-            </ListItem>
-            <ListItem>
-              <ListItemLink>Encuadernación</ListItemLink>
-            </ListItem>
-            <ListItem>
-              <ListItemLink>Regalos</ListItemLink>
-            </ListItem>
-            <ListItem>
-              <ListItemLink>Nosotros</ListItemLink>
-            </ListItem>
-          </List>
+          <ItemTitle
+            onClick={() =>
+              collapse && setOpen({ ...open, explore: !open.explore })
+            }
+          >
+            Explorar <FaCaretDown />
+          </ItemTitle>
+          <AnimatePresence>
+            {open.explore && (
+              <List
+                variants={containerVariants}
+                initial='hidden'
+                animate='visible'
+                exit='hidden'
+              >
+                <ListItem>
+                  <ListItemLink>Agendas</ListItemLink>
+                </ListItem>
+                <ListItem>
+                  <ListItemLink>Encuadernación</ListItemLink>
+                </ListItem>
+                <ListItem>
+                  <ListItemLink>Regalos</ListItemLink>
+                </ListItem>
+                <ListItem>
+                  <ListItemLink>Nosotros</ListItemLink>
+                </ListItem>
+              </List>
+            )}
+          </AnimatePresence>
         </Item>
-        <Item>
+        <Item className='social'>
           <ItemTitle>Social</ItemTitle>
           <IconsContainer>
             <FaFacebookF />
@@ -116,16 +238,29 @@ const Footer = () => {
           </IconsContainer>
         </Item>
         <Item>
-          <ItemTitle>Acerca de Copias Noé</ItemTitle>
-          <List>
-            <ListItem>
-              Empresa 100% Zacatecana con más de 20 años de experiencia en el
-              área de la Encuadernación y el Fotocopiado, comprometida con
-              brindar el mejor servicio y calidad a nuestros clientes en lo que
-              respecta a la Impresión Digital, Reproducción y Encuadernación de
-              Tesis, Libros, Antologías, y mucho más.
-            </ListItem>
-          </List>
+          <ItemTitle
+            onClick={() => collapse && setOpen({ ...open, about: !open.about })}
+          >
+            Acerca de Copias Noé <FaCaretDown />
+          </ItemTitle>
+          <AnimatePresence>
+            {open.about && (
+              <List
+                variants={containerVariants}
+                initial='hidden'
+                animate='visible'
+                exit='hidden'
+              >
+                <ListItem>
+                  Empresa 100% Zacatecana con más de 20 años de experiencia en
+                  el área de la Encuadernación y el Fotocopiado, comprometida
+                  con brindar el mejor servicio y calidad a nuestros clientes en
+                  lo que respecta a la Impresión Digital, Reproducción y
+                  Encuadernación de Tesis, Libros, Antologías, y mucho más.
+                </ListItem>
+              </List>
+            )}
+          </AnimatePresence>
         </Item>
       </ContentContainer>
       <WebsiteRights>

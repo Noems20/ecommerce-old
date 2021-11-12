@@ -1,5 +1,5 @@
 import User from '../models/userModel.js';
-import Appointment from '../models/appointmentModel.js';
+// import Appointment from '../models/appointmentModel.js';
 
 import catchAsync from '../utils/catchAsync.js';
 import AppError from '../utils/appError.js';

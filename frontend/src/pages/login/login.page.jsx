@@ -63,7 +63,8 @@ const Login = () => {
         />
         <CustomButton
           primary
-          // loading={true}
+          loading={true}
+          disabled={true}
           type='submit'
           onClick={SubmitHandler}
         >

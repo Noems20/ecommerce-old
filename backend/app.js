@@ -15,6 +15,7 @@ import AppError from './utils/appError.js';
 import globalErrorHandler from './controllers/errorController.js';
 
 // ROUTERS
+import userRouter from './routes/userRoutes.js';
 
 dotenv.config();
 
@@ -118,7 +119,7 @@ app.use(
 app.use(cookieParser());
 
 // ---------------------------- ROUTER'S ---------------------------
-// app.use('/api/v1/users', userRouter);
+app.use('/api/v1/users', userRouter);
 
 // --------------------------- SERVE REACT STATIC'S ----------------
 if (process.env.NODE_ENV === 'production') {

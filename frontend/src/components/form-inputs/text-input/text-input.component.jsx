@@ -23,12 +23,16 @@ const TextInput = ({ handleChange, label, error, textArea, ...props }) => {
           <Input
             onChange={handleChange}
             error={error ? true : false}
+            className={props.value.length ? 'active' : ''}
             {...props}
           />
         )}
 
         {label ? (
-          <FormInputLabel className={props.value.length ? 'shrink' : ''}>
+          <FormInputLabel
+            className={props.value.length ? 'shrink' : ''}
+            error={error ? true : false}
+          >
             {label}
           </FormInputLabel>
         ) : null}

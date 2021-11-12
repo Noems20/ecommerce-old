@@ -9,7 +9,13 @@ import TextInput from '../../components/form-inputs/text-input/text-input.compon
 import CustomButton from '../../components/custom-button/custom-button.component';
 
 // STYLES
-import { NoAccountText, LinkText } from './login.page.styles';
+import { Container } from './login.page.styles';
+
+import {
+  BottomLinksContainer,
+  BottomText,
+  LinkText,
+} from '../../components/form-container/form-container.styles';
 
 const Login = () => {
   let location = useLocation();
@@ -35,37 +41,54 @@ const Login = () => {
   };
 
   return (
-    <FormContainer title='Iniciar Sesión'>
-      <TextInput
-        name='email'
-        type='text'
-        handleChange={handleChange}
-        value={email}
-        label='Email'
-        // error={uiErrors.email}
-        required
-      />
-      <TextInput
-        name='password'
-        type='password'
-        handleChange={handleChange}
-        value={password}
-        label='Contraseña'
-        // error={uiErrors.password}
-        required
-      />
-      <CustomButton primary type='submit' onClick={SubmitHandler}>
-        Iniciar Sesión
-      </CustomButton>
-      <NoAccountText>
-        ¿No tienes cuenta? Registrate{' '}
-        <LinkText
-          to={redirect ? `/registro?redirect=${redirect}` : '/registro'}
+    <Container>
+      <FormContainer title='Iniciar Sesión'>
+        <TextInput
+          name='email'
+          type='text'
+          handleChange={handleChange}
+          value={email}
+          label='Email'
+          // error={uiErrors.email}
+          required
+        />
+        <TextInput
+          name='password'
+          type='password'
+          handleChange={handleChange}
+          value={password}
+          label='Contraseña'
+          // error={uiErrors.password}
+          required
+        />
+        <CustomButton
+          primary
+          // loading={true}
+          type='submit'
+          onClick={SubmitHandler}
         >
-          aqui
-        </LinkText>
-      </NoAccountText>
-    </FormContainer>
+          Iniciar Sesión
+        </CustomButton>
+        <BottomLinksContainer>
+          <BottomText>
+            ¿No tienes cuenta? Registrate{' '}
+            <LinkText
+              to={redirect ? `/registro?redirect=${redirect}` : '/registro'}
+            >
+              aqui
+            </LinkText>
+          </BottomText>
+          <BottomText>
+            ¿Olvidaste tu contraseña? da click{' '}
+            <LinkText
+              to={redirect ? `/registro?redirect=${redirect}` : '/registro'}
+            >
+              aqui
+            </LinkText>
+          </BottomText>
+        </BottomLinksContainer>
+      </FormContainer>
+    </Container>
   );
 };
 

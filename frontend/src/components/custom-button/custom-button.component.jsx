@@ -4,7 +4,7 @@ import React from 'react';
 import {
   CustomButtonContainer,
   ChildrenContainer,
-  // ButtonLoader,
+  ButtonLoader,
 } from './custom-button.styles';
 
 // ICONS
@@ -13,8 +13,7 @@ const CustomButton = ({ children, loading, className, ...props }) => {
   return (
     <CustomButtonContainer className={className} {...props}>
       <ChildrenContainer>
-        {/* {loading ? <ButtonLoader /> : children} */}
-        {children}
+        {loading ? <ButtonLoader /> : children}
       </ChildrenContainer>
     </CustomButtonContainer>
   );

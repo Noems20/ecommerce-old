@@ -2,11 +2,15 @@ import styled, { css } from 'styled-components';
 import { motion } from 'framer-motion';
 import tokens from '../../../tokens';
 
+const errorColor = '#ff3333';
+// const subColor = 'var(--color-grey-dark-1)';
+const subColor = '#a1a6a4';
+
 const shrinkLabelStyles = css`
+  color: ${({ error }) =>
+    error ? `${errorColor}` : 'var(--color-primary-light)'};
   top: -0.1rem;
-  left: 12px;
   background-color: white;
-  padding: 0 0.5rem;
 `;
 
 export const Container = styled(motion.div)`
@@ -22,16 +26,17 @@ export const InputContainer = styled(motion.div)`
 `;
 
 export const Input = styled(motion.input)`
+  color: var(--color-grey-dark-1);
   font-family: ${tokens.fontDisplay};
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   font-weight: 400;
   background-color: white;
   padding: 1.5rem 1.7rem;
   border: ${({ error }) =>
-    error ? '1px solid var(--color-primary)' : '1px solid #a1a6a4'};
+    error ? `2px solid ${errorColor}` : `2px solid ${subColor}`};
   border-radius: 2px;
-  /* box-shadow: ${({ error }) =>
-    error ? 'var(--color-primary) 0px 1px 4px' : 'none'}; */
+
+  -webkit-text-fill-color: var(--color-grey-dark-1);
 
   display: block;
   width: 100%;
@@ -39,23 +44,41 @@ export const Input = styled(motion.input)`
     outline: none;
   }
 
+  &:focus-within {
+    border: ${({ error }) =>
+      error
+        ? `2px solid ${errorColor}`
+        : '2px solid var(--color-primary-light)'};
+  }
+
   &:focus-within ~ label {
     ${shrinkLabelStyles}
+  }
+
+  &.active {
+    border: ${({ error }) =>
+      error
+        ? `2px solid ${errorColor}`
+        : '2px solid var(--color-primary-light)'};
+  }
+
+  @media only screen and (max-width: 1100px) {
+    font-size: 1.7rem;
   }
 `;
 
 export const TextAreaInput = styled(motion.textarea)`
   resize: vertical;
   font-family: ${tokens.fontDisplay};
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   font-weight: 400;
   background-color: white;
   padding: 1.5rem 1.7rem;
   border: ${({ error }) =>
-    error ? '1px solid var(--color-primary)' : '1px solid #a1a6a4'};
+    error ? '1px solid var(--color-primary)' : `1px solid ${subColor}`};
   border-radius: 2px;
-  /* box-shadow: ${({ error }) =>
-    error ? 'var(--color-primary) 0px 1px 4px' : 'none'}; */
+
+  -webkit-text-fill-color: ${subColor};
 
   display: block;
   width: 100%;
@@ -66,26 +89,41 @@ export const TextAreaInput = styled(motion.textarea)`
   &:focus-within ~ label {
     ${shrinkLabelStyles}
   }
+
+  @media only screen and (max-width: 1100px) {
+    font-size: 1.7rem;
+  }
 `;
 
 export const FormInputLabel = styled.label`
+  font-family: inherit;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: ${({ error }) => (error ? `${errorColor}` : `${subColor}`)};
   position: absolute;
-  font-size: 1.2rem;
-  font-weight: 300;
   top: 50%;
-  left: 12px;
-  padding: 0 0.5rem;
+  padding: 0 0.7rem;
+  margin-left: 1.2rem;
 
   pointer-events: none;
-  transition: 300ms ease all;
   transform: translateY(-50%);
+  transition: 300ms ease all;
+  transition: top 0.3s ease;
 
   &.shrink {
     ${shrinkLabelStyles}
   }
+
+  @media only screen and (max-width: 1100px) {
+    font-size: 1.7rem;
+  }
 `;
 
 export const ErrorText = styled.p`
-  color: var(--color-primary);
-  font-size: 1.2rem;
+  color: ${errorColor};
+  font-size: 1.4rem;
+
+  @media only screen and (max-width: 1100px) {
+    font-size: 1.7rem;
+  }
 `;

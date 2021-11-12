@@ -1,7 +1,10 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
-import logo from './logo.svg';
+// import logo from './logo.svg';
 // import logo2 from './logo2.png';
+// import logo3 from './logo3.svg';
+import logo4 from './logo4.svg';
+// import logo5 from './logo5.svg';
 
 import userImage from './images/user-1.jpg';
 import generalImg from './images/general.png';
@@ -96,7 +99,7 @@ const Header = () => {
   const [burguerClass, setBurguerClass] = useState('');
   const [activeMenu, setActiveMenu] = useState('main');
   const [changeDisplay, setChangeDisplay] = useState(true);
-  const user = true;
+  const user = false;
   const body = document.querySelector('body');
   useOutsideAlerter(setOpen, dropdownRef);
   useOutsideAlerter(setItemExpanded, itemExpandedRef, itemExpandedRef2);
@@ -168,7 +171,7 @@ const Header = () => {
       <HeaderContainer>
         {/* ------------------- LOGO ------------------ */}
         <NavLogoLink to='/' exact>
-          <NavLogo src={logo} />
+          <NavLogo src={logo4} />
         </NavLogoLink>
 
         {/* ----------------- SEARCH BAR ------------------ */}

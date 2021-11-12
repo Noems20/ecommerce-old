@@ -9,7 +9,13 @@ import TextInput from '../../components/form-inputs/text-input/text-input.compon
 import CustomButton from '../../components/custom-button/custom-button.component';
 
 // STYLES
-import { NoAccountText, LinkText } from './register.page.styles';
+import { Container } from './register.page.styles';
+
+import {
+  BottomLinksContainer,
+  BottomText,
+  LinkText,
+} from '../../components/form-container/form-container.styles';
 
 const Register = () => {
   let location = useLocation();
@@ -36,53 +42,57 @@ const Register = () => {
   };
 
   return (
-    <FormContainer title='Crear cuenta'>
-      <TextInput
-        name='name'
-        type='text'
-        handleChange={handleChange}
-        value={name}
-        label='Nombre'
-        // error={uiErrors.name}
-        required
-      />
-      <TextInput
-        name='email'
-        type='text'
-        handleChange={handleChange}
-        value={email}
-        label='Email'
-        // error={uiErrors.email}
-        required
-      />
-      <TextInput
-        name='password'
-        type='password'
-        handleChange={handleChange}
-        value={password}
-        label='Contraseña'
-        // error={uiErrors.password}
-        required
-      />
-      <TextInput
-        name='confirmPassword'
-        type='password'
-        handleChange={handleChange}
-        value={confirmPassword}
-        label='Confirmar contraseña'
-        // error={uiErrors.confirmPassword}
-        required
-      />
-      <CustomButton type='submit' onClick={SubmitHandler}>
-        Crear cuenta
-      </CustomButton>
-      <NoAccountText>
-        ¿Ya tienes cuenta? Inicia sesión{' '}
-        <LinkText to={redirect ? `/login?redirect=${redirect}` : '/login'}>
-          aqui
-        </LinkText>
-      </NoAccountText>
-    </FormContainer>
+    <Container>
+      <FormContainer title='Crear cuenta'>
+        <TextInput
+          name='name'
+          type='text'
+          handleChange={handleChange}
+          value={name}
+          label='Nombre'
+          // error='{uiErrors.name}'
+          required
+        />
+        <TextInput
+          name='email'
+          type='text'
+          handleChange={handleChange}
+          value={email}
+          label='Email'
+          // error='{uiErrors.email}'
+          required
+        />
+        <TextInput
+          name='password'
+          type='password'
+          handleChange={handleChange}
+          value={password}
+          label='Contraseña'
+          // error='{uiErrors.password}'
+          required
+        />
+        <TextInput
+          name='confirmPassword'
+          type='password'
+          handleChange={handleChange}
+          value={confirmPassword}
+          label='Confirmar contraseña'
+          // error='{uiErrors.confirmPassword}'
+          required
+        />
+        <CustomButton primary type='submit' onClick={SubmitHandler}>
+          Crear cuenta
+        </CustomButton>
+        <BottomLinksContainer>
+          <BottomText>
+            ¿Ya tienes cuenta? Inicia sesión{' '}
+            <LinkText to={redirect ? `/login?redirect=${redirect}` : '/login'}>
+              aqui
+            </LinkText>
+          </BottomText>
+        </BottomLinksContainer>
+      </FormContainer>
+    </Container>
   );
 };
 

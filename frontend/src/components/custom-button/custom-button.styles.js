@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import styled, { css } from 'styled-components';
+import Loader from '../loaders/loader.component';
 // import tokens from '../../tokens';
 // import Loader from '../loaders/loader/loader.component';
 
@@ -88,7 +89,6 @@ export const CustomButtonContainer = styled(motion.button)`
   text-decoration: none;
   padding: 1rem 2rem;
   border: none;
-  /* border-radius: 100px; */
   cursor: pointer;
   transition-property: color, background-color;
   transition-duration: 0.2s;
@@ -111,10 +111,9 @@ export const ChildrenContainer = styled.div`
   height: 2.4rem;
   display: grid;
   align-content: center;
+  justify-content: Center;
 `;
 
-// export const ButtonLoader = styled(Loader)`
-//   /* font-size: 10rem; */
-//   margin: 0 auto;
-//   font-size: 0.5rem;
-// `;
+export const ButtonLoader = styled(Loader)`
+  --size: 4.5rem; // width, height
+`;

@@ -8,7 +8,6 @@ import React from 'react';
 
 // STYLES
 import {
-  Container,
   // Message,
   // NoItemsContainer,
   CartContainer,
@@ -28,6 +27,8 @@ import {
   // Button,
 } from './cart.page.styles';
 
+import { PageGrid } from '../../general.styles';
+
 const Cart = ({ history }) => {
   // const removeFromCartHandler = (id) => {};
 
@@ -36,7 +37,7 @@ const Cart = ({ history }) => {
   // };
 
   return (
-    <Container>
+    <PageGrid>
       {/* <CartContainer itemsCount={cartItems.length}> */}
       <CartContainer itemsCount={2}>
         <ItemsContainerTitle>Tu Carrito</ItemsContainerTitle>
@@ -113,7 +114,7 @@ const Cart = ({ history }) => {
           </Button>
         </OrderSummary>
       )} */}
-    </Container>
+    </PageGrid>
   );
 };
 

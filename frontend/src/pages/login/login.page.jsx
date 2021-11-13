@@ -1,95 +1,63 @@
 import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
-
-// REDUX
+import { AnimatePresence } from 'framer-motion';
 
 // COMPONENTS
 import FormContainer from '../../components/form-container/form-container.component';
-import TextInput from '../../components/form-inputs/text-input/text-input.component';
-import CustomButton from '../../components/custom-button/custom-button.component';
+import ForgotPassword from '../../components/sign-card/forgot-password/forgot-password.component';
+import SignIn from '../../components/sign-in/sign-in.component';
 
 // STYLES
-import { Container } from './login.page.styles';
-
-import {
-  BottomLinksContainer,
-  BottomText,
-  LinkText,
-} from '../../components/form-container/form-container.styles';
+import { PageGrid } from '../../general.styles';
 
 const Login = () => {
-  let location = useLocation();
+  // ---------------------------- STATE AND CONSTANTS --------------------
+  const [currentTab, setCurrentTab] = useState('login');
 
-  const [userCredentials, setUserCredentials] = useState({
-    email: '',
-    password: '',
-  });
-  const { email, password } = userCredentials;
-
-  const redirect = location.search ? location.search.split('=')[1] : '/';
-
-  const SubmitHandler = (e) => {
-    e.preventDefault();
-
-    // dispatch(login(email, password));
+  const containerVariants = {
+    hidden: {
+      opacity: 0,
+    },
+    visible: {
+      opacity: 1,
+    },
+    exit: {
+      opacity: 0,
+    },
   };
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-
-    setUserCredentials({ ...userCredentials, [name]: value });
+  const cardVariants = {
+    hidden: {
+      x: '-100vw',
+    },
+    visible: {
+      x: 0,
+    },
+    exit: {
+      x: '100vw',
+    },
   };
 
   return (
-    <Container>
-      <FormContainer title='Iniciar Sesión'>
-        <TextInput
-          name='email'
-          type='text'
-          handleChange={handleChange}
-          value={email}
-          label='Email'
-          // error={uiErrors.email}
-          required
-        />
-        <TextInput
-          name='password'
-          type='password'
-          handleChange={handleChange}
-          value={password}
-          label='Contraseña'
-          // error={uiErrors.password}
-          required
-        />
-        <CustomButton
-          primary
-          loading={true}
-          disabled={true}
-          type='submit'
-          onClick={SubmitHandler}
-        >
-          Iniciar Sesión
-        </CustomButton>
-        <BottomLinksContainer>
-          <BottomText>
-            ¿No tienes cuenta? Registrate{' '}
-            <LinkText
-              to={redirect ? `/registro?redirect=${redirect}` : '/registro'}
-            >
-              aqui
-            </LinkText>
-          </BottomText>
-          <BottomText>
-            ¿Olvidaste tu contraseña? da click{' '}
-            <LinkText
-              to={redirect ? `/registro?redirect=${redirect}` : '/registro'}
-            >
-              aqui
-            </LinkText>
-          </BottomText>
-        </BottomLinksContainer>
+    <PageGrid
+      variants={containerVariants}
+      initial='hidden'
+      animate='visible'
+      exit='exit'
+    >
+      <FormContainer>
+        <AnimatePresence exitBeforeEnter>
+          {currentTab === 'login' ? (
+            <SignIn setTab={setCurrentTab} key={1} variants={cardVariants} />
+          ) : (
+            <ForgotPassword
+              setTab={setCurrentTab}
+              key={2}
+              variants={cardVariants}
+            />
+          )}
+        </AnimatePresence>
       </FormContainer>
-    </Container>
+    </PageGrid>
   );
 };
 

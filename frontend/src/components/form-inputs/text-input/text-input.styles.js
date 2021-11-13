@@ -100,6 +100,7 @@ export const FormInputLabel = styled.label`
   font-size: 1.5rem;
   font-weight: 500;
   color: ${({ error }) => (error ? `${errorColor}` : `${subColor}`)};
+  background-color: #fff;
   position: absolute;
   top: 50%;
   padding: 0 0.7rem;

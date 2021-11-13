@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
-export const Container = styled.div`
+export const Container = styled(motion.div)`
   height: calc(100vh - 8rem);
   width: 100%;
 
@@ -13,7 +14,7 @@ export const Container = styled.div`
   }
 `;
 
-export const LogoContainer = styled.div`
+export const LogoContainer = styled(motion.div)`
   width: 25%;
 
   @media only screen and (max-width: 1100px) {

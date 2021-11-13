@@ -95,7 +95,7 @@ export const signUp =
     try {
       dispatch({
         type: SET_UI_LOADING,
-        payload: { secondLoader: true },
+        payload: { firstLoader: true },
       });
       const config = {
         headers: {
@@ -119,16 +119,16 @@ export const signUp =
       });
       dispatch({
         type: SET_UI_LOADING,
-        payload: { secondLoader: false },
+        payload: { firstLoader: false },
       });
     } catch (error) {
       dispatch({
         type: SET_UI_LOADING,
-        payload: { secondLoader: false },
+        payload: { firstLoader: false },
       });
       dispatch({
         type: SET_UI_ERRORS,
-        payload: { errorsTwo: error.response.data.uiErrors },
+        payload: { errorsOne: error.response.data.uiErrors },
       });
     }
   };

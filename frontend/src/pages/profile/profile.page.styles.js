@@ -4,23 +4,12 @@ import { motion } from 'framer-motion';
 const marginRightLeft = '4rem';
 const marginTopBottom = '3rem';
 
-export const Container = styled(motion.div)`
-  display: grid;
-  grid-template-rows: 1fr;
-
-  grid-template-columns:
-    [full-start] minmax(6rem, 1fr) [center-start] repeat(
-      8,
-      [col-start] minmax(min-content, 14rem) [col-end]
-    )
-    [center-end] minmax(6rem, 1fr) [full-end];
-`;
-
 export const UserDetails = styled(motion.div)`
   grid-column: full-start / col-end 2;
   margin-left: ${marginRightLeft};
   margin-top: ${marginTopBottom};
   margin-bottom: ${marginTopBottom};
+  height: 100vh;
 `;
 
 export const UserOrders = styled(motion.div)`

@@ -8,15 +8,11 @@ import CustomButton from '../../components/custom-button/custom-button.component
 import TextInput from '../../components/form-inputs/text-input/text-input.component';
 
 // STYLES
-import {
-  Container,
-  UserDetails,
-  UserOrders,
-  Title,
-  Form,
-} from './profile.page.styles';
+import { UserDetails, UserOrders, Title, Form } from './profile.page.styles';
+import { PageGrid } from '../../general.styles';
 
 const Profile = () => {
+  // ------------------------------- STATE AND CONSTANTS ----------------
   const [userCredentials, setUserCredentials] = useState({
     password: '',
     confirmPassword: '',
@@ -24,6 +20,16 @@ const Profile = () => {
   const [name, setName] = useState('');
 
   const { password, confirmPassword } = userCredentials;
+  const containerVariants = {
+    hidden: {
+      opacity: 0,
+    },
+    visible: {
+      opacity: 1,
+    },
+  };
+
+  // --------------------------------- HANDLERS ---------------------
 
   const SubmitHandler = (e) => {
     e.preventDefault();
@@ -34,9 +40,13 @@ const Profile = () => {
 
     setUserCredentials({ ...userCredentials, [name]: value });
   };
-
   return (
-    <Container>
+    <PageGrid
+      variants={containerVariants}
+      initial='hidden'
+      animate='visible'
+      exit='hidden'
+    >
       <UserDetails>
         <Title>Perfil</Title>
         <Form>
@@ -81,7 +91,7 @@ const Profile = () => {
       <UserOrders>
         <Title>Mis ordenes</Title>
       </UserOrders>
-    </Container>
+    </PageGrid>
   );
 };
 

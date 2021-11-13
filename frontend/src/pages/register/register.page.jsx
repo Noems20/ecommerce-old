@@ -1,98 +1,41 @@
-import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import React from 'react';
 
 // REDUX
 
 // COMPONENTS
+import SignUp from '../../components/sign-up/sign-up.component';
 import FormContainer from '../../components/form-container/form-container.component';
-import TextInput from '../../components/form-inputs/text-input/text-input.component';
-import CustomButton from '../../components/custom-button/custom-button.component';
 
 // STYLES
-import { Container } from './register.page.styles';
-
-import {
-  BottomLinksContainer,
-  BottomText,
-  LinkText,
-} from '../../components/form-container/form-container.styles';
+import { PageGrid } from '../../general.styles';
 
 const Register = () => {
-  let location = useLocation();
+  // ---------------------------- STATE AND CONSTANTS --------------------
 
-  const [userCredentials, setUserCredentials] = useState({
-    name: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
-  });
-
-  const { name, email, password, confirmPassword } = userCredentials;
-
-  const redirect = location.search ? location.search.split('=')[1] : '/';
-
-  const SubmitHandler = (e) => {
-    e.preventDefault();
+  const containerVariants = {
+    hidden: {
+      opacity: 0,
+    },
+    visible: {
+      opacity: 1,
+    },
   };
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
+  // ----------------------------- USE EFFECT'S ------------------------
 
-    setUserCredentials({ ...userCredentials, [name]: value });
-  };
+  // ------------------------------- HANDLERS -------------------------
 
   return (
-    <Container>
-      <FormContainer title='Crear cuenta'>
-        <TextInput
-          name='name'
-          type='text'
-          handleChange={handleChange}
-          value={name}
-          label='Nombre'
-          // error='{uiErrors.name}'
-          required
-        />
-        <TextInput
-          name='email'
-          type='text'
-          handleChange={handleChange}
-          value={email}
-          label='Email'
-          // error='{uiErrors.email}'
-          required
-        />
-        <TextInput
-          name='password'
-          type='password'
-          handleChange={handleChange}
-          value={password}
-          label='Contraseña'
-          // error='{uiErrors.password}'
-          required
-        />
-        <TextInput
-          name='confirmPassword'
-          type='password'
-          handleChange={handleChange}
-          value={confirmPassword}
-          label='Confirmar contraseña'
-          // error='{uiErrors.confirmPassword}'
-          required
-        />
-        <CustomButton primary type='submit' onClick={SubmitHandler}>
-          Crear cuenta
-        </CustomButton>
-        <BottomLinksContainer>
-          <BottomText>
-            ¿Ya tienes cuenta? Inicia sesión{' '}
-            <LinkText to={redirect ? `/login?redirect=${redirect}` : '/login'}>
-              aqui
-            </LinkText>
-          </BottomText>
-        </BottomLinksContainer>
+    <PageGrid
+      variants={containerVariants}
+      initial='hidden'
+      animate='visible'
+      exit='hidden'
+    >
+      <FormContainer>
+        <SignUp />
       </FormContainer>
-    </Container>
+    </PageGrid>
   );
 };
 

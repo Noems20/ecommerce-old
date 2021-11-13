@@ -6,7 +6,6 @@ import { NavLink } from 'react-router-dom';
 import logo4 from './logo4.svg';
 // import logo5 from './logo5.svg';
 
-import userImage from './images/user-1.jpg';
 import generalImg from './images/general.png';
 import hombreImg from './images/hombre.png';
 import mujerImg from './images/mujer.jpg';
@@ -14,6 +13,8 @@ import niñaImg from './images/niña.png';
 import niñoImg from './images/niño.png';
 
 // REDUX
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../../redux/user/userActions';
 
 // COMPONENTS
 import DropDown, { DropDownItem } from '../dropdown/dropdown.component';
@@ -99,10 +100,14 @@ const Header = () => {
   const [burguerClass, setBurguerClass] = useState('');
   const [activeMenu, setActiveMenu] = useState('main');
   const [changeDisplay, setChangeDisplay] = useState(true);
-  const user = false;
+  const [photoHash, setPhotoHash] = useState(Date.now());
+
   const body = document.querySelector('body');
   useOutsideAlerter(setOpen, dropdownRef);
   useOutsideAlerter(setItemExpanded, itemExpandedRef, itemExpandedRef2);
+
+  const dispatch = useDispatch();
+  const { user, userLoaded } = useSelector((state) => state.user);
 
   // ------------------------------ USE EFFECT --------------------------
   useEffect(() => {
@@ -131,6 +136,13 @@ const Header = () => {
       window.removeEventListener('resize', handleResize);
     };
   }, [body]);
+
+  useEffect(() => {
+    // -------------------- UPDATE PHOTO -----------
+    if (userLoaded.updatedUser === true) {
+      setPhotoHash(Date.now());
+    }
+  }, [userLoaded]);
   // ------------------------------ HANDLERS --------------------------
   // const logoutHandler = () => {};
 
@@ -289,7 +301,7 @@ const Header = () => {
                         Perfil
                       </NavbarLink>
                     </NavItem>
-                    <NavItem>
+                    <NavItem onClick={() => dispatch(logout())}>
                       <NavbarLink as='p'>Cerrar sesión</NavbarLink>
                     </NavItem>
                   </>
@@ -315,8 +327,10 @@ const Header = () => {
                       {user ? (
                         <>
                           <UserInfo to='/perfil' exact>
-                            <UserImage src={userImage} />
-                            <UserName>Jonas</UserName>
+                            <UserImage
+                              src={`/img/users/${user.photo}?${photoHash}`}
+                            />
+                            <UserName>{user.name.split(' ')[0]}</UserName>
                           </UserInfo>
 
                           <DropDownItem
@@ -328,7 +342,10 @@ const Header = () => {
                           >
                             <p>Perfil</p>
                           </DropDownItem>
-                          <DropDownItem icon={<FiLogOut />}>
+                          <DropDownItem
+                            icon={<FiLogOut />}
+                            onClick={() => dispatch(logout())}
+                          >
                             <p>Cerrar Sesión</p>
                           </DropDownItem>
                         </>

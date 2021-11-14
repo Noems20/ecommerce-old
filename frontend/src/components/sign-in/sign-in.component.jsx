@@ -7,8 +7,9 @@ import { login } from '../../redux/user/userActions';
 import { clearUiErrors } from '../../redux/ui/uiActions';
 
 // COMPONENTS
-import TextInput from '../../components/form-inputs/text-input/text-input.component';
-import CustomButton from '../../components/custom-button/custom-button.component';
+import TextInput from '../form-inputs/text-input/text-input.component';
+import CustomButton from '../custom-button/custom-button.component';
+import Message from '../messages/normal-message/normal-message.component';
 
 // STYLES
 import {
@@ -77,6 +78,13 @@ const SignIn = ({ setTab, variants }) => {
       <Form>
         <Logo src={logo4} />
         <SignTitle>Iniciar sesión</SignTitle>
+        {uiErrors.errorsOne.general && (
+          <Message
+            title='Error'
+            text={uiErrors.errorsOne.general}
+            type='error'
+          />
+        )}
         <TextInput
           name='email'
           type='text'
@@ -115,7 +123,7 @@ const SignIn = ({ setTab, variants }) => {
           </BottomText>
           <BottomText>
             ¿Olvidaste tu contraseña? da click{' '}
-            <LinkText as='span' onClick={() => setTab('forgotPassword')}>
+            <LinkText as='span' onClick={() => setTab('forgot-password')}>
               aqui
             </LinkText>
           </BottomText>

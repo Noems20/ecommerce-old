@@ -1,24 +1,25 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { AnimatePresence } from 'framer-motion';
+import { useParams } from 'react-router';
 
 // REDUX
 import { useSelector, useDispatch } from 'react-redux';
-import { clearSuccess, clearUiErrors } from '../../redux/ui/uiActions';
+import { clearSuccess } from '../../redux/ui/uiActions';
 
 // COMPONENTS
-import SignUp from '../../components/sign-up/sign-up.component';
-import SuccessCard from '../../components/sign-card/success-card/success-card.component';
 import FormContainer from '../../components/form-container/form-container.component';
+import ChangePasswordCard from '../../components/sign-card/change-password-card/change-password-card.component';
+import SuccessCard from '../../components/sign-card/success-card/success-card.component';
 
 // STYLES
 import { PageGrid } from '../../general.styles';
 
-const Register = () => {
+const ChangePassword = () => {
   // ---------------------------- STATE AND CONSTANTS --------------------
-  const [currentTab, setCurrentTab] = useState('register');
+  const { token } = useParams();
+  const { success } = useSelector((state) => state.ui);
 
   const dispatch = useDispatch();
-  const { success } = useSelector((state) => state.ui);
 
   const containerVariants = {
     hidden: {
@@ -52,23 +53,10 @@ const Register = () => {
 
   // ---------------------------- USE EFFECT'S ---------------------
   useEffect(() => {
-    if (success === true) {
-      setCurrentTab('success');
-      dispatch(clearSuccess());
-    }
-  }, [dispatch, success]);
-
-  useEffect(() => {
     return () => {
-      dispatch({
-        type: 'SET_UI_LOADING',
-        payload: { firstLoader: false },
-      });
-      dispatch(clearUiErrors());
+      dispatch(clearSuccess());
     };
   }, [dispatch]);
-
-  // ------------------------------- HANDLERS -------------------------
 
   return (
     <PageGrid
@@ -79,16 +67,16 @@ const Register = () => {
     >
       <FormContainer>
         <AnimatePresence exitBeforeEnter>
-          {currentTab === 'register' ? (
-            <SignUp variants={cardVariants} key={1} />
-          ) : (
+          {success ? (
             <SuccessCard
               variants={cardVariants}
-              title='Cuenta creada'
-              text='Hemos enviado un correo electrónico a tu Email, por favor sigue las
-          instrucciones para verificar tu cuenta.'
-              key={2}
-            />
+              title='Contraseña modificada correctamente'
+              text='Espere un momento, se iniciará sesión automáticamente.'
+            >
+              Exito
+            </SuccessCard>
+          ) : (
+            <ChangePasswordCard variants={cardVariants} token={token} key={2} />
           )}
         </AnimatePresence>
       </FormContainer>
@@ -96,4 +84,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default ChangePassword;

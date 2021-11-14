@@ -22,13 +22,9 @@ import {
 } from '../../general.styles';
 
 // LOGOS
-// import logo from './logo.svg';
-// import logo2 from './logo2.png';
-// import logo3 from './logo3.svg';
 import logo4 from '../form-container/logo4.svg';
-// import logo5 from './logo5.svg';
 
-const SignUp = () => {
+const SignUp = ({ variants }) => {
   // ---------------------------- STATE AND CONSTANTS --------------------
   let location = useLocation();
 
@@ -44,8 +40,7 @@ const SignUp = () => {
   const redirect = location.search ? location.search.split('=')[1] : '/';
 
   const dispatch = useDispatch();
-  const ui = useSelector((state) => state.ui);
-  const { uiErrors, loading, success } = ui;
+  const { uiErrors, loading } = useSelector((state) => state.ui);
 
   // ----------------------------- USE EFFECT'S ------------------------
   useEffect(() => {
@@ -74,7 +69,12 @@ const SignUp = () => {
   };
 
   return (
-    <SignCard>
+    <SignCard
+      variants={variants}
+      initial='hidden'
+      animate='visible'
+      exit='exit'
+    >
       <Form>
         <Logo src={logo4} />
         <SignTitle>Crear cuenta</SignTitle>

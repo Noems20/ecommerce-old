@@ -143,21 +143,21 @@ const Footer = () => {
                 exit='hidden'
               >
                 <ListItem>
-                  <ListItemLink>Estatus de orden</ListItemLink>
+                  <ListItemLink to='/'>Estatus de orden</ListItemLink>
                 </ListItem>
                 <ListItem>
-                  <ListItemLink>Envio</ListItemLink>
+                  <ListItemLink to='/'>Envio</ListItemLink>
                 </ListItem>
                 <ListItem>
-                  <ListItemLink>Contáctanos</ListItemLink>
+                  <ListItemLink to='/'>Contáctanos</ListItemLink>
                 </ListItem>
                 <ListItem>
-                  <ListItemLink>Devoluciones</ListItemLink>
+                  <ListItemLink to='/'>Devoluciones</ListItemLink>
                 </ListItem>
                 <ListItem>
-                  <ListItemLink>Centro de ayuda</ListItemLink>
+                  <ListItemLink to='/'>Centro de ayuda</ListItemLink>
                 </ListItem>
-                {/* <ListItem><ListItemLink>Terminos de venta</ListItemLink></ListItem> */}
+                {/* <ListItem><ListItemLink to='/'>Terminos de venta</ListItemLink></ListItem> */}
               </List>
             )}
           </AnimatePresence>
@@ -179,19 +179,19 @@ const Footer = () => {
                 exit='hidden'
               >
                 <ListItem>
-                  <ListItemLink>General</ListItemLink>
+                  <ListItemLink to='/'>General</ListItemLink>
                 </ListItem>
                 <ListItem>
-                  <ListItemLink>Hombre</ListItemLink>
+                  <ListItemLink to='/'>Hombre</ListItemLink>
                 </ListItem>
                 <ListItem>
-                  <ListItemLink>Mujer</ListItemLink>
+                  <ListItemLink to='/'>Mujer</ListItemLink>
                 </ListItem>
                 <ListItem>
-                  <ListItemLink>Niño</ListItemLink>
+                  <ListItemLink to='/'>Niño</ListItemLink>
                 </ListItem>
                 <ListItem>
-                  <ListItemLink>Niña</ListItemLink>
+                  <ListItemLink to='/'>Niña</ListItemLink>
                 </ListItem>
               </List>
             )}
@@ -214,16 +214,16 @@ const Footer = () => {
                 exit='hidden'
               >
                 <ListItem>
-                  <ListItemLink>Agendas</ListItemLink>
+                  <ListItemLink to='/'>Agendas</ListItemLink>
                 </ListItem>
                 <ListItem>
-                  <ListItemLink>Encuadernación</ListItemLink>
+                  <ListItemLink to='/'>Encuadernación</ListItemLink>
                 </ListItem>
                 <ListItem>
-                  <ListItemLink>Regalos</ListItemLink>
+                  <ListItemLink to='/'>Regalos</ListItemLink>
                 </ListItem>
                 <ListItem>
-                  <ListItemLink>Nosotros</ListItemLink>
+                  <ListItemLink to='/'>Nosotros</ListItemLink>
                 </ListItem>
               </List>
             )}

@@ -1,37 +1,42 @@
 import React from 'react';
+import { RiCloseCircleFill, RiCheckboxCircleFill } from 'react-icons/ri';
 
-// Styles
-import { Container, Text } from './normal-message.styles';
+// STYLES
+import {
+  Container,
+  Icon,
+  AlertContent,
+  AlertTitle,
+  AlertText,
+  Button,
+  Decoration,
+  CloseIcon,
+} from './normal-message.styles';
 
-const containerVariants = {
-  hidden: {
-    opacity: 0,
-    transition: {
-      ease: 'easeInOut',
-    },
-  },
-  visible: {
-    opacity: 1,
-    transition: {
-      ease: 'easeInOut',
-    },
-  },
-};
+const Message = ({ title, text, button, type, handleClose, className }) => {
+  const renderIcon = (type) => {
+    switch (type) {
+      case 'error':
+        return <RiCloseCircleFill />;
+      case 'success':
+        return <RiCheckboxCircleFill />;
+      default:
+        return <RiCloseCircleFill />;
+    }
+  };
 
-const NormalMessage = ({ children, type }) => {
   return (
-    <>
-      <Container
-        type={type}
-        variants={containerVariants}
-        initial='hidden'
-        animate='visible'
-        exit='hidden'
-      >
-        <Text type={type}>{children}</Text>
-      </Container>
-    </>
+    <Container type={type} className={className}>
+      <Icon>{renderIcon(type)} </Icon>
+      <AlertContent>
+        <AlertTitle>{title}</AlertTitle>
+        <AlertText>{text}</AlertText>
+        {button && <Button type={type}>{button}</Button>}
+      </AlertContent>
+      {button && <CloseIcon onClick={handleClose} />}
+      <Decoration />
+    </Container>
   );
 };
 
-export default NormalMessage;
+export default Message;

@@ -17,7 +17,7 @@ class Email {
     this.name = user.name;
     this.message = message;
     this.url = url;
-    this.from = `EmotioKanis9 <${process.env.EMAIL_FROM}>`;
+    this.from = `Copias y Encuadernaciones Noé <${process.env.EMAIL_FROM}>`;
   }
 
   // ------------------- CREATE TRANSPORT -------------------
@@ -70,7 +70,7 @@ class Email {
   }
 
   async sendWelcome() {
-    await this.send('welcome', '¡Bienvenido a la familia de EmotioKanis9!');
+    await this.send('welcome', '¡Bienvenido a la familia de Copias Noé!');
   }
 
   async sendPasswordReset() {

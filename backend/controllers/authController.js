@@ -74,11 +74,11 @@ export const signup = catchAsync(async (req, res) => {
   try {
     let verificationUrl;
     if (process.env.NODE_ENV === 'development') {
-      verificationUrl = `${req.protocol}://localhost:3000/verificarCuenta/${verificationToken}`;
+      verificationUrl = `${req.protocol}://localhost:3000/verificar-cuenta/${verificationToken}`;
     } else {
       verificationUrl = `${req.protocol}://${req.get(
         'host'
-      )}/verificarCuenta/${verificationToken}`;
+      )}/verificar-cuenta/${verificationToken}`;
     }
 
     await new Email(newUser, verificationUrl).sendWelcome();
@@ -343,11 +343,11 @@ export const forgotPassword = catchAsync(async (req, res, next) => {
   try {
     let resetUrl;
     if (process.env.NODE_ENV === 'development') {
-      resetUrl = `${req.protocol}://localhost:3000/restablecerContraseña/${resetToken}`;
+      resetUrl = `${req.protocol}://localhost:3000/restablecer-contraseña/${resetToken}`;
     } else {
       resetUrl = `${req.protocol}://${req.get(
         'host'
-      )}/restablecerContraseña/${resetToken}`;
+      )}/restablecer-contraseña/${resetToken}`;
     }
 
     await new Email(user, resetUrl).sendPasswordReset();

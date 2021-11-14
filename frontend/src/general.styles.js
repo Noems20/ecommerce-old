@@ -93,6 +93,19 @@ export const Logo = styled.img`
 `;
 
 // ---------------------------------------------------------
+// ICON SIGN CARD
+// ---------------------------------------------------------
+
+export const SignIcon = styled.div`
+  display: flex;
+  justify-content: center;
+  & svg {
+    color: var(--color-primary);
+    font-size: 9rem;
+  }
+`;
+
+// ---------------------------------------------------------
 // TITLE SIGN CARD
 // ---------------------------------------------------------
 

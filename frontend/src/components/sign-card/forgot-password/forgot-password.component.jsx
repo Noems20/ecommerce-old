@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 // REDUX
 import { useDispatch, useSelector } from 'react-redux';
-import { login } from '../../../redux/user/userActions';
+import { forgotPassword } from '../../../redux/user/userActions';
 import { clearUiErrors } from '../../../redux/ui/uiActions';
 
 // COMPONENTS
@@ -33,27 +33,19 @@ const ForgotPassword = ({ variants, setTab }) => {
   const { email } = userCredentials;
   const dispatch = useDispatch();
   const { uiErrors, loading } = useSelector((state) => state.ui);
-  const { errorsOne } = uiErrors;
 
-  // ----------------------------- USE EFFECT'S ------------------------
-
+  // ---------------------------- USE EFFECT'S --------------------
   useEffect(() => {
-    dispatch(clearUiErrors());
     return () => {
-      dispatch({
-        type: 'SET_UI_LOADING',
-        payload: { firstLoader: false },
-      });
       dispatch(clearUiErrors());
     };
   }, [dispatch]);
 
-  // ------------------------------- HANDLERS -------------------------
+  // ---------------------------- HANDLERS --------------------
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
-
-    dispatch(login(email));
+    dispatch(forgotPassword(email));
   };
 
   const handleChange = (event) => {
@@ -86,7 +78,7 @@ const ForgotPassword = ({ variants, setTab }) => {
           handleChange={handleChange}
           value={email}
           label='Email'
-          error={errorsOne.email}
+          error={uiErrors.errorsOne.email}
           required
         />
         <CustomButton

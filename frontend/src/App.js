@@ -14,17 +14,19 @@ import { checkLogged } from './redux/user/userActions';
 
 // PAGES
 import Home from './pages/home/home.page';
-import Product from './pages/product/product.page';
 import Cart from './pages/cart/cart.page';
 import Login from './pages/login/login.page';
-import Register from './pages/register/register.page';
 import Profile from './pages/profile/profile.page';
+import Product from './pages/product/product.page';
+import Register from './pages/register/register.page';
 import Shipping from './pages/shipping/shipping.page';
+import VerifyAccount from './pages/verify-account/verify-account.page';
 
 // COMPONENTS
 import Header from './components/header/header.component';
 import Footer from './components/footer/footer.component';
 import FullScreenLoader from './components/loaders/full-screen-loader/full-screen-loader.component';
+import ChangePassword from './pages/change-password/change-password.page';
 
 const App = () => {
   const location = useLocation();
@@ -74,6 +76,20 @@ const App = () => {
               exact
               path='/envio'
               render={() => (user ? <Shipping /> : <Redirect to='/login' />)}
+            />
+            <Route
+              exact
+              path='/verificar-cuenta/:token'
+              render={() =>
+                user ? <Redirect to='/perfil' /> : <VerifyAccount />
+              }
+            />
+            <Route
+              exact
+              path='/restablecer-contraseña/:token'
+              render={() =>
+                user ? <Redirect to='/perfil' /> : <ChangePassword />
+              }
             />
           </Switch>
         ) : (

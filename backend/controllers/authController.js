@@ -319,7 +319,7 @@ export const forgotPassword = catchAsync(async (req, res, next) => {
   if (!isEmail(req.body.email)) {
     return next(
       new AppError('Please provide email!', 400, {
-        email: 'Debe ser un email valido',
+        email: 'Debe ser un email válido',
       })
     );
   }

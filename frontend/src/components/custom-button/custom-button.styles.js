@@ -88,6 +88,7 @@ export const CustomButtonContainer = styled(motion.button)`
   text-transform: uppercase;
   text-decoration: none;
   padding: 1rem 2rem;
+  border-radius: 4px;
   border: none;
   cursor: pointer;
   transition-property: color, background-color;

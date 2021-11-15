@@ -16,7 +16,7 @@ export const ProductsContainer = styled.div`
   grid-column: full-start / full-end;
   margin: 3rem 4rem;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   grid-gap: 2rem;
 
   /* @media only screen and (min-width: 1600px) {

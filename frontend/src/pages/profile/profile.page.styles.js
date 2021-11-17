@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import background from './background.jpg';
+import background from '../../background.jpg';
 
 // const marginRightLeft = '4rem';
 // const marginTopBottom = '3rem';
@@ -77,7 +77,8 @@ export const ImageInputLabel = styled.label`
   position: absolute;
   top: 70%;
   right: 2%;
-  color: ${({ error }) => (error ? 'red' : 'var(--color-primary)')};
+  color: ${({ error }) =>
+    error ? 'var(--color-red)' : 'var(--color-primary)'};
   height: 3.5rem;
   width: 3.5rem;
   border-radius: 50%;

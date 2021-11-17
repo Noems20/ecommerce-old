@@ -11,7 +11,7 @@ import CustomButton from '../../custom-button/custom-button.component';
 
 // STYLES
 import { Title, Line } from '../tab-styles';
-import { Container, Content, FormContainer } from './profile.styles';
+import { Container, Content, FormContainer } from './profile-tab.styles';
 
 const ProfileTab = ({ variants }) => {
   // ------------------------------------- STATE AND CONSTANTS ----------------------

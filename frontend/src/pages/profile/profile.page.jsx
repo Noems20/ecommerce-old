@@ -6,7 +6,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { updateMe, setUpdatedUser } from '../../redux/user/userActions';
 
 // COMPONENTS
-import ProfileTab from '../../components/profile-tabs/profile/profile.component';
+import ProfileTab from '../../components/profile-tabs/profile/profile-tab.component';
+import ShippingTab from '../../components/profile-tabs/shipping/shipping-tab.component.';
 
 // STYLES
 import {
@@ -141,29 +142,9 @@ const Profile = () => {
           </motion.h1>
         );
       case 'shipping':
-        return (
-          <motion.h1
-            variants={containerVariants}
-            initial='hidden'
-            animate='visible'
-            exit='hidden'
-            key={4}
-          >
-            Envio
-          </motion.h1>
-        );
+        return <ShippingTab variants={containerVariants} key={3} />;
       default:
-        return (
-          <motion.h1
-            variants={containerVariants}
-            initial='hidden'
-            animate='visible'
-            exit='hidden'
-            key={1}
-          >
-            Perfil
-          </motion.h1>
-        );
+        return <ProfileTab variants={containerVariants} key={1} />;
     }
   };
 

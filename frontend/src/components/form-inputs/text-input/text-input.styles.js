@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import { motion } from 'framer-motion';
 import tokens from '../../../tokens';
 
-const errorColor = '#ff3333';
+const errorColor = 'var(--color-red)';
 // const subColor = 'var(--color-grey-dark-1)';
 const subColor = '#a1a6a4';
 

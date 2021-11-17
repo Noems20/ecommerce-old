@@ -12,7 +12,8 @@ const ProductCard = ({ title, productImage }) => {
           <img src={productImage} alt='Product' />
         </div>
         <div class='contentBx'>
-          <h2>{title}</h2>
+          <h1>{title}</h1>
+          <h1 class='price'>$750</h1>
           <div class='size'>
             <h3>Talla: </h3>
             <span>7</span>

@@ -20,7 +20,15 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: var(--color-primary);
+  // background: var(--color-primary);
+
+  background: rgb(0, 83, 162);
+  background: linear-gradient(
+    90deg,
+    rgba(0, 83, 162, 1) 0%,
+    rgba(27, 116, 198, 1) 59%,
+    rgba(80, 171, 255, 1) 100%
+  );
   clip-path: circle(150px at 80% 20%);
   transition: 0.5s ease-in-out;
   z-index: 2;
@@ -54,10 +62,10 @@
 
 .container .card:hover .imgBx {
   top: 0%;
-  transform: translateY(10%);
+  transform: translateY(15%);
 
   & img {
-    width: 130px;
+    width: 140px;
   }
 }
 
@@ -65,7 +73,7 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -60%);
   width: 200px;
   transition: 1s;
 }
@@ -74,22 +82,26 @@
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 60px;
+  height: 100px;
   text-align: center;
   transition: 1s;
   z-index: 2;
 }
 
 .container .card:hover .contentBx {
-  height: 210px;
+  height: 220px;
 }
 
-.container .card .contentBx h2 {
+.container .card .contentBx h1 {
   position: relative;
   font-size: 2.3rem;
   font-weight: 600;
   letter-spacing: 1px;
   color: #000;
+
+  &.price {
+    font-weight: 300;
+  }
 }
 
 .container .card .contentBx .color,

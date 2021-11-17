@@ -217,7 +217,7 @@ export const checkUser = () => async (dispatch) => {
 };
 
 // ------------------------ UPDATE USER (name, email) ---------------------------
-export const updateMe = (email, name, photo) => async (dispatch) => {
+export const updateMe = (name, photo) => async (dispatch) => {
   try {
     dispatch({
       type: SET_UI_LOADING,
@@ -226,7 +226,7 @@ export const updateMe = (email, name, photo) => async (dispatch) => {
 
     const form = new FormData();
 
-    form.append('email', email);
+    // form.append('email', email);
     form.append('name', name);
     form.append('photo', photo);
 

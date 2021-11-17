@@ -1,10 +1,10 @@
-import React from 'react';
-import products from './products';
+// import React from 'react';
+// import products from './products';
 
 // REDUX
 
 // COMPONENTS
-import Product from '../../components/product/product.component';
+// import Product from '../../components/product/product.component';
 import ProductCard from '../../components/product-card/product-card.component';
 
 // STYLES
@@ -20,7 +20,7 @@ import agenda5 from './agenda5.png';
 import agenda6 from './agenda6.png';
 import agenda7 from './agenda7.png';
 import agenda8 from './agenda8.png';
-import agenda9 from './agenda9.png';
+// import agenda9 from './agenda9.png';
 
 const Home = () => {
   // -------------------- STATE AND CONSTANTS -------------------
@@ -63,7 +63,7 @@ const Home = () => {
           title='Encuadernado keratol'
           tag='AGEN'
         />
-        <ProductCard productImage={agenda9} title='Agenda 2022' tag='AGEN' />
+        {/* <ProductCard productImage={agenda9} title='Agenda 2022' tag='AGEN' /> */}
       </ProductsContainer>
     </PageGrid>
   );

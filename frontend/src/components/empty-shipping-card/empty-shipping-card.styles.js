@@ -33,3 +33,45 @@ export const AddText = styled.h1`
   text-align: center;
   margin-bottom: 2rem;
 `;
+
+// ------------------------ MODAL -----------------------
+
+export const EditForm = styled.form`
+  width: 50vw;
+  max-height: 90vh;
+  padding: 3rem;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: auto;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  display: grid;
+  grid-gap: 2rem;
+
+  @media only screen and (max-width: 1100px) {
+    width: 70vw;
+  }
+
+  @media only screen and (max-width: 700px) {
+    padding: 2rem;
+    width: 90vw;
+  }
+`;
+
+export const TwoColumnsModal = styled.div`
+  display: grid;
+  grid-gap: 2rem;
+  grid-template-columns: 1fr 1fr;
+
+  @media only screen and (max-width: 500px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+export const FormTitle = styled.h1`
+  color: var(--color-primary);
+`;

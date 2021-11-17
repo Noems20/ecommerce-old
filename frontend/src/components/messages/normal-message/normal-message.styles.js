@@ -100,11 +100,11 @@ export const Button = styled.button`
   background-color: #fff;
 
   ${getColor}
-  &:hover {
+  /* &:hover {
     color: #fff;
     background-color: transparent;
     transition: all 0.2s ease-in-out;
-  }
+  } */
 
   &:active {
     transform: translateY(1px);

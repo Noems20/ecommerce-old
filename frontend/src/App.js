@@ -1,12 +1,6 @@
 import { useEffect } from 'react';
-import {
-  Switch,
-  Route,
-  Redirect,
-  useHistory,
-  useLocation,
-} from 'react-router-dom';
-import { AnimatePresence } from 'framer-motion';
+import { Switch, Route, Redirect, useHistory } from 'react-router-dom';
+// import { AnimatePresence } from 'framer-motion';
 
 // REDUX
 import { useDispatch, useSelector } from 'react-redux';
@@ -29,7 +23,7 @@ import FullScreenLoader from './components/loaders/full-screen-loader/full-scree
 import ChangePassword from './pages/change-password/change-password.page';
 
 const App = () => {
-  const location = useLocation();
+  // const location = useLocation();
   const history = useHistory();
   const dispatch = useDispatch();
   const userData = useSelector((state) => state.user);
@@ -51,51 +45,49 @@ const App = () => {
   return (
     <>
       <Header />
-      <AnimatePresence>
-        {userLoaded.general ? (
-          <Switch location={location} key={location.key}>
-            <Route exact path='/' component={Home} />
-            <Route exact path='/carrito' component={Cart} />
-            <Route path='/producto/:id' component={Product} />
-            <Route
-              exact
-              path='/login'
-              render={() => (user ? <Redirect to='/perfil' /> : <Login />)}
-            />
-            <Route
-              exact
-              path='/registro'
-              render={() => (user ? <Redirect to='/' /> : <Register />)}
-            />
-            <Route
-              exact
-              path='/perfil'
-              render={() => (user ? <Profile /> : <Redirect to='/login' />)}
-            />
-            <Route
-              exact
-              path='/envio'
-              render={() => (user ? <Shipping /> : <Redirect to='/login' />)}
-            />
-            <Route
-              exact
-              path='/verificar-cuenta/:token'
-              render={() =>
-                user ? <Redirect to='/perfil' /> : <VerifyAccount />
-              }
-            />
-            <Route
-              exact
-              path='/restablecer-contraseña/:token'
-              render={() =>
-                user ? <Redirect to='/perfil' /> : <ChangePassword />
-              }
-            />
-          </Switch>
-        ) : (
-          <FullScreenLoader />
-        )}
-      </AnimatePresence>
+      {userLoaded.general ? (
+        <Switch>
+          <Route exact path='/' component={Home} />
+          <Route exact path='/carrito' component={Cart} />
+          <Route path='/producto/:id' component={Product} />
+          <Route
+            exact
+            path='/login'
+            render={() => (user ? <Redirect to='/perfil' /> : <Login />)}
+          />
+          <Route
+            exact
+            path='/registro'
+            render={() => (user ? <Redirect to='/' /> : <Register />)}
+          />
+          <Route
+            exact
+            path='/perfil'
+            render={() => (user ? <Profile /> : <Redirect to='/login' />)}
+          />
+          <Route
+            exact
+            path='/envio'
+            render={() => (user ? <Shipping /> : <Redirect to='/login' />)}
+          />
+          <Route
+            exact
+            path='/verificar-cuenta/:token'
+            render={() =>
+              user ? <Redirect to='/perfil' /> : <VerifyAccount />
+            }
+          />
+          <Route
+            exact
+            path='/restablecer-contraseña/:token'
+            render={() =>
+              user ? <Redirect to='/perfil' /> : <ChangePassword />
+            }
+          />
+        </Switch>
+      ) : (
+        <FullScreenLoader />
+      )}
       <Footer />
     </>
   );

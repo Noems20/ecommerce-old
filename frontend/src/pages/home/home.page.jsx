@@ -9,7 +9,14 @@ import ProductCard from '../../components/product-card/product-card.component';
 
 // STYLES
 import { PageGrid } from '../../general.styles';
-import { ProductsContainer } from './home.page.styles';
+import {
+  HeroSection,
+  CategoriesBar,
+  BarItem,
+  Title,
+  ProductsContainer,
+  ProductsGrid,
+} from './home.page.styles';
 
 // IMAGENES
 import agenda1 from './agenda1.png';
@@ -39,31 +46,37 @@ const Home = () => {
       animate='visible'
       exit='hidden'
     >
+      <HeroSection></HeroSection>
+      <CategoriesBar>
+        <BarItem></BarItem>
+        <BarItem></BarItem>
+        <BarItem></BarItem>
+      </CategoriesBar>
       <ProductsContainer>
-        {/* {products.map((product, index) => (
-          <Product key={index} product={product} />
-        ))} */}
-        <ProductCard productImage={agenda1} title='Agenda 2022' tag='AGEN' />
-        <ProductCard
-          productImage={agenda2}
-          title='Encuadernado azul'
-          tag='AGEN'
-        />
-        <ProductCard productImage={agenda3} title='Agenda MTIE' tag='AGEN' />
-        <ProductCard productImage={agenda4} title='Agenda UAD' tag='AGEN' />
-        <ProductCard productImage={agenda5} title='Agenda IEZ' tag='AGEN' />
-        <ProductCard
-          productImage={agenda6}
-          title='Encuadernado keratol'
-          tag='AGEN'
-        />
-        <ProductCard productImage={agenda7} title='Agenda UTZAC' tag='AGEN' />
-        <ProductCard
-          productImage={agenda8}
-          title='Encuadernado keratol'
-          tag='AGEN'
-        />
-        {/* <ProductCard productImage={agenda9} title='Agenda 2022' tag='AGEN' /> */}
+        <Title>Más vendidos</Title>
+        <ProductsGrid>
+          <ProductCard productImage={agenda1} title='Agenda 2022' tag='AGEN' />
+          <ProductCard
+            productImage={agenda2}
+            title='Encuadernado azul'
+            tag='AGEN'
+          />
+          <ProductCard productImage={agenda3} title='Agenda MTIE' tag='AGEN' />
+          <ProductCard productImage={agenda4} title='Agenda UAD' tag='AGEN' />
+          <ProductCard productImage={agenda5} title='Agenda IEZ' tag='AGEN' />
+          <ProductCard
+            productImage={agenda6}
+            title='Encuadernado keratol'
+            tag='AGEN'
+          />
+          <ProductCard productImage={agenda7} title='Agenda UTZAC' tag='AGEN' />
+          <ProductCard
+            productImage={agenda8}
+            title='Encuadernado keratol'
+            tag='AGEN'
+          />
+          {/* <ProductCard productImage={agenda9} title='Agenda 2022' tag='AGEN' /> */}
+        </ProductsGrid>
       </ProductsContainer>
     </PageGrid>
   );

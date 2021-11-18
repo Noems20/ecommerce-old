@@ -12,10 +12,12 @@ Cart - [{cartProductId}]
 Addresses - [{
     State - String, default: Zacatecas
     City - String
-    Suburb - String
     PostalCode - Number, length: 5
+    Phone - Number, length 10
+    Suburb - String
     Address - String
     References - String
+    Instructions - String
 }]
 
 ------------------------------------------------------------------

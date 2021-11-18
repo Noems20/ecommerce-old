@@ -16,7 +16,7 @@ export const ProductsContainer = styled.div`
   grid-column: full-start / full-end;
   margin: 3rem 4rem;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(32rem, 1fr));
   grid-gap: 2rem;
 
   /* @media only screen and (min-width: 1600px) {
@@ -25,4 +25,8 @@ export const ProductsContainer = styled.div`
   @media only screen and (min-width: 1900px) {
     grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
   } */
+
+  @media only screen and (max-width: 400px) {
+    grid-template-columns: repeat(auto-fit, minmax(32rem, 1fr));
+  }
 `;

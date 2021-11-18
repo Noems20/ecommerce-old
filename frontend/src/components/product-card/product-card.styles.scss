@@ -67,6 +67,14 @@
   & img {
     width: 140px;
   }
+
+  @media only screen and (max-width: 1100px) {
+    transform: translateY(19%);
+
+    & img {
+      width: 150px;
+    }
+  }
 }
 
 .container .card .imgBx img {
@@ -90,6 +98,9 @@
 
 .container .card:hover .contentBx {
   height: 220px;
+  @media only screen and (max-width: 1100px) {
+    height: 200px;
+  }
 }
 
 .container .card .contentBx h1 {

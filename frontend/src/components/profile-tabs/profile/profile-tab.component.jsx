@@ -97,6 +97,7 @@ const ProfileTab = ({ variants }) => {
             required
           />
           <TextInput
+            disabled={true}
             name='email'
             type='text'
             handleChange={handleChange}

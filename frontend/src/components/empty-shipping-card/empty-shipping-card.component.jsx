@@ -4,6 +4,7 @@ import { AnimatePresence } from 'framer-motion';
 // COMPONENTS
 import Modal from '../modal/modal.component';
 import TextInput from '../form-inputs/text-input/text-input.component';
+import SelectInput from '../form-inputs/select-input/select-input.component';
 import CustomButton from '../custom-button/custom-button.component';
 
 // STYLES
@@ -22,6 +23,7 @@ import { BsPlusCircle } from 'react-icons/bs';
 const EmptyShippingCard = () => {
   // ----------------------------- STATE AND CONSTANTS ----------------
   const [open, setOpen] = useState(false);
+  // const [city, setCity] = useState('');
   const [addressData, setAddressData] = useState({
     state: '',
     city: '',
@@ -66,22 +68,35 @@ const EmptyShippingCard = () => {
             <EditForm>
               <FormTitle>Añadir dirección</FormTitle>
               <TwoColumnsModal>
-                <TextInput
-                  type='text'
+                <SelectInput
                   label='Estado'
                   name='state'
+                  onChange={handleChange}
                   value={state}
-                  handleChange={handleChange}
-                  required
-                />
-                <TextInput
-                  type='text'
+                >
+                  <option key={0} value=''>
+                    Selecciona tu estado
+                  </option>
+                  <option key={1} value='Zacatecas'>
+                    Zacatecas
+                  </option>
+                </SelectInput>
+                <SelectInput
                   label='Ciudad'
                   name='city'
+                  onChange={handleChange}
                   value={city}
-                  handleChange={handleChange}
-                  required
-                />
+                >
+                  <option key={0} value=''>
+                    Selecciona tu ciudad
+                  </option>
+                  <option key={1} value='Zacatecas'>
+                    Zacatecas
+                  </option>
+                  <option key={2} value='Guadalupe'>
+                    Guadalupe
+                  </option>
+                </SelectInput>
                 <TextInput
                   type='text'
                   label='Código postal'
@@ -116,6 +131,7 @@ const EmptyShippingCard = () => {
                 required
               />
               <TextInput
+                textarea
                 type='text'
                 label='Referencias'
                 name='references'
@@ -123,6 +139,7 @@ const EmptyShippingCard = () => {
                 handleChange={handleChange}
               />
               <TextInput
+                textarea
                 type='text'
                 label='Instrucciones de entrega'
                 name='instructions'

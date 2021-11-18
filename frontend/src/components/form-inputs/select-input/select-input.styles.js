@@ -1,37 +1,123 @@
 import styled from 'styled-components';
-import { motion } from 'framer-motion';
+import { RiArrowDownSLine } from 'react-icons/ri';
+import tokens from '../../../tokens';
 
-export const Container = styled(motion.div)`
+const errorColor = 'var(--color-red)';
+const subColor = '#a1a6a4';
+
+export const Container = styled.div`
+  position: relative;
+`;
+
+export const Selector = styled.select`
+  color: ${subColor};
+  font-family: ${tokens.fontDisplay};
+  font-size: 1.6rem;
+  font-weight: 400;
+  background-color: white;
+  padding: 1.5rem 1.7rem;
+  border: ${({ error }) =>
+    error ? `2px solid ${errorColor}` : `2px solid ${subColor}`};
+  border-radius: 2px;
+
+  /* -webkit-text-fill-color: var(--color-grey-dark-1); */
+  -webkit-appearance: none;
+  outline: none;
+
+  display: block;
+  width: 100%;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:focus-within {
+    border: ${({ error }) =>
+      error
+        ? `2px solid ${errorColor}`
+        : '2px solid var(--color-primary-light)'};
+
+    & ~ label,
+    & ~ svg {
+      color: var(--color-primary);
+    }
+  }
+
+  /* &:focus-within ~ label {
+    color: var(--color-primary);
+  } */
+
+  &.active {
+    color: var(--color-grey-dark-1);
+    border: ${({ error }) =>
+      error
+        ? `2px solid ${errorColor}`
+        : '2px solid var(--color-primary-light)'};
+  }
+
+  &:disabled {
+    border: 2px solid ${subColor};
+    background-color: rgba(0, 0, 0, 0.05);
+    cursor: not-allowed;
+
+    & {
+      color: ${subColor};
+    }
+
+    & ~ label {
+      color: ${subColor};
+      background-color: transparent;
+      top: -0.9rem;
+    }
+  }
+
+  @media only screen and (max-width: 1100px) {
+    font-size: 1.7rem;
+  }
+`;
+
+export const SelectLabel = styled.label`
   position: absolute;
-  top: 4.5rem;
-  right: 0;
+  top: -0.1rem;
+  font-family: inherit;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: ${({ error }) => (error ? `${errorColor}` : `${subColor}`)};
+  background-color: white;
   background-color: #fff;
-  border-radius: var(--border-radius);
-  border: #f5f5f5;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 4px;
+  padding: 0 0.7rem;
+  margin-left: 1.2rem;
 
-  padding: 1rem;
-  overflow: hidden;
+  pointer-events: none;
+  transform: translateY(-50%);
+  transition: 300ms ease all;
+  transition: top 0.3s ease;
+
+  &.active {
+    color: ${({ error }) => (error ? `${errorColor}` : 'var(--color-primary)')};
+  }
+
+  @media only screen and (max-width: 1100px) {
+    font-size: 1.7rem;
+  }
 `;
 
-export const Text = styled.p`
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  color: inherit;
-  font-size: 1.4rem;
-  font-weight: 300;
-  cursor: pointer;
+export const Arrow = styled(RiArrowDownSLine)`
+  color: ${subColor};
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  width: 1.5rem;
+  height: 1.5rem;
+  transform: translateY(-50%);
+  z-index: 1;
 
-  -webkit-touch-callout: none; /* iOS Safari */
-  -webkit-user-select: none; /* Safari */
-  -khtml-user-select: none; /* Konqueror HTML */
-  -moz-user-select: none; /* Old versions of Firefox */
-  -ms-user-select: none; /* Internet Explorer/Edge */
-  user-select: none;
-`;
+  &.active {
+    color: var(--color-primary);
+  }
 
-export const Items = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  align-items: center;
+  @media only screen and (max-width: 430px) {
+    height: 2.5rem;
+    width: 2.5rem;
+  }
 `;

@@ -9,14 +9,15 @@ import {
   ErrorText,
 } from './text-input.styles';
 
-const TextInput = ({ handleChange, label, error, textArea, ...props }) => {
+const TextInput = ({ handleChange, label, error, textarea, ...props }) => {
   return (
     <Container>
       <InputContainer>
-        {textArea ? (
+        {textarea ? (
           <TextAreaInput
             onChange={handleChange}
             error={error ? true : false}
+            className={props.value.length ? 'active' : ''}
             {...props}
           />
         ) : (

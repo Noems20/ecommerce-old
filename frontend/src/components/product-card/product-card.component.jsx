@@ -6,22 +6,22 @@ import './product-card.styles.scss';
 
 const ProductCard = ({ title, productImage }) => {
   return (
-    <div class='container'>
-      <div class='card'>
-        <div class='imgBx'>
+    <div className='container'>
+      <div className='card'>
+        <div className='imgBx'>
           <img src={productImage} alt='Product' />
         </div>
-        <div class='contentBx'>
+        <div className='contentBx'>
           <h1>{title}</h1>
-          <h1 class='price'>$750</h1>
-          <div class='size'>
+          <h1 className='price'>$750</h1>
+          <div className='size'>
             <h3>Talla: </h3>
             <span>7</span>
             <span>8</span>
             <span>9</span>
             <span>10</span>
           </div>
-          <div class='color'>
+          <div className='color'>
             <h3>Color: </h3>
             <span></span>
             <span></span>

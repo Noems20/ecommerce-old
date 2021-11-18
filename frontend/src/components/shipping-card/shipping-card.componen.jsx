@@ -5,6 +5,7 @@ import { AnimatePresence } from 'framer-motion';
 import Modal from '../modal/modal.component';
 import Message from '../messages/normal-message/normal-message.component';
 import TextInput from '../form-inputs/text-input/text-input.component';
+import SelectInput from '../form-inputs/select-input/select-input.component';
 import CustomButton from '../custom-button/custom-button.component';
 
 // STYLES
@@ -115,20 +116,35 @@ const ShippingCard = () => {
             <EditForm>
               <FormTitle>Editar dirección</FormTitle>
               <TwoColumnsModal>
-                <TextInput
-                  type='text'
+                <SelectInput
                   label='Estado'
                   name='state'
+                  onChange={handleChange}
                   value={state}
-                  handleChange={handleChange}
-                />
-                <TextInput
-                  type='text'
+                >
+                  <option key={0} value=''>
+                    Selecciona tu estado
+                  </option>
+                  <option key={1} value='Zacatecas'>
+                    Zacatecas
+                  </option>
+                </SelectInput>
+                <SelectInput
                   label='Ciudad'
                   name='city'
+                  onChange={handleChange}
                   value={city}
-                  handleChange={handleChange}
-                />
+                >
+                  <option key={0} value=''>
+                    Selecciona tu ciudad
+                  </option>
+                  <option key={1} value='Zacatecas'>
+                    Zacatecas
+                  </option>
+                  <option key={2} value='Guadalupe'>
+                    Guadalupe
+                  </option>
+                </SelectInput>
                 <TextInput
                   type='text'
                   label='Código postal'
@@ -159,6 +175,7 @@ const ShippingCard = () => {
                 handleChange={handleChange}
               />
               <TextInput
+                textarea
                 type='text'
                 label='Referencias'
                 name='references'
@@ -167,6 +184,7 @@ const ShippingCard = () => {
               />
               <TextInput
                 type='text'
+                textarea
                 label='Instrucciones de entrega'
                 name='instructions'
                 value={instructions}

@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import tokens from '../../../tokens';
 
 const errorColor = 'var(--color-red)';
-// const subColor = 'var(--color-grey-dark-1)';
 const subColor = '#a1a6a4';
 
 const shrinkLabelStyles = css`
@@ -26,6 +25,66 @@ export const InputContainer = styled(motion.div)`
 `;
 
 export const Input = styled(motion.input)`
+  color: var(--color-grey-dark-1);
+  font-family: ${tokens.fontDisplay};
+  font-size: 1.6rem;
+  font-weight: 400;
+  background-color: white;
+  padding: 1.5rem 1.7rem;
+  border: ${({ error }) =>
+    error ? `2px solid ${errorColor}` : `2px solid ${subColor}`};
+  border-radius: 2px;
+
+  /* -webkit-text-fill-color: var(--color-grey-dark-1); */
+
+  display: block;
+  width: 100%;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:focus-within {
+    border: ${({ error }) =>
+      error
+        ? `2px solid ${errorColor}`
+        : '2px solid var(--color-primary-light)'};
+  }
+
+  &:focus-within ~ label {
+    ${shrinkLabelStyles}
+  }
+
+  &.active {
+    border: ${({ error }) =>
+      error
+        ? `2px solid ${errorColor}`
+        : '2px solid var(--color-primary-light)'};
+  }
+
+  &:disabled {
+    border: 2px solid ${subColor};
+    background-color: rgba(0, 0, 0, 0.05);
+    cursor: not-allowed;
+
+    & {
+      color: ${subColor};
+    }
+
+    & ~ label {
+      color: ${subColor};
+      background-color: transparent;
+      top: -0.9rem;
+    }
+  }
+
+  @media only screen and (max-width: 1100px) {
+    font-size: 1.7rem;
+  }
+`;
+
+export const TextAreaInput = styled(motion.textarea)`
+  resize: vertical;
   color: var(--color-grey-dark-1);
   font-family: ${tokens.fontDisplay};
   font-size: 1.6rem;
@@ -60,34 +119,6 @@ export const Input = styled(motion.input)`
       error
         ? `2px solid ${errorColor}`
         : '2px solid var(--color-primary-light)'};
-  }
-
-  @media only screen and (max-width: 1100px) {
-    font-size: 1.7rem;
-  }
-`;
-
-export const TextAreaInput = styled(motion.textarea)`
-  resize: vertical;
-  font-family: ${tokens.fontDisplay};
-  font-size: 1.6rem;
-  font-weight: 400;
-  background-color: white;
-  padding: 1.5rem 1.7rem;
-  border: ${({ error }) =>
-    error ? '1px solid var(--color-primary)' : `1px solid ${subColor}`};
-  border-radius: 2px;
-
-  -webkit-text-fill-color: ${subColor};
-
-  display: block;
-  width: 100%;
-  &:focus {
-    outline: none;
-  }
-
-  &:focus-within ~ label {
-    ${shrinkLabelStyles}
   }
 
   @media only screen and (max-width: 1100px) {

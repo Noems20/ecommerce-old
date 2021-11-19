@@ -2,52 +2,38 @@ import styled from 'styled-components';
 import tokens from '../../tokens';
 import { motion } from 'framer-motion';
 
-const marginRightLeft = '4rem';
-const marginTopBottom = '3rem';
+export const ProductContainer = styled.div`
+  grid-column: full-start/ full-end;
+  margin: 3rem 4rem;
 
-export const Container = styled.div`
   display: grid;
-  grid-template-rows: 1fr;
-
-  grid-template-columns:
-    [full-start] minmax(6rem, 1fr) [center-start] repeat(
-      8,
-      [col-start] minmax(min-content, 14rem) [col-end]
-    )
-    [center-end] minmax(6rem, 1fr) [full-end];
+  grid-gap: 3rem;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: max-content 1fr;
 `;
 
 export const ImageContainer = styled.div`
-  grid-column: full-start/ col-end 4;
+  padding: 3rem;
+  border: 1px solid black;
+  border-radius: 10px;
 
-  margin-left: ${marginRightLeft};
-  margin-top: ${marginTopBottom};
-  margin-bottom: ${marginTopBottom};
-
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: max-content max-content;
-  grid-gap: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
-export const ProductImage = styled(motion.img)`
-  width: 100%;
+
+export const ExpandedProductImage = styled(motion.img)`
   transition: all 0.2s ease;
+  cursor: pointer;
+
+  width: 56%;
 `;
 
 export const SecondaryImagesContainer = styled.div`
+  grid-row: 2 / 3;
   display: grid;
-  grid-gap: 1rem;
+  grid-gap: 2rem;
   grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
-
-  & img {
-    border: 2px solid transparent;
-  }
-
-  & img:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 8px #5e5e5e;
-    transition: all 0.2s ease;
-  }
 
   & .active {
     /* transform: scale(1.1); */
@@ -58,9 +44,19 @@ export const SecondaryImagesContainer = styled.div`
   }
 `;
 
+export const ProductImage = styled.img`
+  width: 100%;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+  }
+`;
+
 export const InfoContainer = styled.div`
-  margin: ${marginTopBottom} ${marginRightLeft} ${marginTopBottom} 5rem;
-  grid-column: col-start 5 / full-end;
+  grid-row: 1 / 3;
 
   display: grid;
   grid-template-columns: 1fr;

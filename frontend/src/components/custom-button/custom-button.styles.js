@@ -83,12 +83,12 @@ const getButtonStyles = (props) => {
 export const CustomButtonContainer = styled(motion.button)`
   font-family: inherit;
   font-size: 1.8rem;
-  font-weight: 300;
-  letter-spacing: 0.5px;
+  font-weight: 500;
+  letter-spacing: 1px;
   text-transform: uppercase;
   text-decoration: none;
   padding: 1rem 2rem;
-  border-radius: 4px;
+  border-radius: 8px;
   border: none;
   cursor: pointer;
   transition-property: color, background-color;

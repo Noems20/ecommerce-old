@@ -5,25 +5,27 @@ import React, { useState } from 'react';
 // COMPONENTS
 import CustomButton from '../../components/custom-button/custom-button.component';
 import Rating from '../../components/rating/rating.component';
-import Select from '../../components/form-inputs/select-input/select-input.component';
+import ImageMagnifier from '../../components/image-magnifier/image-magnifier.component';
 
 // STYLES
 import {
   ProductContainer,
   ImageContainer,
   SecondaryImagesContainer,
-  ExpandedProductImage,
   ProductImage,
   InfoContainer,
   ProductTitle,
+  DetailsTitle,
   ProductPrice,
-  AddToCart,
-  NoExistenceText,
+  DetailsContainer,
+  DetailsItemsContainer,
+  ColorDot,
   InfoTitle,
   Description,
   DescriptionText,
   List,
   ListItem,
+  SizeItem,
 } from './product.page.styles';
 
 import { PageGrid } from '../../general.styles';
@@ -65,11 +67,15 @@ const Product = ({ match, history, product }) => {
     <PageGrid>
       <ProductContainer>
         <ImageContainer>
-          <ExpandedProductImage
+          {/* <ExpandedProductImage
             src={focusImage ? focusImage : agenda1}
             variants={imageVariants}
             initial='hidden'
             animate='visible'
+          /> */}
+          <ImageMagnifier
+            src={focusImage ? focusImage : agenda1}
+            width={'56%'}
           />
         </ImageContainer>
         <SecondaryImagesContainer>
@@ -131,49 +137,46 @@ const Product = ({ match, history, product }) => {
           />
         </SecondaryImagesContainer>
         <InfoContainer>
-          <ProductTitle>
-            Agenda de la mejor calidad fabricada por mineros zacatecanos
-          </ProductTitle>
-          <ProductPrice>$750</ProductPrice>
-          {/* ADD TO CART */}
-          {/* {product.countInStock > 0 ? ( */}
-          <AddToCart>
-            <Select
-              label='Cantidad'
-              value={qty}
-              onChange={(e) => setQty(e.target.value)}
-              // disabled={product.countInStock === 0}
-            >
-              {/* {[...Array(product.countInStock).keys()].map((x) => (
-                  <option key={x + 1} value={x + 1}>
-                    {x + 1}
-                  </option>
-                ))} */}
-              <option key={1} value={1}>
-                {1}
-              </option>
-              <option key={2} value={2}>
-                {2}
-              </option>
-              <option key={3} value={3}>
-                {3}
-              </option>
-            </Select>
-            <CustomButton
-              onClick={addToCartHandler}
-              // disabled={product.countInStock === 0}
-            >
-              {/* {product.countInStock === 0
-                  ? 'Sin existencia'
-                  : 'Añadir a carrito'} */}
-              Añadir a carrito
-            </CustomButton>
-          </AddToCart>
-          {/* ) : (  <NoExistenceText>Sin existencia</NoExistenceText>
-           )} */}
-          {/* RATING */}
+          <ProductTitle>Agenda de la mejor UAD - 2022</ProductTitle>
+          <ProductPrice>
+            $750<span>Impuesto incluido.</span>
+          </ProductPrice>
+          {/* ------------- RATING ------------- */}
           <Rating value={4.5} text={`8 reseñas`} />
-          {/* DESCRIPTION */}
+          {/* ------------- COLORS -------------- */}
+          <DetailsContainer>
+            <DetailsTitle>Color</DetailsTitle>
+            <DetailsItemsContainer>
+              <ColorDot color={'#32a852'} />
+              <ColorDot color={'#a83232'} />
+              <ColorDot color={'#8332a8'} />
+              <ColorDot color={'#5a90db'} />
+              <ColorDot color={'#dbb45a'} />
+              <ColorDot color={'#000000'} />
+              <ColorDot color={'#fff'} />
+            </DetailsItemsContainer>
+          </DetailsContainer>
+          {/* ------------- SIZES -------------- */}
+          <DetailsContainer>
+            <DetailsTitle>Talla</DetailsTitle>
+            <DetailsItemsContainer>
+              <SizeItem>XS</SizeItem>
+              <SizeItem>S</SizeItem>
+              <SizeItem>M</SizeItem>
+              <SizeItem>L</SizeItem>
+              <SizeItem>XL</SizeItem>
+              <SizeItem>XXL</SizeItem>
+            </DetailsItemsContainer>
+          </DetailsContainer>
+          {/* ------------- CANTIDAD -------------- */}
+          <DetailsContainer>
+            <DetailsTitle>Cantidad</DetailsTitle>
+          </DetailsContainer>
+          {/* ------------- ADD TO CART ------------- */}
+          <CustomButton primary onClick={addToCartHandler}>
+            Añadir a carrito
+          </CustomButton>
+          {/* ------------- DESCRIPTION ------------- */}
           <Description>
             <InfoTitle>Descripción</InfoTitle>
             <DescriptionText>
@@ -185,7 +188,7 @@ const Product = ({ match, history, product }) => {
               sed, rutrum vitae lacus.
             </DescriptionText>
           </Description>
-          {/* MEASUREMENTS */}
+          {/* ------------- MEASUREMENTS ------------- */}
           <Description>
             <InfoTitle>Medidas</InfoTitle>
             <List>

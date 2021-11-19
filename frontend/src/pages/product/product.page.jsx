@@ -6,6 +6,7 @@ import React, { useState } from 'react';
 import CustomButton from '../../components/custom-button/custom-button.component';
 import Rating from '../../components/rating/rating.component';
 import ImageMagnifier from '../../components/image-magnifier/image-magnifier.component';
+import QuantityInput from '../../components/form-inputs/quantity-input/quantity-input.component';
 
 // STYLES
 import {
@@ -171,6 +172,7 @@ const Product = ({ match, history, product }) => {
           {/* ------------- CANTIDAD -------------- */}
           <DetailsContainer>
             <DetailsTitle>Cantidad</DetailsTitle>
+            <QuantityInput />
           </DetailsContainer>
           {/* ------------- ADD TO CART ------------- */}
           <CustomButton primary onClick={addToCartHandler}>

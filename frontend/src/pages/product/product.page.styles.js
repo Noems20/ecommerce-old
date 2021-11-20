@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import tokens from '../../tokens';
-import { motion } from 'framer-motion';
 
 // ------------------------------------------------------------
 // PRODUCT INFO GRID
@@ -15,6 +14,15 @@ export const ProductContainer = styled.div`
   grid-gap: 3rem;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: max-content 1fr;
+
+  @media only screen and (max-width: 1000px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: max-content max-content max-content;
+  }
+
+  @media only screen and (max-width: 500px) {
+    margin: 2rem 3rem;
+  }
 `;
 
 // ------------------------------------------------------------
@@ -28,13 +36,10 @@ export const ImageContainer = styled.div`
 
   display: flex;
   justify-content: center;
-`;
 
-export const ExpandedProductImage = styled(motion.img)`
-  transition: all 0.2s ease;
-  cursor: pointer;
-
-  width: 56%;
+  @media only screen and (max-width: 1000px) {
+    grid-row: 1 / 2;
+  }
 `;
 
 export const SecondaryImagesContainer = styled.div`
@@ -49,6 +54,10 @@ export const SecondaryImagesContainer = styled.div`
     border: 2px solid var(--color-primary);
     padding: 1px;
     transition: all 0.2s ease;
+  }
+
+  @media only screen and (max-width: 1000px) {
+    grid-row: 2 / 3;
   }
 `;
 
@@ -70,6 +79,10 @@ export const InfoContainer = styled.div`
   grid-template-columns: 1fr;
   grid-gap: 3rem;
   align-content: start;
+
+  @media only screen and (max-width: 1000px) {
+    grid-row: 3 / 4;
+  }
 `;
 
 // ------------------------------------------------------------
@@ -106,19 +119,24 @@ export const DetailsContainer = styled.div`
   grid-gap: 1rem;
 `;
 
-export const DetailsTitle = styled.h2`
-  font-size: 1.7rem;
+export const DetailsTitle = styled.h1`
+  font-size: 1.8rem;
   color: var(--color-grey-product);
   font-weight: 700;
 
   text-transform: uppercase;
 `;
 
-export const DetailsItemsContainer = styled.div`
+export const ColorItemsContainer = styled.div`
   display: grid;
-  grid-auto-flow: column;
-  justify-content: start;
-  grid-gap: 1rem;
+  grid-gap: 2rem;
+  grid-template-columns: repeat(auto-fit, 4rem);
+`;
+
+export const SizeItemsContainer = styled.div`
+  display: grid;
+  grid-gap: 2rem;
+  grid-template-columns: repeat(auto-fit, 8rem);
 `;
 
 export const ColorDot = styled.span`
@@ -176,13 +194,16 @@ export const ColorDot = styled.span`
 `;
 
 export const SizeItem = styled.div`
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   font-weight: 700;
   color: var(--color-grey-product);
   padding: 1rem 3rem;
   border: 2px solid var(--color-primary-light);
   transition: all 0.2s ease;
   cursor: pointer;
+
+  display: flex;
+  justify-content: center;
 
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */
@@ -191,7 +212,6 @@ export const SizeItem = styled.div`
   -ms-user-select: none; /* Internet Explorer/Edge */
   user-select: none;
 
-  &:hover,
   &.selected {
     background-color: var(--color-primary-light);
     color: #fff;
@@ -199,21 +219,10 @@ export const SizeItem = styled.div`
   }
 `;
 
-export const NoExistenceText = styled.h1`
-  text-transform: uppercase;
-  text-align: center;
-  letter-spacing: 2px;
-  font-weight: 400;
-  color: #fff;
-  background-color: var(--color-grey-dark-3);
-  border: 1px solid var(--color-grey-dark-3);
-  padding: 1rem 0.5rem;
-`;
-
 export const InfoTitle = styled.h2`
   letter-spacing: 1px;
-  font-family: ${tokens.fontPrimary};
-  font-size: 1.7rem;
+  color: var(--color-grey-product);
+  font-size: 1.8rem;
   font-weight: 700;
   text-transform: uppercase;
 
@@ -224,18 +233,21 @@ export const InfoTitle = styled.h2`
 export const Description = styled.div``;
 
 export const DescriptionText = styled.p`
-  font-size: 1.6rem;
-  font-weight: 300;
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: var(--color-grey-product);
   line-height: 1.6;
 `;
 
 export const List = styled.ul`
-  list-style: none;
+  /* list-style: none; */
 `;
 
 export const ListItem = styled.li`
   font-size: 1.6rem;
   font-weight: 300;
+  color: var(--color-grey-product);
   line-height: 1.6;
-  margin: 1rem 0;
+  margin: 2rem 0;
+  margin-left: 2rem;
 `;

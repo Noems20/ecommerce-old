@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { NoExistenceText } from '../../../pages/product/product.page.styles';
 
 export const Container = styled.div`
   display: grid;

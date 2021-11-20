@@ -19,7 +19,8 @@ import {
   DetailsTitle,
   ProductPrice,
   DetailsContainer,
-  DetailsItemsContainer,
+  ColorItemsContainer,
+  SizeItemsContainer,
   ColorDot,
   InfoTitle,
   Description,
@@ -48,7 +49,7 @@ const Product = ({ match, history, product }) => {
   const [focusImage, setFocusImage] = useState('');
   const [selectedSize, setSelectedSize] = useState('XS');
   const [selectedColor, setSelectedColor] = useState('#32a852');
-  const [limit, setLimit] = useState(14);
+  const limit = 14;
 
   const imageVariants = {
     hidden: {
@@ -86,12 +87,6 @@ const Product = ({ match, history, product }) => {
     <PageGrid>
       <ProductContainer>
         <ImageContainer>
-          {/* <ExpandedProductImage
-            src={focusImage ? focusImage : agenda1}
-            variants={imageVariants}
-            initial='hidden'
-            animate='visible'
-          /> */}
           <ImageMagnifier
             src={focusImage ? focusImage : agenda1}
             width={'56%'}
@@ -165,7 +160,7 @@ const Product = ({ match, history, product }) => {
           {/* ------------- COLORS -------------- */}
           <DetailsContainer>
             <DetailsTitle>Color</DetailsTitle>
-            <DetailsItemsContainer>
+            <ColorItemsContainer>
               <ColorDot
                 color={'#32a852'}
                 className={selectedColor === '#32a852' ? 'selected' : ''}
@@ -201,12 +196,12 @@ const Product = ({ match, history, product }) => {
                 className={selectedColor === '#fff' ? 'selected' : ''}
                 onClick={() => setSelectedColor('#fff')}
               />
-            </DetailsItemsContainer>
+            </ColorItemsContainer>
           </DetailsContainer>
           {/* ------------- SIZES -------------- */}
           <DetailsContainer>
             <DetailsTitle>Talla</DetailsTitle>
-            <DetailsItemsContainer>
+            <SizeItemsContainer>
               <SizeItem
                 className={selectedSize === 'XS' ? 'selected' : ''}
                 onClick={() => setSelectedSize('XS')}
@@ -243,7 +238,7 @@ const Product = ({ match, history, product }) => {
               >
                 XXL
               </SizeItem>
-            </DetailsItemsContainer>
+            </SizeItemsContainer>
           </DetailsContainer>
           {/* ------------- CANTIDAD -------------- */}
           <DetailsContainer>
@@ -253,6 +248,7 @@ const Product = ({ match, history, product }) => {
               limit={limit}
               setQuantity={setQty}
               handleChange={handleQuantityChange}
+              required
             />
           </DetailsContainer>
           {/* ------------- ADD TO CART ------------- */}
@@ -273,7 +269,7 @@ const Product = ({ match, history, product }) => {
           </Description>
           {/* ------------- MEASUREMENTS ------------- */}
           <Description>
-            <InfoTitle>Medidas</InfoTitle>
+            <InfoTitle>Especifiaciones</InfoTitle>
             <List>
               <ListItem>
                 <strong>Ancho:</strong> 55cm^2

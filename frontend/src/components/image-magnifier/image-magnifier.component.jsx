@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Container } from './image-magnifier.styles';
 
 const ImageMagnifier = ({
   src,
@@ -12,12 +13,7 @@ const ImageMagnifier = ({
   const [[imgWidth, imgHeight], setSize] = useState([0, 0]);
   const [showMagnifier, setShowMagnifier] = useState(false);
   return (
-    <div
-      style={{
-        position: 'relative',
-        width: width,
-      }}
-    >
+    <Container>
       <img
         src={src}
         style={{ height: height, width: '100%' }}
@@ -74,7 +70,7 @@ const ImageMagnifier = ({
           backgroundPositionY: `${-y * zoomLevel + magnifierHeight / 2}px`,
         }}
       ></div>
-    </div>
+    </Container>
   );
 };
 

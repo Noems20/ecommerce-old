@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 // STYLES
 import { Container, Input, Operator } from './quantity-input.styles';

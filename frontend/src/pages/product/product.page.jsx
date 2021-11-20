@@ -46,6 +46,9 @@ const Product = ({ match, history, product }) => {
   // --------------------------------- STATE AND CONSTANTS ----------------------------
   const [qty, setQty] = useState(1);
   const [focusImage, setFocusImage] = useState('');
+  const [selectedSize, setSelectedSize] = useState('XS');
+  const [selectedColor, setSelectedColor] = useState('#32a852');
+  const [limit, setLimit] = useState(14);
 
   const imageVariants = {
     hidden: {
@@ -64,6 +67,21 @@ const Product = ({ match, history, product }) => {
   const addToCartHandler = () => {
     history.push('/carrito');
   };
+
+  const handleQuantityChange = (e) => {
+    const { value } = e.target;
+
+    if (value === '') {
+      setQty(value);
+    } else if (value > limit) {
+      setQty(limit);
+    } else if (value < 1) {
+      setQty(1);
+    } else {
+      setQty(value);
+    }
+  };
+
   return (
     <PageGrid>
       <ProductContainer>
@@ -148,31 +166,94 @@ const Product = ({ match, history, product }) => {
           <DetailsContainer>
             <DetailsTitle>Color</DetailsTitle>
             <DetailsItemsContainer>
-              <ColorDot color={'#32a852'} />
-              <ColorDot color={'#a83232'} />
-              <ColorDot color={'#8332a8'} />
-              <ColorDot color={'#5a90db'} />
-              <ColorDot color={'#dbb45a'} />
-              <ColorDot color={'#000000'} />
-              <ColorDot color={'#fff'} />
+              <ColorDot
+                color={'#32a852'}
+                className={selectedColor === '#32a852' ? 'selected' : ''}
+                onClick={() => setSelectedColor('#32a852')}
+              />
+              <ColorDot
+                color={'#a83232'}
+                className={selectedColor === '#a83232' ? 'selected' : ''}
+                onClick={() => setSelectedColor('#a83232')}
+              />
+              <ColorDot
+                color={'#8332a8'}
+                className={selectedColor === '#8332a8' ? 'selected' : ''}
+                onClick={() => setSelectedColor('#8332a8')}
+              />
+              <ColorDot
+                color={'#5a90db'}
+                className={selectedColor === '#5a90db' ? 'selected' : ''}
+                onClick={() => setSelectedColor('#5a90db')}
+              />
+              <ColorDot
+                color={'#dbb45a'}
+                className={selectedColor === '#dbb45a' ? 'selected' : ''}
+                onClick={() => setSelectedColor('#dbb45a')}
+              />
+              <ColorDot
+                color={'#000'}
+                className={selectedColor === '#000' ? 'selected' : ''}
+                onClick={() => setSelectedColor('#000')}
+              />
+              <ColorDot
+                color={'#fff'}
+                className={selectedColor === '#fff' ? 'selected' : ''}
+                onClick={() => setSelectedColor('#fff')}
+              />
             </DetailsItemsContainer>
           </DetailsContainer>
           {/* ------------- SIZES -------------- */}
           <DetailsContainer>
             <DetailsTitle>Talla</DetailsTitle>
             <DetailsItemsContainer>
-              <SizeItem>XS</SizeItem>
-              <SizeItem>S</SizeItem>
-              <SizeItem>M</SizeItem>
-              <SizeItem>L</SizeItem>
-              <SizeItem>XL</SizeItem>
-              <SizeItem>XXL</SizeItem>
+              <SizeItem
+                className={selectedSize === 'XS' ? 'selected' : ''}
+                onClick={() => setSelectedSize('XS')}
+              >
+                XS
+              </SizeItem>
+              <SizeItem
+                className={selectedSize === 'S' ? 'selected' : ''}
+                onClick={() => setSelectedSize('S')}
+              >
+                S
+              </SizeItem>
+              <SizeItem
+                className={selectedSize === 'M' ? 'selected' : ''}
+                onClick={() => setSelectedSize('M')}
+              >
+                M
+              </SizeItem>
+              <SizeItem
+                className={selectedSize === 'L' ? 'selected' : ''}
+                onClick={() => setSelectedSize('L')}
+              >
+                L
+              </SizeItem>
+              <SizeItem
+                className={selectedSize === 'XL' ? 'selected' : ''}
+                onClick={() => setSelectedSize('XL')}
+              >
+                XL
+              </SizeItem>
+              <SizeItem
+                className={selectedSize === 'XXL' ? 'selected' : ''}
+                onClick={() => setSelectedSize('XXL')}
+              >
+                XXL
+              </SizeItem>
             </DetailsItemsContainer>
           </DetailsContainer>
           {/* ------------- CANTIDAD -------------- */}
           <DetailsContainer>
             <DetailsTitle>Cantidad</DetailsTitle>
-            <QuantityInput />
+            <QuantityInput
+              quantity={qty}
+              limit={limit}
+              setQuantity={setQty}
+              handleChange={handleQuantityChange}
+            />
           </DetailsContainer>
           {/* ------------- ADD TO CART ------------- */}
           <CustomButton primary onClick={addToCartHandler}>

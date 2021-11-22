@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  height: 100%;
+  /* height: 100%; */
   display: grid;
   grid-gap: 1rem;
   grid-template-columns: repeat(2, max-content);

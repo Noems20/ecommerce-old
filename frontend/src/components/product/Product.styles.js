@@ -1,22 +1,182 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-import CustomButton from '../custom-button/custom-button.component';
+import tokens from '../../tokens';
 
-export const Card = styled.div`
+// ------------------------------------------------------------
+// PRODUCT INFO GRID
+// ------------------------------------------------------------
+
+export const ProductContainer = styled.div`
+  grid-column: full-start/ full-end;
+  margin: 3rem 4rem;
+  margin-top: 5rem;
+
   display: grid;
-  grid-gap: 2rem;
+  grid-gap: 3rem;
+  grid-template-columns: 1fr 1fr;
   grid-template-rows: max-content 1fr;
-  align-content: start;
+
+  @media only screen and (max-width: 1000px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: max-content;
+  }
+
+  @media only screen and (max-width: 500px) {
+    margin: 2rem 3rem;
+  }
 `;
 
-export const CardHead = styled.div`
+// ------------------------------------------------------------
+// PRODUCT INFO ITEMS
+// ------------------------------------------------------------
+
+export const ImageContainer = styled.div`
+  padding: 3rem;
+  border: 2px solid var(--color-grey-product);
+  border-radius: 10px;
+
+  display: flex;
+  justify-content: center;
+
+  @media only screen and (max-width: 1000px) {
+    grid-row: auto / auto;
+  }
+`;
+
+export const SecondaryImagesContainer = styled.div`
+  grid-row: 2 / 3;
+  display: grid;
+  grid-gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+
+  & .active {
+    /* transform: scale(1.1); */
+    /* box-shadow: 0 0 5px #5e5e5e; */
+    border: 2px solid var(--color-primary);
+    padding: 1px;
+    transition: all 0.2s ease;
+  }
+
+  @media only screen and (max-width: 1000px) {
+    grid-row: auto / auto;
+  }
+`;
+
+export const ProductImage = styled.img`
+  width: 100%;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+  }
+`;
+
+export const InfoContainer = styled.div`
+  grid-row: 1 / 3;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 3rem;
+  align-content: start;
+
+  @media only screen and (max-width: 1000px) {
+    grid-row: 1 / 2;
+  }
+`;
+
+// ------------------------------------------------------------
+// PRODUCT INFO ITEMS
+// ------------------------------------------------------------
+
+export const ProductTitle = styled.h1`
+  font-family: ${tokens.fontDisplay};
+  font-size: 3rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: var(--color-grey-product);
+`;
+
+export const ProductPrice = styled.div`
+  font-size: 3rem;
+  color: var(--color-grey-product);
+  font-weight: 700;
+
+  display: grid;
+
+  & span {
+    font-size: 1.6rem;
+  }
+`;
+
+// ------------------------------------------------------------
+// PRODUCT INFO DETAILS
+// ------------------------------------------------------------
+
+export const DetailsContainer = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 1rem;
+`;
+
+export const DetailsTitle = styled.h1`
+  font-size: 1.8rem;
+  color: var(--color-grey-product);
+  font-weight: 700;
+
+  text-transform: uppercase;
+`;
+
+export const ColorItemsContainer = styled.div`
+  display: grid;
+  grid-gap: 2rem;
+  grid-template-columns: repeat(auto-fit, 4rem);
+`;
+
+export const SizeItemsContainer = styled.div`
+  display: grid;
+  grid-gap: 2rem;
+  grid-template-columns: repeat(auto-fit, 8rem);
+`;
+
+export const ColorDot = styled.span`
+  height: 4rem;
+  width: 4rem;
+  background-color: #fff;
+  border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 1px 5px;
+  cursor: pointer;
+
   position: relative;
 
+  &::after {
+    content: '';
+    display: inline-block;
+
+    position: absolute;
+    top: 50%; /* position the top  edge of the element at the middle of the parent */
+    left: 50%; /* position the left edge of the element at the middle of the parent */
+
+    transform: translate(
+      -50%,
+      -50%
+    ); /* This is a shorthand of translateX(-50%) and translateY(-50%) */
+
+    height: 4rem;
+    width: 4rem;
+    background-color: ${({ color }) => color};
+    border-radius: 50%;
+    border: 2px solid #fff;
+    cursor: pointer;
+  }
+
   &:hover,
-  &:active {
-    button {
-      display: inline-block; /* Display inline block */
-      position: absolute; /* Position absolute */
+  &.selected {
+    &::before {
+      content: '';
+      display: inline-block;
+
+      position: absolute;
       top: 50%; /* position the top  edge of the element at the middle of the parent */
       left: 50%; /* position the left edge of the element at the middle of the parent */
 
@@ -25,113 +185,69 @@ export const CardHead = styled.div`
         -50%
       ); /* This is a shorthand of translateX(-50%) and translateY(-50%) */
 
-      animation: fadeIn 0.5s;
-
-      -webkit-transition: opacity 600ms, visibility 600ms;
-      transition: opacity 600ms, visibility 600ms, color 300ms,
-        background-color 300ms;
+      height: 4.4rem;
+      width: 4.4rem;
+      background-color: var(--color-primary-light);
+      border-radius: 50%;
     }
   }
 `;
 
-export const ImageCaption = styled(Link)`
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  left: 0;
-  top: 0;
-  z-index: 1;
-  transition: all 0.3s ease-in-out;
+export const SizeItem = styled.div`
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--color-grey-product);
+  padding: 1rem 3rem;
+  border: 2px solid var(--color-primary-light);
+  transition: all 0.2s ease;
+  cursor: pointer;
 
-  display: grid;
-  align-content: center;
+  display: flex;
   justify-content: center;
 
-  &:hover,
-  &:active {
-    background-color: rgba(0, 0, 0, 0.5);
-    transition: all 0.3s ease-in-out;
-  }
-`;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none;
 
-export const AddItem = styled(CustomButton)`
-  display: none;
-  white-space: nowrap;
-  background-color: rgba(255, 255, 255, 0.7);
-  color: #000;
-  border: 1px solid #000;
-
-  z-index: 2;
-
-  &:hover {
-    background-color: var(--color-primary);
+  &.selected {
+    background-color: var(--color-primary-light);
     color: #fff;
-    border: 1px solid var(--color-primary);
-  }
-
-  &:active {
-    background-color: #fff;
-    color: var(--color-primary);
-    border: 1px solid var(--color-primary);
-  }
-
-  &:hover + a {
-    background-color: rgba(0, 0, 0, 0.5);
-    transition: all 0.3s ease-in-out;
-  }
-
-  @keyframes fadeIn {
-    0% {
-      opacity: 0;
-      transform: translate(-50%, -100%);
-    }
-
-    100% {
-      opacity: 1;
-      transform: translate(-50%, -50%);
-    }
-  }
-  @keyframes fadeOut {
-    0% {
-      opacity: 0;
-      transform: translateY(0);
-    }
-
-    100% {
-      opacity: 1;
-      transform: translateY(-100%);
-    }
+    transition: all 0.2s ease;
   }
 `;
 
-export const CardImg = styled.img`
-  width: 100%;
-`;
-
-export const CardBody = styled.div`
-  display: grid;
-  grid-template-rows: repeat(2, min-content) 1fr;
-  grid-gap: 1rem;
-`;
-
-export const CardPrice = styled.h2`
+export const InfoTitle = styled.h2`
+  letter-spacing: 1px;
+  color: var(--color-grey-product);
+  font-size: 1.8rem;
   font-weight: 700;
-`;
+  text-transform: uppercase;
 
-export const CardTitle = styled(Link)`
-  text-decoration: none;
-  color: #000;
+  padding-bottom: 2rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #e2e1e1;
+`;
+export const Description = styled.div``;
+
+export const DescriptionText = styled.p`
+  font-size: 1.8rem;
   font-weight: 400;
-  font-size: 1.6rem;
+  color: var(--color-grey-product);
   line-height: 1.6;
-  transition: all 0.2s ease-in-out;
-
-  &:hover {
-    color: var(--color-primary);
-    transition: all 0.2s ease-in-out;
-  }
 `;
-export const CardReview = styled.h2`
-  font-weight: 400;
-  align-self: end;
+
+export const List = styled.ul`
+  /* list-style: none; */
+`;
+
+export const ListItem = styled.li`
+  font-size: 1.8rem;
+  font-weight: 300;
+  color: var(--color-grey-product);
+  line-height: 1.6;
+  margin: 2rem 0;
+  margin-left: 2rem;
 `;

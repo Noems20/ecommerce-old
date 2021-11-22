@@ -57,7 +57,7 @@ const Rating = ({ value, text, color }) => {
           )}
         </IconContainer>
       </Icons>
-      <Text>{text && text}</Text>
+      {text && <Text>{text}</Text>}
     </Container>
   );
 };

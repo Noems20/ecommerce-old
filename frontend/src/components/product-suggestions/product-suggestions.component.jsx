@@ -11,10 +11,10 @@ import {
 } from './product-suggestions.styles';
 
 // IMAGES
-import agenda1 from './agenda1.png';
-import agenda2 from './agenda2.png';
-import agenda3 from './agenda3.png';
-import agenda4 from './agenda4.png';
+import agenda1 from '../../dev-images/agenda1.png';
+import agenda2 from '../../dev-images/agenda2.png';
+import agenda3 from '../../dev-images/agenda3.png';
+import agenda4 from '../../dev-images/agenda4.png';
 
 const ProductSuggestions = () => {
   return (

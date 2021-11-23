@@ -11,9 +11,10 @@ import Home from './pages/home/home.page';
 import Cart from './pages/cart/cart.page';
 import Login from './pages/login/login.page';
 import Profile from './pages/profile/profile.page';
-import ProductPage from './pages/product/product.page';
 import Register from './pages/register/register.page';
 import Shipping from './pages/shipping/shipping.page';
+import ProductPage from './pages/product/product.page';
+import SchedulePage from './pages/schedule/schedule.page';
 import VerifyAccount from './pages/verify-account/verify-account.page';
 
 // COMPONENTS
@@ -50,6 +51,7 @@ const App = () => {
           <Route exact path='/' component={Home} />
           <Route exact path='/carrito' component={Cart} />
           <Route path='/producto' component={ProductPage} />
+          <Route path='/agendas' component={SchedulePage} />
           <Route
             exact
             path='/login'

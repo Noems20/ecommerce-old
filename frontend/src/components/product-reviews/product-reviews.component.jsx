@@ -13,7 +13,7 @@ import {
   ReviewsCount,
   RatingBarsContainer,
   Reviews,
-  NoReviewsTitle,
+  // NoReviewsTitle,
 } from './product-reviews.styles';
 
 const ProductReviews = () => {

@@ -19,6 +19,8 @@ import {
   HeroButton,
   HeroImage,
   Waves,
+} from '../../hero.styles';
+import {
   CategoriesBar,
   BarItem,
   BarItemContent,
@@ -44,16 +46,16 @@ import { FaBox, FaTruck } from 'react-icons/fa';
 import { GiTakeMyMoney } from 'react-icons/gi';
 
 // IMAGENES
-import agenda1 from './agenda1.png';
-import agenda2 from './agenda2.png';
-import agenda3 from './agenda3.png';
-import agenda4 from './agenda4.png';
-import agenda5 from './agenda5.png';
-import agenda6 from './agenda6.png';
-import agenda7 from './agenda7.png';
-import agenda8 from './agenda8.png';
-// import agenda9 from './agenda9.png';
-import waves from './waves2.svg';
+import agenda1 from '../../dev-images/agenda1.png';
+import agenda2 from '../../dev-images/agenda2.png';
+import agenda3 from '../../dev-images/agenda3.png';
+import agenda4 from '../../dev-images/agenda4.png';
+import agenda5 from '../../dev-images/agenda5.png';
+import agenda6 from '../../dev-images/agenda6.png';
+import agenda7 from '../../dev-images/agenda7.png';
+import agenda8 from '../../dev-images/agenda8.png';
+// import agenda9 from '../../dev-images/agenda9.png';
+import waves from '../../dev-images/waves2.svg';
 
 import scheduleBackground from './schedule.jpg';
 import clothingBackground from './clothing.jpg';

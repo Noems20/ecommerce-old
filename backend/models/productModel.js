@@ -1,78 +1,73 @@
 import mongoose from 'mongoose';
-
-const reviewSchema = mongoose.Schema(
-  {
-    name: { type: String, required: true },
-    rating: { type: Number, required: true },
-    comment: { type: String, required: true },
-  },
-  { timestamps: true }
-);
+import slugify from 'slugify';
 
 const productSchema = mongoose.Schema(
   {
-    user: {
-      type: mongoose.Schema.Types.ObjectId,
-      required: true,
-      ref: 'User',
-    },
     name: {
       type: String,
-      required: true,
+      required: [true, 'No puede estar vacío'],
     },
-    mainImage: {
+    slug: {
       type: String,
-      required: true,
-    },
-    productImages: [
-      {
-        type: String,
-        required: true,
-      },
-    ],
-    brand: {
-      type: String,
-      required: true,
-    },
-    category: {
-      type: String,
-      required: true,
     },
     description: {
       type: String,
-      required: true,
+      required: [true, 'No puede estar vacío'],
     },
-    measures: {
-      height: { type: String },
-      width: { type: String },
-      depth: { type: String },
+    category: {
+      type: String,
+      required: [true, 'No puede estar vacío'],
     },
-    reviews: [reviewSchema],
-    rating: {
+    catalog: {
+      type: String,
+      enum: {
+        values: ['ropa', 'agendas', 'regalos', 'encuadernados'],
+        message: 'Catálogo debe ser: ropa, agendas, regalos ó encuadernados',
+      },
+      required: [true, 'No puede estar vacío'],
+    },
+    ratingsAverage: {
       type: Number,
-      required: true,
-      default: 0,
+      default: 4.5,
+      min: [1, 'Rating must be above 1'],
+      max: [5, 'Rating must be below 5'],
+      set: (val) => Math.round(val * 10) / 10,
     },
-    numReviews: {
+    ratingsQuantity: {
       type: Number,
-      required: true,
       default: 0,
     },
     price: {
       type: Number,
-      required: true,
-      default: 0,
+      required: [true, 'Debe tener precio'],
     },
-    countInStock: {
-      type: Number,
-      required: true,
-      default: 0,
+    createdAt: {
+      type: Date,
+      default: Date.now(),
+      select: false,
     },
   },
   {
-    timestamps: true,
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
   }
 );
+
+productSchema.index({ price: 1, ratingsAverage: -1 });
+productSchema.index({ slug: 1 });
+
+// Virtual populate
+productSchema.virtual('reviews', {
+  ref: 'Review',
+  foreignField: 'product', // How is called in review model
+  localField: '_id', // How is called in local model
+});
+
+// DOCUMENT MIDDLEWARE runs before .save() and .create() not insertMany(), update(), findOneAndUpdate()
+productSchema.pre('save', function (next) {
+  this.slug = slugify(this.name, { lower: true });
+  next();
+});
 
 const Product = mongoose.model('Product', productSchema);
 

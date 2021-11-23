@@ -25,12 +25,12 @@ router.route('/product-stats').get(getProductStats);
 router
   .route('/')
   .get(getAllProducts)
-  .post(protect, restrictTo('admin', 'lead-guide'), createProduct);
+  .post(protect, restrictTo('admin'), createProduct);
 
 router
   .route('/:id')
   .get(getProduct)
-  .patch(protect, restrictTo('admin', 'lead-guide'), updateProduct)
-  .delete(protect, restrictTo('admin', 'lead-guide'), deleteProduct);
+  .patch(protect, restrictTo('admin'), updateProduct)
+  .delete(protect, restrictTo('admin'), deleteProduct);
 
 export default router;

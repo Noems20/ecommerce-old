@@ -1,6 +1,111 @@
 import mongoose from 'mongoose';
 import slugify from 'slugify';
 
+// ---------------------------------------------------------
+// VALIDATION HELPERS  --------------------------
+// ---------------------------------------------------------
+const catalogsNotEligibleForGeneral = ['ropa'];
+const categoriesForClothing = ['shirt', 'sweatshirt'];
+
+function validateCategory() {
+  if (this.catalog === 'ropa') {
+    if (categoriesForClothing.includes(this.category)) return true;
+    return false;
+  }
+
+  if (this.category !== 'general') return false;
+
+  return true;
+}
+
+function validateSizes() {
+  const clothingSizes = ['S', 'XS', 'M', 'L', 'XL', 'XXL'];
+  const generalSizes = ['chico', 'mediano', 'grande', 'general'];
+  if (this.parent().parent().parent().catalog === 'ropa') {
+    if (clothingSizes.includes(this.size)) {
+      return true;
+    }
+    return false;
+  } else if (generalSizes.includes(this.size)) {
+    return true;
+  }
+  return false;
+}
+
+function isEligibleForGeneral() {
+  if (
+    this.type === 'general' &&
+    catalogsNotEligibleForGeneral.includes(this.parent().catalog)
+  ) {
+    return false;
+  }
+  return true;
+}
+
+// ---------------------------------------------------------
+// SUBCATEGORY SCHEMA --------------------------
+// ---------------------------------------------------------
+
+const subcategory = new mongoose.Schema({
+  type: {
+    type: String,
+    enum: {
+      values: ['male', 'female', 'boy', 'girl', 'general'],
+      message: 'Catálogo debe ser: male, female, boy, girl o general',
+    },
+    validate: {
+      validator: isEligibleForGeneral,
+      message: 'Debe tener un catálogo correcto',
+    },
+    required: [true, 'No puede estar vacío'],
+  },
+  color: {
+    type: [
+      {
+        colorname: {
+          type: String,
+          required: [true, 'Debe tener un color'],
+        },
+        image: {
+          type: String,
+          required: [true, 'Debe tener una imagen'],
+        },
+        sizes: {
+          type: [
+            {
+              size: {
+                type: String,
+                validate: {
+                  validator: validateSizes,
+                  message: 'Selecciona un tamaño adecuado',
+                },
+                required: [true, 'No puede estar vacío'],
+              },
+              quantity: {
+                type: Number,
+                required: [true, 'No puede estar vacío'],
+              },
+            },
+          ],
+          validate: {
+            // validator: requireSizes,
+            validator: (v) => Array.isArray(v) && v.length > 0,
+            message: 'Debe tener al menos un elemento',
+          },
+        },
+      },
+    ],
+    validate: {
+      validator: (v) => Array.isArray(v) && v.length > 0,
+      message: 'Debe tener al menos un elemento',
+    },
+  },
+});
+
+// ---------------------------------------------------------
+// PRODUCT SCHEMA --------------------------
+// ---------------------------------------------------------
+
 const productSchema = mongoose.Schema(
   {
     name: {
@@ -12,19 +117,27 @@ const productSchema = mongoose.Schema(
     },
     description: {
       type: String,
-      required: [true, 'No puede estar vacío'],
-    },
-    category: {
-      type: String,
-      required: [true, 'No puede estar vacío'],
+      // required: [true, 'No puede estar vacío'],
     },
     catalog: {
       type: String,
       enum: {
         values: ['ropa', 'agendas', 'regalos', 'encuadernados'],
-        message: 'Catálogo debe ser: ropa, agendas, regalos ó encuadernados',
+        message: 'Catálogo debe ser: ropa, agendas, regalos o encuadernados',
       },
       required: [true, 'No puede estar vacío'],
+    },
+    category: {
+      type: String,
+      validate: {
+        validator: validateCategory,
+        message: 'Debe tener una categoria correcta',
+      },
+      required: [true, 'No puede estar vacío'],
+    },
+    subcategory: {
+      type: subcategory,
+      required: [true, 'Debe tener una subcategoria'],
     },
     ratingsAverage: {
       type: Number,
@@ -47,10 +160,7 @@ const productSchema = mongoose.Schema(
       select: false,
     },
   },
-  {
-    toJSON: { virtuals: true },
-    toObject: { virtuals: true },
-  }
+  { toJSON: { virtuals: true }, toObject: { virtuals: true } }
 );
 
 productSchema.index({ price: 1, ratingsAverage: -1 });

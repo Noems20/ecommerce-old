@@ -3,7 +3,6 @@ import Product from '../models/productModel.js';
 
 // Utils
 import catchAsync from '../utils/catchAsync.js';
-import AppError from '../utils/appError.js';
 
 // Handler factory
 import {
@@ -17,7 +16,7 @@ import {
 export const aliasTopProducts = (req, res, next) => {
   req.query.limit = '10';
   req.query.sort = '-ratingsAverage,price';
-  req.query.fields = 'name,price,ratingsAverage,description';
+  req.query.fields = 'name,price,ratingsAverage, ratingsQuantity,description';
   next();
 };
 

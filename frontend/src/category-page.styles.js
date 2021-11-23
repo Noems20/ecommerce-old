@@ -1,31 +1,48 @@
 import styled from 'styled-components';
-import { HeroSection, HeroImage } from '../../hero.styles';
+import { RightColumn, Waves } from './hero.styles';
 
 // --------------------------------------------------------
 // HERO
 // --------------------------------------------------------
 
-export const Hero = styled(HeroSection)`
-  height: calc(70vh - 12rem);
+export const RightColumnResponsive = styled(RightColumn)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+`;
+
+export const HeroImageResponsive = styled.img`
+  max-height: 90%;
+  max-width: 90%;
 
   @media only screen and (max-width: 1300px) {
-    height: auto;
+    max-height: 100%;
   }
 `;
 
-export const HeroImageModified = styled(HeroImage)`
-  transform: translate(-50%, -28%);
+export const WavesResponsive = styled(Waves)`
+  width: 85%;
+  transform: translate(-50%, -50%);
 
   @media only screen and (max-width: 1300px) {
-    transform: translate(-50%, -20%);
+    transform: translate(-50%, -28%);
+    width: 120%;
+  }
+
+  @media only screen and (max-width: 1100px) {
+    transform: translate(-50%, -28%);
+    width: 130%;
   }
 
   @media only screen and (max-width: 900px) {
-    transform: translate(-50%, -25%);
+    width: 150%;
   }
 
   @media only screen and (max-width: 500px) {
-    transform: translate(-50%, -32%);
+    transform: translate(-50%, -24%);
+    width: 180%;
   }
 `;
 

@@ -28,6 +28,7 @@ export const HeroSection = styled.div`
   grid-auto-flow: column;
   align-items: center;
   justify-content: center;
+  grid-template-rows: 100%;
   grid-template-columns: max-content 1fr;
 
   @media only screen and (max-width: 1300px) {
@@ -41,7 +42,8 @@ export const HeroSection = styled.div`
     );
     height: auto;
     grid-auto-flow: row;
-    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-template-columns: 100%;
     padding: 4rem 0;
   }
 
@@ -85,6 +87,7 @@ export const HeroSubtitleUp = styled.h1`
   @media only screen and (max-width: 1300px) {
     text-align: center;
     padding: 0 1rem;
+    margin-bottom: 0;
   }
 `;
 
@@ -135,11 +138,6 @@ export const RightColumn = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
-
-  grid-auto-flow: column;
-  align-items: center;
-  justify-content: center;
-  grid-template-columns: max-content 1fr;
 
   @media only screen and (max-width: 1300px) {
     height: 45rem;

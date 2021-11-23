@@ -13,8 +13,10 @@ import Login from './pages/login/login.page';
 import Profile from './pages/profile/profile.page';
 import Register from './pages/register/register.page';
 import Shipping from './pages/shipping/shipping.page';
+import GiftsPage from './pages/gifts/gifts.page';
 import ProductPage from './pages/product/product.page';
 import SchedulePage from './pages/schedule/schedule.page';
+import BoundBooksPage from './pages/bound-books/bound-books.page';
 import VerifyAccount from './pages/verify-account/verify-account.page';
 
 // COMPONENTS
@@ -52,6 +54,8 @@ const App = () => {
           <Route exact path='/carrito' component={Cart} />
           <Route path='/producto' component={ProductPage} />
           <Route path='/agendas' component={SchedulePage} />
+          <Route path='/regalos' component={GiftsPage} />
+          <Route path='/encuadernacion' component={BoundBooksPage} />
           <Route
             exact
             path='/login'

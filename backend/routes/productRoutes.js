@@ -3,6 +3,8 @@ import {
   getAllProducts,
   getProduct,
   createProduct,
+  resizeProductImage,
+  uploadImage,
   updateProduct,
   deleteProduct,
   aliasTopProducts,
@@ -25,7 +27,13 @@ router.route('/product-stats').get(getProductStats);
 router
   .route('/')
   .get(getAllProducts)
-  .post(protect, restrictTo('admin'), createProduct);
+  .post(
+    protect,
+    restrictTo('admin'),
+    uploadImage,
+    createProduct,
+    resizeProductImage
+  );
 
 router
   .route('/:id')

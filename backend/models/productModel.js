@@ -68,7 +68,6 @@ const subcategory = new mongoose.Schema({
         },
         image: {
           type: String,
-          required: [true, 'Debe tener una imagen'],
         },
         sizes: {
           type: [
@@ -176,6 +175,17 @@ productSchema.virtual('reviews', {
 // DOCUMENT MIDDLEWARE runs before .save() and .create() not insertMany(), update(), findOneAndUpdate()
 productSchema.pre('save', function (next) {
   this.slug = slugify(this.name, { lower: true });
+  next();
+});
+
+// --------------- ADD SERVICE IMAGE -----------------
+productSchema.pre('save', async function (next) {
+  // console.log('-------------- COLOR ARRAY ----------------');
+  for (const colorId in this.subcategory.color) {
+    let image = `product-${this.id}-${this.subcategory.color[colorId].colorname}.png`;
+    this.subcategory.color[colorId].image = image;
+  }
+
   next();
 });
 

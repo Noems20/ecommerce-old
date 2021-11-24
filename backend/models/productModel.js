@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import slugify from 'slugify';
+import validator from 'validator';
 
 // ---------------------------------------------------------
 // VALIDATION HELPERS  --------------------------
@@ -7,14 +8,12 @@ import slugify from 'slugify';
 const catalogsNotEligibleForGeneral = ['ropa'];
 const categoriesForClothing = ['shirt', 'sweatshirt'];
 
-function validateCategory() {
+async function validateCategory() {
   if (this.catalog === 'ropa') {
     if (categoriesForClothing.includes(this.category)) return true;
     return false;
   }
-
   if (this.category !== 'general') return false;
-
   return true;
 }
 
@@ -64,7 +63,15 @@ const subcategory = new mongoose.Schema({
       {
         colorname: {
           type: String,
+          minlength: [4, 'Necesita ser mayor a 3 caracteres'],
+          maxlength: [7, 'Necesita ser menor a 8 caracteres'],
           required: [true, 'Debe tener un color'],
+          validate: {
+            validator: function (value) {
+              return validator.isHexadecimal(value.split('#')[1]);
+            },
+            message: 'Introduce un color en formato hexadecimal',
+          },
         },
         image: {
           type: String,
@@ -110,6 +117,7 @@ const productSchema = mongoose.Schema(
     name: {
       type: String,
       required: [true, 'No puede estar vacío'],
+      unique: true,
     },
     slug: {
       type: String,
@@ -178,7 +186,7 @@ productSchema.pre('save', function (next) {
   next();
 });
 
-// --------------- ADD SERVICE IMAGE -----------------
+// --------------- ADD PRODUCT IMAGE -----------------
 productSchema.pre('save', async function (next) {
   // console.log('-------------- COLOR ARRAY ----------------');
   for (const colorId in this.subcategory.color) {
@@ -188,6 +196,24 @@ productSchema.pre('save', async function (next) {
 
   next();
 });
+
+// productSchema.pre(/^findOneAnd/, async function (next) {
+//   this.currentDoc = await this.findOne().clone();
+//   next();
+// });
+
+// // This works for both because the others are findById -> (uses findOne not findOneAnd)
+// // findByIdAndUpdate -> short hand of findOneAndUpdate
+// // findByIdAndDelete -> short hand of findOneAndDelete
+// productSchema.post(/^findOneAnd/, async function (doc) {
+//   console.log('llego a post');
+//   if (doc) {
+//     const slugCheck = slugify(doc.name, { lower: true });
+//     if (doc.slug !== slugCheck) {
+//       await doc.save();
+//     }
+//   }
+// });
 
 const Product = mongoose.model('Product', productSchema);
 

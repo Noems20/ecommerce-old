@@ -4,7 +4,7 @@ import {
   getProduct,
   createProduct,
   resizeProductImage,
-  uploadImage,
+  uploadProductImages,
   updateProduct,
   deleteProduct,
   aliasTopProducts,
@@ -30,7 +30,7 @@ router
   .post(
     protect,
     restrictTo('admin'),
-    uploadImage,
+    uploadProductImages,
     createProduct,
     resizeProductImage
   );
@@ -38,7 +38,13 @@ router
 router
   .route('/:id')
   .get(getProduct)
-  .patch(protect, restrictTo('admin'), updateProduct)
+  .patch(
+    protect,
+    restrictTo('admin'),
+    uploadProductImages,
+    updateProduct,
+    resizeProductImage
+  )
   .delete(protect, restrictTo('admin'), deleteProduct);
 
 export default router;

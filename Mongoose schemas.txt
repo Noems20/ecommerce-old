@@ -47,7 +47,7 @@ Price - Number
 CreatedAt - Date
 
 ------------------------------------------------------------------
-                CLOTHES PRODUCT (INHERIT FROM PRODUCT)
+                        SUB CATEGORY
 ------------------------------------------------------------------
 Genre - String, enum: [male, female]
 Variants - [{

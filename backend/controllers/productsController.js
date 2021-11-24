@@ -24,6 +24,19 @@ export const aliasTopProducts = (req, res, next) => {
   next();
 };
 
+// -----------------------------------------------------------------------
+// GENERAL ROUTES
+// -----------------------------------------------------------------------
+export const getAllProducts = getAll(Product);
+export const getProduct = getOne(Product, { path: 'reviews' });
+// export const createProduct = createOne(Product);
+// export const updateProduct = updateOne(Product);
+// export const deleteProduct = deleteOne(Product);
+
+// -----------------------------------------------------------------------
+// CREATE PRODUCT
+// -----------------------------------------------------------------------
+
 // ----------------- FILE UPLOAD ----------------
 // Image stores as a buffer
 const multerStorage = multer.memoryStorage();
@@ -43,58 +56,109 @@ const multerFilter = (req, file, cb) => {
 
 const upload = multer({ storage: multerStorage, fileFilter: multerFilter });
 
-export const uploadImage = upload.single('subcategory[color][0][image]');
-
-export const getAllProducts = getAll(Product);
-export const getProduct = getOne(Product, { path: 'reviews' });
-// export const createProduct = createOne(Product);
-export const updateProduct = updateOne(Product);
-export const deleteProduct = deleteOne(Product);
+export const uploadProductImages = upload.any();
 
 // ----------------- CREATE SERVICE -----------------------
 export const createProduct = catchAsync(async (req, res, next) => {
-  if (!req.file)
+  if (req.files.length !== req.body.subcategory.color.length) {
     return next(
-      new AppError('A product image is required', 400, {
-        image: 'Una imagen del producto es requerida',
+      new AppError('Must include correct image quantity', 400, {
+        general: 'Necesitas incluir la cantidad adecuada de imágenes',
       })
     );
+  }
   const doc = await Product.create(req.body);
   req.doc = doc;
   next();
 });
 
 // ----------------- RESIZE CREATED SERVICE IMAGE ----------------
-export const resizeProductImage = (req, res, next) => {
+export const resizeProductImage = catchAsync(async (req, res, next) => {
   let status = 201;
   if (req.update === true) {
     status = 200;
   }
 
-  // console.log(req.doc.subcategory.color[0].image);
-  // As we saved image in memory filename doesn't exist but update needs it
-  if (req.file) {
-    req.file.filename = req.doc.subcategory.color[0].image;
-    sharp(req.file.buffer)
-      .resize({ width: 1280 })
-      .withMetadata()
-      .toFormat('png')
-      .png({ quality: 100 })
-      .toFile(`backend/public/img/products/${req.file.filename}`)
-      .then(() => {
-        return res.status(status).json({
-          status: 'success',
-          data: req.doc,
-        });
-      });
-  } else {
-    res.status(status).json({
-      status: 'success',
-      data: req.doc,
-    });
+  // console.log(req.files[0].fieldname.split('-')[1]);
+  if (req.files) {
+    for (const colorIdx in req.files) {
+      const realIdx = req.files[colorIdx].fieldname.split('-')[1];
+      const imageFileName = `product-${req.doc.id}-${req.doc.subcategory.color[realIdx].colorname}.png`;
+      await sharp(req.files[colorIdx].buffer)
+        .resize({ width: 1280 })
+        .withMetadata()
+        .toFormat('png')
+        .png({ quality: 100 })
+        .toFile(`backend/public/img/products/${imageFileName}`);
+    }
   }
-};
 
+  res.status(status).json({
+    status: 'success',
+    data: req.doc,
+  });
+});
+
+// -----------------------------------------------------------------------
+// UPDATE PRODUCT
+// -----------------------------------------------------------------------
+export const updateProduct = catchAsync(async (req, res, next) => {
+  if (req.files.length !== req.body.subcategory.color.length) {
+    return next(
+      new AppError('Must include correct image quantity', 400, {
+        general: 'Necesitas incluir la cantidad adecuada de imágenes',
+      })
+    );
+  }
+  const { id: docID } = req.params;
+
+  const doc = await Product.findById(docID);
+  req.body.name && (doc.name = req.body.name);
+  req.body.description && (doc.description = req.body.description);
+  req.body.catalog && (doc.catalog = req.body.catalog);
+  req.body.category && (doc.category = req.body.category);
+  req.body.price && (doc.price = req.body.price);
+  req.body.subcategory && (doc.subcategory = req.body.subcategory);
+  await doc.save();
+
+  if (!doc) {
+    return next(new AppError('No doc found with that ID', 404));
+  }
+
+  req.doc = doc;
+  req.update = true;
+  next();
+});
+
+// -----------------------------------------------------------------------
+// DELETE PRODUCT
+// -----------------------------------------------------------------------
+export const deleteProduct = catchAsync(async (req, res, next) => {
+  const { id: docID } = req.params;
+  const doc = await Service.findByIdAndDelete(docID);
+  const filename = `service-${docID}.jpg`;
+
+  if (!doc) {
+    return next(new AppError('No document found with that ID', 404));
+  }
+
+  const path = `backend/public/img/services/${filename}`;
+
+  const deleteImage = () => {
+    fs.unlink(path, (err) => {
+      if (err) {
+        console.error(err);
+        return;
+      }
+    });
+  };
+
+  deleteImage();
+
+  res.status(204).json({ status: 'success', data: null });
+});
+
+// ------------ DELETE SERVICE -----------------------
 export const getProductStats = catchAsync(async (req, res, next) => {
   const stats = await Product.aggregate([
     {

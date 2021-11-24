@@ -1,5 +1,6 @@
 import multer from 'multer';
 import sharp from 'sharp';
+import fs from 'fs';
 
 // MODELS
 import Product from '../models/productModel.js';
@@ -9,13 +10,7 @@ import catchAsync from '../utils/catchAsync.js';
 import AppError from '../utils/appError.js';
 
 // HANDLER FACTORY
-import {
-  deleteOne,
-  updateOne,
-  // createOne,
-  getOne,
-  getAll,
-} from './handlerFactory.js';
+import { getOne, getAll } from './handlerFactory.js';
 
 export const aliasTopProducts = (req, res, next) => {
   req.query.limit = '10';
@@ -29,9 +24,6 @@ export const aliasTopProducts = (req, res, next) => {
 // -----------------------------------------------------------------------
 export const getAllProducts = getAll(Product);
 export const getProduct = getOne(Product, { path: 'reviews' });
-// export const createProduct = createOne(Product);
-// export const updateProduct = updateOne(Product);
-// export const deleteProduct = deleteOne(Product);
 
 // -----------------------------------------------------------------------
 // CREATE PRODUCT
@@ -135,30 +127,28 @@ export const updateProduct = catchAsync(async (req, res, next) => {
 // -----------------------------------------------------------------------
 export const deleteProduct = catchAsync(async (req, res, next) => {
   const { id: docID } = req.params;
-  const doc = await Service.findByIdAndDelete(docID);
-  const filename = `service-${docID}.jpg`;
+
+  const doc = await Product.findByIdAndDelete(docID);
 
   if (!doc) {
     return next(new AppError('No document found with that ID', 404));
   }
 
-  const path = `backend/public/img/services/${filename}`;
+  for (const color of doc.subcategory.color) {
+    const filename = `${color.image}`;
+    const path = `backend/public/img/products/${filename}`;
 
-  const deleteImage = () => {
     fs.unlink(path, (err) => {
       if (err) {
         console.error(err);
         return;
       }
     });
-  };
-
-  deleteImage();
+  }
 
   res.status(204).json({ status: 'success', data: null });
 });
 
-// ------------ DELETE SERVICE -----------------------
 export const getProductStats = catchAsync(async (req, res, next) => {
   const stats = await Product.aggregate([
     {

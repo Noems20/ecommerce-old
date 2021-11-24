@@ -124,7 +124,7 @@ const productSchema = mongoose.Schema(
     },
     description: {
       type: String,
-      // required: [true, 'No puede estar vacío'],
+      required: [true, 'No puede estar vacío'],
     },
     catalog: {
       type: String,

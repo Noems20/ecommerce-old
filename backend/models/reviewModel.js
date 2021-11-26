@@ -15,7 +15,7 @@ const reviewSchema = new mongoose.Schema(
     },
     createdAt: {
       type: Date,
-      default: Date.now(),
+      default: Date.now,
     },
     product: {
       type: mongoose.Schema.ObjectId,
@@ -84,7 +84,7 @@ reviewSchema.post('save', function () {
 // findByIdAndUpdate -> short hand of findOneAndUpdate
 // findByIdAndDelete -> short hand of findOneAndDelete
 reviewSchema.pre(/^findOneAnd/, async function (next) {
-  this.r = await this.findOne(); // this is a query with find can access the document
+  this.r = await this.findOne().clone(); // this is a query with find can access the document
   next();
 });
 

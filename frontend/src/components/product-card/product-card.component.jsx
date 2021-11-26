@@ -1,27 +1,61 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
 // COMPONENTS
 import Rating from '../rating/rating.component';
 
 // STYLES
 import './product-card.styles.scss';
+import {
+  Container,
+  Card,
+  ImageBox,
+  Image,
+  ContentBox,
+  Title,
+  Price,
+  Button,
+} from './product-card.styles';
 
 const ProductCard = ({ title, productImage }) => {
+  const containerVariants = {
+    hidden: {
+      y: '100vh',
+      opacity: 0,
+      scale: 0,
+    },
+    visible: {
+      y: '0',
+      opacity: 1,
+      scale: 1,
+      transition: {
+        duration: 1,
+      },
+    },
+  };
+
   return (
-    <div className='container'>
-      <div className='card'>
-        <div className='imgBx'>
-          <img src={productImage} alt='Product' />
-        </div>
-        <div className='contentBx'>
-          <h1>{title}</h1>
-          <h1 className='price'>$750</h1>
+    <Container>
+      <Card>
+        <ImageBox>
+          <Image src={productImage} alt='Product' />
+        </ImageBox>
+        <ContentBox>
+          <Title>{title}</Title>
+          <Price>$750</Price>
           <Rating value={4.5} text='4.5 de 5' />
-          <Link to='#'>Comprar ahora</Link>
-        </div>
-      </div>
-    </div>
+          <Button
+            variants={containerVariants}
+            initial='hidden'
+            animate='visible'
+            exit='hidden'
+            as={Link}
+            to='#'
+          >
+            Comprar ahora
+          </Button>
+        </ContentBox>
+      </Card>
+    </Container>
   );
 };
 

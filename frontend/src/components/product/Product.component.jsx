@@ -31,15 +31,24 @@ import {
 } from './product.styles';
 
 // IMAGENES
-import agenda1 from './agenda1.png';
-import agenda2 from './agenda2.png';
-import agenda3 from './agenda3.png';
-import agenda4 from './agenda4.png';
-import agenda5 from './agenda5.png';
-import agenda6 from './agenda6.png';
-import agenda7 from './agenda7.png';
-import agenda8 from './agenda8.png';
-import agenda9 from './agenda9.png';
+import agenda1 from '../../dev-images/agenda1.png';
+import agenda2 from '../../dev-images/agenda2.png';
+import agenda3 from '../../dev-images/agenda3.png';
+import agenda4 from '../../dev-images/agenda4.png';
+import agenda5 from '../../dev-images/agenda5.png';
+import agenda6 from '../../dev-images/agenda6.png';
+import agenda7 from '../../dev-images/agenda7.png';
+import agenda8 from '../../dev-images/agenda8.png';
+import agenda9 from '../../dev-images/agenda9.png';
+import cup from '../../dev-images/products/product-5-fff.png';
+import cup2 from '../../dev-images/products/product-5-000.png';
+import cup3 from '../../dev-images/products/product-5-828282.png';
+import shirt from '../../dev-images/products/product-20-fff.png';
+import shirt2 from '../../dev-images/products/product-20-817f83.png';
+import shirt3 from '../../dev-images/products/product-20-000.png';
+import sweatShirt from '../../dev-images/products/product-21-fff.png';
+import sweatShirt2 from '../../dev-images/products/product-21-7e7e7e.png';
+import sweatShirt3 from '../../dev-images/products/product-21-000.png';
 
 const Product = ({ history }) => {
   // --------------------------------- STATE AND CONSTANTS ----------------------------
@@ -111,58 +120,110 @@ const Product = ({ history }) => {
       </ImageContainer>
       <SecondaryImagesContainer>
         <ProductImage
-          key={2}
+          src={agenda1}
+          onClick={() => setFocusImage(agenda1)}
+          variants={imageVariants}
+          whileHover='hover'
+        />
+        <ProductImage
           src={agenda2}
           onClick={() => setFocusImage(agenda2)}
           variants={imageVariants}
           whileHover='hover'
         />
         <ProductImage
-          key={3}
           src={agenda3}
           onClick={() => setFocusImage(agenda3)}
           variants={imageVariants}
           whileHover='hover'
         />
         <ProductImage
-          key={4}
           src={agenda4}
           onClick={() => setFocusImage(agenda4)}
           variants={imageVariants}
           whileHover='hover'
         />
         <ProductImage
-          key={5}
           src={agenda5}
           onClick={() => setFocusImage(agenda5)}
           variants={imageVariants}
           whileHover='hover'
         />
         <ProductImage
-          key={6}
           src={agenda6}
           onClick={() => setFocusImage(agenda6)}
           variants={imageVariants}
           whileHover='hover'
         />
         <ProductImage
-          key={7}
           src={agenda7}
           onClick={() => setFocusImage(agenda7)}
           variants={imageVariants}
           whileHover='hover'
         />
         <ProductImage
-          key={8}
           src={agenda8}
           onClick={() => setFocusImage(agenda8)}
           variants={imageVariants}
           whileHover='hover'
         />
         <ProductImage
-          key={9}
           src={agenda9}
           onClick={() => setFocusImage(agenda9)}
+          variants={imageVariants}
+          whileHover='hover'
+        />
+        <ProductImage
+          src={cup}
+          onClick={() => setFocusImage(cup)}
+          variants={imageVariants}
+          whileHover='hover'
+        />
+        <ProductImage
+          src={cup2}
+          onClick={() => setFocusImage(cup2)}
+          variants={imageVariants}
+          whileHover='hover'
+        />
+        <ProductImage
+          src={cup3}
+          onClick={() => setFocusImage(cup3)}
+          variants={imageVariants}
+          whileHover='hover'
+        />
+        <ProductImage
+          src={shirt}
+          onClick={() => setFocusImage(shirt)}
+          variants={imageVariants}
+          whileHover='hover'
+        />
+        <ProductImage
+          src={shirt2}
+          onClick={() => setFocusImage(shirt2)}
+          variants={imageVariants}
+          whileHover='hover'
+        />
+        <ProductImage
+          src={shirt3}
+          onClick={() => setFocusImage(shirt3)}
+          variants={imageVariants}
+          whileHover='hover'
+        />
+        <ProductImage
+          src={sweatShirt}
+          onClick={() => setFocusImage(sweatShirt)}
+          variants={imageVariants}
+          whileHover='hover'
+        />
+        <ProductImage
+          src={sweatShirt2}
+          onClick={() => setFocusImage(sweatShirt2)}
+          variants={imageVariants}
+          whileHover='hover'
+        />
+        <ProductImage
+          src={sweatShirt3}
+          onClick={() => setFocusImage(sweatShirt3)}
           variants={imageVariants}
           whileHover='hover'
         />

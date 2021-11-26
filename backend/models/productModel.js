@@ -5,8 +5,8 @@ import validator from 'validator';
 // ---------------------------------------------------------
 // VALIDATION HELPERS  --------------------------
 // ---------------------------------------------------------
-const catalogsNotEligibleForGeneral = ['ropa'];
 const categoriesForClothing = ['shirt', 'sweatshirt'];
+const forClothing = ['boy', 'girl', 'male', 'female'];
 
 async function validateCategory() {
   if (this.catalog === 'ropa') {
@@ -32,12 +32,12 @@ function validateSizes() {
 }
 
 function isEligibleForGeneral() {
-  if (
-    this.type === 'general' &&
-    catalogsNotEligibleForGeneral.includes(this.parent().catalog)
-  ) {
+  if (this.catalog === 'ropa') {
+    if (forClothing.includes(this.for)) return true;
     return false;
   }
+
+  if (this.for !== 'general') return false;
   return true;
 }
 
@@ -46,18 +46,6 @@ function isEligibleForGeneral() {
 // ---------------------------------------------------------
 
 const subcategory = new mongoose.Schema({
-  type: {
-    type: String,
-    enum: {
-      values: ['male', 'female', 'boy', 'girl', 'general'],
-      message: 'Catálogo debe ser: male, female, boy, girl o general',
-    },
-    validate: {
-      validator: isEligibleForGeneral,
-      message: 'Debe tener un catálogo correcto',
-    },
-    required: [true, 'No puede estar vacío'],
-  },
   color: {
     type: [
       {
@@ -126,6 +114,9 @@ const productSchema = mongoose.Schema(
       type: String,
       required: [true, 'No puede estar vacío'],
     },
+    specifications: {
+      type: [String],
+    },
     catalog: {
       type: String,
       enum: {
@@ -139,6 +130,18 @@ const productSchema = mongoose.Schema(
       validate: {
         validator: validateCategory,
         message: 'Debe tener una categoria correcta',
+      },
+      required: [true, 'No puede estar vacío'],
+    },
+    for: {
+      type: String,
+      enum: {
+        values: ['male', 'female', 'boy', 'girl', 'general'],
+        message: 'Catálogo debe ser: male, female, boy, girl o general',
+      },
+      validate: {
+        validator: isEligibleForGeneral,
+        message: 'Debe tener un catálogo correcto',
       },
       required: [true, 'No puede estar vacío'],
     },
@@ -161,9 +164,13 @@ const productSchema = mongoose.Schema(
       type: Number,
       required: [true, 'Debe tener precio'],
     },
+    sold: {
+      type: Number,
+      default: 0,
+    },
     createdAt: {
       type: Date,
-      default: Date.now(),
+      default: Date.now,
       select: false,
     },
   },

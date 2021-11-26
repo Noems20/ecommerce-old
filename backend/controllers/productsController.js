@@ -72,7 +72,7 @@ export const resizeProductImage = catchAsync(async (req, res, next) => {
   }
 
   // console.log(req.files[0].fieldname.split('-')[1]);
-  if (req.files) {
+  if (req.files.length > 0) {
     for (const colorIdx in req.files) {
       const realIdx = req.files[colorIdx].fieldname.split('-')[1];
       const imageFileName = `product-${req.doc.id}-${req.doc.subcategory.color[realIdx].colorname}.png`;
@@ -95,7 +95,10 @@ export const resizeProductImage = catchAsync(async (req, res, next) => {
 // UPDATE PRODUCT
 // -----------------------------------------------------------------------
 export const updateProduct = catchAsync(async (req, res, next) => {
-  if (req.files.length !== req.body.subcategory.color.length) {
+  if (
+    req.body.subcategory &&
+    req.files.length !== req.body.subcategory.color.length
+  ) {
     return next(
       new AppError('Must include correct image quantity', 400, {
         general: 'Necesitas incluir la cantidad adecuada de imágenes',
@@ -105,17 +108,20 @@ export const updateProduct = catchAsync(async (req, res, next) => {
   const { id: docID } = req.params;
 
   const doc = await Product.findById(docID);
-  req.body.name && (doc.name = req.body.name);
-  req.body.description && (doc.description = req.body.description);
-  req.body.catalog && (doc.catalog = req.body.catalog);
-  req.body.category && (doc.category = req.body.category);
-  req.body.price && (doc.price = req.body.price);
-  req.body.subcategory && (doc.subcategory = req.body.subcategory);
-  await doc.save();
 
   if (!doc) {
     return next(new AppError('No doc found with that ID', 404));
   }
+  req.body.name && (doc.name = req.body.name);
+  req.body.description && (doc.description = req.body.description);
+  req.body.specifications && (doc.specifications = req.body.specifications);
+  req.body.catalog && (doc.catalog = req.body.catalog);
+  req.body.category && (doc.category = req.body.category);
+  req.body.for && (doc.for = req.body.for);
+  req.body.price && (doc.price = req.body.price);
+  req.body.sold && (doc.sold = req.body.sold);
+  req.body.subcategory && (doc.subcategory = req.body.subcategory);
+  await doc.save();
 
   req.doc = doc;
   req.update = true;

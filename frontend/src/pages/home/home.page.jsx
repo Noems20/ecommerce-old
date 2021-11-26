@@ -46,7 +46,7 @@ import { FaBox, FaTruck } from 'react-icons/fa';
 import { GiTakeMyMoney } from 'react-icons/gi';
 
 // IMAGENES
-import agenda1 from '../../dev-images/agenda1.png';
+// import agenda1 from '../../dev-images/agenda1.png';
 import agenda2 from '../../dev-images/agenda2.png';
 import agenda3 from '../../dev-images/agenda3.png';
 import agenda4 from '../../dev-images/agenda4.png';
@@ -56,6 +56,15 @@ import agenda7 from '../../dev-images/agenda7.png';
 import agenda8 from '../../dev-images/agenda8.png';
 // import agenda9 from '../../dev-images/agenda9.png';
 import waves from '../../dev-images/waves2.svg';
+import cup from '../../dev-images/products/product-5-fff.png';
+import cup2 from '../../dev-images/products/product-5-000.png';
+import cup3 from '../../dev-images/products/product-5-828282.png';
+import shirt from '../../dev-images/products/product-20-fff.png';
+import shirt2 from '../../dev-images/products/product-20-817f83.png';
+import shirt3 from '../../dev-images/products/product-20-000.png';
+import sweatShirt from '../../dev-images/products/product-21-fff.png';
+import sweatShirt2 from '../../dev-images/products/product-21-7e7e7e.png';
+import sweatShirt3 from '../../dev-images/products/product-21-000.png';
 
 import scheduleBackground from './schedule.jpg';
 import clothingBackground from './clothing.jpg';
@@ -154,7 +163,27 @@ const Home = () => {
           <CatalogButton>Regalos</CatalogButton>
         </ButtonsContainer>
         <ProductsGrid>
-          <ProductCard productImage={agenda1} title='Agenda 2022' tag='AGEN' />
+          <ProductCard productImage={cup} title='Agenda 2022' tag='AGEN' />
+          <ProductCard productImage={cup2} title='Agenda 2022' tag='AGEN' />
+          <ProductCard productImage={cup3} title='Agenda 2022' tag='AGEN' />
+          <ProductCard productImage={shirt} title='Agenda 2022' tag='AGEN' />
+          <ProductCard productImage={shirt2} title='Agenda 2022' tag='AGEN' />
+          <ProductCard productImage={shirt3} title='Agenda 2022' tag='AGEN' />
+          <ProductCard
+            productImage={sweatShirt}
+            title='Agenda 2022'
+            tag='AGEN'
+          />
+          <ProductCard
+            productImage={sweatShirt2}
+            title='Agenda 2022'
+            tag='AGEN'
+          />
+          <ProductCard
+            productImage={sweatShirt3}
+            title='Agenda 2022'
+            tag='AGEN'
+          />
           <ProductCard
             productImage={agenda2}
             title='Encuadernado azul'

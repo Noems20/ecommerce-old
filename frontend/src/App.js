@@ -52,10 +52,10 @@ const App = () => {
         <Switch>
           <Route exact path='/' component={Home} />
           <Route exact path='/carrito' component={Cart} />
-          <Route path='/producto' component={ProductPage} />
           <Route path='/agendas' component={SchedulePage} />
           <Route path='/regalos' component={GiftsPage} />
           <Route path='/encuadernacion' component={BoundBooksPage} />
+          <Route exact path='/producto/:slug' component={ProductPage} />
           <Route
             exact
             path='/login'

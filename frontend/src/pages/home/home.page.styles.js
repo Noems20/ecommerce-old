@@ -180,9 +180,9 @@ export const CatalogButton = styled.button`
     transform: translateY(-2px);
     box-shadow: rgba(0, 0, 0, 0.35) 0px 1px 10px;
   }
-  &:active {
-    transform: translateY(2px);
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 1px 5px;
+  &.active {
+    transform: translateY(-2px);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 1px 10px;
   }
 
   @media only screen and (max-width: 400px) {

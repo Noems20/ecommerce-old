@@ -1,10 +1,10 @@
-// import React from 'react';
-// import products from './products';
+import React, { useEffect, useState } from 'react';
 
 // REDUX
+import { fetchProductsHome } from '../../redux/products/productsActions';
+import { useSelector, useDispatch } from 'react-redux';
 
 // COMPONENTS
-// import Product from '../../components/product/product.component';
 import ProductCard from '../../components/product-card/product-card.component';
 
 // STYLES
@@ -48,18 +48,18 @@ import { GiTakeMyMoney } from 'react-icons/gi';
 // IMAGENES
 
 import waves from '../../dev-images/waves2.svg';
-import agenda from '../../dev-images/products/product-31-87253b.png';
+// import agenda from '../../dev-images/products/product-31-87253b.png';
 import agenda2 from '../../dev-images/products/product-31-1e2e4a.png';
-import agenda3 from '../../dev-images/products/product-31-0e5e4f.png';
-import cup from '../../dev-images/products/product-5-fff.png';
-import cup2 from '../../dev-images/products/product-5-000.png';
-import cup3 from '../../dev-images/products/product-5-828282.png';
-import shirt from '../../dev-images/products/product-20-fff.png';
-import shirt2 from '../../dev-images/products/product-20-817f83.png';
-import shirt3 from '../../dev-images/products/product-20-000.png';
-import sweatShirt from '../../dev-images/products/product-30-fff.png';
-import sweatShirt2 from '../../dev-images/products/product-30-7e7e7e.png';
-import sweatShirt3 from '../../dev-images/products/product-30-000.png';
+// import agenda3 from '../../dev-images/products/product-31-0e5e4f.png';
+// import cup from '../../dev-images/products/product-5-fff.png';
+// import cup2 from '../../dev-images/products/product-5-000.png';
+// import cup3 from '../../dev-images/products/product-5-828282.png';
+// import shirt from '../../dev-images/products/product-20-fff.png';
+// import shirt2 from '../../dev-images/products/product-20-817f83.png';
+// import shirt3 from '../../dev-images/products/product-20-000.png';
+// import sweatShirt from '../../dev-images/products/product-30-fff.png';
+// import sweatShirt2 from '../../dev-images/products/product-30-7e7e7e.png';
+// import sweatShirt3 from '../../dev-images/products/product-30-000.png';
 
 import scheduleBackground from './schedule.jpg';
 import clothingBackground from './clothing.jpg';
@@ -68,6 +68,11 @@ import bindingBackground from './binding.jpg';
 
 const Home = () => {
   // -------------------- STATE AND CONSTANTS -------------------
+  const [selectedCatalog, setSelectedCatalog] = useState('regalos');
+
+  const { products } = useSelector((state) => state.products);
+  const dispatch = useDispatch();
+
   const containerVariants = {
     hidden: {
       opacity: 0,
@@ -76,6 +81,12 @@ const Home = () => {
       opacity: 1,
     },
   };
+  // -------------------- USE EFFECT'S -------------------
+  useEffect(() => {
+    dispatch(fetchProductsHome(selectedCatalog));
+    return () => {};
+  }, [selectedCatalog, dispatch]);
+
   return (
     <PageGrid
       variants={containerVariants}
@@ -153,35 +164,30 @@ const Home = () => {
         <Line />
         <Title>Más vendidos</Title>
         <ButtonsContainer>
-          <CatalogButton className='active'>Agendas</CatalogButton>
-          <CatalogButton>Ropa</CatalogButton>
-          <CatalogButton>Regalos</CatalogButton>
+          <CatalogButton
+            className={selectedCatalog === 'agendas' && 'active'}
+            onClick={() => setSelectedCatalog('agendas')}
+          >
+            Agendas
+          </CatalogButton>
+          <CatalogButton
+            className={selectedCatalog === 'ropa' && 'active'}
+            onClick={() => setSelectedCatalog('ropa')}
+          >
+            Ropa
+          </CatalogButton>
+          <CatalogButton
+            className={selectedCatalog === 'regalos' && 'active'}
+            onClick={() => setSelectedCatalog('regalos')}
+          >
+            Regalos
+          </CatalogButton>
         </ButtonsContainer>
         <ProductsGrid>
-          <ProductCard productImage={agenda} title='Agenda 2022' tag='AGEN' />
-          <ProductCard productImage={agenda2} title='Agenda 2022' tag='AGEN' />
-          <ProductCard productImage={agenda3} title='Agenda 2022' tag='AGEN' />
-          <ProductCard productImage={cup} title='Agenda 2022' tag='AGEN' />
-          <ProductCard productImage={cup2} title='Agenda 2022' tag='AGEN' />
-          <ProductCard productImage={cup3} title='Agenda 2022' tag='AGEN' />
-          <ProductCard productImage={shirt} title='Agenda 2022' tag='AGEN' />
-          <ProductCard productImage={shirt2} title='Agenda 2022' tag='AGEN' />
-          <ProductCard productImage={shirt3} title='Agenda 2022' tag='AGEN' />
-          <ProductCard
-            productImage={sweatShirt}
-            title='Agenda 2022'
-            tag='AGEN'
-          />
-          <ProductCard
-            productImage={sweatShirt2}
-            title='Agenda 2022'
-            tag='AGEN'
-          />
-          <ProductCard
-            productImage={sweatShirt3}
-            title='Agenda 2022'
-            tag='AGEN'
-          />
+          {products.map((product) => {
+            return <ProductCard key={product._id} product={product} />;
+          })}
+          {/* <ProductCard productImage={agenda} title='Agenda 2022' tag='AGEN' /> */}
         </ProductsGrid>
       </ProductsContainer>
 

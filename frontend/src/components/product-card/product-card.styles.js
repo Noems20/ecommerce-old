@@ -40,7 +40,7 @@ export const Button = styled.button`
   text-decoration: none;
   font-size: 1.6rem;
   font-weight: 600;
-  padding: 10px 20px;
+  padding: 1rem 2rem;
   background: #fff;
   border-radius: 4px;
   border: 1px solid #000;
@@ -106,7 +106,7 @@ export const Card = styled.div`
   }
 
   &:hover ${ImageBox} {
-    height: 63%;
+    height: 59%;
     transition: all 1s ease;
   }
 
@@ -134,8 +134,11 @@ export const Image = styled.img`
 
 export const Title = styled.h1`
   font-weight: 600;
+  text-align: center;
+  line-height: 1.2;
 `;
 
 export const Price = styled.h1`
   font-weight: 400;
+  text-align: center;
 `;

@@ -30,27 +30,73 @@ import {
   SizeItem,
 } from './product.styles';
 
-// IMAGENES
-import agenda from '../../dev-images/products/product-31-87253b.png';
-import agenda2 from '../../dev-images/products/product-31-1e2e4a.png';
-import agenda3 from '../../dev-images/products/product-31-0e5e4f.png';
-import cup from '../../dev-images/products/product-5-fff.png';
-import cup2 from '../../dev-images/products/product-5-000.png';
-import cup3 from '../../dev-images/products/product-5-828282.png';
-import shirt from '../../dev-images/products/product-20-fff.png';
-import shirt2 from '../../dev-images/products/product-20-817f83.png';
-import shirt3 from '../../dev-images/products/product-20-000.png';
-import sweatShirt from '../../dev-images/products/product-30-fff.png';
-import sweatShirt2 from '../../dev-images/products/product-30-7e7e7e.png';
-import sweatShirt3 from '../../dev-images/products/product-30-000.png';
-
-const Product = ({ history }) => {
+const Product = () => {
   // --------------------------------- STATE AND CONSTANTS ----------------------------
+  const product = {
+    _id: '61a179b861a268b3e16b8b05',
+    name: 'Taza de Dallas Mavericks',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum, sapien ac tempor blandit, nulla ante semper urna, non gravida erat mauris eu diam. Aenean finibus, eros sit amet semper ornare, dui magna pellentesque purus, et malesuada ligula metus tincidunt mauris. Phasellus vulputate sed eros vel facilisis.',
+    specifications: [
+      '100% cerámica',
+      'Volumen de 250ml',
+      'Altura: 9.2cm',
+      'Diametro: 8.5cm',
+    ],
+    extraimages: [],
+    catalog: 'regalos', // 'ropa', 'agendas', 'regalos', 'encuadernados'
+    category: 'general', // ropa -> 'shirt', 'sweatshirt',  everything else -> 'general
+    for: 'general', // ropa -> 'male', 'female', 'boy', 'girl', everything else -> 'general
+    price: 225,
+    sold: 15,
+    subcategory: {
+      color: [
+        {
+          colorname: 'fff',
+          image: 'product-61a179b861a268b3e16b8b05-fff.png',
+          sizes: [
+            {
+              size: 'general',
+              quantity: 15,
+            },
+          ],
+        },
+        {
+          colorname: '828282',
+          image: 'product-61a179b861a268b3e16b8b05-828282.png',
+          sizes: [
+            {
+              size: 'general',
+              quantity: 12,
+            },
+          ],
+        },
+        {
+          colorname: '000',
+          image: 'product-61a179b861a268b3e16b8b05-000.png',
+          sizes: [
+            {
+              size: 'general',
+              quantity: 9,
+            },
+          ],
+        },
+      ],
+    },
+  };
+
   const [qty, setQty] = useState(1);
-  const [focusImage, setFocusImage] = useState('');
+  const [selectedSubCategory, setSelectedSubCategory] = useState(
+    product.subcategory.color[0]
+  );
+  const [selectedColor, setSelectedColor] = useState(
+    `#${selectedSubCategory.colorname}`
+  );
+  const [focusImage, setFocusImage] = useState(selectedSubCategory.image);
+  const [selectedSize, setSelectedSize] = useState(
+    selectedSubCategory.sizes[0].size
+  );
   const [collapse, setCollapse] = useState(false);
-  const [selectedSize, setSelectedSize] = useState('XS');
-  const [selectedColor, setSelectedColor] = useState('#32a852');
   const limit = 14;
 
   const imageVariants = {
@@ -89,9 +135,6 @@ const Product = ({ history }) => {
   }, []);
 
   // --------------------------------- HANDLERS -------------------------
-  const addToCartHandler = () => {
-    history.push('/carrito');
-  };
 
   const handleQuantityChange = (e) => {
     const { value } = e.target;
@@ -107,84 +150,31 @@ const Product = ({ history }) => {
     }
   };
 
+  const handleSubcategoryChange = (index) => {
+    // console.log(index);
+    setSelectedSubCategory(product.subcategory.color[index]);
+    setSelectedColor(`#${product.subcategory.color[index].colorname}`);
+    setFocusImage(product.subcategory.color[index].image);
+    setSelectedSize(product.subcategory.color[index].sizes[0].size);
+  };
+
   const productImages = (
     <>
       <ImageContainer>
-        <ImageMagnifier src={focusImage ? focusImage : agenda} width={'56%'} />
+        <ImageMagnifier src={`/img/products/${focusImage}`} width={'56%'} />
       </ImageContainer>
       <SecondaryImagesContainer>
-        <ProductImage
-          src={agenda}
-          onClick={() => setFocusImage(agenda)}
-          variants={imageVariants}
-          whileHover='hover'
-        />
-        <ProductImage
-          src={agenda2}
-          onClick={() => setFocusImage(agenda2)}
-          variants={imageVariants}
-          whileHover='hover'
-        />
-        <ProductImage
-          src={agenda3}
-          onClick={() => setFocusImage(agenda3)}
-          variants={imageVariants}
-          whileHover='hover'
-        />
-        <ProductImage
-          src={cup}
-          onClick={() => setFocusImage(cup)}
-          variants={imageVariants}
-          whileHover='hover'
-        />
-        <ProductImage
-          src={cup2}
-          onClick={() => setFocusImage(cup2)}
-          variants={imageVariants}
-          whileHover='hover'
-        />
-        <ProductImage
-          src={cup3}
-          onClick={() => setFocusImage(cup3)}
-          variants={imageVariants}
-          whileHover='hover'
-        />
-        <ProductImage
-          src={shirt}
-          onClick={() => setFocusImage(shirt)}
-          variants={imageVariants}
-          whileHover='hover'
-        />
-        <ProductImage
-          src={shirt2}
-          onClick={() => setFocusImage(shirt2)}
-          variants={imageVariants}
-          whileHover='hover'
-        />
-        <ProductImage
-          src={shirt3}
-          onClick={() => setFocusImage(shirt3)}
-          variants={imageVariants}
-          whileHover='hover'
-        />
-        <ProductImage
-          src={sweatShirt}
-          onClick={() => setFocusImage(sweatShirt)}
-          variants={imageVariants}
-          whileHover='hover'
-        />
-        <ProductImage
-          src={sweatShirt2}
-          onClick={() => setFocusImage(sweatShirt2)}
-          variants={imageVariants}
-          whileHover='hover'
-        />
-        <ProductImage
-          src={sweatShirt3}
-          onClick={() => setFocusImage(sweatShirt3)}
-          variants={imageVariants}
-          whileHover='hover'
-        />
+        {product.subcategory.color.map((color, index) => {
+          return (
+            <ProductImage
+              key={color._id}
+              src={`/img/products/${color.image}`}
+              onClick={() => handleSubcategoryChange(index)}
+              variants={imageVariants}
+              whileHover='hover'
+            />
+          );
+        })}
       </SecondaryImagesContainer>
     </>
   );
@@ -193,93 +183,55 @@ const Product = ({ history }) => {
     <ProductContainer>
       {!collapse && productImages}
       <InfoContainer>
-        <ProductTitle>Agenda de la mejor UAD - 2022</ProductTitle>
+        <ProductTitle>{product.name}</ProductTitle>
         <ProductPrice>
-          $750<span>Impuesto incluido.</span>
+          {`$${product.price}`}
+          <span>Impuesto incluido.</span>
         </ProductPrice>
         {/* ------------- RATING ------------- */}
-        <Rating value={4.5} text={`8 reseñas`} />
+        <Rating
+          value={product.ratingsAverage}
+          text={`${product.ratingsQuantity} reseñas`}
+        />
         {/* ------------- COLORS -------------- */}
         <DetailsContainer>
           <DetailsTitle>Color</DetailsTitle>
           <ColorItemsContainer>
-            <ColorDot
-              color={'#32a852'}
-              className={selectedColor === '#32a852' ? 'selected' : ''}
-              onClick={() => setSelectedColor('#32a852')}
-            />
-            <ColorDot
-              color={'#a83232'}
-              className={selectedColor === '#a83232' ? 'selected' : ''}
-              onClick={() => setSelectedColor('#a83232')}
-            />
-            <ColorDot
-              color={'#8332a8'}
-              className={selectedColor === '#8332a8' ? 'selected' : ''}
-              onClick={() => setSelectedColor('#8332a8')}
-            />
-            <ColorDot
-              color={'#5a90db'}
-              className={selectedColor === '#5a90db' ? 'selected' : ''}
-              onClick={() => setSelectedColor('#5a90db')}
-            />
-            <ColorDot
-              color={'#dbb45a'}
-              className={selectedColor === '#dbb45a' ? 'selected' : ''}
-              onClick={() => setSelectedColor('#dbb45a')}
-            />
-            <ColorDot
-              color={'#000'}
-              className={selectedColor === '#000' ? 'selected' : ''}
-              onClick={() => setSelectedColor('#000')}
-            />
-            <ColorDot
-              color={'#fff'}
-              className={selectedColor === '#fff' ? 'selected' : ''}
-              onClick={() => setSelectedColor('#fff')}
-            />
+            {product.subcategory.color.map((color, index) => {
+              return (
+                <ColorDot
+                  key={color._id}
+                  color={`#${color.colorname}`}
+                  className={
+                    selectedColor === `#${color.colorname}` ? 'selected' : ''
+                  }
+                  onClick={() => handleSubcategoryChange(index)}
+                />
+              );
+            })}
           </ColorItemsContainer>
         </DetailsContainer>
         {/* ------------- SIZES -------------- */}
         <DetailsContainer>
           <DetailsTitle>Talla</DetailsTitle>
           <SizeItemsContainer>
-            <SizeItem
+            {/* <SizeItem
               className={selectedSize === 'XS' ? 'selected' : ''}
               onClick={() => setSelectedSize('XS')}
             >
               XS
-            </SizeItem>
-            <SizeItem
-              className={selectedSize === 'S' ? 'selected' : ''}
-              onClick={() => setSelectedSize('S')}
-            >
-              S
-            </SizeItem>
-            <SizeItem
-              className={selectedSize === 'M' ? 'selected' : ''}
-              onClick={() => setSelectedSize('M')}
-            >
-              M
-            </SizeItem>
-            <SizeItem
-              className={selectedSize === 'L' ? 'selected' : ''}
-              onClick={() => setSelectedSize('L')}
-            >
-              L
-            </SizeItem>
-            <SizeItem
-              className={selectedSize === 'XL' ? 'selected' : ''}
-              onClick={() => setSelectedSize('XL')}
-            >
-              XL
-            </SizeItem>
-            <SizeItem
-              className={selectedSize === 'XXL' ? 'selected' : ''}
-              onClick={() => setSelectedSize('XXL')}
-            >
-              XXL
-            </SizeItem>
+            </SizeItem> */}
+            {selectedSubCategory.sizes.map((size) => {
+              return (
+                <SizeItem
+                  key={size._id}
+                  className={selectedSize === size.size ? 'selected' : ''}
+                  onClick={() => setSelectedSize(size.size)}
+                >
+                  {size.size}
+                </SizeItem>
+              );
+            })}
           </SizeItemsContainer>
         </DetailsContainer>
         {/* ------------- CANTIDAD -------------- */}
@@ -294,37 +246,22 @@ const Product = ({ history }) => {
           />
         </DetailsContainer>
         {/* ------------- ADD TO CART ------------- */}
-        <CustomButton primary onClick={addToCartHandler}>
-          Añadir a carrito
-        </CustomButton>
+        <CustomButton primary>Añadir a carrito</CustomButton>
         {/* ------------ PRODUCT IMGAES ------------- */}
         {collapse && productImages}
 
         {/* ------------- DESCRIPTION ------------- */}
         <Description>
           <InfoTitle>Descripción</InfoTitle>
-          <DescriptionText>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            faucibus efficitur nisi. Cras pretium in ante sed feugiat. Donec
-            vestibulum risus sit amet nisi pharetra, luctus luctus ante
-            pellentesque. Sed lacus velit, pretium ut nisl ac, euismod feugiat
-            felis. Fusce mi libero, pretium sit amet pretium sed, rutrum vitae
-            lacus.
-          </DescriptionText>
+          <DescriptionText>{product.description}</DescriptionText>
         </Description>
         {/* ------------- MEASUREMENTS ------------- */}
         <Description>
           <InfoTitle>Especifiaciones</InfoTitle>
           <List>
-            <ListItem>
-              <strong>Ancho:</strong> 55cm^2
-            </ListItem>
-            <ListItem>
-              <strong>Alto:</strong> 55cm^2
-            </ListItem>
-            <ListItem>
-              <strong>Profundidad:</strong> 55cm^2
-            </ListItem>
+            {product.specifications.map((specification, index) => {
+              return <ListItem key={index}>{specification}</ListItem>;
+            })}
           </List>
         </Description>
       </InfoContainer>

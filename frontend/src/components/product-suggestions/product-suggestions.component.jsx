@@ -11,24 +11,24 @@ import {
 } from './product-suggestions.styles';
 
 // IMAGES
-import agenda1 from '../../dev-images/agenda1.png';
-import agenda2 from '../../dev-images/agenda2.png';
-import agenda3 from '../../dev-images/agenda3.png';
-import agenda4 from '../../dev-images/agenda4.png';
+// import agenda1 from '../../dev-images/agenda1.png';
+// import agenda2 from '../../dev-images/agenda2.png';
+// import agenda3 from '../../dev-images/agenda3.png';
+// import agenda4 from '../../dev-images/agenda4.png';
 
 const ProductSuggestions = () => {
   return (
     <Container>
       <ProductSuggestionsTitle>Te podria interesar</ProductSuggestionsTitle>
       <ProductsGrid>
-        <ProductCard productImage={agenda1} title='Agenda 2022' tag='AGEN' />
+        {/* <ProductCard productImage={agenda1} title='Agenda 2022' tag='AGEN' />
         <ProductCard
           productImage={agenda2}
           title='Encuadernado azul'
           tag='AGEN'
         />
         <ProductCard productImage={agenda3} title='Agenda MTIE' tag='AGEN' />
-        <ProductCard productImage={agenda4} title='Agenda UAD' tag='AGEN' />
+        <ProductCard productImage={agenda4} title='Agenda UAD' tag='AGEN' /> */}
       </ProductsGrid>
     </Container>
   );

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useParams } from 'react-router';
 
 // REDUX
 
@@ -12,8 +13,9 @@ import { PageGrid } from '../../general.styles';
 import { Line } from './product.page.styles';
 
 // IMAGENES
-const ProductPage = ({ match, history, product }) => {
+const ProductPage = () => {
   // --------------------------------- STATE AND CONSTANTS ----------------------------
+  const { slug } = useParams();
 
   // ------------------------------ USE EFFECT'S --------------------------------
 

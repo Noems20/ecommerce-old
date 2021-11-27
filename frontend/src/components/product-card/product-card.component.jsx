@@ -16,7 +16,7 @@ import {
   Button,
 } from './product-card.styles';
 
-const ProductCard = ({ title, productImage }) => {
+const ProductCard = ({ product }) => {
   const containerVariants = {
     hidden: {
       y: '100vh',
@@ -37,19 +37,25 @@ const ProductCard = ({ title, productImage }) => {
     <Container>
       <Card>
         <ImageBox>
-          <Image src={productImage} alt='Product' />
+          <Image
+            src={`/img/products/${product.subcategory.color[0].image}`}
+            alt='Product'
+          />
         </ImageBox>
         <ContentBox>
-          <Title>{title}</Title>
-          <Price>$750</Price>
-          <Rating value={4.5} text='4.5 de 5' />
+          <Title>{product.name}</Title>
+          <Price>{`$${product.price}`}</Price>
+          <Rating
+            value={product.ratingsAverage}
+            text={`${product.ratingsAverage} de 5`}
+          />
           <Button
             variants={containerVariants}
             initial='hidden'
             animate='visible'
             exit='hidden'
             as={Link}
-            to='#'
+            to={`producto/${product.slug}`}
           >
             Comprar ahora
           </Button>

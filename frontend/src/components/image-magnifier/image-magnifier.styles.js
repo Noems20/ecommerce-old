@@ -2,12 +2,11 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   position: relative;
-  width: 56%;
+  height: 100%;
+  width: max-content;
 
-  @media only screen and (max-width: 500px) {
-    width: 70%;
-  }
-  @media only screen and (max-width: 400px) {
-    width: 90%;
+  & img {
+    max-width: 100%;
+    max-height: 100%;
   }
 `;

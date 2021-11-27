@@ -1,184 +1,554 @@
 const products = [
+  // --------------------------------------------------------------
+  // TAZA DE DALLAS MAVERICKS 1
+  // --------------------------------------------------------------
   {
-    _id: '5c8a1d5b0190b214360dc057',
-    name: 'Jonas Schmedtmann',
-    email: 'admin@natours.io',
-    verified: true,
-    role: 'admin',
-    photo: 'user-1.jpg',
-    password: '$2a$12$Q0grHjH9PXc6SxivC8m12.2mZJ9BbKcgFpwSG4Y1ZEII8HJVzWeyS',
+    _id: '61a179b861a268b3e16b8b05',
+    name: 'Taza de Dallas Mavericks',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum, sapien ac tempor blandit, nulla ante semper urna, non gravida erat mauris eu diam. Aenean finibus, eros sit amet semper ornare, dui magna pellentesque purus, et malesuada ligula metus tincidunt mauris. Phasellus vulputate sed eros vel facilisis.',
+    specifications: [
+      '100% cerámica',
+      'Volumen de 250ml',
+      'Altura: 9.2cm',
+      'Diametro: 8.5cm',
+    ],
+    extraimages: [],
+    catalog: 'regalos', // 'ropa', 'agendas', 'regalos', 'encuadernados'
+    category: 'general', // ropa -> 'shirt', 'sweatshirt',  everything else -> 'general
+    for: 'general', // ropa -> 'male', 'female', 'boy', 'girl', everything else -> 'general
+    price: 225,
+    sold: 15,
+    subcategory: {
+      color: [
+        {
+          colorname: 'fff',
+          image: 'product-61a179b861a268b3e16b8b05-fff.png',
+          sizes: [
+            {
+              size: 'general',
+              quantity: 15,
+            },
+          ],
+        },
+        {
+          colorname: '828282',
+          image: 'product-61a179b861a268b3e16b8b05-828282.png',
+          sizes: [
+            {
+              size: 'general',
+              quantity: 12,
+            },
+          ],
+        },
+        {
+          colorname: '000',
+          image: 'product-61a179b861a268b3e16b8b05-000.png',
+          sizes: [
+            {
+              size: 'general',
+              quantity: 9,
+            },
+          ],
+        },
+      ],
+    },
   },
+  // --------------------------------------------------------------
+  // TAZA DE LOS ANGELES LAKERS 2
+  // --------------------------------------------------------------
   {
-    _id: '5c8a1dfa2f8fb814b56fa181',
-    name: 'Lourdes Browning',
-    email: 'loulou@example.com',
-    verified: true,
-    role: 'user',
-    photo: 'user-2.jpg',
-    password: '$2a$12$hP1h2pnNp7wgyZNRwPsOTeZuNzWBv7vHmsR3DT/OaPSUBQT.y0S..',
+    _id: '61a18682230136eb2b49ccfe',
+    name: 'Taza de Los Angeles Lakers',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum, sapien ac tempor blandit, nulla ante semper urna, non gravida erat mauris eu diam. Aenean finibus, eros sit amet semper ornare, dui magna pellentesque purus, et malesuada ligula metus tincidunt mauris. Phasellus vulputate sed eros vel facilisis.',
+    specifications: [
+      '100% cerámica',
+      'Volumen de 250ml',
+      'Altura: 9.2cm',
+      'Diametro: 8.5cm',
+    ],
+    extraimages: [],
+    catalog: 'regalos', // 'ropa', 'agendas', 'regalos', 'encuadernados'
+    category: 'general', // ropa -> 'shirt', 'sweatshirt',  everything else -> 'general
+    for: 'general', // ropa -> 'male', 'female', 'boy', 'girl', everything else -> 'general
+    price: 225,
+    sold: 14,
+    subcategory: {
+      color: [
+        {
+          colorname: 'fff',
+          image: 'product-61a18682230136eb2b49ccfe-fff.png',
+          sizes: [
+            {
+              size: 'general',
+              quantity: 15,
+            },
+          ],
+        },
+        {
+          colorname: '828282',
+          image: 'product-61a18682230136eb2b49ccfe-828282.png',
+          sizes: [
+            {
+              size: 'general',
+              quantity: 12,
+            },
+          ],
+        },
+        {
+          colorname: '000',
+          image: 'product-61a18682230136eb2b49ccfe-000.png',
+          sizes: [
+            {
+              size: 'general',
+              quantity: 9,
+            },
+          ],
+        },
+      ],
+    },
   },
+  // --------------------------------------------------------------
+  // TAZA DE CHICAGO BULLS 3
+  // --------------------------------------------------------------
   {
-    _id: '5c8a1e1a2f8fb814b56fa182',
-    name: 'Sophie Louise Hart',
-    email: 'sophie@example.com',
-    verified: true,
-    role: 'user',
-    photo: 'user-3.jpg',
-    password: '$2a$12$9nFqToiTmjgfFVJiQvjmreLt4k8X4gGYCETGapSZOb2hHa55t0dDq',
+    _id: '61a1868c54817f635b177def',
+    name: 'Taza de Chicago Bulls',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum, sapien ac tempor blandit, nulla ante semper urna, non gravida erat mauris eu diam. Aenean finibus, eros sit amet semper ornare, dui magna pellentesque purus, et malesuada ligula metus tincidunt mauris. Phasellus vulputate sed eros vel facilisis.',
+    specifications: [
+      '100% cerámica',
+      'Volumen de 250ml',
+      'Altura: 9.2cm',
+      'Diametro: 8.5cm',
+    ],
+    extraimages: [],
+    catalog: 'regalos', // 'ropa', 'agendas', 'regalos', 'encuadernados'
+    category: 'general', // ropa -> 'shirt', 'sweatshirt',  everything else -> 'general
+    for: 'general', // ropa -> 'male', 'female', 'boy', 'girl', everything else -> 'general
+    price: 225,
+    sold: 13,
+    subcategory: {
+      color: [
+        {
+          colorname: 'fff',
+          image: 'product-61a1868c54817f635b177def-fff.png',
+          sizes: [
+            {
+              size: 'general',
+              quantity: 15,
+            },
+          ],
+        },
+        {
+          colorname: '828282',
+          image: 'product-61a1868c54817f635b177def-828282.png',
+          sizes: [
+            {
+              size: 'general',
+              quantity: 12,
+            },
+          ],
+        },
+        {
+          colorname: '000',
+          image: 'product-61a1868c54817f635b177def-000.png',
+          sizes: [
+            {
+              size: 'general',
+              quantity: 9,
+            },
+          ],
+        },
+      ],
+    },
   },
+  // --------------------------------------------------------------
+  // TAZA DE GOLDEN STATE WARRIORS 4
+  // --------------------------------------------------------------
   {
-    _id: '5c8a1ec62f8fb814b56fa183',
-    name: 'Ayla Cornell',
-    email: 'ayls@example.com',
-    verified: true,
-    role: 'user',
-    photo: 'user-4.jpg',
-    password: '$2a$12$tm33.M/4pfEbZF64WbFuHuVFv85v4qEhi.ik8njbud7yaoqCZpjiy',
+    _id: '61a1878396a2889688d08f97',
+    name: 'Taza de Golden State Warriors',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum, sapien ac tempor blandit, nulla ante semper urna, non gravida erat mauris eu diam. Aenean finibus, eros sit amet semper ornare, dui magna pellentesque purus, et malesuada ligula metus tincidunt mauris. Phasellus vulputate sed eros vel facilisis.',
+    specifications: [
+      '100% cerámica',
+      'Volumen de 250ml',
+      'Altura: 9.2cm',
+      'Diametro: 8.5cm',
+    ],
+    extraimages: [],
+    catalog: 'regalos', // 'ropa', 'agendas', 'regalos', 'encuadernados'
+    category: 'general', // ropa -> 'shirt', 'sweatshirt',  everything else -> 'general
+    for: 'general', // ropa -> 'male', 'female', 'boy', 'girl', everything else -> 'general
+    price: 225,
+    sold: 12,
+    subcategory: {
+      color: [
+        {
+          colorname: 'fff',
+          image: 'product-61a1878396a2889688d08f97-fff.png',
+          sizes: [
+            {
+              size: 'general',
+              quantity: 15,
+            },
+          ],
+        },
+        {
+          colorname: '828282',
+          image: 'product-61a1878396a2889688d08f97-828282.png',
+          sizes: [
+            {
+              size: 'general',
+              quantity: 12,
+            },
+          ],
+        },
+        {
+          colorname: '000',
+          image: 'product-61a1878396a2889688d08f97-000.png',
+          sizes: [
+            {
+              size: 'general',
+              quantity: 9,
+            },
+          ],
+        },
+      ],
+    },
   },
+  // --------------------------------------------------------------
+  // TAZA DE BOSTON CELTICS 5
+  // --------------------------------------------------------------
   {
-    _id: '5c8a1f292f8fb814b56fa184',
-    name: 'Leo Gillespie',
-    email: 'leo@example.com',
-    verified: true,
-    role: 'employee',
-    photo: 'user-5.jpg',
-    password: '$2a$12$OOPr90tBEBF1Iho3ox0Jde0O/WXUR0VLA5xdh6tWcu7qb.qOCvSg2',
+    _id: '61a187b4be8bef3ce91cddb2',
+    name: 'Taza de Boston Celtics',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum, sapien ac tempor blandit, nulla ante semper urna, non gravida erat mauris eu diam. Aenean finibus, eros sit amet semper ornare, dui magna pellentesque purus, et malesuada ligula metus tincidunt mauris. Phasellus vulputate sed eros vel facilisis.',
+    specifications: [
+      '100% cerámica',
+      'Volumen de 250ml',
+      'Altura: 9.2cm',
+      'Diametro: 8.5cm',
+    ],
+    extraimages: [],
+    catalog: 'regalos', // 'ropa', 'agendas', 'regalos', 'encuadernados'
+    category: 'general', // ropa -> 'shirt', 'sweatshirt',  everything else -> 'general
+    for: 'general', // ropa -> 'male', 'female', 'boy', 'girl', everything else -> 'general
+    price: 225,
+    sold: 11,
+    subcategory: {
+      color: [
+        {
+          colorname: 'fff',
+          image: 'product-61a187b4be8bef3ce91cddb2-fff.png',
+          sizes: [
+            {
+              size: 'general',
+              quantity: 15,
+            },
+          ],
+        },
+        {
+          colorname: '828282',
+          image: 'product-61a187b4be8bef3ce91cddb2-828282.png',
+          sizes: [
+            {
+              size: 'general',
+              quantity: 12,
+            },
+          ],
+        },
+        {
+          colorname: '000',
+          image: 'product-61a187b4be8bef3ce91cddb2-000.png',
+          sizes: [
+            {
+              size: 'general',
+              quantity: 9,
+            },
+          ],
+        },
+      ],
+    },
   },
+  // --------------------------------------------------------------
+  // TAZA DE FC BARCELONA 6
+  // --------------------------------------------------------------
   {
-    _id: '5c8a1f4e2f8fb814b56fa185',
-    name: 'Jennifer Hardy',
-    email: 'jennifer@example.com',
-    verified: true,
-    role: 'employee',
-    photo: 'user-6.jpg',
-    password: '$2a$12$XCXvvlhRBJ8CydKH09v1v.jpg0hB9gVVfMVEoz4MsxqL9zb5PrF42',
+    _id: '61a18816dd3050a0a263e348',
+    name: 'Taza de FC BARCELONA',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum, sapien ac tempor blandit, nulla ante semper urna, non gravida erat mauris eu diam. Aenean finibus, eros sit amet semper ornare, dui magna pellentesque purus, et malesuada ligula metus tincidunt mauris. Phasellus vulputate sed eros vel facilisis.',
+    specifications: [
+      '100% cerámica',
+      'Volumen de 250ml',
+      'Altura: 9.2cm',
+      'Diametro: 8.5cm',
+    ],
+    extraimages: [],
+    catalog: 'regalos', // 'ropa', 'agendas', 'regalos', 'encuadernados'
+    category: 'general', // ropa -> 'shirt', 'sweatshirt',  everything else -> 'general
+    for: 'general', // ropa -> 'male', 'female', 'boy', 'girl', everything else -> 'general
+    price: 225,
+    sold: 10,
+    subcategory: {
+      color: [
+        {
+          colorname: 'fff',
+          image: 'product-61a18816dd3050a0a263e348-fff.png',
+          sizes: [
+            {
+              size: 'general',
+              quantity: 15,
+            },
+          ],
+        },
+        {
+          colorname: '828282',
+          image: 'product-61a18816dd3050a0a263e348-828282.png',
+          sizes: [
+            {
+              size: 'general',
+              quantity: 12,
+            },
+          ],
+        },
+        {
+          colorname: '000',
+          image: 'product-61a18816dd3050a0a263e348-000.png',
+          sizes: [
+            {
+              size: 'general',
+              quantity: 9,
+            },
+          ],
+        },
+      ],
+    },
   },
+  // --------------------------------------------------------------
+  // TAZA DE LOS ANGELES CLIPPERS 7
+  // --------------------------------------------------------------
   {
-    _id: '5c8a201e2f8fb814b56fa186',
-    name: 'Kate Morrison',
-    email: 'kate@example.com',
-    verified: true,
-    role: 'employee',
-    photo: 'user-7.jpg',
-    password: '$2a$12$II1F3aBSFDF3Xz7iB4rk/.a2dogwkClMN5gGCWrRlILrG1xtJG7q6',
+    _id: '61a188829d081e2a31e6e545',
+    name: 'Taza de Los Angeles Clippers',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum, sapien ac tempor blandit, nulla ante semper urna, non gravida erat mauris eu diam. Aenean finibus, eros sit amet semper ornare, dui magna pellentesque purus, et malesuada ligula metus tincidunt mauris. Phasellus vulputate sed eros vel facilisis.',
+    specifications: [
+      '100% cerámica',
+      'Volumen de 250ml',
+      'Altura: 9.2cm',
+      'Diametro: 8.5cm',
+    ],
+    extraimages: [],
+    catalog: 'regalos', // 'ropa', 'agendas', 'regalos', 'encuadernados'
+    category: 'general', // ropa -> 'shirt', 'sweatshirt',  everything else -> 'general
+    for: 'general', // ropa -> 'male', 'female', 'boy', 'girl', everything else -> 'general
+    price: 225,
+    sold: 9,
+    subcategory: {
+      color: [
+        {
+          colorname: 'fff',
+          image: 'product-61a188829d081e2a31e6e545-fff.png',
+          sizes: [
+            {
+              size: 'general',
+              quantity: 15,
+            },
+          ],
+        },
+        {
+          colorname: '828282',
+          image: 'product-61a188829d081e2a31e6e545-828282.png',
+          sizes: [
+            {
+              size: 'general',
+              quantity: 12,
+            },
+          ],
+        },
+        {
+          colorname: '000',
+          image: 'product-61a188829d081e2a31e6e545-000.png',
+          sizes: [
+            {
+              size: 'general',
+              quantity: 9,
+            },
+          ],
+        },
+      ],
+    },
   },
+  // --------------------------------------------------------------
+  // TAZA DE REAL MADRID 8
+  // --------------------------------------------------------------
   {
-    _id: '5c8a20d32f8fb814b56fa187',
-    name: 'Eliana Stout',
-    email: 'eliana@example.com',
-    verified: true,
-    role: 'user',
-    photo: 'user-8.jpg',
-    password: '$2a$12$Jb/ILhdDV.ZpnPMu19xfe.NRh5ntE2LzNMNcsty05QWwRbmFFVMKO',
+    _id: '61a188b8c142167b39f0abff',
+    name: 'Taza de Real Madrid',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum, sapien ac tempor blandit, nulla ante semper urna, non gravida erat mauris eu diam. Aenean finibus, eros sit amet semper ornare, dui magna pellentesque purus, et malesuada ligula metus tincidunt mauris. Phasellus vulputate sed eros vel facilisis.',
+    specifications: [
+      '100% cerámica',
+      'Volumen de 250ml',
+      'Altura: 9.2cm',
+      'Diametro: 8.5cm',
+    ],
+    extraimages: [],
+    catalog: 'regalos', // 'ropa', 'agendas', 'regalos', 'encuadernados'
+    category: 'general', // ropa -> 'shirt', 'sweatshirt',  everything else -> 'general
+    for: 'general', // ropa -> 'male', 'female', 'boy', 'girl', everything else -> 'general
+    price: 225,
+    sold: 8,
+    subcategory: {
+      color: [
+        {
+          colorname: 'fff',
+          image: 'product-61a188b8c142167b39f0abff-fff.png',
+          sizes: [
+            {
+              size: 'general',
+              quantity: 15,
+            },
+          ],
+        },
+        {
+          colorname: '828282',
+          image: 'product-61a188b8c142167b39f0abff-828282.png',
+          sizes: [
+            {
+              size: 'general',
+              quantity: 12,
+            },
+          ],
+        },
+        {
+          colorname: '000',
+          image: 'product-61a188b8c142167b39f0abff-000.png',
+          sizes: [
+            {
+              size: 'general',
+              quantity: 9,
+            },
+          ],
+        },
+      ],
+    },
   },
+  // --------------------------------------------------------------
+  // TAZA DE PARÍS SAINT-GERMAIN 9
+  // --------------------------------------------------------------
   {
-    _id: '5c8a211f2f8fb814b56fa188',
-    name: 'Cristian Vega',
-    email: 'chris@example.com',
-    verified: true,
-    role: 'user',
-    photo: 'user-9.jpg',
-    password: '$2a$12$r7/jtdWtzNfrfC7zw3uS.eDJ3Bs.8qrO31ZdbMljL.lUY0TAsaAL6',
+    _id: '61a1891af82282146fd1ca41',
+    name: 'Taza de París Saint-Germain',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum, sapien ac tempor blandit, nulla ante semper urna, non gravida erat mauris eu diam. Aenean finibus, eros sit amet semper ornare, dui magna pellentesque purus, et malesuada ligula metus tincidunt mauris. Phasellus vulputate sed eros vel facilisis.',
+    specifications: [
+      '100% cerámica',
+      'Volumen de 250ml',
+      'Altura: 9.2cm',
+      'Diametro: 8.5cm',
+    ],
+    extraimages: [],
+    catalog: 'regalos', // 'ropa', 'agendas', 'regalos', 'encuadernados'
+    category: 'general', // ropa -> 'shirt', 'sweatshirt',  everything else -> 'general
+    for: 'general', // ropa -> 'male', 'female', 'boy', 'girl', everything else -> 'general
+    price: 225,
+    sold: 7,
+    subcategory: {
+      color: [
+        {
+          colorname: 'fff',
+          image: 'product-61a1891af82282146fd1ca41-fff.png',
+          sizes: [
+            {
+              size: 'general',
+              quantity: 15,
+            },
+          ],
+        },
+        {
+          colorname: '828282',
+          image: 'product-61a1891af82282146fd1ca41-828282.png',
+          sizes: [
+            {
+              size: 'general',
+              quantity: 12,
+            },
+          ],
+        },
+        {
+          colorname: '000',
+          image: 'product-61a1891af82282146fd1ca41-000.png',
+          sizes: [
+            {
+              size: 'general',
+              quantity: 9,
+            },
+          ],
+        },
+      ],
+    },
   },
+  // --------------------------------------------------------------
+  // TAZA DE FC BAYERN MUNCHEN 10
+  // --------------------------------------------------------------
   {
-    _id: '5c8a21d02f8fb814b56fa189',
-    name: 'Steve T. Scaife',
-    email: 'steve@example.com',
-    verified: true,
-    role: 'employee',
-    photo: 'user-10.jpg',
-    password: '$2a$12$q7v9dm.S4DvqhAeBc4KwduedEDEkDe2GGFGzteW6xnHt120oRpkqm',
-  },
-  {
-    _id: '5c8a21f22f8fb814b56fa18a',
-    name: 'Aarav Lynn',
-    email: 'aarav@example.com',
-    verified: true,
-    role: 'employee',
-    photo: 'user-11.jpg',
-    password: '$2a$12$lKWhzujFvQwG4m/X3mnTneOB3ib9IYETsOqQ8aN5QEWDjX6X2wJJm',
-  },
-  {
-    _id: '5c8a22c62f8fb814b56fa18b',
-    name: 'Miyah Myles',
-    email: 'miyah@example.com',
-    verified: true,
-    role: 'employee',
-    photo: 'user-12.jpg',
-    password: '$2a$12$.XIvvmznHQSa9UOI639yhe4vzHKCYO1vpTUZc4d45oiT4GOZQe1kS',
-  },
-  {
-    _id: '5c8a23412f8fb814b56fa18c',
-    name: 'Ben Hadley',
-    email: 'ben@example.com',
-    verified: true,
-    role: 'user',
-    photo: 'user-13.jpg',
-    password: '$2a$12$D3fyuS9ETdBBw5lOwceTMuZcDTyVq28ieeGUAanIuLMcSDz6bpfIe',
-  },
-  {
-    _id: '5c8a23c82f8fb814b56fa18d',
-    name: 'Laura Wilson',
-    email: 'laura@example.com',
-    verified: true,
-    role: 'user',
-    photo: 'user-14.jpg',
-    password: '$2a$12$VPYaAAOsI44uhq11WbZ5R.cHT4.fGdlI9gKJd95jmYw3.sAsmbvBq',
-  },
-  {
-    _id: '5c8a23de2f8fb814b56fa18e',
-    name: 'Max Smith',
-    email: 'max@example.com',
-    verified: true,
-    role: 'user',
-    photo: 'user-15.jpg',
-    password: '$2a$12$l5qamwqcqC2NlgN6o5A5..9Fxzr6X.bjx/8j3a9jYUHWGOL99oXlm',
-  },
-  {
-    _id: '5c8a24282f8fb814b56fa18f',
-    name: 'Isabel Kirkland',
-    email: 'isabel@example.com',
-    verified: true,
-    role: 'user',
-    photo: 'user-16.jpg',
-    password: '$2a$12$IUnwPH0MGFeMuz7g4gtfvOll.9wgLyxG.9C3TKlttfLtCQWEE6GIu',
-  },
-  {
-    _id: '5c8a24402f8fb814b56fa190',
-    name: 'Alexander Jones',
-    email: 'alex@example.com',
-    verified: true,
-    role: 'user',
-    photo: 'user-17.jpg',
-    password: '$2a$12$NnclhoYFNcSApoQ3ML8kk.b4B3gbpOmZJLfqska07miAnXukOgK6y',
-  },
-  {
-    _id: '5c8a245f2f8fb814b56fa191',
-    name: 'Eduardo Hernandez',
-    email: 'edu@example.com',
-    verified: true,
-    role: 'user',
-    photo: 'user-18.jpg',
-    password: '$2a$12$uB5H1OxLMOqDYTuTlptAoewlovENJvjrLwzsL1wUZ6OkAIByPPBGq',
-  },
-  {
-    _id: '5c8a24822f8fb814b56fa192',
-    name: 'John Riley',
-    email: 'john@example.com',
-    verified: true,
-    role: 'user',
-    photo: 'user-19.jpg',
-    password: '$2a$12$11JElTatQlAFo1Obw/dwd..vuVmQyYS7MT14pkl3lRvVPjGA00G8O',
-  },
-  {
-    _id: '5c8a24a02f8fb814b56fa193',
-    name: 'Lisa Brown',
-    email: 'lisa@example.com',
-    verified: true,
-    role: 'user',
-    photo: 'user-20.jpg',
-    password: '$2a$12$uA9FsDw63v6dkJKGlLQ/8ufYBs8euB7kqIQewyYlZXU5azEKeLEky',
+    _id: '61a189a761ce1510f472f625',
+    name: 'Taza de FC Bayern Munchen',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum, sapien ac tempor blandit, nulla ante semper urna, non gravida erat mauris eu diam. Aenean finibus, eros sit amet semper ornare, dui magna pellentesque purus, et malesuada ligula metus tincidunt mauris. Phasellus vulputate sed eros vel facilisis.',
+    specifications: [
+      '100% cerámica',
+      'Volumen de 250ml',
+      'Altura: 9.2cm',
+      'Diametro: 8.5cm',
+    ],
+    extraimages: [],
+    catalog: 'regalos', // 'ropa', 'agendas', 'regalos', 'encuadernados'
+    category: 'general', // ropa -> 'shirt', 'sweatshirt',  everything else -> 'general
+    for: 'general', // ropa -> 'male', 'female', 'boy', 'girl', everything else -> 'general
+    price: 225,
+    sold: 6,
+    subcategory: {
+      color: [
+        {
+          colorname: 'fff',
+          image: 'product-61a189a761ce1510f472f625-fff.png',
+          sizes: [
+            {
+              size: 'general',
+              quantity: 15,
+            },
+          ],
+        },
+        {
+          colorname: '828282',
+          image: 'product-61a189a761ce1510f472f625-828282.png',
+          sizes: [
+            {
+              size: 'general',
+              quantity: 12,
+            },
+          ],
+        },
+        {
+          colorname: '000',
+          image: 'product-61a189a761ce1510f472f625-000.png',
+          sizes: [
+            {
+              size: 'general',
+              quantity: 9,
+            },
+          ],
+        },
+      ],
+    },
   },
 ];
 
-export default users;
+export default products;

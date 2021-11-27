@@ -4,10 +4,11 @@ import connectDB from '../config/db.js';
 
 // Data
 import users from './users.js';
+import products from './products.js';
 
 // Model Schemas
 import User from '../models/userModel.js';
-// import Product from '../models/productModel.js';
+import Product from '../models/productModel.js';
 
 dotenv.config();
 
@@ -15,9 +16,11 @@ connectDB();
 
 const importData = async () => {
   try {
-    await User.deleteMany();
+    // await User.deleteMany();
+    await Product.deleteMany();
 
-    await User.create(users, { validateBeforeSave: false });
+    // await User.create(users, { validateBeforeSave: false });
+    await Product.create(products, { validateBeforeSave: false });
 
     // const adminUser = createdUsers[0]._id;
 
@@ -38,6 +41,7 @@ const importData = async () => {
 const destroyData = async () => {
   try {
     await User.deleteMany();
+    await Product.deleteMany();
 
     console.log('Data Destroyed!'.red.inverse);
     process.exit();

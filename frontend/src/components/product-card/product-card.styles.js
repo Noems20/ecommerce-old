@@ -57,7 +57,7 @@ export const Card = styled.div`
   position: relative;
   padding: 2rem;
   width: 100%;
-  height: 450px;
+  height: 45rem;
   background: #fff;
   border-radius: 20px;
   overflow: hidden;
@@ -119,6 +119,10 @@ export const Card = styled.div`
     opacity: 1;
     transform: translateY(0px);
     transition-delay: 0.75s;
+  }
+
+  @media only screen and (max-width: 1100px) {
+    height: 48rem;
   }
 `;
 

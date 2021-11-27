@@ -31,24 +31,18 @@ import {
 } from './product.styles';
 
 // IMAGENES
-import agenda1 from '../../dev-images/agenda1.png';
-import agenda2 from '../../dev-images/agenda2.png';
-import agenda3 from '../../dev-images/agenda3.png';
-import agenda4 from '../../dev-images/agenda4.png';
-import agenda5 from '../../dev-images/agenda5.png';
-import agenda6 from '../../dev-images/agenda6.png';
-import agenda7 from '../../dev-images/agenda7.png';
-import agenda8 from '../../dev-images/agenda8.png';
-import agenda9 from '../../dev-images/agenda9.png';
+import agenda from '../../dev-images/products/product-31-87253b.png';
+import agenda2 from '../../dev-images/products/product-31-1e2e4a.png';
+import agenda3 from '../../dev-images/products/product-31-0e5e4f.png';
 import cup from '../../dev-images/products/product-5-fff.png';
 import cup2 from '../../dev-images/products/product-5-000.png';
 import cup3 from '../../dev-images/products/product-5-828282.png';
 import shirt from '../../dev-images/products/product-20-fff.png';
 import shirt2 from '../../dev-images/products/product-20-817f83.png';
 import shirt3 from '../../dev-images/products/product-20-000.png';
-import sweatShirt from '../../dev-images/products/product-21-fff.png';
-import sweatShirt2 from '../../dev-images/products/product-21-7e7e7e.png';
-import sweatShirt3 from '../../dev-images/products/product-21-000.png';
+import sweatShirt from '../../dev-images/products/product-30-fff.png';
+import sweatShirt2 from '../../dev-images/products/product-30-7e7e7e.png';
+import sweatShirt3 from '../../dev-images/products/product-30-000.png';
 
 const Product = ({ history }) => {
   // --------------------------------- STATE AND CONSTANTS ----------------------------
@@ -116,12 +110,12 @@ const Product = ({ history }) => {
   const productImages = (
     <>
       <ImageContainer>
-        <ImageMagnifier src={focusImage ? focusImage : agenda1} width={'56%'} />
+        <ImageMagnifier src={focusImage ? focusImage : agenda} width={'56%'} />
       </ImageContainer>
       <SecondaryImagesContainer>
         <ProductImage
-          src={agenda1}
-          onClick={() => setFocusImage(agenda1)}
+          src={agenda}
+          onClick={() => setFocusImage(agenda)}
           variants={imageVariants}
           whileHover='hover'
         />
@@ -134,42 +128,6 @@ const Product = ({ history }) => {
         <ProductImage
           src={agenda3}
           onClick={() => setFocusImage(agenda3)}
-          variants={imageVariants}
-          whileHover='hover'
-        />
-        <ProductImage
-          src={agenda4}
-          onClick={() => setFocusImage(agenda4)}
-          variants={imageVariants}
-          whileHover='hover'
-        />
-        <ProductImage
-          src={agenda5}
-          onClick={() => setFocusImage(agenda5)}
-          variants={imageVariants}
-          whileHover='hover'
-        />
-        <ProductImage
-          src={agenda6}
-          onClick={() => setFocusImage(agenda6)}
-          variants={imageVariants}
-          whileHover='hover'
-        />
-        <ProductImage
-          src={agenda7}
-          onClick={() => setFocusImage(agenda7)}
-          variants={imageVariants}
-          whileHover='hover'
-        />
-        <ProductImage
-          src={agenda8}
-          onClick={() => setFocusImage(agenda8)}
-          variants={imageVariants}
-          whileHover='hover'
-        />
-        <ProductImage
-          src={agenda9}
-          onClick={() => setFocusImage(agenda9)}
           variants={imageVariants}
           whileHover='hover'
         />

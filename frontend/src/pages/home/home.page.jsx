@@ -46,25 +46,20 @@ import { FaBox, FaTruck } from 'react-icons/fa';
 import { GiTakeMyMoney } from 'react-icons/gi';
 
 // IMAGENES
-// import agenda1 from '../../dev-images/agenda1.png';
-import agenda2 from '../../dev-images/agenda2.png';
-import agenda3 from '../../dev-images/agenda3.png';
-import agenda4 from '../../dev-images/agenda4.png';
-import agenda5 from '../../dev-images/agenda5.png';
-import agenda6 from '../../dev-images/agenda6.png';
-import agenda7 from '../../dev-images/agenda7.png';
-import agenda8 from '../../dev-images/agenda8.png';
-// import agenda9 from '../../dev-images/agenda9.png';
+
 import waves from '../../dev-images/waves2.svg';
+import agenda from '../../dev-images/products/product-31-87253b.png';
+import agenda2 from '../../dev-images/products/product-31-1e2e4a.png';
+import agenda3 from '../../dev-images/products/product-31-0e5e4f.png';
 import cup from '../../dev-images/products/product-5-fff.png';
 import cup2 from '../../dev-images/products/product-5-000.png';
 import cup3 from '../../dev-images/products/product-5-828282.png';
 import shirt from '../../dev-images/products/product-20-fff.png';
 import shirt2 from '../../dev-images/products/product-20-817f83.png';
 import shirt3 from '../../dev-images/products/product-20-000.png';
-import sweatShirt from '../../dev-images/products/product-21-fff.png';
-import sweatShirt2 from '../../dev-images/products/product-21-7e7e7e.png';
-import sweatShirt3 from '../../dev-images/products/product-21-000.png';
+import sweatShirt from '../../dev-images/products/product-30-fff.png';
+import sweatShirt2 from '../../dev-images/products/product-30-7e7e7e.png';
+import sweatShirt3 from '../../dev-images/products/product-30-000.png';
 
 import scheduleBackground from './schedule.jpg';
 import clothingBackground from './clothing.jpg';
@@ -108,7 +103,7 @@ const Home = () => {
         <RightColumn>
           <Waves src={waves} />
           <HeroImage
-            src={agenda4}
+            src={agenda2}
             className='animate__animated animate__fadeIn animate__delay-3s'
           />
         </RightColumn>
@@ -163,6 +158,9 @@ const Home = () => {
           <CatalogButton>Regalos</CatalogButton>
         </ButtonsContainer>
         <ProductsGrid>
+          <ProductCard productImage={agenda} title='Agenda 2022' tag='AGEN' />
+          <ProductCard productImage={agenda2} title='Agenda 2022' tag='AGEN' />
+          <ProductCard productImage={agenda3} title='Agenda 2022' tag='AGEN' />
           <ProductCard productImage={cup} title='Agenda 2022' tag='AGEN' />
           <ProductCard productImage={cup2} title='Agenda 2022' tag='AGEN' />
           <ProductCard productImage={cup3} title='Agenda 2022' tag='AGEN' />
@@ -184,26 +182,6 @@ const Home = () => {
             title='Agenda 2022'
             tag='AGEN'
           />
-          <ProductCard
-            productImage={agenda2}
-            title='Encuadernado azul'
-            tag='AGEN'
-          />
-          <ProductCard productImage={agenda3} title='Agenda MTIE' tag='AGEN' />
-          <ProductCard productImage={agenda4} title='Agenda UAD' tag='AGEN' />
-          <ProductCard productImage={agenda5} title='Agenda IEZ' tag='AGEN' />
-          <ProductCard
-            productImage={agenda6}
-            title='Encuadernado keratol'
-            tag='AGEN'
-          />
-          <ProductCard productImage={agenda7} title='Agenda UTZAC' tag='AGEN' />
-          <ProductCard
-            productImage={agenda8}
-            title='Encuadernado keratol'
-            tag='AGEN'
-          />
-          {/* <ProductCard productImage={agenda9} title='Agenda 2022' tag='AGEN' /> */}
         </ProductsGrid>
       </ProductsContainer>
 

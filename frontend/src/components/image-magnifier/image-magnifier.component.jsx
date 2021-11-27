@@ -16,7 +16,7 @@ const ImageMagnifier = ({
     <Container>
       <img
         src={src}
-        style={{ height: height, width: '100%' }}
+        // style={{ height: height, width: '100%' }}
         onMouseEnter={(e) => {
           // update image size and turn-on magnifier
           const elem = e.currentTarget;

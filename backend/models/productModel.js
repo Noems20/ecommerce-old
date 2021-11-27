@@ -51,13 +51,11 @@ const subcategory = new mongoose.Schema({
       {
         colorname: {
           type: String,
-          minlength: [4, 'Necesita ser mayor a 3 caracteres'],
-          maxlength: [7, 'Necesita ser menor a 8 caracteres'],
+          minlength: [3, 'Necesita ser mayor a 2 caracteres'],
+          maxlength: [6, 'Necesita ser menor a 7 caracteres'],
           required: [true, 'Debe tener un color'],
           validate: {
-            validator: function (value) {
-              return validator.isHexadecimal(value.split('#')[1]);
-            },
+            validator: (val) => validator.isHexadecimal(val),
             message: 'Introduce un color en formato hexadecimal',
           },
         },
@@ -109,14 +107,14 @@ const productSchema = mongoose.Schema(
     },
     slug: {
       type: String,
+      unique: true,
     },
     description: {
       type: String,
       required: [true, 'No puede estar vacío'],
     },
-    specifications: {
-      type: [String],
-    },
+    specifications: [String],
+    extraimages: [String],
     catalog: {
       type: String,
       enum: {
@@ -194,15 +192,15 @@ productSchema.pre('save', function (next) {
 });
 
 // --------------- ADD PRODUCT IMAGE -----------------
-productSchema.pre('save', async function (next) {
-  // console.log('-------------- COLOR ARRAY ----------------');
-  for (const colorId in this.subcategory.color) {
-    let image = `product-${this.id}-${this.subcategory.color[colorId].colorname}.png`;
-    this.subcategory.color[colorId].image = image;
-  }
+// productSchema.pre('save', async function (next) {
+//   // console.log('-------------- COLOR ARRAY ----------------');
+//   for (const colorId in this.subcategory.color) {
+//     let image = `product-${this.id}-${this.subcategory.color[colorId].colorname}.png`;
+//     this.subcategory.color[colorId].image = image;
+//   }
 
-  next();
-});
+//   next();
+// });
 
 // productSchema.pre(/^findOneAnd/, async function (next) {
 //   this.currentDoc = await this.findOne().clone();

@@ -33,12 +33,21 @@ export const ImageContainer = styled.div`
   padding: 3rem;
   border: 2px solid var(--color-grey-product);
   border-radius: 10px;
+  max-height: 70rem;
+  width: 50vw;
 
   display: flex;
   justify-content: center;
+  align-items: center;
 
   @media only screen and (max-width: 1000px) {
     grid-row: auto / auto;
+    width: calc(100vw - 8rem);
+  }
+
+  @media only screen and (max-width: 500px) {
+    padding: 2rem;
+    width: calc(100vw - 6rem);
   }
 `;
 

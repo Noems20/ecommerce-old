@@ -28,7 +28,7 @@ const Review = ({ review }) => {
           <UserName>{review.user.name}</UserName>
         </UserPhotoContainer>
         <ReviewInfo>
-          <ReviewTitle>Tiene pelusas</ReviewTitle>
+          <ReviewTitle>{review.title}</ReviewTitle>
           <Rating value={review.rating} text={`${review.rating} de 5`} />
           <ReviewDate>{moment(review.createdAt).format('LL')}</ReviewDate>
           <ReviewText>{review.review}</ReviewText>

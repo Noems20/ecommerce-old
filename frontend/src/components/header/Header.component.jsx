@@ -421,47 +421,47 @@ const Header = () => {
           setOpen={setItemExpanded}
         >
           <Column>
-            <ColumnTitle to='/'>General</ColumnTitle>
+            <ColumnTitle to='/ropa/hombre/playera'>General</ColumnTitle>
             <ColumnItems>
-              <ColumnItem to='/'>Playeras</ColumnItem>
-              <ColumnItem to='/'>Sudaderas</ColumnItem>
-              <ColumnItem to='/'>Todo</ColumnItem>
+              <ColumnItem to='/ropa/hombre/playera'>Playeras</ColumnItem>
+              <ColumnItem to='/ropa/hombre/sudadera'>Sudaderas</ColumnItem>
+              <ColumnItem to='/ropa/hombre/todo'>Todo</ColumnItem>
             </ColumnItems>
             <ColumnImage url={generalImg} />
           </Column>
           <Column>
-            <ColumnTitle to='/'>Hombre</ColumnTitle>
+            <ColumnTitle to='/ropa/hombre/playera'>Hombre</ColumnTitle>
             <ColumnItems>
-              <ColumnItem to='/'>Playeras</ColumnItem>
-              <ColumnItem to='/'>Sudaderas</ColumnItem>
-              <ColumnItem to='/'>Todo</ColumnItem>
+              <ColumnItem to='/ropa/hombre/playera'>Playeras</ColumnItem>
+              <ColumnItem to='/ropa/hombre/sudadera'>Sudaderas</ColumnItem>
+              <ColumnItem to='/ropa/hombre/todo'>Todo</ColumnItem>
             </ColumnItems>
             <ColumnImage url={hombreImg} />
           </Column>
           <Column>
-            <ColumnTitle to='/'>Mujer</ColumnTitle>
+            <ColumnTitle to='/ropa/mujer/playera'>Mujer</ColumnTitle>
             <ColumnItems>
-              <ColumnItem to='/'>Playeras</ColumnItem>
-              <ColumnItem to='/'>Sudaderas</ColumnItem>
-              <ColumnItem to='/'>Todo</ColumnItem>
+              <ColumnItem to='/ropa/mujer/playera'>Playeras</ColumnItem>
+              <ColumnItem to='/ropa/mujer/sudadera'>Sudaderas</ColumnItem>
+              <ColumnItem to='/ropa/mujer/todo'>Todo</ColumnItem>
             </ColumnItems>
             <ColumnImage url={mujerImg} />
           </Column>
           <Column>
-            <ColumnTitle to='/'>Niño</ColumnTitle>
+            <ColumnTitle to='/ropa/niño/playera'>Niño</ColumnTitle>
             <ColumnItems>
-              <ColumnItem to='/'>Playeras</ColumnItem>
-              <ColumnItem to='/'>Sudaderas</ColumnItem>
-              <ColumnItem to='/'>Todo</ColumnItem>
+              <ColumnItem to='/ropa/niño/playera'>Playeras</ColumnItem>
+              <ColumnItem to='/ropa/niño/sudadera'>Sudaderas</ColumnItem>
+              <ColumnItem to='/ropa/niño/todo'>Todo</ColumnItem>
             </ColumnItems>
             <ColumnImage url={niñoImg} />
           </Column>
           <Column>
-            <ColumnTitle to='/'>Niña</ColumnTitle>
+            <ColumnTitle to='/ropa/niña/playera'>Niña</ColumnTitle>
             <ColumnItems>
-              <ColumnItem to='/'>Playeras</ColumnItem>
-              <ColumnItem to='/'>Sudaderas</ColumnItem>
-              <ColumnItem to='/'>Todo</ColumnItem>
+              <ColumnItem to='/ropa/niña/playera'>Playeras</ColumnItem>
+              <ColumnItem to='/ropa/niña/sudadera'>Sudaderas</ColumnItem>
+              <ColumnItem to='/ropa/niña/todo'>Todo</ColumnItem>
             </ColumnItems>
             <ColumnImage url={niñaImg} />
           </Column>

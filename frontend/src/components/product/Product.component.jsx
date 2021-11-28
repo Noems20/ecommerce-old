@@ -16,6 +16,7 @@ import {
   ProductImage,
   InfoContainer,
   ProductTitle,
+  ForTitle,
   DetailsTitle,
   ProductPrice,
   DetailsContainer,
@@ -133,6 +134,7 @@ const Product = ({ product }) => {
       {!collapse && productImages}
       <InfoContainer>
         <ProductTitle>{product.name}</ProductTitle>
+        {product.for !== 'general' && <ForTitle>{product.for}</ForTitle>}
         <ProductPrice>
           {`$${product.price}`}
           <span>Impuesto incluido.</span>

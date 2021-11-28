@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 // REDUX
-import { fetchProductSuggestions } from '../../redux/products/productsActions';
+import { fetchProducts } from '../../redux/products/productsActions';
 import { useSelector, useDispatch } from 'react-redux';
 
 // COMPONENTS
@@ -83,7 +83,7 @@ const Home = () => {
   };
   // -------------------- USE EFFECT'S -------------------
   useEffect(() => {
-    dispatch(fetchProductSuggestions(selectedCatalog, 8));
+    dispatch(fetchProducts(selectedCatalog, 8));
     return () => {};
   }, [selectedCatalog, dispatch]);
 
@@ -121,7 +121,7 @@ const Home = () => {
       </HeroSection>
       {/* ---------------------------- CATEGORIES ---------------------- */}
       <CategoriesBar>
-        <BarItem className='top'>
+        <BarItem className='top' to='/encuadernacion'>
           <BarItemContent>
             <BarItemTitle>Encuadernación</BarItemTitle>
           </BarItemContent>
@@ -130,7 +130,7 @@ const Home = () => {
             imageUrl={bindingBackground}
           />
         </BarItem>
-        <BarItem>
+        <BarItem to='/agendas'>
           <BarItemContent>
             <BarItemTitle>Agendas</BarItemTitle>
           </BarItemContent>
@@ -139,7 +139,7 @@ const Home = () => {
             imageUrl={scheduleBackground}
           />
         </BarItem>
-        <BarItem>
+        <BarItem to='/ropa'>
           <BarItemContent>
             <BarItemTitle>Ropa</BarItemTitle>
           </BarItemContent>
@@ -148,7 +148,7 @@ const Home = () => {
             imageUrl={clothingBackground}
           />
         </BarItem>
-        <BarItem>
+        <BarItem to='/regalos'>
           <BarItemContent>
             <BarItemTitle>Regalos</BarItemTitle>
           </BarItemContent>

@@ -3,6 +3,10 @@ import Product from './productModel.js';
 
 const reviewSchema = new mongoose.Schema(
   {
+    title: {
+      type: String,
+      required: [true, 'No puede estar vacío'],
+    },
     review: {
       type: String,
       required: [true, 'No puede estar vacío'],

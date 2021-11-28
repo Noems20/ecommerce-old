@@ -14,6 +14,7 @@ import Profile from './pages/profile/profile.page';
 import Register from './pages/register/register.page';
 import Shipping from './pages/shipping/shipping.page';
 import GiftsPage from './pages/gifts/gifts.page';
+import ClothingPage from './pages/clothing/clothing.page';
 import ProductPage from './pages/product/product.page';
 import SchedulePage from './pages/schedule/schedule.page';
 import BoundBooksPage from './pages/bound-books/bound-books.page';
@@ -60,6 +61,7 @@ const App = () => {
           <Route path='/regalos' component={GiftsPage} />
           <Route path='/encuadernacion' component={BoundBooksPage} />
           <Route exact path='/producto/:slug' component={ProductPage} />
+          <Route exact path='/ropa/:for/:category' component={ClothingPage} />
           <Route
             exact
             path='/login'

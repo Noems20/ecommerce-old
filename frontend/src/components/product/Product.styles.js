@@ -106,6 +106,12 @@ export const ProductTitle = styled.h1`
   color: var(--color-grey-product);
 `;
 
+export const ForTitle = styled.h1`
+  font-weight: 500;
+  text-transform: capitalize;
+  color: var(--color-grey-product);
+`;
+
 export const ProductPrice = styled.div`
   font-size: 3rem;
   color: var(--color-grey-product);

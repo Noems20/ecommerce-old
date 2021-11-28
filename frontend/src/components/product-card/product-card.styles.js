@@ -94,7 +94,8 @@ export const Card = styled.div`
   }
 
   &:after {
-    content: 'Agen';
+    content: '${(props) => props.catalog}';
+    text-transform: capitalize;
     position: absolute;
     top: 30%;
     left: 50%;

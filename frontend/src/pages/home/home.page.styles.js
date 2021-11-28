@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import tokens from '../../tokens';
+import { Link } from 'react-router-dom';
 
 // const textColor = 'var(--color-primary)';
 
@@ -38,7 +39,7 @@ export const CategoriesBar = styled.div`
   }
 `;
 
-export const BarItem = styled.div`
+export const BarItem = styled(Link)`
   height: 30rem;
   border-radius: 20px;
   cursor: pointer;

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 
 // REDUX
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchProductSuggestions } from '../../redux/products/productsActions';
+import { fetchProducts } from '../../redux/products/productsActions';
 
 // COMPONENTS
 import ProductCard from '../product-card/product-card.component';
@@ -23,7 +23,7 @@ const ProductSuggestions = ({ catalog, id }) => {
 
   // ------------------------------- USE EFFECT'S ---------------------------
   useEffect(() => {
-    dispatch(fetchProductSuggestions(catalog, 4, id));
+    dispatch(fetchProducts(catalog, 4, id));
     return () => {};
   }, [dispatch, catalog, id]);
 

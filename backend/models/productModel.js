@@ -5,8 +5,8 @@ import validator from 'validator';
 // ---------------------------------------------------------
 // VALIDATION HELPERS  --------------------------
 // ---------------------------------------------------------
-const categoriesForClothing = ['shirt', 'sweatshirt'];
-const forClothing = ['boy', 'girl', 'male', 'female'];
+const categoriesForClothing = ['playera', 'sudadera'];
+const forClothing = ['niño', 'niña', 'hombre', 'mujer'];
 
 async function validateCategory() {
   if (this.catalog === 'ropa') {
@@ -103,6 +103,7 @@ const productSchema = mongoose.Schema(
     name: {
       type: String,
       required: [true, 'No puede estar vacío'],
+      trim: true,
       unique: true,
     },
     slug: {
@@ -111,12 +112,14 @@ const productSchema = mongoose.Schema(
     },
     description: {
       type: String,
+      trim: true,
       required: [true, 'No puede estar vacío'],
     },
     specifications: [String],
     extraimages: [String],
     catalog: {
       type: String,
+      trim: true,
       enum: {
         values: ['ropa', 'agendas', 'regalos', 'encuadernados'],
         message: 'Catálogo debe ser: ropa, agendas, regalos o encuadernados',
@@ -125,6 +128,7 @@ const productSchema = mongoose.Schema(
     },
     category: {
       type: String,
+      trim: true,
       validate: {
         validator: validateCategory,
         message: 'Debe tener una categoria correcta',
@@ -133,9 +137,10 @@ const productSchema = mongoose.Schema(
     },
     for: {
       type: String,
+      trim: true,
       enum: {
-        values: ['male', 'female', 'boy', 'girl', 'general'],
-        message: 'Catálogo debe ser: male, female, boy, girl o general',
+        values: ['hombre', 'mujer', 'niño', 'niña', 'general'],
+        message: 'Catálogo debe ser: hombre, mujer, niño, niña o general',
       },
       validate: {
         validator: isEligibleForGeneral,
@@ -192,15 +197,15 @@ productSchema.pre('save', function (next) {
 });
 
 // --------------- ADD PRODUCT IMAGE -----------------
-productSchema.pre('save', async function (next) {
-  // console.log('-------------- COLOR ARRAY ----------------');
-  for (const colorId in this.subcategory.color) {
-    let image = `product-${this.id}-${this.subcategory.color[colorId].colorname}.png`;
-    this.subcategory.color[colorId].image = image;
-  }
+// productSchema.pre('save', async function (next) {
+//   // console.log('-------------- COLOR ARRAY ----------------');
+//   for (const colorId in this.subcategory.color) {
+//     let image = `product-${this.id}-${this.subcategory.color[colorId].colorname}.png`;
+//     this.subcategory.color[colorId].image = image;
+//   }
 
-  next();
-});
+//   next();
+// });
 
 // productSchema.pre(/^findOneAnd/, async function (next) {
 //   this.currentDoc = await this.findOne().clone();

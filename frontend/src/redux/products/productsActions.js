@@ -37,7 +37,7 @@ export const fetchProductBySlug = (slug) => async (dispatch) => {
 // ------------------------------------------------------------------------
 //  FETCH PRODUCTS
 // ------------------------------------------------------------------------
-export const fetchProductSuggestions =
+export const fetchProducts =
   (catalog, quantity, excludeId = null) =>
   async (dispatch) => {
     try {
@@ -49,11 +49,49 @@ export const fetchProductSuggestions =
       let res;
       if (excludeId) {
         res = await axios.get(
-          `/api/v1/products?_id[ne]=${excludeId}&catalog=${catalog}&limit=${quantity}&fields=name,slug,price,ratingsAverage,subcategory&sort=-sold,-createdAt`
+          `/api/v1/products?_id[ne]=${excludeId}&catalog=${catalog}&limit=${quantity}&fields=name,slug,catalog,price,ratingsAverage,subcategory&sort=-sold,-createdAt`
         );
       } else {
         res = await axios.get(
-          `/api/v1/products?catalog=${catalog}&limit=${quantity}&fields=name,slug,price,ratingsAverage,subcategory&sort=-sold,-createdAt`
+          `/api/v1/products?catalog=${catalog}&limit=${quantity}&fields=name,slug,catalog,price,ratingsAverage,subcategory&sort=-sold,-createdAt`
+        );
+      }
+      const { data } = res;
+
+      batch(() => {
+        dispatch({
+          type: SET_PRODUCTS,
+          payload: data.data,
+        });
+        dispatch({
+          type: SET_UI_LOADING,
+          payload: { fetchLoader: false },
+        });
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+// ------------------------------------------------------------------------
+//  FETCH CLOTHING PRODUCTS
+// ------------------------------------------------------------------------
+export const fetchClothingProducts =
+  (category, forW, quantity) => async (dispatch) => {
+    try {
+      dispatch({
+        type: SET_UI_LOADING,
+        payload: { fetchLoader: true },
+      });
+
+      let res;
+      if (category === 'todo') {
+        res = await axios.get(
+          `/api/v1/products?catalog=ropa&for=${forW}&limit=${quantity}&fields=name,slug,catalog,price,ratingsAverage,subcategory&sort=-sold,-createdAt`
+        );
+      } else {
+        res = await axios.get(
+          `/api/v1/products?catalog=ropa&category=${category}&for=${forW}&limit=${quantity}&fields=name,slug,catalog,price,ratingsAverage,subcategory&sort=-sold,-createdAt`
         );
       }
       const { data } = res;

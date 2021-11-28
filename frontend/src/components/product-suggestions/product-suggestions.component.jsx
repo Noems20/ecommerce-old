@@ -1,4 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+
+// REDUX
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchProductSuggestions } from '../../redux/products/productsActions';
 
 // COMPONENTS
 import ProductCard from '../product-card/product-card.component';
@@ -11,16 +15,25 @@ import {
 } from './product-suggestions.styles';
 
 // IMAGES
-// import agenda1 from '../../dev-images/agenda1.png';
-// import agenda2 from '../../dev-images/agenda2.png';
-// import agenda3 from '../../dev-images/agenda3.png';
-// import agenda4 from '../../dev-images/agenda4.png';
 
-const ProductSuggestions = () => {
+const ProductSuggestions = ({ catalog, id }) => {
+  // ------------------------------- STATE AND CONSTANTS -------------------
+  const dispatch = useDispatch();
+  const { products } = useSelector((state) => state.products);
+
+  // ------------------------------- USE EFFECT'S ---------------------------
+  useEffect(() => {
+    dispatch(fetchProductSuggestions(catalog, 4, id));
+    return () => {};
+  }, [dispatch, catalog, id]);
+
   return (
     <Container>
       <ProductSuggestionsTitle>Te podria interesar</ProductSuggestionsTitle>
       <ProductsGrid>
+        {products.map((product) => {
+          return <ProductCard key={product._id} product={product} />;
+        })}
         {/* <ProductCard productImage={agenda1} title='Agenda 2022' tag='AGEN' />
         <ProductCard
           productImage={agenda2}

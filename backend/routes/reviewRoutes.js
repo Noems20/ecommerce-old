@@ -14,12 +14,12 @@ import { protect, restrictTo } from '../controllers/authController.js';
 
 const router = express.Router({ mergeParams: true });
 
-router.use(protect);
-
 router
   .route('/')
   .get(getAllReviews)
-  .post(restrictTo('user', 'admin'), setProductUserIds, createReview);
+  .post(protect, restrictTo('user', 'admin'), setProductUserIds, createReview);
+
+router.use(protect);
 
 router
   .route('/:id')

@@ -155,6 +155,27 @@ export const deleteProduct = catchAsync(async (req, res, next) => {
   res.status(204).json({ status: 'success', data: null });
 });
 
+// -----------------------------------------------------------------------
+// FIND BY SLUG
+// -----------------------------------------------------------------------
+export const findBySlug = catchAsync(async (req, res, next) => {
+  const { slug: docSlug } = req.params;
+
+  let query = Product.findOne({ slug: docSlug });
+  query.populate({ path: 'reviews' });
+
+  let doc = await query;
+
+  if (!doc) {
+    doc = null;
+  }
+
+  res.status(200).json({ status: 'success', data: doc });
+});
+
+// -----------------------------------------------------------------------
+// GET PRODUCT STATS
+// -----------------------------------------------------------------------
 export const getProductStats = catchAsync(async (req, res, next) => {
   const stats = await Product.aggregate([
     {

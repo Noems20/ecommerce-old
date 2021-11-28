@@ -59,6 +59,7 @@ export const RatingBarsContainer = styled.div`
 `;
 
 export const Reviews = styled.div`
+  height: max-content;
   display: grid;
   grid-gap: 2rem;
 `;

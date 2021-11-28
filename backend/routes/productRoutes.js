@@ -9,6 +9,7 @@ import {
   deleteProduct,
   aliasTopProducts,
   getProductStats,
+  findBySlug,
 } from '../controllers/productsController.js';
 
 import { protect, restrictTo } from '../controllers/authController.js';
@@ -20,9 +21,9 @@ const router = express.Router();
 // router.param('id', productController.checkID)
 
 router.use('/:productId/reviews', reviewRouter);
-
 router.route('/top-10-cheap').get(aliasTopProducts, getAllProducts);
 router.route('/product-stats').get(getProductStats);
+router.route('/product/:slug').get(findBySlug);
 
 router
   .route('/')

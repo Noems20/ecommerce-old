@@ -24,6 +24,8 @@ import Header from './components/header/header.component';
 import Footer from './components/footer/footer.component';
 import FullScreenLoader from './components/loaders/full-screen-loader/full-screen-loader.component';
 import ChangePassword from './pages/change-password/change-password.page';
+import ScrollToTop from './utils/scroll-to-top/scroll-to-top';
+import BackToTop from './utils/scroll-to-top/back-to-top.component';
 
 const App = () => {
   // const location = useLocation();
@@ -48,6 +50,8 @@ const App = () => {
   return (
     <>
       <Header />
+      <ScrollToTop />
+      <BackToTop />
       {userLoaded.general ? (
         <Switch>
           <Route exact path='/' component={Home} />

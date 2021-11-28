@@ -30,60 +30,8 @@ import {
   SizeItem,
 } from './product.styles';
 
-const Product = () => {
+const Product = ({ product }) => {
   // --------------------------------- STATE AND CONSTANTS ----------------------------
-  const product = {
-    _id: '61a179b861a268b3e16b8b05',
-    name: 'Taza de Dallas Mavericks',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum, sapien ac tempor blandit, nulla ante semper urna, non gravida erat mauris eu diam. Aenean finibus, eros sit amet semper ornare, dui magna pellentesque purus, et malesuada ligula metus tincidunt mauris. Phasellus vulputate sed eros vel facilisis.',
-    specifications: [
-      '100% cerámica',
-      'Volumen de 250ml',
-      'Altura: 9.2cm',
-      'Diametro: 8.5cm',
-    ],
-    extraimages: [],
-    catalog: 'regalos', // 'ropa', 'agendas', 'regalos', 'encuadernados'
-    category: 'general', // ropa -> 'shirt', 'sweatshirt',  everything else -> 'general
-    for: 'general', // ropa -> 'male', 'female', 'boy', 'girl', everything else -> 'general
-    price: 225,
-    sold: 15,
-    subcategory: {
-      color: [
-        {
-          colorname: 'fff',
-          image: 'product-61a179b861a268b3e16b8b05-fff.png',
-          sizes: [
-            {
-              size: 'general',
-              quantity: 15,
-            },
-          ],
-        },
-        {
-          colorname: '828282',
-          image: 'product-61a179b861a268b3e16b8b05-828282.png',
-          sizes: [
-            {
-              size: 'general',
-              quantity: 12,
-            },
-          ],
-        },
-        {
-          colorname: '000',
-          image: 'product-61a179b861a268b3e16b8b05-000.png',
-          sizes: [
-            {
-              size: 'general',
-              quantity: 9,
-            },
-          ],
-        },
-      ],
-    },
-  };
 
   const [qty, setQty] = useState(1);
   const [selectedSubCategory, setSelectedSubCategory] = useState(
@@ -97,7 +45,7 @@ const Product = () => {
     selectedSubCategory.sizes[0].size
   );
   const [collapse, setCollapse] = useState(false);
-  const limit = 14;
+  const [limit, setLimit] = useState(selectedSubCategory.sizes[0].quantity);
 
   const imageVariants = {
     hidden: {
@@ -156,6 +104,7 @@ const Product = () => {
     setSelectedColor(`#${product.subcategory.color[index].colorname}`);
     setFocusImage(product.subcategory.color[index].image);
     setSelectedSize(product.subcategory.color[index].sizes[0].size);
+    setLimit(product.subcategory.color[index].sizes[0].quantity);
   };
 
   const productImages = (
@@ -194,46 +143,44 @@ const Product = () => {
           text={`${product.ratingsQuantity} reseñas`}
         />
         {/* ------------- COLORS -------------- */}
-        <DetailsContainer>
-          <DetailsTitle>Color</DetailsTitle>
-          <ColorItemsContainer>
-            {product.subcategory.color.map((color, index) => {
-              return (
-                <ColorDot
-                  key={color._id}
-                  color={`#${color.colorname}`}
-                  className={
-                    selectedColor === `#${color.colorname}` ? 'selected' : ''
-                  }
-                  onClick={() => handleSubcategoryChange(index)}
-                />
-              );
-            })}
-          </ColorItemsContainer>
-        </DetailsContainer>
+        {product.subcategory.color.length > 1 && (
+          <DetailsContainer>
+            <DetailsTitle>Color</DetailsTitle>
+            <ColorItemsContainer>
+              {product.subcategory.color.map((color, index) => {
+                return (
+                  <ColorDot
+                    key={color._id}
+                    color={`#${color.colorname}`}
+                    className={
+                      selectedColor === `#${color.colorname}` ? 'selected' : ''
+                    }
+                    onClick={() => handleSubcategoryChange(index)}
+                  />
+                );
+              })}
+            </ColorItemsContainer>
+          </DetailsContainer>
+        )}
         {/* ------------- SIZES -------------- */}
-        <DetailsContainer>
-          <DetailsTitle>Talla</DetailsTitle>
-          <SizeItemsContainer>
-            {/* <SizeItem
-              className={selectedSize === 'XS' ? 'selected' : ''}
-              onClick={() => setSelectedSize('XS')}
-            >
-              XS
-            </SizeItem> */}
-            {selectedSubCategory.sizes.map((size) => {
-              return (
-                <SizeItem
-                  key={size._id}
-                  className={selectedSize === size.size ? 'selected' : ''}
-                  onClick={() => setSelectedSize(size.size)}
-                >
-                  {size.size}
-                </SizeItem>
-              );
-            })}
-          </SizeItemsContainer>
-        </DetailsContainer>
+        {selectedSubCategory.sizes.length > 1 && (
+          <DetailsContainer>
+            <DetailsTitle>Talla</DetailsTitle>
+            <SizeItemsContainer>
+              {selectedSubCategory.sizes.map((size) => {
+                return (
+                  <SizeItem
+                    key={size._id}
+                    className={selectedSize === size.size ? 'selected' : ''}
+                    onClick={() => setSelectedSize(size.size)}
+                  >
+                    {size.size}
+                  </SizeItem>
+                );
+              })}
+            </SizeItemsContainer>
+          </DetailsContainer>
+        )}
         {/* ------------- CANTIDAD -------------- */}
         <DetailsContainer>
           <DetailsTitle>Cantidad</DetailsTitle>

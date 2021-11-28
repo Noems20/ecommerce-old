@@ -1,5 +1,8 @@
 import React from 'react';
 
+// REDUX
+// import { useDispatch, useSelector } from 'react-redux';
+
 // COMPONENTS
 import Review from '../review/review.component';
 import Rating from '../rating/rating.component';
@@ -13,10 +16,14 @@ import {
   ReviewsCount,
   RatingBarsContainer,
   Reviews,
-  // NoReviewsTitle,
+  NoReviewsTitle,
 } from './product-reviews.styles';
 
-const ProductReviews = () => {
+const ProductReviews = ({ reviews }) => {
+  // ------------------------------- STATE AND CONSTANTS ------------------
+
+  // ------------------------------- USE EFFECTS' -------------------------
+
   return (
     <ReviewsContainer>
       <ReviewsResumeContainer>
@@ -54,11 +61,13 @@ const ProductReviews = () => {
 
       <Reviews>
         <Title>Reseñas</Title>
-        {/* <NoReviewsTitle>SIN RESEÑAS</NoReviewsTitle> */}
-        <Review />
-        <Review />
-        <Review />
-        <Review />
+        {reviews.length === 0 ? (
+          <NoReviewsTitle>SIN RESEÑAS</NoReviewsTitle>
+        ) : (
+          reviews.map((review) => {
+            return <Review key={review._id} review={review} />;
+          })
+        )}
       </Reviews>
     </ReviewsContainer>
   );

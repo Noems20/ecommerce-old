@@ -1,4 +1,6 @@
 import React from 'react';
+import moment from 'moment';
+import 'moment/locale/es-us';
 
 // COMPONENTS
 import Rating from '../rating/rating.component';
@@ -17,30 +19,19 @@ import {
   Decoration,
 } from './review.styles';
 
-// IMAGES
-import userImage from './user-61904a6d2f56064132fa7bc7.jpg';
-
-const Review = ({ children }) => {
+const Review = ({ review }) => {
   return (
     <ReviewContainer>
       <ReviewContent>
         <UserPhotoContainer>
-          <UserPhoto url={userImage} />
-          <UserName>Noé Muñoz Sánchez</UserName>
+          <UserPhoto url={`/img/users/${review.user.photo}`} />
+          <UserName>{review.user.name}</UserName>
         </UserPhotoContainer>
         <ReviewInfo>
           <ReviewTitle>Tiene pelusas</ReviewTitle>
-          <Rating value={4.5} text={'4.5 de 5'} />
-          <ReviewDate>12 de Noviembre de 2021</ReviewDate>
-          <ReviewText>
-            Buena compra, mi pedido unicamente demoro 4 días en llegar. En
-            general el paquete llego bien. Respecto a la fragancia sin duda se
-            siente el DNA del Aventus Creed pero por el precio de 1/8 del mismo.
-            Si como coleccionista de fragancias prefieres los aromas más densos
-            (orientales, especiados, amaderados) compra Club de Nuit, si te
-            gustan y usas más las fragancias tipo trasparenten (acuáticas,
-            cítricas o frutales) sin duda ve por Aventus Creed.
-          </ReviewText>
+          <Rating value={review.rating} text={`${review.rating} de 5`} />
+          <ReviewDate>{moment(review.createdAt).format('LL')}</ReviewDate>
+          <ReviewText>{review.review}</ReviewText>
         </ReviewInfo>
       </ReviewContent>
       <Decoration />

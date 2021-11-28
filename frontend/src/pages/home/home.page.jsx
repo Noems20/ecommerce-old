@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 // REDUX
-import { fetchProductsHome } from '../../redux/products/productsActions';
+import { fetchProductSuggestions } from '../../redux/products/productsActions';
 import { useSelector, useDispatch } from 'react-redux';
 
 // COMPONENTS
@@ -83,7 +83,7 @@ const Home = () => {
   };
   // -------------------- USE EFFECT'S -------------------
   useEffect(() => {
-    dispatch(fetchProductsHome(selectedCatalog));
+    dispatch(fetchProductSuggestions(selectedCatalog, 8));
     return () => {};
   }, [selectedCatalog, dispatch]);
 

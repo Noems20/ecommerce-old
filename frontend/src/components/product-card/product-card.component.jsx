@@ -55,7 +55,7 @@ const ProductCard = ({ product }) => {
             animate='visible'
             exit='hidden'
             as={Link}
-            to={`producto/${product.slug}`}
+            to={`/producto/${product.slug}`}
           >
             Comprar ahora
           </Button>

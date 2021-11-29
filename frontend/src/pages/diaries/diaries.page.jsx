@@ -1,9 +1,8 @@
 import React, { useEffect } from 'react';
-import { useParams } from 'react-router';
 
 // REDUX
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchClothingProducts } from '../../redux/products/productsActions';
+import { fetchProducts } from '../../redux/products/productsActions';
 
 // STYLES
 import { PageGrid } from '../../general.styles';
@@ -20,16 +19,15 @@ import {
   WavesResponsive,
 } from '../../category-page.styles';
 
-import { Hero } from './clothing.styles';
+import { Hero } from './diaries.styles';
 
 // IMAGES
 import waves from '../../dev-images/waves2.svg';
 import cup from './cup.png';
 import Products from '../../components/products/products.component';
 
-const ClothingPage = () => {
+const GiftsPage = () => {
   // -------------------- STATE AND CONSTANTS -------------------
-  const { category, for: forW } = useParams();
   const { products } = useSelector((state) => state.products);
   const dispatch = useDispatch();
 
@@ -44,9 +42,9 @@ const ClothingPage = () => {
 
   // -------------------- USE EFFECT'S -------------------
   useEffect(() => {
-    dispatch(fetchClothingProducts(category, forW, 12));
+    dispatch(fetchProducts('agendas', 12));
     return () => {};
-  }, [dispatch, category, forW]);
+  }, [dispatch]);
 
   return (
     <PageGrid
@@ -59,16 +57,16 @@ const ClothingPage = () => {
       <Hero>
         <LeftColumn>
           <HeroSubtitleUp
-            style={{ color: '#fff', textTransform: 'capitalize' }}
+            style={{ color: '#fff' }}
             className='animate__animated animate__fadeInDown'
           >
-            {`${category}s`}
+            La mejor relación calidad-precio
           </HeroSubtitleUp>
           <HeroTitle
-            style={{ color: '#fff', textTransform: 'capitalize' }}
+            style={{ color: '#fff' }}
             className='animate__animated animate__fadeIn animate__delay-1s'
           >
-            {forW}
+            Regalos
           </HeroTitle>
           <HeroSubtitleDown
             style={{ color: '#fff' }}
@@ -91,4 +89,4 @@ const ClothingPage = () => {
   );
 };
 
-export default ClothingPage;
+export default GiftsPage;

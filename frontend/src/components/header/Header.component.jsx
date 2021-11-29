@@ -245,7 +245,7 @@ const Header = () => {
                 </NavbarLink>
               </NavItem>
               {/* ----------- ENCUADERNACION ---------  */}
-              <NavItem>
+              {/* <NavItem>
                 <NavbarLink
                   onMouseEnter={() => setItemExpanded(false)}
                   activeClassName='is-active'
@@ -254,7 +254,7 @@ const Header = () => {
                 >
                   Encuadernación
                 </NavbarLink>
-              </NavItem>
+              </NavItem> */}
               {/* ----------- REGALOS ---------  */}
               <NavItem>
                 <NavbarLink

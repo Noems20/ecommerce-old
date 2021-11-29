@@ -114,17 +114,18 @@ const Product = ({ product }) => {
         <ImageMagnifier src={`/img/products/${focusImage}`} width={'56%'} />
       </ImageContainer>
       <SecondaryImagesContainer>
-        {product.subcategory.color.map((color, index) => {
-          return (
-            <ProductImage
-              key={color._id}
-              src={`/img/products/${color.image}`}
-              onClick={() => handleSubcategoryChange(index)}
-              variants={imageVariants}
-              whileHover='hover'
-            />
-          );
-        })}
+        {product.subcategory.color.length > 1 &&
+          product.subcategory.color.map((color, index) => {
+            return (
+              <ProductImage
+                key={color._id}
+                src={`/img/products/${color.image}`}
+                onClick={() => handleSubcategoryChange(index)}
+                variants={imageVariants}
+                whileHover='hover'
+              />
+            );
+          })}
       </SecondaryImagesContainer>
     </>
   );

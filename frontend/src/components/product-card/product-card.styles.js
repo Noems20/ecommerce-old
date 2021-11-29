@@ -5,7 +5,7 @@ export const Container = styled.div``;
 export const ImageBox = styled.div`
   position: absolute;
   top: 0;
-  height: 74%;
+  height: 71%;
   width: 100%;
   z-index: 2;
   /* background: red; */

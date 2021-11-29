@@ -71,13 +71,18 @@ export const SecondaryImagesContainer = styled.div`
 `;
 
 export const ProductImage = styled.img`
-  width: 100%;
+  max-width: 100%;
+  max-height: 40rem;
   transition: transform 0.3s ease;
   cursor: pointer;
 
   &:hover {
     transform: scale(1.05);
     transition: transform 0.3s ease;
+  }
+
+  @media only screen and (max-width: 1000px) {
+    max-height: 60rem;
   }
 `;
 
@@ -102,7 +107,7 @@ export const ProductTitle = styled.h1`
   font-family: ${tokens.fontDisplay};
   font-size: 3rem;
   font-weight: 500;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   color: var(--color-grey-product);
 `;
 

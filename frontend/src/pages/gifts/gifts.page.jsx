@@ -42,7 +42,7 @@ const GiftsPage = () => {
 
   // -------------------- USE EFFECT'S -------------------
   useEffect(() => {
-    dispatch(fetchProducts('regalos', 10));
+    dispatch(fetchProducts('regalos', 12));
     return () => {};
   }, [dispatch]);
 

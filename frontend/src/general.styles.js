@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import Loader from './components/loaders/loader.component';
 
 // ---------------------------------------------------------
 // PAGE GRID
@@ -141,4 +142,19 @@ export const LinkText = styled(Link)`
   text-decoration: none;
   color: var(--color-primary);
   cursor: pointer;
+`;
+
+// ---------------------------------------------------------
+// LOADER
+// ---------------------------------------------------------
+export const LoaderModified = styled(Loader)`
+  --clr1: var(--color-primary);
+  --clr2: var(--color-primary);
+  --clr3: var(--color-primary);
+  --clr4: var(--color-primary);
+  --clr5: var(--color-primary);
+
+  --size: 100px;
+
+  margin: 15rem auto;
 `;

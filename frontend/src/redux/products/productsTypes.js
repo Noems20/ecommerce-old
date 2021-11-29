@@ -1,3 +1,4 @@
 export const SET_PRODUCTS = 'SET_PRODUCTS';
 export const SET_PRODUCT = 'SET_PRODUCT';
 export const SET_PRODUCT_LOADED = 'SET_PRODUCT_LOADED';
+export const CLEAR_PRODUCTS = 'CLEAR_PRODUCTS';

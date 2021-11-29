@@ -7,13 +7,14 @@ import { HeroSection } from '../../hero.styles';
 
 export const Hero = styled(HeroSection)`
   height: calc(70vh - 12rem);
-  background: rgb(69, 104, 220);
-  background: linear-gradient(
-    90deg,
-    rgba(69, 104, 220, 1) 0%,
-    rgba(176, 106, 179, 1) 100%
-  );
-
+  /* background-image: linear-gradient(
+    -225deg,
+    #231557 0%,
+    #44107a 29%,
+    #ff1361 67%,
+    #fff800 100%
+  ); */
+  background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
   @media only screen and (max-width: 1300px) {
     height: auto;
     grid-gap: 5rem;

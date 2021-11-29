@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
 // COMPONENTS
 import Rating from '../rating/rating.component';
@@ -10,6 +10,7 @@ import {
   Card,
   ImageBox,
   Image,
+  ImageLoader,
   ContentBox,
   Title,
   Price,
@@ -17,6 +18,8 @@ import {
 } from './product-card.styles';
 
 const ProductCard = ({ product }) => {
+  // ------------------------------------- STATE AND CONSTANTS ------------
+  const [imageLoaded, setImageLoaded] = useState(false);
   const containerVariants = {
     hidden: {
       y: '100vh',
@@ -33,14 +36,21 @@ const ProductCard = ({ product }) => {
     },
   };
 
+  const style = imageLoaded ? {} : {display:'none'};
+
   return (
     <Container>
       <Card catalog={`${product.catalog}`.slice(0, 4)}>
         <ImageBox>
-          <Image
+                  <Image
             src={`/img/products/${product.subcategory.color[0].image}`}
+            style={style}
+            onLoad={() => setImageLoaded(true)}
             alt='Product'
           />
+        
+        {!imageLoaded && <ImageLoader />}
+          
         </ImageBox>
         <ContentBox>
           <Title>{product.name}</Title>

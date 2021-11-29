@@ -3,7 +3,10 @@ import { useParams } from 'react-router';
 
 // REDUX
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchClothingProducts } from '../../redux/products/productsActions';
+import {
+  clearProducts,
+  fetchClothingProducts,
+} from '../../redux/products/productsActions';
 
 // STYLES
 import { PageGrid } from '../../general.styles';
@@ -45,7 +48,9 @@ const ClothingPage = () => {
   // -------------------- USE EFFECT'S -------------------
   useEffect(() => {
     dispatch(fetchClothingProducts(category, forW, 12));
-    return () => {};
+    return () => {
+      dispatch(clearProducts());
+    };
   }, [dispatch, category, forW]);
 
   return (

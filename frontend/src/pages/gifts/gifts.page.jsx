@@ -2,7 +2,10 @@ import React, { useEffect } from 'react';
 
 // REDUX
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchProducts } from '../../redux/products/productsActions';
+import {
+  fetchProducts,
+  clearProducts,
+} from '../../redux/products/productsActions';
 
 // STYLES
 import { PageGrid } from '../../general.styles';
@@ -43,7 +46,9 @@ const GiftsPage = () => {
   // -------------------- USE EFFECT'S -------------------
   useEffect(() => {
     dispatch(fetchProducts('regalos', 12));
-    return () => {};
+    return () => {
+      dispatch(clearProducts());
+    };
   }, [dispatch]);
 
   return (

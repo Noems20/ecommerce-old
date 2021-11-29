@@ -2,29 +2,28 @@ import React, { useEffect } from 'react';
 
 // REDUX
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchProducts } from '../../redux/products/productsActions';
+import {
+  fetchProducts,
+  clearProducts,
+} from '../../redux/products/productsActions';
 
 // STYLES
 import { PageGrid } from '../../general.styles';
 import {
   LeftColumn,
+  RightColumn,
   HeroSubtitleUp,
   HeroTitle,
   HeroSubtitleDown,
+  Waves,
 } from '../../hero.styles';
 
-import {
-  RightColumnResponsive,
-  HeroImageResponsive,
-  WavesResponsive,
-} from '../../category-page.styles';
-
-import { Hero } from './diaries.styles';
+import { Hero, HeroImageModified } from './diaries.styles';
 
 // IMAGES
 import waves from '../../dev-images/waves2.svg';
-import cup from './cup.png';
 import Products from '../../components/products/products.component';
+import agenda from '../../dev-images/agenda.png';
 
 const GiftsPage = () => {
   // -------------------- STATE AND CONSTANTS -------------------
@@ -43,7 +42,9 @@ const GiftsPage = () => {
   // -------------------- USE EFFECT'S -------------------
   useEffect(() => {
     dispatch(fetchProducts('agendas', 12));
-    return () => {};
+    return () => {
+      dispatch(clearProducts());
+    };
   }, [dispatch]);
 
   return (
@@ -56,33 +57,24 @@ const GiftsPage = () => {
       {/* ---------------------------- HERO ---------------------- */}
       <Hero>
         <LeftColumn>
-          <HeroSubtitleUp
-            style={{ color: '#fff' }}
-            className='animate__animated animate__fadeInDown'
-          >
+          <HeroSubtitleUp className='animate__animated animate__fadeInDown'>
             La mejor relación calidad-precio
           </HeroSubtitleUp>
-          <HeroTitle
-            style={{ color: '#fff' }}
-            className='animate__animated animate__fadeIn animate__delay-1s'
-          >
-            Regalos
+          <HeroTitle className='animate__animated animate__fadeIn animate__delay-1s'>
+            Agendas
           </HeroTitle>
-          <HeroSubtitleDown
-            style={{ color: '#fff' }}
-            className='animate__animated animate__fadeInUp animate__delay-2s'
-          >
+          <HeroSubtitleDown className='animate__animated animate__fadeInUp animate__delay-2s'>
             Proximamente Agendas Personalizadas
           </HeroSubtitleDown>
         </LeftColumn>
 
-        <RightColumnResponsive>
-          <WavesResponsive src={waves} />
-          <HeroImageResponsive
-            src={cup}
+        <RightColumn>
+          <Waves src={waves} />
+          <HeroImageModified
+            src={agenda}
             className='animate__animated animate__fadeIn animate__delay-3s'
           />
-        </RightColumnResponsive>
+        </RightColumn>
       </Hero>
       <Products products={products} />
     </PageGrid>

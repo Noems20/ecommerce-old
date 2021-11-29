@@ -1,7 +1,21 @@
-import { SET_PRODUCTS, SET_PRODUCT, SET_PRODUCT_LOADED } from './productsTypes';
+import {
+  SET_PRODUCTS,
+  SET_PRODUCT,
+  SET_PRODUCT_LOADED,
+  CLEAR_PRODUCTS,
+} from './productsTypes';
 import { SET_UI_LOADING } from '../ui/uiTypes';
 import { batch } from 'react-redux';
 import axios from 'axios';
+
+// ------------------------------------------------------------------------
+//  CLEAR PRODUCTS
+// ------------------------------------------------------------------------
+export const clearProducts = () => async (dispatch) => {
+  dispatch({
+    type: CLEAR_PRODUCTS,
+  });
+};
 
 // ------------------------------------------------------------------------
 //  FETCH PRODUCT BY SLUG

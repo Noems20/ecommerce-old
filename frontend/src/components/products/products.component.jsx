@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
+import { AnimatePresence } from 'framer-motion';
+
+// REDUX
+import { useSelector } from 'react-redux';
 
 // COMPONENTS
 import ProductCard from '../../components/product-card/product-card.component';
 import Rating from '../../components/rating/rating.component';
 
 // STYLES
+import { LoaderModified } from '../../general.styles';
+
 import {
   Products,
   FilterTitle,
@@ -17,6 +23,10 @@ import {
 
 const ProductsSection = ({ products }) => {
   const [orderBy, setOrderBy] = useState('rating');
+
+  const {
+    loading: { fetchLoader },
+  } = useSelector((state) => state.ui);
 
   return (
     <Products>
@@ -62,11 +72,27 @@ const ProductsSection = ({ products }) => {
           </FilterItem>
         </Filter>
       </FiltersContainer>
-      <ProductsGrid>
-        {products.map((product) => {
-          return <ProductCard key={product._id} product={product} />;
-        })}
-      </ProductsGrid>
+      <AnimatePresence exitBeforeEnter>
+        {fetchLoader ? (
+          <LoaderModified
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            key={1}
+          />
+        ) : (
+          <ProductsGrid
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            key={2}
+          >
+            {products.map((product) => {
+              return <ProductCard key={product._id} product={product} />;
+            })}
+          </ProductsGrid>
+        )}
+      </AnimatePresence>
     </Products>
   );
 };

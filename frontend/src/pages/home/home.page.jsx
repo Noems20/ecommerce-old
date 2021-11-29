@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { AnimatePresence } from 'framer-motion';
 
 // REDUX
 import { fetchProducts } from '../../redux/products/productsActions';
@@ -8,7 +9,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import ProductCard from '../../components/product-card/product-card.component';
 
 // STYLES
-import { PageGrid } from '../../general.styles';
+import { PageGrid, LoaderModified } from '../../general.styles';
 import {
   HeroSection,
   LeftColumn,
@@ -48,18 +49,7 @@ import { GiTakeMyMoney } from 'react-icons/gi';
 // IMAGENES
 
 import waves from '../../dev-images/waves2.svg';
-// import agenda from '../../dev-images/products/product-31-87253b.png';
-import agenda2 from '../../dev-images/products/product-31-1e2e4a.png';
-// import agenda3 from '../../dev-images/products/product-31-0e5e4f.png';
-// import cup from '../../dev-images/products/product-5-fff.png';
-// import cup2 from '../../dev-images/products/product-5-000.png';
-// import cup3 from '../../dev-images/products/product-5-828282.png';
-// import shirt from '../../dev-images/products/product-20-fff.png';
-// import shirt2 from '../../dev-images/products/product-20-817f83.png';
-// import shirt3 from '../../dev-images/products/product-20-000.png';
-// import sweatShirt from '../../dev-images/products/product-30-fff.png';
-// import sweatShirt2 from '../../dev-images/products/product-30-7e7e7e.png';
-// import sweatShirt3 from '../../dev-images/products/product-30-000.png';
+import agenda from '../../dev-images/agenda.png';
 
 import scheduleBackground from './schedule.jpg';
 import clothingBackground from './clothing.jpg';
@@ -71,6 +61,9 @@ const Home = () => {
   const [selectedCatalog, setSelectedCatalog] = useState('regalos');
 
   const { products } = useSelector((state) => state.products);
+  const {
+    loading: { fetchLoader },
+  } = useSelector((state) => state.ui);
   const dispatch = useDispatch();
 
   const containerVariants = {
@@ -114,7 +107,7 @@ const Home = () => {
         <RightColumn>
           <Waves src={waves} />
           <HeroImage
-            src={agenda2}
+            src={agenda}
             className='animate__animated animate__fadeIn animate__delay-3s'
           />
         </RightColumn>
@@ -183,12 +176,29 @@ const Home = () => {
             Regalos
           </CatalogButton>
         </ButtonsContainer>
-        <ProductsGrid>
-          {products.map((product) => {
-            return <ProductCard key={product._id} product={product} />;
-          })}
-          {/* <ProductCard productImage={agenda} title='Agenda 2022' tag='AGEN' /> */}
-        </ProductsGrid>
+        <AnimatePresence exitBeforeEnter>
+          {fetchLoader ? (
+            <LoaderModified
+              variants={containerVariants}
+              initial='hidden'
+              animate='visible'
+              exit='hidden'
+              key={1}
+            />
+          ) : (
+            <ProductsGrid
+              variants={containerVariants}
+              initial='hidden'
+              animate='visible'
+              exit='hidden'
+              key={2}
+            >
+              {products.map((product) => {
+                return <ProductCard key={product._id} product={product} />;
+              })}
+            </ProductsGrid>
+          )}
+        </AnimatePresence>
       </ProductsContainer>
 
       {/* ---------------------------- SERVICE INFO ---------------------- */}

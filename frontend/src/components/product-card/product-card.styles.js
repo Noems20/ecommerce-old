@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import Loader from '../loaders/loader.component'
+
 
 export const Container = styled.div``;
 
@@ -17,6 +19,15 @@ export const ImageBox = styled.div`
   justify-content: center;
   align-items: center;
 `;
+
+export const ImageLoader = styled(Loader)`
+  --clr1: #000;
+  --clr2: #000;
+  --clr3: #000;
+  --clr4: #000;
+  --clr5: #000;
+
+`
 
 export const ContentBox = styled.div`
   position: absolute;

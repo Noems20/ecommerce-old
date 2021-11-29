@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import tokens from '../../tokens';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 // const textColor = 'var(--color-primary)';
 
@@ -191,7 +192,7 @@ export const CatalogButton = styled.button`
   }
 `;
 
-export const ProductsGrid = styled.div`
+export const ProductsGrid = styled(motion.div)`
   width: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(32rem, 1fr));

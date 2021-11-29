@@ -54,6 +54,7 @@ export const ImageContainer = styled.div`
 export const SecondaryImagesContainer = styled.div`
   grid-row: 2 / 3;
   display: grid;
+  justify-items: center;
   grid-gap: 2rem;
   grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
 

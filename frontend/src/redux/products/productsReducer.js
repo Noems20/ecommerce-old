@@ -1,4 +1,9 @@
-import { SET_PRODUCTS, SET_PRODUCT, SET_PRODUCT_LOADED } from './productsTypes';
+import {
+  SET_PRODUCTS,
+  SET_PRODUCT,
+  SET_PRODUCT_LOADED,
+  CLEAR_PRODUCTS,
+} from './productsTypes';
 
 const initialState = {
   products: [],
@@ -24,6 +29,8 @@ const productsReducer = (state = initialState, action) => {
         ...state,
         productLoaded: action.payload,
       };
+    case CLEAR_PRODUCTS:
+      return initialState;
     default:
       return state;
   }

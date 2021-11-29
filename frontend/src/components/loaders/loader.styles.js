@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
-export const Spinner = styled.div`
+export const Spinner = styled(motion.div)`
   --size: 75px;
   --clr-bg: #272324;
   --clr1: #fff;

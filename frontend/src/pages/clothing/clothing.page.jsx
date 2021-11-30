@@ -10,24 +10,29 @@ import {
 
 // STYLES
 import { PageGrid } from '../../general.styles';
-import {
-  LeftColumn,
-  HeroSubtitleUp,
-  HeroTitle,
-  HeroSubtitleDown,
-} from '../../hero.styles';
+import { LeftColumn, HeroTitle, HeroSubtitleDown } from '../../hero.styles';
 
 import {
   RightColumnResponsive,
-  HeroImageResponsive,
   WavesResponsive,
 } from '../../category-page.styles';
 
-import { Hero } from './clothing.styles';
+import {
+  Hero,
+  HeroImageResponsiveModified,
+  HeroSubtitleUpModified,
+} from './clothing.styles';
 
 // IMAGES
 import waves from '../../dev-images/waves2.svg';
-import cup from './cup.png';
+import man from '../../dev-images/man.png';
+import boy from '../../dev-images/boy.png';
+import woman from '../../dev-images/woman.png';
+import girl from '../../dev-images/girl.png';
+import sweatshirtWoman from '../../dev-images/sweatshirtWoman.png';
+import sweatshirtGirl from '../../dev-images/sweatshirtGirl.png';
+import sweatshirtMan from '../../dev-images/sweatshirtMan.png';
+import sweatshirtBoy from '../../dev-images/sweatshirtBoy.png';
 import Products from '../../components/products/products.component';
 
 const ClothingPage = () => {
@@ -45,9 +50,30 @@ const ClothingPage = () => {
     },
   };
 
+  function imageSwitch() {
+    if (category === 'playera') {
+      if (forW === 'hombre') return man;
+      else if (forW === 'mujer') return woman;
+      else if (forW === 'niño') return boy;
+      else if (forW === 'niña') return girl;
+      else if (forW === 'general') return man;
+    } else if (category === 'sudadera') {
+      if (forW === 'hombre') return sweatshirtMan;
+      else if (forW === 'mujer') return sweatshirtWoman;
+      else if (forW === 'niño') return sweatshirtBoy;
+      else if (forW === 'niña') return sweatshirtGirl;
+      else if (forW === 'general') return sweatshirtGirl;
+    } else {
+      if (forW === 'hombre') return man;
+      else if (forW === 'mujer') return sweatshirtWoman;
+      else if (forW === 'niño') return boy;
+      else if (forW === 'niña') return girl;
+      else if (forW === 'general') return boy;
+    }
+  }
   // -------------------- USE EFFECT'S -------------------
   useEffect(() => {
-    dispatch(fetchClothingProducts(category, forW, 12));
+    dispatch(fetchClothingProducts(forW, category, 12));
     return () => {
       dispatch(clearProducts());
     };
@@ -63,12 +89,12 @@ const ClothingPage = () => {
       {/* ---------------------------- HERO ---------------------- */}
       <Hero>
         <LeftColumn>
-          <HeroSubtitleUp
+          <HeroSubtitleUpModified
             style={{ color: '#fff', textTransform: 'capitalize' }}
             className='animate__animated animate__fadeInDown'
           >
             {`${category}s`}
-          </HeroSubtitleUp>
+          </HeroSubtitleUpModified>
           <HeroTitle
             style={{ color: '#fff', textTransform: 'capitalize' }}
             className='animate__animated animate__fadeIn animate__delay-1s'
@@ -79,14 +105,14 @@ const ClothingPage = () => {
             style={{ color: '#fff' }}
             className='animate__animated animate__fadeInUp animate__delay-2s'
           >
-            Proximamente Agendas Personalizadas
+            La mejor calidad de Zacatecas
           </HeroSubtitleDown>
         </LeftColumn>
 
         <RightColumnResponsive>
           <WavesResponsive src={waves} />
-          <HeroImageResponsive
-            src={cup}
+          <HeroImageResponsiveModified
+            src={imageSwitch()}
             className='animate__animated animate__fadeIn animate__delay-3s'
           />
         </RightColumnResponsive>

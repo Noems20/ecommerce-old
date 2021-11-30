@@ -28,14 +28,16 @@ export const CategoriesBar = styled.div`
   display: grid;
   grid-gap: 2rem;
   grid-template-rows: 1fr 1fr;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  /* grid-template-columns: 1fr 1fr 1fr; */
 
-  @media only screen and (max-width: 1000px) {
+  /* @media only screen and (max-width: 1000px) {
     grid-template-columns: 1fr 1fr;
-  }
+  } */
 
   @media only screen and (max-width: 850px) {
-    grid-template-rows: 1fr 1fr 1fr 1fr;
+    /* grid-template-rows: 1fr 1fr 1fr 1fr; */
+    grid-template-rows: 1fr 1fr 1fr;
     grid-template-columns: 1fr;
   }
 `;
@@ -53,9 +55,12 @@ export const BarItem = styled(Link)`
   justify-content: center;
 
   &.top {
-    grid-column: 1 / 4;
+    grid-column: 1 / 3;
 
     @media only screen and (max-width: 1000px) {
+      grid-column: 1 / 3;
+    }
+    @media only screen and (max-width: 850px) {
       grid-column: 1 / 2;
     }
   }

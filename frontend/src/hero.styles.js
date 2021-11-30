@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import tokens from './tokens';
+import { Link } from 'react-router-dom';
 
 const textColor = '#000';
 
@@ -55,9 +56,10 @@ export const HeroSection = styled.div`
 `;
 
 export const LeftColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   @media only screen and (max-width: 1300px) {
-    display: flex;
-    flex-direction: column;
     align-items: center;
   }
 `;
@@ -105,7 +107,8 @@ export const HeroSubtitleDown = styled.h1`
   }
 `;
 
-export const HeroButton = styled.button`
+export const HeroButton = styled(Link)`
+  text-decoration: none;
   font-family: ${tokens.fontPrimary};
   font-size: 1.8rem;
   font-weight: 600;
@@ -122,12 +125,10 @@ export const HeroButton = styled.button`
     rgba(236, 236, 236, 1) 100%
   );
 
-  margin-top: 6rem;
+  margin-top: 6rem !important;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 
   cursor: pointer;
-
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
 
   @media only screen and (max-width: 1300px) {
     margin-top: 3rem;

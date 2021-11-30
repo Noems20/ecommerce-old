@@ -1,6 +1,5 @@
 import styled, { css } from 'styled-components';
 import { motion } from 'framer-motion';
-import tokens from '../../../tokens';
 
 const errorColor = 'var(--color-red)';
 const subColor = '#a1a6a4';
@@ -26,7 +25,6 @@ export const InputContainer = styled(motion.div)`
 
 export const Input = styled(motion.input)`
   color: var(--color-grey-dark-1);
-  font-family: ${tokens.fontDisplay};
   font-size: 1.6rem;
   font-weight: 400;
   background-color: white;
@@ -86,7 +84,6 @@ export const Input = styled(motion.input)`
 export const TextAreaInput = styled(motion.textarea)`
   resize: vertical;
   color: var(--color-grey-dark-1);
-  font-family: ${tokens.fontDisplay};
   font-size: 1.6rem;
   font-weight: 400;
   background-color: white;

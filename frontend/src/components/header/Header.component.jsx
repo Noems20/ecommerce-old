@@ -421,47 +421,147 @@ const Header = () => {
           setOpen={setItemExpanded}
         >
           <Column>
-            <ColumnTitle to='/ropa/hombre/playera'>General</ColumnTitle>
+            <ColumnTitle
+              to='/ropa/general/todo'
+              onClick={() => setItemExpanded(false)}
+            >
+              General
+            </ColumnTitle>
             <ColumnItems>
-              <ColumnItem to='/ropa/hombre/playera'>Playeras</ColumnItem>
-              <ColumnItem to='/ropa/hombre/sudadera'>Sudaderas</ColumnItem>
-              <ColumnItem to='/ropa/hombre/todo'>Todo</ColumnItem>
+              <ColumnItem
+                to='/ropa/general/playera'
+                onClick={() => setItemExpanded(false)}
+              >
+                Playeras
+              </ColumnItem>
+              <ColumnItem
+                to='/ropa/general/sudadera'
+                onClick={() => setItemExpanded(false)}
+              >
+                Sudaderas
+              </ColumnItem>
+              <ColumnItem
+                to='/ropa/general/todo'
+                onClick={() => setItemExpanded(false)}
+              >
+                Todo
+              </ColumnItem>
             </ColumnItems>
             <ColumnImage url={generalImg} />
           </Column>
           <Column>
-            <ColumnTitle to='/ropa/hombre/playera'>Hombre</ColumnTitle>
+            <ColumnTitle
+              to='/ropa/hombre/todo'
+              onClick={() => setItemExpanded(false)}
+            >
+              Hombre
+            </ColumnTitle>
             <ColumnItems>
-              <ColumnItem to='/ropa/hombre/playera'>Playeras</ColumnItem>
-              <ColumnItem to='/ropa/hombre/sudadera'>Sudaderas</ColumnItem>
-              <ColumnItem to='/ropa/hombre/todo'>Todo</ColumnItem>
+              <ColumnItem
+                to='/ropa/hombre/playera'
+                onClick={() => setItemExpanded(false)}
+              >
+                Playeras
+              </ColumnItem>
+              <ColumnItem
+                to='/ropa/hombre/sudadera'
+                onClick={() => setItemExpanded(false)}
+              >
+                Sudaderas
+              </ColumnItem>
+              <ColumnItem
+                to='/ropa/hombre/todo'
+                onClick={() => setItemExpanded(false)}
+              >
+                Todo
+              </ColumnItem>
             </ColumnItems>
             <ColumnImage url={hombreImg} />
           </Column>
           <Column>
-            <ColumnTitle to='/ropa/mujer/playera'>Mujer</ColumnTitle>
+            <ColumnTitle
+              to='/ropa/mujer/todo'
+              onClick={() => setItemExpanded(false)}
+            >
+              Mujer
+            </ColumnTitle>
             <ColumnItems>
-              <ColumnItem to='/ropa/mujer/playera'>Playeras</ColumnItem>
-              <ColumnItem to='/ropa/mujer/sudadera'>Sudaderas</ColumnItem>
-              <ColumnItem to='/ropa/mujer/todo'>Todo</ColumnItem>
+              <ColumnItem
+                to='/ropa/mujer/playera'
+                onClick={() => setItemExpanded(false)}
+              >
+                Playeras
+              </ColumnItem>
+              <ColumnItem
+                to='/ropa/mujer/sudadera'
+                onClick={() => setItemExpanded(false)}
+              >
+                Sudaderas
+              </ColumnItem>
+              <ColumnItem
+                to='/ropa/mujer/todo'
+                onClick={() => setItemExpanded(false)}
+              >
+                Todo
+              </ColumnItem>
             </ColumnItems>
             <ColumnImage url={mujerImg} />
           </Column>
           <Column>
-            <ColumnTitle to='/ropa/niño/playera'>Niño</ColumnTitle>
+            <ColumnTitle
+              to='/ropa/niño/todo'
+              onClick={() => setItemExpanded(false)}
+            >
+              Niño
+            </ColumnTitle>
             <ColumnItems>
-              <ColumnItem to='/ropa/niño/playera'>Playeras</ColumnItem>
-              <ColumnItem to='/ropa/niño/sudadera'>Sudaderas</ColumnItem>
-              <ColumnItem to='/ropa/niño/todo'>Todo</ColumnItem>
+              <ColumnItem
+                to='/ropa/niño/playera'
+                onClick={() => setItemExpanded(false)}
+              >
+                Playeras
+              </ColumnItem>
+              <ColumnItem
+                to='/ropa/niño/sudadera'
+                onClick={() => setItemExpanded(false)}
+              >
+                Sudaderas
+              </ColumnItem>
+              <ColumnItem
+                to='/ropa/niño/todo'
+                onClick={() => setItemExpanded(false)}
+              >
+                Todo
+              </ColumnItem>
             </ColumnItems>
             <ColumnImage url={niñoImg} />
           </Column>
           <Column>
-            <ColumnTitle to='/ropa/niña/playera'>Niña</ColumnTitle>
+            <ColumnTitle
+              to='/ropa/niña/todo'
+              onClick={() => setItemExpanded(false)}
+            >
+              Niña
+            </ColumnTitle>
             <ColumnItems>
-              <ColumnItem to='/ropa/niña/playera'>Playeras</ColumnItem>
-              <ColumnItem to='/ropa/niña/sudadera'>Sudaderas</ColumnItem>
-              <ColumnItem to='/ropa/niña/todo'>Todo</ColumnItem>
+              <ColumnItem
+                to='/ropa/niña/playera'
+                onClick={() => setItemExpanded(false)}
+              >
+                Playeras
+              </ColumnItem>
+              <ColumnItem
+                to='/ropa/niña/sudadera'
+                onClick={() => setItemExpanded(false)}
+              >
+                Sudaderas
+              </ColumnItem>
+              <ColumnItem
+                to='/ropa/niña/todo'
+                onClick={() => setItemExpanded(false)}
+              >
+                Todo
+              </ColumnItem>
             </ColumnItems>
             <ColumnImage url={niñaImg} />
           </Column>

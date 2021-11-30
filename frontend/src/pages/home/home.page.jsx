@@ -54,7 +54,7 @@ import agenda from '../../dev-images/agenda.png';
 import scheduleBackground from './schedule.jpg';
 import clothingBackground from './clothing.jpg';
 import giftsBackground from './gifts.jpg';
-import bindingBackground from './binding.jpg';
+// import bindingBackground from './binding.jpg';
 
 const Home = () => {
   // -------------------- STATE AND CONSTANTS -------------------
@@ -99,7 +99,10 @@ const Home = () => {
           <HeroSubtitleDown className='animate__animated animate__fadeInUp animate__delay-2s'>
             Proximamente Agendas Personalizadas
           </HeroSubtitleDown>
-          <HeroButton className='animate__animated animate__flipInY animate__delay-2s'>
+          <HeroButton
+            to='/agendas'
+            className='animate__animated animate__flipInY animate__delay-2s'
+          >
             Explorar ahora
           </HeroButton>
         </LeftColumn>
@@ -114,7 +117,7 @@ const Home = () => {
       </HeroSection>
       {/* ---------------------------- CATEGORIES ---------------------- */}
       <CategoriesBar>
-        <BarItem className='top' to='/encuadernacion'>
+        {/* <BarItem className='top' to='/encuadernacion'>
           <BarItemContent>
             <BarItemTitle>Encuadernación</BarItemTitle>
           </BarItemContent>
@@ -122,8 +125,8 @@ const Home = () => {
             className='background-image'
             imageUrl={bindingBackground}
           />
-        </BarItem>
-        <BarItem to='/agendas'>
+        </BarItem> */}
+        <BarItem to='/agendas' className='top'>
           <BarItemContent>
             <BarItemTitle>Agendas</BarItemTitle>
           </BarItemContent>
@@ -132,7 +135,7 @@ const Home = () => {
             imageUrl={scheduleBackground}
           />
         </BarItem>
-        <BarItem to='/ropa'>
+        <BarItem to='/ropa/general/todo'>
           <BarItemContent>
             <BarItemTitle>Ropa</BarItemTitle>
           </BarItemContent>

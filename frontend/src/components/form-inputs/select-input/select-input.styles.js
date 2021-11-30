@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { RiArrowDownSLine } from 'react-icons/ri';
-import tokens from '../../../tokens';
 
 const errorColor = 'var(--color-red)';
 const subColor = '#a1a6a4';
@@ -11,7 +10,6 @@ export const Container = styled.div`
 
 export const Selector = styled.select`
   color: ${subColor};
-  font-family: ${tokens.fontDisplay};
   font-size: 1.6rem;
   font-weight: 400;
   background-color: white;

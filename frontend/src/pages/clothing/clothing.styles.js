@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import { HeroSection } from '../../hero.styles';
+import { HeroSection, HeroSubtitleUp } from '../../hero.styles';
+import { HeroImageResponsive } from '../../category-page.styles';
 
 // --------------------------------------------------------
 // HERO
@@ -7,21 +8,31 @@ import { HeroSection } from '../../hero.styles';
 
 export const Hero = styled(HeroSection)`
   height: calc(70vh - 12rem);
-  /* background-image: linear-gradient(
-    -225deg,
-    #231557 0%,
-    #44107a 29%,
-    #ff1361 67%,
-    #fff800 100%
-  ); */
-  background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+
+  background-color: #bf3a30;
+  background-image: linear-gradient(315deg, #864ba2 0%, #bf3a30 74%);
+
   @media only screen and (max-width: 1300px) {
+    padding-bottom: 0;
     height: auto;
     grid-gap: 5rem;
-    background: linear-gradient(
-      180deg,
-      rgba(69, 104, 220, 1) 0%,
-      rgba(176, 106, 179, 1) 100%
-    );
+    background-color: #bf3a30;
+    background-image: linear-gradient(180deg, #864ba2 0%, #bf3a30 74%);
+  }
+`;
+
+export const HeroSubtitleUpModified = styled(HeroSubtitleUp)`
+  font-size: 4rem;
+`;
+
+export const HeroImageResponsiveModified = styled(HeroImageResponsive)`
+  max-height: 100%;
+  max-width: 100%;
+
+  @media only screen and (max-width: 1300px) {
+    max-width: 50%;
+  }
+  @media only screen and (max-width: 600px) {
+    max-width: 70%;
   }
 `;

@@ -1,6 +1,5 @@
 import styled from 'styled-components';
-import Loader from '../loaders/loader.component'
-
+import Loader from '../loaders/loader.component';
 
 export const Container = styled.div``;
 
@@ -21,13 +20,12 @@ export const ImageBox = styled.div`
 `;
 
 export const ImageLoader = styled(Loader)`
-  --clr1: #000;
-  --clr2: #000;
-  --clr3: #000;
-  --clr4: #000;
-  --clr5: #000;
-
-`
+  --clr1: var(--color-primary-dark);
+  --clr2: var(--color-primary-dark);
+  --clr3: var(--color-primary-dark);
+  --clr4: var(--color-primary-dark);
+  --clr5: var(--color-primary-dark);
+`;
 
 export const ContentBox = styled.div`
   position: absolute;

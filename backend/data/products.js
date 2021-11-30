@@ -2083,7 +2083,7 @@ const products = [
   // --------------------------------------------------------------
   {
     _id: '61a41484471e5f315bb17f47',
-    name: 'Agenda Unidad Académica de Contaduría y administración',
+    name: 'Agenda FCA',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum, sapien ac tempor blandit, nulla ante semper urna, non gravida erat mauris eu diam. Aenean finibus, eros sit amet semper ornare, dui magna pellentesque purus, et malesuada ligula metus tincidunt mauris. Phasellus vulputate sed eros vel facilisis.',
     specifications: [

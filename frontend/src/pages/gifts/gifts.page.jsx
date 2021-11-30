@@ -65,7 +65,7 @@ const GiftsPage = () => {
             style={{ color: '#fff' }}
             className='animate__animated animate__fadeInDown'
           >
-            La mejor relación calidad-precio
+            ¡Justo para esta navidad!
           </HeroSubtitleUp>
           <HeroTitle
             style={{ color: '#fff' }}
@@ -77,7 +77,7 @@ const GiftsPage = () => {
             style={{ color: '#fff' }}
             className='animate__animated animate__fadeInUp animate__delay-2s'
           >
-            Proximamente Agendas Personalizadas
+            El mejor detalle para esa persona
           </HeroSubtitleDown>
         </LeftColumn>
 

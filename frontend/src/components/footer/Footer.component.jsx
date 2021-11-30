@@ -179,19 +179,19 @@ const Footer = () => {
                 exit='hidden'
               >
                 <ListItem>
-                  <ListItemLink to='/'>General</ListItemLink>
+                  <ListItemLink to='/ropa/general/todo'>General</ListItemLink>
                 </ListItem>
                 <ListItem>
-                  <ListItemLink to='/'>Hombre</ListItemLink>
+                  <ListItemLink to='/ropa/hombre/todo'>Hombre</ListItemLink>
                 </ListItem>
                 <ListItem>
-                  <ListItemLink to='/'>Mujer</ListItemLink>
+                  <ListItemLink to='/ropa/mujer/todo'>Mujer</ListItemLink>
                 </ListItem>
                 <ListItem>
-                  <ListItemLink to='/'>Niño</ListItemLink>
+                  <ListItemLink to='/ropa/niño/todo'>Niño</ListItemLink>
                 </ListItem>
                 <ListItem>
-                  <ListItemLink to='/'>Niña</ListItemLink>
+                  <ListItemLink to='/ropa/niña/todo'>Niña</ListItemLink>
                 </ListItem>
               </List>
             )}
@@ -214,13 +214,13 @@ const Footer = () => {
                 exit='hidden'
               >
                 <ListItem>
-                  <ListItemLink to='/'>Agendas</ListItemLink>
+                  <ListItemLink to='/agendas'>Agendas</ListItemLink>
                 </ListItem>
-                <ListItem>
+                {/* <ListItem>
                   <ListItemLink to='/'>Encuadernación</ListItemLink>
-                </ListItem>
+                </ListItem> */}
                 <ListItem>
-                  <ListItemLink to='/'>Regalos</ListItemLink>
+                  <ListItemLink to='/regalos'>Regalos</ListItemLink>
                 </ListItem>
                 <ListItem>
                   <ListItemLink to='/'>Nosotros</ListItemLink>

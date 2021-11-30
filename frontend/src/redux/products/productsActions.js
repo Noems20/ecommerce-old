@@ -60,17 +60,10 @@ export const fetchProducts =
         payload: { fetchLoader: true },
       });
 
-      let res;
-      if (excludeId) {
-        res = await axios.get(
-          `/api/v1/products?_id[ne]=${excludeId}&catalog=${catalog}&limit=${quantity}&fields=name,slug,catalog,price,ratingsAverage,subcategory&sort=-sold,-createdAt`
-        );
-      } else {
-        res = await axios.get(
-          `/api/v1/products?catalog=${catalog}&limit=${quantity}&fields=name,slug,catalog,price,ratingsAverage,subcategory&sort=-sold,-createdAt`
-        );
-      }
-      const { data } = res;
+      const excludeString = excludeId ? `_id[ne]=${excludeId}` : '';
+      const { data } = await axios.get(
+        `/api/v1/products?${excludeString}&catalog=${catalog}&limit=${quantity}&fields=name,slug,catalog,price,ratingsAverage,subcategory&sort=-sold,-createdAt`
+      );
 
       batch(() => {
         dispatch({
@@ -91,24 +84,19 @@ export const fetchProducts =
 //  FETCH CLOTHING PRODUCTS
 // ------------------------------------------------------------------------
 export const fetchClothingProducts =
-  (category, forW, quantity) => async (dispatch) => {
+  (forW, category, quantity) => async (dispatch) => {
     try {
       dispatch({
         type: SET_UI_LOADING,
         payload: { fetchLoader: true },
       });
 
-      let res;
-      if (category === 'todo') {
-        res = await axios.get(
-          `/api/v1/products?catalog=ropa&for=${forW}&limit=${quantity}&fields=name,slug,catalog,price,ratingsAverage,subcategory&sort=-sold,-createdAt`
-        );
-      } else {
-        res = await axios.get(
-          `/api/v1/products?catalog=ropa&category=${category}&for=${forW}&limit=${quantity}&fields=name,slug,catalog,price,ratingsAverage,subcategory&sort=-sold,-createdAt`
-        );
-      }
-      const { data } = res;
+      const categoryString = category === 'todo' ? '' : `&category=${category}`;
+      const forString = forW === 'general' ? '' : `&for=${forW}`;
+
+      const { data } = await axios.get(
+        `/api/v1/products?catalog=ropa${categoryString}${forString}&limit=${quantity}&fields=name,slug,catalog,price,ratingsAverage,subcategory&sort=-sold,-createdAt`
+      );
 
       batch(() => {
         dispatch({

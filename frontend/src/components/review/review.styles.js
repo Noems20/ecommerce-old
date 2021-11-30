@@ -57,6 +57,7 @@ export const UserName = styled.h2`
 // ---------------------------------
 export const ReviewInfo = styled.div`
   display: grid;
+  justify-items: start;
   grid-gap: 0.5rem;
   grid-auto-rows: max-content;
 
@@ -67,6 +68,7 @@ export const ReviewInfo = styled.div`
 `;
 
 export const ReviewTitle = styled.h2`
+  text-align: center;
   font-size: 1.8rem;
 `;
 
@@ -80,10 +82,58 @@ export const ReviewText = styled.p`
 `;
 
 // --------------------------------------------------------------
+// BUTTONS CONTAINER
+// --------------------------------------------------------------
+export const ButtonsContainer = styled.div`
+  justify-self: start;
+  margin-top: 1rem;
+  display: grid;
+  grid-gap: 2rem;
+  grid-auto-flow: column;
+
+  @media only screen and (max-width: 600px) {
+    margin-top: 0;
+    grid-gap: 1rem;
+    grid-auto-flow: row;
+    justify-self: stretch;
+  }
+`;
+
+// --------------------------------------------------------------
 // DECORATION
 // --------------------------------------------------------------
 export const Decoration = styled.div`
   height: 2rem;
   width: 70%;
   background-color: var(--color-primary);
+`;
+
+// --------------------------------------------------------------
+// MODAL
+// --------------------------------------------------------------
+export const ReviewForm = styled.form`
+  width: 70vw;
+  max-height: 90vh;
+  padding: 3rem;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: auto;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  display: grid;
+  grid-gap: 3rem;
+
+  @media only screen and (max-width: 700px) {
+    padding: 2rem;
+    width: 90vw;
+  }
+`;
+
+export const FormTitle = styled.h1`
+  color: var(--color-primary);
+  line-height: 1;
 `;

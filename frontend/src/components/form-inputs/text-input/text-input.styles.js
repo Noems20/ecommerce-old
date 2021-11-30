@@ -24,6 +24,8 @@ export const InputContainer = styled(motion.div)`
 `;
 
 export const Input = styled(motion.input)`
+  font-family: inherit;
+  font-size: inherit;
   color: var(--color-grey-dark-1);
   font-size: 1.6rem;
   font-weight: 400;
@@ -82,6 +84,8 @@ export const Input = styled(motion.input)`
 `;
 
 export const TextAreaInput = styled(motion.textarea)`
+  font-family: inherit;
+  font-size: inherit;
   resize: vertical;
   color: var(--color-grey-dark-1);
   font-size: 1.6rem;
@@ -93,6 +97,12 @@ export const TextAreaInput = styled(motion.textarea)`
   border-radius: 2px;
 
   -webkit-text-fill-color: var(--color-grey-dark-1);
+  overflow: auto;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
   display: block;
   width: 100%;
@@ -124,8 +134,7 @@ export const TextAreaInput = styled(motion.textarea)`
 `;
 
 export const FormInputLabel = styled.label`
-  font-family: inherit;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-weight: 500;
   color: ${({ error }) => (error ? `${errorColor}` : `${subColor}`)};
   background-color: #fff;

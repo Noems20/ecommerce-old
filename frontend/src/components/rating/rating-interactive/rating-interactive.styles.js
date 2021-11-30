@@ -19,6 +19,7 @@ export const IconContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
   & svg {
     color: ${(props) => (props.color ? props.color : 'white')};
     font-size: 2rem;

@@ -9,6 +9,8 @@ export const Container = styled.div`
 `;
 
 export const Selector = styled.select`
+  font-family: inherit;
+  font-size: inherit;
   color: ${subColor};
   font-size: 1.6rem;
   font-weight: 400;
@@ -78,7 +80,7 @@ export const SelectLabel = styled.label`
   position: absolute;
   top: -0.1rem;
   font-family: inherit;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-weight: 500;
   color: ${({ error }) => (error ? `${errorColor}` : `${subColor}`)};
   background-color: white;

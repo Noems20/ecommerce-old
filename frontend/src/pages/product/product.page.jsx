@@ -46,7 +46,7 @@ const ProductPage = () => {
             <Line />
             <ProductSuggestions catalog={product.catalog} id={product._id} />
             <Line />
-            <ProductReviews reviews={product.reviews} />
+            <ProductReviews reviews={product.reviews} product={product._id} />
           </>
         </PageGrid>
       )}

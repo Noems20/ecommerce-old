@@ -4,7 +4,10 @@ import {
   SET_PRODUCT_LOADED,
   CLEAR_PRODUCTS,
 } from './productsTypes';
-import { SET_UI_LOADING } from '../ui/uiTypes';
+
+import { SET_USER_REVIEW } from '../user/userTypes';
+
+import { SET_UI_LOADING, SET_UI_ERRORS, CLEAR_UI_ERRORS } from '../ui/uiTypes';
 import { batch } from 'react-redux';
 import axios from 'axios';
 
@@ -20,7 +23,7 @@ export const clearProducts = () => async (dispatch) => {
 // ------------------------------------------------------------------------
 //  FETCH PRODUCT BY SLUG
 // ------------------------------------------------------------------------
-export const fetchProductBySlug = (slug) => async (dispatch) => {
+export const fetchProductBySlug = (slug) => async (dispatch, getState) => {
   try {
     dispatch({
       type: SET_PRODUCT_LOADED,
@@ -28,6 +31,17 @@ export const fetchProductBySlug = (slug) => async (dispatch) => {
     });
 
     const { data } = await axios.get(`/api/v1/products/product/${slug}`);
+    const { user } = getState().user;
+
+    if (data.data && user) {
+      const { data: reviewData } = await axios.get(
+        `/api/v1/reviews/MyReview/${data.data.id}`
+      );
+      dispatch({
+        type: SET_USER_REVIEW,
+        payload: reviewData.data,
+      });
+    }
 
     batch(() => {
       dispatch({
@@ -112,3 +126,123 @@ export const fetchClothingProducts =
       console.log(error);
     }
   };
+
+// ------------------------------------------------------------------------
+//  CREATE PRODUCT REVIEW
+// ------------------------------------------------------------------------
+export const createProductReview =
+  (product, title, rating, review) => async (dispatch) => {
+    try {
+      dispatch({
+        type: SET_UI_LOADING,
+        payload: { secondLoader: true },
+      });
+
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      };
+
+      const { data } = await axios.post(
+        `/api/v1/reviews`,
+        { product, title, rating, review },
+        config
+      );
+
+      batch(() => {
+        dispatch({
+          type: SET_USER_REVIEW,
+          payload: data.data,
+        });
+        dispatch({
+          type: SET_UI_LOADING,
+          payload: { secondLoader: false },
+        });
+      });
+    } catch (error) {
+      dispatch({
+        type: SET_UI_ERRORS,
+        payload: { errorsTwo: error.response.data.uiErrors },
+      });
+      dispatch({
+        type: SET_UI_LOADING,
+        payload: { secondLoader: false },
+      });
+    }
+  };
+// ------------------------------------------------------------------------
+//  UPDATE PRODUCT REVIEW
+// ------------------------------------------------------------------------
+export const updateProductReview =
+  (id, title, rating, review) => async (dispatch) => {
+    try {
+      dispatch({
+        type: SET_UI_LOADING,
+        payload: { secondLoader: true },
+      });
+
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      };
+
+      const { data } = await axios.patch(
+        `/api/v1/reviews/${id}`,
+        {
+          title,
+          rating,
+          review,
+        },
+        config
+      );
+
+      batch(() => {
+        dispatch({
+          type: SET_USER_REVIEW,
+          payload: data.data,
+        });
+
+        dispatch({
+          type: SET_UI_LOADING,
+          payload: { secondLoader: false },
+        });
+        dispatch({
+          type: CLEAR_UI_ERRORS,
+        });
+      });
+    } catch (error) {
+      dispatch({
+        type: SET_UI_ERRORS,
+        payload: { errorsTwo: error.response.data.uiErrors },
+      });
+      dispatch({
+        type: SET_UI_LOADING,
+        payload: { secondLoader: false },
+      });
+      // checkUserPermissions(error, dispatch);
+    }
+  };
+
+// ------------------------------------------------------------------------
+//  DELETE PRODUCT REVIEW
+// ------------------------------------------------------------------------
+export const deleteProductReview = (id) => async (dispatch) => {
+  try {
+    await axios.delete(`/api/v1/reviews/${id}`);
+    batch(() => {
+      dispatch({
+        type: SET_USER_REVIEW,
+        payload: null,
+      });
+    });
+  } catch (error) {
+    if (
+      error.response.data.message ===
+      'You are not logged in! Please log in to get access'
+    ) {
+      window.location.reload();
+    }
+  }
+};

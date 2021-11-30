@@ -26,6 +26,11 @@ export const Title = styled.h1`
   text-transform: uppercase;
 `;
 
+export const ReviewForm = styled.form`
+  display: grid;
+  grid-gap: 2rem;
+`;
+
 export const ReviewsResumeContainer = styled.div`
   padding: 2rem;
   height: max-content;

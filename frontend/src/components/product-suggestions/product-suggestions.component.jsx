@@ -29,7 +29,7 @@ const ProductSuggestions = ({ catalog, id }) => {
 
   return (
     <Container>
-      <ProductSuggestionsTitle>Te podria interesar</ProductSuggestionsTitle>
+      <ProductSuggestionsTitle>Te podría interesar</ProductSuggestionsTitle>
       <ProductsGrid>
         {products.map((product) => {
           return <ProductCard key={product._id} product={product} />;

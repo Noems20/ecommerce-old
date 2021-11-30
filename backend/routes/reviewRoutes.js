@@ -2,6 +2,7 @@ import express from 'express';
 
 import {
   getAllReviews,
+  getMyReview,
   createReview,
   deleteReview,
   updateReview,
@@ -20,6 +21,7 @@ router
   .post(protect, restrictTo('user', 'admin'), setProductUserIds, createReview);
 
 router.use(protect);
+router.get('/MyReview/:id', getMyReview);
 
 router
   .route('/:id')

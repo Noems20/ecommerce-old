@@ -1,6 +1,7 @@
 import { updateItem, deleteItem } from '../utils/reducerUtils';
 import {
   SET_USER,
+  SET_USER_REVIEW,
   SET_USERS,
   CLEAR_USERS,
   SET_USER_LOADED,
@@ -16,6 +17,7 @@ const initialState = {
     tab: false,
     updatedUser: false,
   },
+  review: null,
   users: [],
 };
 
@@ -23,6 +25,11 @@ const userReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_USER:
       return { ...state, user: action.payload };
+    case SET_USER_REVIEW:
+      return {
+        ...state,
+        review: action.payload,
+      };
     case SET_USER_LOADED:
       return {
         ...state,

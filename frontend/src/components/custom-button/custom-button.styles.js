@@ -54,13 +54,13 @@ const blackButtonStyles = css`
 // ------------------ DANGER BUTTON STYLES ------------
 const dangerButtonStyles = css`
   color: #fff;
-  background-color: #f94415;
-  border: 0.2px solid #f94415;
+  background-color: var(--color-red);
+  border: 0.2px solid var(--color-red);
 
   &:hover {
-    background-color: #e03e14;
+    background-color: var(--color-red-dark);
     color: #fff;
-    border: 0.2px solid #e03e14;
+    border: 0.2px solid var(--color-red-dark);
   }
 
   &:disabled {

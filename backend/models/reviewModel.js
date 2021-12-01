@@ -92,32 +92,6 @@ reviewSchema.statics.calcAverageRating = async function (productId) {
   }
 };
 
-reviewSchema.statics.calcRatingPercentages = async function (productId) {
-  // this -> Current model (Product)
-  const stats = await this.aggregate([
-    {
-      $match: { product: productId },
-    },
-    {
-      $group: {
-        _id: '$product',
-        numRating: { $sum: 1 },
-        avgRating: { $avg: '$rating' },
-      },
-    },
-  ]);
-
-  if (stats.length > 0) {
-    await Product.findByIdAndUpdate(productId, {
-      ratingPercentages: stats[0].numRating,
-    });
-  } else {
-    await Product.findByIdAndUpdate(productId, {
-      ratingPercentages: 0,
-    });
-  }
-};
-
 reviewSchema.post('save', function () {
   // This points to current review (Document), this.constructor points to model
   this.constructor.calcAverageRating(this.product);

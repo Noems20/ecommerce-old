@@ -47,6 +47,10 @@ export const fetchProductBySlug = (slug) => async (dispatch, getState) => {
       });
     }
 
+    if (data.data) {
+      data.data.stats = data.stats;
+    }
+
     batch(() => {
       dispatch({
         type: SET_PRODUCT,

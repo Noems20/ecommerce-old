@@ -143,7 +143,9 @@ const Product = ({ product }) => {
         {/* ------------- RATING ------------- */}
         <Rating
           value={product.ratingsAverage}
-          text={`${product.ratingsQuantity} reseñas`}
+          text={`${product.ratingsQuantity} ${
+            product.ratingsQuantity === 1 ? 'reseña' : 'reseñas'
+          }`}
         />
         {/* ------------- COLORS -------------- */}
         {product.subcategory.color.length > 1 && (

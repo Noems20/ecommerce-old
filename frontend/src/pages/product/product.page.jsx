@@ -33,6 +33,8 @@ const ProductPage = () => {
     };
   }, [dispatch, slug]);
 
+  console.log(product);
+
   // --------------------------------- HANDLERS -------------------------
 
   return (
@@ -40,19 +42,22 @@ const ProductPage = () => {
       {productLoaded === false ? (
         <FullScreenLoader />
       ) : (
-        <PageGrid>
-          <>
-            <Product product={product} />
-            <Line />
-            <ProductSuggestions catalog={product.catalog} id={product._id} />
-            <Line />
-            <ProductReviews
-              productId={product._id}
-              reviewsQuantity={product.ratingsQuantity}
-              ratingsAverage={product.ratingsAverage}
-            />
-          </>
-        </PageGrid>
+        product && (
+          <PageGrid>
+            <>
+              <Product product={product} />
+              <Line />
+              <ProductSuggestions catalog={product.catalog} id={product._id} />
+              <Line />
+              <ProductReviews
+                productId={product._id}
+                reviewsStats={product.stats}
+                reviewsQuantity={product.ratingsQuantity}
+                ratingsAverage={product.ratingsAverage}
+              />
+            </>
+          </PageGrid>
+        )
       )}
     </>
   );

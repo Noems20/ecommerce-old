@@ -13,7 +13,7 @@ import { addItem, updateItem, deleteItem } from '../utils/reducerUtils';
 
 const initialState = {
   products: [],
-  product: {},
+  product: null,
   reviews: [],
   productLoaded: false,
 };

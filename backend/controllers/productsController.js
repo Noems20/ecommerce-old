@@ -159,17 +159,54 @@ export const deleteProduct = catchAsync(async (req, res, next) => {
 
 // -----------------------------------------------------------------------
 // FIND BY SLUG
+
+// percent: {
+//   $multiply: [{ $divide: [numReviews, '$ratingsQuantity'] }, 100],
+// },
 // -----------------------------------------------------------------------
 export const findBySlug = catchAsync(async (req, res, next) => {
   const { slug: docSlug } = req.params;
 
   const doc = await Product.findOne({ slug: docSlug });
 
-  if (!doc) {
-    doc = null;
+  const stats = {
+    5: 0,
+    4: 0,
+    3: 0,
+    2: 0,
+    1: 0,
+  };
+
+  if (doc) {
+    const statsAux = await Review.aggregate([
+      {
+        $match: { product: { $eq: doc._id } },
+      },
+
+      {
+        $group: {
+          _id: { $toLower: '$rating' },
+          numReviews: { $sum: 1 },
+        },
+      },
+      {
+        $project: {
+          numReviews: true,
+        },
+      },
+      {
+        $sort: { _id: -1 },
+      },
+    ]);
+
+    statsAux.map((stat) => {
+      stats[stat._id] = Math.round(
+        (stat.numReviews / doc.ratingsQuantity) * 100
+      );
+    });
   }
 
-  res.status(200).json({ status: 'success', data: doc });
+  res.status(200).json({ status: 'success', data: doc, stats });
 });
 
 // -----------------------------------------------------------------------

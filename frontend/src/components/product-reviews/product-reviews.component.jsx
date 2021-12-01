@@ -30,13 +30,17 @@ import {
   NoReviewsTitle,
 } from './product-reviews.styles';
 
-const ProductReviews = ({ productId, reviewsQuantity, ratingsAverage }) => {
+const ProductReviews = ({
+  productId,
+  reviewsQuantity,
+  ratingsAverage,
+  reviewsStats,
+}) => {
   // ------------------------------- STATE AND CONSTANTS ------------------
   const [reviewData, setReviewData] = useState({
     title: '',
     review: '',
   });
-  const [filter, setFilter] = useState(0);
 
   const [reviewRating, setReviewRating] = useState(5);
 
@@ -52,12 +56,12 @@ const ProductReviews = ({ productId, reviewsQuantity, ratingsAverage }) => {
 
   // ------------------------------- USE EFFECT'S -------------------------
   useEffect(() => {
-    dispatch(fetchProductReviews(productId, filter));
+    dispatch(fetchProductReviews(productId, 0));
     return () => {
       dispatch(clearUiErrors());
       dispatch(clearProducts());
     };
-  }, [dispatch, productId, filter]);
+  }, [dispatch, productId]);
 
   // ------------------------------- HANDLERS -------------------------
   const handleChange = (event) => {
@@ -128,27 +132,27 @@ const ProductReviews = ({ productId, reviewsQuantity, ratingsAverage }) => {
           />
           <RatingBar
             rating='5 estrellas'
-            percentage='76%'
+            percentage={`${reviewsStats[5]}%`}
             onClick={() => handleFilter(5)}
           />
           <RatingBar
             rating='4 estrellas'
-            percentage='13%'
+            percentage={`${reviewsStats[4]}%`}
             onClick={() => handleFilter(4)}
           />
           <RatingBar
             rating='3 estrellas'
-            percentage='5%'
+            percentage={`${reviewsStats[3]}%`}
             onClick={() => handleFilter(3)}
           />
           <RatingBar
             rating='2 estrellas'
-            percentage='2%'
+            percentage={`${reviewsStats[2]}%`}
             onClick={() => handleFilter(2)}
           />
           <RatingBar
             rating='1 estrella'
-            percentage='4%'
+            percentage={`${reviewsStats[1]}%`}
             onClick={() => handleFilter(1)}
           />
         </RatingBarsContainer>

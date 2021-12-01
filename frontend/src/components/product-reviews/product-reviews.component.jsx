@@ -2,7 +2,11 @@ import React, { useState, useEffect } from 'react';
 
 // REDUX
 import { useDispatch, useSelector } from 'react-redux';
-import { createProductReview } from '../../redux/products/productsActions';
+import {
+  createProductReview,
+  fetchProductReviews,
+  clearProducts,
+} from '../../redux/products/productsActions';
 import { clearUiErrors } from '../../redux/ui/uiActions';
 
 // COMPONENTS
@@ -12,6 +16,7 @@ import RatingInteractive from '../rating/rating-interactive/rating-interactive.c
 import RatingBar from '../rating-bar/rating-bar.component';
 import TextInput from '../form-inputs/text-input/text-input.component';
 import CustomButton from '../custom-button/custom-button.component';
+import { LoaderModified } from '../../general.styles';
 
 // STYLES
 import {
@@ -25,12 +30,13 @@ import {
   NoReviewsTitle,
 } from './product-reviews.styles';
 
-const ProductReviews = ({ reviews, product }) => {
+const ProductReviews = ({ productId, reviewsQuantity, ratingsAverage }) => {
   // ------------------------------- STATE AND CONSTANTS ------------------
   const [reviewData, setReviewData] = useState({
     title: '',
     review: '',
   });
+  const [filter, setFilter] = useState(0);
 
   const [reviewRating, setReviewRating] = useState(5);
 
@@ -38,6 +44,7 @@ const ProductReviews = ({ reviews, product }) => {
 
   const dispatch = useDispatch();
   const { user, review: userReview } = useSelector((state) => state.user);
+  const { reviews } = useSelector((state) => state.products);
   const {
     loading,
     uiErrors: { errorsTwo },
@@ -45,10 +52,12 @@ const ProductReviews = ({ reviews, product }) => {
 
   // ------------------------------- USE EFFECT'S -------------------------
   useEffect(() => {
+    dispatch(fetchProductReviews(productId, filter));
     return () => {
       dispatch(clearUiErrors());
+      dispatch(clearProducts());
     };
-  }, [dispatch]);
+  }, [dispatch, productId, filter]);
 
   // ------------------------------- HANDLERS -------------------------
   const handleChange = (event) => {
@@ -59,7 +68,10 @@ const ProductReviews = ({ reviews, product }) => {
 
   const handleSubmitCreate = (e) => {
     e.preventDefault();
-    dispatch(createProductReview(product, reviewTitle, reviewRating, review));
+    dispatch(createProductReview(productId, reviewTitle, reviewRating, review));
+  };
+  const handleFilter = (filterNumber) => {
+    dispatch(fetchProductReviews(productId, filterNumber));
   };
 
   // ------------------------------- RENDER -------------------------------
@@ -106,33 +118,38 @@ const ProductReviews = ({ reviews, product }) => {
     <ReviewsContainer>
       <ReviewsResumeContainer>
         <Title>Opiniones de clientes</Title>
-        <Rating value={4.6} text='4.6 de 5'></Rating>
-        <ReviewsCount>{'12,755'} calificaciones</ReviewsCount>
+        <Rating value={ratingsAverage} text={`${ratingsAverage} de 5`}></Rating>
+        <ReviewsCount>{reviewsQuantity} calificaciones</ReviewsCount>
         <RatingBarsContainer>
+          <RatingBar
+            rating='Todos'
+            percentage='100%'
+            onClick={() => handleFilter(0)}
+          />
           <RatingBar
             rating='5 estrellas'
             percentage='76%'
-            onClick={() => console.log('5 estrellas')}
+            onClick={() => handleFilter(5)}
           />
           <RatingBar
             rating='4 estrellas'
             percentage='13%'
-            onClick={() => console.log('4 estrellas')}
+            onClick={() => handleFilter(4)}
           />
           <RatingBar
             rating='3 estrellas'
             percentage='5%'
-            onClick={() => console.log('3 estrellas')}
+            onClick={() => handleFilter(3)}
           />
           <RatingBar
             rating='2 estrellas'
             percentage='2%'
-            onClick={() => console.log('2 estrellas')}
+            onClick={() => handleFilter(2)}
           />
           <RatingBar
             rating='1 estrella'
             percentage='4%'
-            onClick={() => console.log('1 estrella')}
+            onClick={() => handleFilter(1)}
           />
         </RatingBarsContainer>
       </ReviewsResumeContainer>
@@ -150,7 +167,9 @@ const ProductReviews = ({ reviews, product }) => {
           </>
         )}
         <Title>Reseñas</Title>
-        {reviews.length === 0 ? (
+        {!loading.secondFetchLoader ? (
+          <LoaderModified />
+        ) : reviews.length === 0 ? (
           <NoReviewsTitle>SIN RESEÑAS</NoReviewsTitle>
         ) : (
           reviews.map((review) => {

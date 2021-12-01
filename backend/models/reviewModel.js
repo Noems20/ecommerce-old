@@ -1,6 +1,14 @@
 import mongoose from 'mongoose';
 import Product from './productModel.js';
 
+const ratingPercentages = new mongoose.Schema({
+  fiveStars: Number,
+  forStars: Number,
+  threeStars: Number,
+  twoStars: Number,
+  oneStar: Number,
+});
+
 const reviewSchema = new mongoose.Schema(
   {
     title: {
@@ -13,9 +21,14 @@ const reviewSchema = new mongoose.Schema(
     },
     rating: {
       type: Number,
-      min: [1, 'Valoración debe ser mayor o igual que 1'],
-      max: [5, 'Valoración debe ser menor o igual que 5'],
+      enum: {
+        values: [1, 2, 3, 4, 5],
+        message: 'Debe de ser 1, 2, 3, 4 o 5',
+      },
       required: [true, 'Debe tener una valoración'],
+    },
+    ratingPercentages: {
+      type: ratingPercentages,
     },
     createdAt: {
       type: Date,
@@ -75,6 +88,32 @@ reviewSchema.statics.calcAverageRating = async function (productId) {
     await Product.findByIdAndUpdate(productId, {
       ratingsQuantity: 0,
       ratingsAverage: 4.5,
+    });
+  }
+};
+
+reviewSchema.statics.calcRatingPercentages = async function (productId) {
+  // this -> Current model (Product)
+  const stats = await this.aggregate([
+    {
+      $match: { product: productId },
+    },
+    {
+      $group: {
+        _id: '$product',
+        numRating: { $sum: 1 },
+        avgRating: { $avg: '$rating' },
+      },
+    },
+  ]);
+
+  if (stats.length > 0) {
+    await Product.findByIdAndUpdate(productId, {
+      ratingPercentages: stats[0].numRating,
+    });
+  } else {
+    await Product.findByIdAndUpdate(productId, {
+      ratingPercentages: 0,
     });
   }
 };

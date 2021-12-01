@@ -11,6 +11,7 @@ const initialState = {
     firstLoader: false,
     secondLoader: false,
     fetchLoader: false,
+    secondFetchLoader: false,
   },
   uiErrors: {
     errorsOne: {},

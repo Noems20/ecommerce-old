@@ -1,13 +1,20 @@
 import {
   SET_PRODUCTS,
   SET_PRODUCT,
+  SET_PRODUCT_REVIEWS,
   SET_PRODUCT_LOADED,
+  ADD_REVIEW,
+  UPDATE_REVIEW,
+  DELETE_REVIEW,
   CLEAR_PRODUCTS,
 } from './productsTypes';
+
+import { addItem, updateItem, deleteItem } from '../utils/reducerUtils';
 
 const initialState = {
   products: [],
   product: {},
+  reviews: [],
   productLoaded: false,
 };
 
@@ -23,11 +30,30 @@ const productsReducer = (state = initialState, action) => {
         ...state,
         product: action.payload,
       };
-
+    case SET_PRODUCT_REVIEWS:
+      return {
+        ...state,
+        reviews: action.payload,
+      };
     case SET_PRODUCT_LOADED:
       return {
         ...state,
         productLoaded: action.payload,
+      };
+    case ADD_REVIEW:
+      return {
+        ...state,
+        reviews: addItem(action.payload, state.reviews),
+      };
+    case UPDATE_REVIEW:
+      return {
+        ...state,
+        reviews: updateItem(action.payload, state.reviews),
+      };
+    case DELETE_REVIEW:
+      return {
+        ...state,
+        reviews: deleteItem(action.payload, state.reviews),
       };
     case CLEAR_PRODUCTS:
       return initialState;

@@ -1,9 +1,11 @@
 import multer from 'multer';
 import sharp from 'sharp';
 import fs from 'fs';
+import mongoose from 'mongoose';
 
 // MODELS
 import Product from '../models/productModel.js';
+import Review from '../models/reviewModel.js';
 
 // UTILS
 import catchAsync from '../utils/catchAsync.js';
@@ -161,10 +163,7 @@ export const deleteProduct = catchAsync(async (req, res, next) => {
 export const findBySlug = catchAsync(async (req, res, next) => {
   const { slug: docSlug } = req.params;
 
-  let query = Product.findOne({ slug: docSlug });
-  query.populate({ path: 'reviews' });
-
-  let doc = await query;
+  const doc = await Product.findOne({ slug: docSlug });
 
   if (!doc) {
     doc = null;
@@ -177,27 +176,19 @@ export const findBySlug = catchAsync(async (req, res, next) => {
 // GET PRODUCT STATS
 // -----------------------------------------------------------------------
 export const getProductStats = catchAsync(async (req, res, next) => {
-  const stats = await Product.aggregate([
+  let { productId } = req.params;
+  productId = mongoose.Types.ObjectId(productId);
+
+  const stats = await Review.aggregate([
     {
-      $match: { ratingsAverage: { $gte: 4.5 } },
+      $match: { product: { $eq: productId } },
     },
     {
       $group: {
-        _id: { $toUpper: '$difficulty' },
-        numProducts: { $sum: 1 },
-        numRatings: { $sum: '$ratingsQuantity' },
-        avgRating: { $avg: '$ratingsAverage' },
-        avgPrice: { $avg: '$price' },
-        minPrice: { $min: '$price' },
-        maxPrice: { $max: '$price' },
+        _id: { $toLower: '$rating' },
+        numReviews: { $sum: 1 },
       },
     },
-    {
-      $sort: { avgPrice: 1 },
-    },
-    // {
-    //   $match: { _id: { $ne: 'EASY' } },
-    // },
   ]);
 
   res.status(200).json({

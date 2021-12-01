@@ -22,7 +22,7 @@ const router = express.Router();
 
 router.use('/:productId/reviews', reviewRouter);
 router.route('/top-10-cheap').get(aliasTopProducts, getAllProducts);
-router.route('/product-stats').get(getProductStats);
+router.route('/product-stats/:productId').get(getProductStats);
 router.route('/product/:slug').get(findBySlug);
 
 router

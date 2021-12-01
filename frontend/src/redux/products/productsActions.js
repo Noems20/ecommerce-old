@@ -3,6 +3,10 @@ import {
   SET_PRODUCT,
   SET_PRODUCT_LOADED,
   CLEAR_PRODUCTS,
+  SET_PRODUCT_REVIEWS,
+  ADD_REVIEW,
+  UPDATE_REVIEW,
+  DELETE_REVIEW,
 } from './productsTypes';
 
 import { SET_USER_REVIEW } from '../user/userTypes';
@@ -128,6 +132,56 @@ export const fetchClothingProducts =
   };
 
 // ------------------------------------------------------------------------
+//  FETCH PRODUCT REVIEWS
+// ------------------------------------------------------------------------
+export const fetchProductReviews = (productId, filter) => async (dispatch) => {
+  try {
+    dispatch({
+      type: SET_UI_LOADING,
+      payload: { secondFetchLoader: false },
+    });
+
+    const getFilterString = () => {
+      switch (filter) {
+        case 5:
+          return '?rating=5';
+        case 4:
+          return '?rating=4';
+        case 3:
+          return '?rating=3';
+        case 2:
+          return '?rating=2';
+        case 1:
+          return '?rating=1';
+        default:
+          return '';
+      }
+    };
+
+    const filterString = getFilterString();
+
+    console.log(filterString);
+
+    const { data } = await axios.get(
+      `/api/v1/products/${productId}/reviews${filterString}`
+    );
+
+    batch(() => {
+      dispatch({
+        type: SET_PRODUCT_REVIEWS,
+        payload: data.data,
+      });
+      dispatch({
+        type: SET_UI_LOADING,
+        payload: { secondFetchLoader: true },
+      });
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// ------------------------------------------------------------------------
 //  CREATE PRODUCT REVIEW
 // ------------------------------------------------------------------------
 export const createProductReview =
@@ -145,12 +199,16 @@ export const createProductReview =
       };
 
       const { data } = await axios.post(
-        `/api/v1/reviews`,
-        { product, title, rating, review },
+        `/api/v1/products/${product}/reviews`,
+        { title, rating, review },
         config
       );
 
       batch(() => {
+        dispatch({
+          type: ADD_REVIEW,
+          payload: data.data,
+        });
         dispatch({
           type: SET_USER_REVIEW,
           payload: data.data,
@@ -203,7 +261,10 @@ export const updateProductReview =
           type: SET_USER_REVIEW,
           payload: data.data,
         });
-
+        dispatch({
+          type: UPDATE_REVIEW,
+          payload: data.data,
+        });
         dispatch({
           type: SET_UI_LOADING,
           payload: { secondLoader: false },
@@ -235,6 +296,10 @@ export const deleteProductReview = (id) => async (dispatch) => {
       dispatch({
         type: SET_USER_REVIEW,
         payload: null,
+      });
+      dispatch({
+        type: DELETE_REVIEW,
+        payload: id,
       });
     });
   } catch (error) {

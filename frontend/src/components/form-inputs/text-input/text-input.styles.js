@@ -97,12 +97,13 @@ export const TextAreaInput = styled(motion.textarea)`
   border-radius: 2px;
 
   -webkit-text-fill-color: var(--color-grey-dark-1);
-  overflow: auto;
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-  &::-webkit-scrollbar {
+
+  /* overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none; */
+  /* &::-webkit-scrollbar {
     display: none;
-  }
+  } */
 
   display: block;
   width: 100%;

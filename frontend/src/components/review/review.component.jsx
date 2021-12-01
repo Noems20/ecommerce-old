@@ -94,20 +94,10 @@ const Review = ({ review }) => {
 
   const handleOpen = () => {
     setFormData({
-      formTitle:
-        userReview && userReview._id === review._id
-          ? userReview.title
-          : review.title,
-      formReview:
-        userReview && userReview._id === review._id
-          ? userReview.review
-          : review.review,
+      formTitle: review.title,
+      formReview: review.review,
     });
-    setReviewRating(
-      userReview && userReview._id === review._id
-        ? userReview.rating
-        : review.rating
-    );
+    setReviewRating(review.rating);
     setOpen('edit');
   };
 
@@ -120,29 +110,10 @@ const Review = ({ review }) => {
             <UserName>{review.user.name}</UserName>
           </UserPhotoContainer>
           <ReviewInfo>
-            <ReviewTitle>
-              {userReview && userReview._id === review._id
-                ? userReview.title
-                : review.title}
-            </ReviewTitle>
-            <Rating
-              value={
-                userReview && userReview._id === review._id
-                  ? userReview.rating
-                  : review.rating
-              }
-              text={`${
-                userReview && userReview._id === review._id
-                  ? userReview.rating
-                  : review.rating
-              } de 5`}
-            />
+            <ReviewTitle>{review.title}</ReviewTitle>
+            <Rating value={review.rating} text={`${review.rating} de 5`} />
             <ReviewDate>{moment(review.createdAt).format('LL')}</ReviewDate>
-            <ReviewText>
-              {userReview && userReview._id === review._id
-                ? userReview.review
-                : review.review}
-            </ReviewText>
+            <ReviewText>{review.review}</ReviewText>
             {userReview && review._id === userReview._id && (
               <ButtonsContainer>
                 <CustomButton primary onClick={handleOpen}>
@@ -176,9 +147,9 @@ const Review = ({ review }) => {
               <TextInput
                 textarea
                 rows={2}
-                name='formTitle'
                 type='text'
                 handleChange={handleChange}
+                name='formTitle'
                 value={formTitle}
                 label='Titulo'
                 error={errorsTwo.title}
@@ -186,9 +157,9 @@ const Review = ({ review }) => {
               <TextInput
                 textarea
                 rows={5}
-                name='formReview'
                 type='formReview'
                 handleChange={handleChange}
+                name='formReview'
                 value={formReview}
                 label='Reseña'
                 error={errorsTwo.review}

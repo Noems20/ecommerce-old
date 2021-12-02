@@ -1,11 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 // REDUX
-import { useSelector, useDispatch } from 'react-redux';
-import {
-  fetchProducts,
-  clearProducts,
-} from '../../redux/products/productsActions';
 
 // STYLES
 import { PageGrid } from '../../general.styles';
@@ -27,8 +22,6 @@ import agenda from '../../dev-images/agenda.png';
 
 const GiftsPage = () => {
   // -------------------- STATE AND CONSTANTS -------------------
-  const { products } = useSelector((state) => state.products);
-  const dispatch = useDispatch();
 
   const containerVariants = {
     hidden: {
@@ -38,14 +31,6 @@ const GiftsPage = () => {
       opacity: 1,
     },
   };
-
-  // -------------------- USE EFFECT'S -------------------
-  useEffect(() => {
-    dispatch(fetchProducts('agendas', 12));
-    return () => {
-      dispatch(clearProducts());
-    };
-  }, [dispatch]);
 
   return (
     <PageGrid
@@ -76,7 +61,7 @@ const GiftsPage = () => {
           />
         </RightColumn>
       </Hero>
-      <Products products={products} />
+      <Products catalog='agendas' />
     </PageGrid>
   );
 };

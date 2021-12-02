@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { AnimatePresence } from 'framer-motion';
 
+// REDUX
+import { useSelector } from 'react-redux';
+
 // STYLES
 import {
   FooterContainer,
@@ -54,6 +57,8 @@ const Footer = () => {
       },
     },
   };
+
+  const { user } = useSelector((state) => state.user);
 
   // ------------------------- USE EFFECT ------------------------
   useEffect(() => {
@@ -119,9 +124,15 @@ const Footer = () => {
           </ChecksContainer>
         </TitleContainer>
         <ButtonContainer>
-          <Button to='/registro' className='register'>
-            <p> Registrate gratis</p> <BsArrowRight />
-          </Button>
+          {user ? (
+            <Button to='/perfil' className='register'>
+              <p>Ir a mi cuenta</p> <BsArrowRight />
+            </Button>
+          ) : (
+            <Button to='/registro' className='register'>
+              <p>Registrate gratis</p> <BsArrowRight />
+            </Button>
+          )}
           <Button to='/contacto'>
             <p> Contáctanos</p> <BsArrowRight />
           </Button>

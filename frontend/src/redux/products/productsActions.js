@@ -74,17 +74,30 @@ export const fetchProductBySlug = (slug) => async (dispatch, getState) => {
 //  FETCH PRODUCTS
 // ------------------------------------------------------------------------
 export const fetchProducts =
-  (catalog, quantity, excludeId = null) =>
+  (
+    catalog,
+    quantity,
+    orderBy = '-sold',
+    filterRating = 1,
+    filterPrice = null,
+    excludeId = null
+  ) =>
   async (dispatch) => {
     try {
       dispatch({
         type: SET_UI_LOADING,
         payload: { fetchLoader: true },
       });
+      console.log(orderBy);
 
+      //ratingsAverage[gte]
+
+      const excludePriceString = filterPrice
+        ? `&price[lte]=${filterPrice}`
+        : '';
       const excludeString = excludeId ? `_id[ne]=${excludeId}` : '';
       const { data } = await axios.get(
-        `/api/v1/products?${excludeString}&catalog=${catalog}&limit=${quantity}&fields=name,slug,catalog,price,ratingsAverage,subcategory&sort=-sold,-createdAt`
+        `/api/v1/products?${excludeString}${excludePriceString}&catalog=${catalog}&limit=${quantity}&ratingsAverage[gte]=${filterRating}&fields=name,slug,catalog,price,ratingsAverage,subcategory&sort=${orderBy},-createdAt`
       );
 
       batch(() => {
@@ -106,7 +119,15 @@ export const fetchProducts =
 //  FETCH CLOTHING PRODUCTS
 // ------------------------------------------------------------------------
 export const fetchClothingProducts =
-  (forW, category, quantity) => async (dispatch) => {
+  (
+    forW,
+    category,
+    quantity,
+    orderBy = '-sold',
+    filterRating = 1,
+    filterPrice = null
+  ) =>
+  async (dispatch) => {
     try {
       dispatch({
         type: SET_UI_LOADING,
@@ -115,9 +136,12 @@ export const fetchClothingProducts =
 
       const categoryString = category === 'todo' ? '' : `&category=${category}`;
       const forString = forW === 'general' ? '' : `&for=${forW}`;
+      const excludePriceString = filterPrice
+        ? `&price[lte]=${filterPrice}`
+        : '';
 
       const { data } = await axios.get(
-        `/api/v1/products?catalog=ropa${categoryString}${forString}&limit=${quantity}&fields=name,slug,catalog,price,ratingsAverage,subcategory&sort=-sold,-createdAt`
+        `/api/v1/products?catalog=ropa${categoryString}${forString}${excludePriceString}&limit=${quantity}&ratingsAverage[gte]=${filterRating}&fields=name,slug,catalog,price,ratingsAverage,subcategory&sort=${orderBy},-createdAt`
       );
 
       batch(() => {

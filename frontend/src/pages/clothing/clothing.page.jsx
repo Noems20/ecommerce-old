@@ -1,12 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useParams } from 'react-router';
 
 // REDUX
-import { useSelector, useDispatch } from 'react-redux';
-import {
-  clearProducts,
-  fetchClothingProducts,
-} from '../../redux/products/productsActions';
 
 // STYLES
 import { PageGrid } from '../../general.styles';
@@ -38,8 +33,6 @@ import Products from '../../components/products/products.component';
 const ClothingPage = () => {
   // -------------------- STATE AND CONSTANTS -------------------
   const { category, for: forW } = useParams();
-  const { products } = useSelector((state) => state.products);
-  const dispatch = useDispatch();
 
   const containerVariants = {
     hidden: {
@@ -71,13 +64,6 @@ const ClothingPage = () => {
       else if (forW === 'general') return boy;
     }
   }
-  // -------------------- USE EFFECT'S -------------------
-  useEffect(() => {
-    dispatch(fetchClothingProducts(forW, category, 12));
-    return () => {
-      dispatch(clearProducts());
-    };
-  }, [dispatch, category, forW]);
 
   return (
     <PageGrid
@@ -117,7 +103,7 @@ const ClothingPage = () => {
           />
         </RightColumnResponsive>
       </Hero>
-      <Products products={products} />
+      <Products forW={forW} category={category} catalog='ropa' />
     </PageGrid>
   );
 };

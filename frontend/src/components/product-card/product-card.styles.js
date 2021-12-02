@@ -55,7 +55,7 @@ export const Button = styled.button`
   border: 1px solid #000;
   color: #000;
   cursor: pointer;
-  /* margin-top: 0.5rem; */
+  margin-top: 0.5rem;
 
   opacity: 0;
   transform: translateY(60px);

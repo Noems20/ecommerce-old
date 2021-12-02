@@ -119,6 +119,7 @@ export const FilterItem = styled.div`
   display: flex;
   align-items: center;
 
+  &.selected,
   &:hover {
     color: var(--color-primary);
   }

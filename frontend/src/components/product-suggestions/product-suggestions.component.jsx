@@ -23,7 +23,7 @@ const ProductSuggestions = ({ catalog, id }) => {
 
   // ------------------------------- USE EFFECT'S ---------------------------
   useEffect(() => {
-    dispatch(fetchProducts(catalog, 4, id));
+    dispatch(fetchProducts(catalog, 4, '-sold', 1, null, id));
     return () => {};
   }, [dispatch, catalog, id]);
 
@@ -34,14 +34,6 @@ const ProductSuggestions = ({ catalog, id }) => {
         {products.map((product) => {
           return <ProductCard key={product._id} product={product} />;
         })}
-        {/* <ProductCard productImage={agenda1} title='Agenda 2022' tag='AGEN' />
-        <ProductCard
-          productImage={agenda2}
-          title='Encuadernado azul'
-          tag='AGEN'
-        />
-        <ProductCard productImage={agenda3} title='Agenda MTIE' tag='AGEN' />
-        <ProductCard productImage={agenda4} title='Agenda UAD' tag='AGEN' /> */}
       </ProductsGrid>
     </Container>
   );

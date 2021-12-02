@@ -163,6 +163,11 @@ const Header = () => {
     }
   };
 
+  const handleLinkClick = () => {
+    setBurguerClass('unactive');
+    body.style.overflow = 'auto';
+  };
+
   const handleMenu = () => {
     if (changeDisplay) {
       setItemExpanded(itemExpanded === 'clothes' ? false : 'clothes');
@@ -182,7 +187,7 @@ const Header = () => {
     <Container>
       <HeaderContainer>
         {/* ------------------- LOGO ------------------ */}
-        <NavLogoLink to='/' exact>
+        <NavLogoLink to='/' onClick={handleLinkClick} exact>
           <NavLogo src={logo4} />
         </NavLogoLink>
 
@@ -238,6 +243,7 @@ const Header = () => {
                 <NavbarLink
                   onMouseEnter={() => setItemExpanded(false)}
                   activeClassName='is-active'
+                  onClick={handleLinkClick}
                   to='/agendas'
                   exact
                 >
@@ -249,6 +255,7 @@ const Header = () => {
                 <NavbarLink
                   onMouseEnter={() => setItemExpanded(false)}
                   activeClassName='is-active'
+                  onClick={handleLinkClick}
                   to='/encuadernacion'
                   exact
                 >
@@ -260,6 +267,7 @@ const Header = () => {
                 <NavbarLink
                   onMouseEnter={() => setItemExpanded(false)}
                   activeClassName='is-active'
+                  onClick={handleLinkClick}
                   to='/regalos'
                   exact
                 >
@@ -271,6 +279,7 @@ const Header = () => {
                 <NavbarLink
                   onMouseEnter={() => setItemExpanded(false)}
                   activeClassName='is-active'
+                  onClick={handleLinkClick}
                   to='/carrito'
                   exact
                 >
@@ -295,6 +304,7 @@ const Header = () => {
                     <NavItem>
                       <NavbarLink
                         activeClassName='is-active'
+                        onClick={handleLinkClick}
                         to='/perfil'
                         exact
                       >
@@ -307,7 +317,12 @@ const Header = () => {
                   </>
                 ) : (
                   <NavItem>
-                    <NavbarLink activeClassName='is-active' to='/login' exact>
+                    <NavbarLink
+                      activeClassName='is-active'
+                      onClick={handleLinkClick}
+                      to='/login'
+                      exact
+                    >
                       Iniciar sesión
                     </NavbarLink>
                   </NavItem>
@@ -385,27 +400,52 @@ const Header = () => {
                 </NavbarLink>
               </NavItem>
               <NavItem>
-                <NavbarLink activeClassName='is-active' to='/general' exact>
+                <NavbarLink
+                  activeClassName='is-active'
+                  onClick={handleLinkClick}
+                  to='/ropa/general/todo'
+                  exact
+                >
                   General
                 </NavbarLink>
               </NavItem>
               <NavItem>
-                <NavbarLink activeClassName='is-active' to='/hombre' exact>
+                <NavbarLink
+                  activeClassName='is-active'
+                  onClick={handleLinkClick}
+                  to='/ropa/hombre/todo'
+                  exact
+                >
                   Hombre
                 </NavbarLink>
               </NavItem>
               <NavItem>
-                <NavbarLink activeClassName='is-active' to='/mujer' exact>
+                <NavbarLink
+                  activeClassName='is-active'
+                  onClick={handleLinkClick}
+                  to='/ropa/mujer/todo'
+                  exact
+                >
                   Mujer
                 </NavbarLink>
               </NavItem>
               <NavItem>
-                <NavbarLink activeClassName='is-active' to='/niño' exact>
+                <NavbarLink
+                  activeClassName='is-active'
+                  onClick={handleLinkClick}
+                  to='/ropa/niño/todo'
+                  exact
+                >
                   Niño
                 </NavbarLink>
               </NavItem>
               <NavItem>
-                <NavbarLink activeClassName='is-active' to='/niña' exact>
+                <NavbarLink
+                  activeClassName='is-active'
+                  onClick={handleLinkClick}
+                  to='/ropa/niña/todo'
+                  exact
+                >
                   Niña
                 </NavbarLink>
               </NavItem>

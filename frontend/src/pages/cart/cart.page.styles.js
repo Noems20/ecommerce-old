@@ -5,5 +5,11 @@ export const Container = styled.div`
   margin: 3rem 4rem;
 
   display: grid;
-  grid-template-columns: 1fr 0.3fr;
+  grid-gap: 6rem;
+  grid-template-columns: 1fr 0.4fr;
+
+  @media only screen and (max-width: 1300px) {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
 `;

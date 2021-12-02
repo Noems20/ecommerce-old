@@ -5,6 +5,16 @@ export const Container = styled.div`
   box-shadow: rgba(0, 0, 0, 0.35) 0px 1px 5px;
   background-color: #fff;
   overflow: hidden;
+  height: max-content;
+
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 10rem;
+
+  @media only screen and (max-width: 1300px) {
+    position: static;
+    max-width: 50rem;
+  }
 `;
 
 export const Title = styled.h1`
@@ -44,6 +54,7 @@ export const ItemQuantity = styled.p`
 export const ItemPrice = styled.h2`
   font-weight: 600;
   font-size: 1.8rem;
+  justify-self: end;
 `;
 
 export const TotalContainer = styled.div`

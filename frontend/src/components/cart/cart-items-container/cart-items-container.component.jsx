@@ -1,10 +1,21 @@
 import React from 'react';
 
 // STYLES
-import { Container } from './cart-items-container.styles';
+import {
+  Container,
+  Title,
+  Line,
+  CartItems,
+} from './cart-items-container.styles';
 
-const CartItemsContainer = () => {
-  return <Container></Container>;
+const CartItemsContainer = ({ children }) => {
+  return (
+    <Container>
+      <Title>Tu Carrito</Title>
+      <Line />
+      <CartItems>{children}</CartItems>
+    </Container>
+  );
 };
 
 export default CartItemsContainer;

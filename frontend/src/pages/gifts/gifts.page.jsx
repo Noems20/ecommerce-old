@@ -62,7 +62,7 @@ const GiftsPage = () => {
             style={{ color: '#fff' }}
             className='animate__animated animate__fadeInUp animate__delay-2s'
           >
-            El mejor detalle para esa persona
+            El mejor detalle para esa persona especial
           </HeroSubtitleDown>
         </LeftColumn>
 

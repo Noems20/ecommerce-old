@@ -52,7 +52,7 @@ const CartOrderSummary = () => {
         </ItemsContainer>
         <OrderInfoTitle>Total</OrderInfoTitle>
         <TotalContainer>
-          <OrderInfoItem name={`Productos(20)`} price='2250' />
+          <OrderInfoItem name={`Subtotal(20)`} price='2250' />
           <OrderInfoItem name='Envio' price='50' />
           <OrderInfoItem name='Precio total' price='2300' />
         </TotalContainer>

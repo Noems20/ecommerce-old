@@ -12,4 +12,8 @@ export const Container = styled.div`
     grid-template-columns: 1fr;
     justify-items: center;
   }
+
+  @media only screen and (max-width: 360px) {
+    margin: 3rem;
+  }
 `;

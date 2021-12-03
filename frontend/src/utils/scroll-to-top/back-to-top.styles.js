@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const Button = styled.div`
-  width: 5rem;
-  height: 5rem;
+  width: 6rem;
+  height: 6rem;
   border-radius: 50%;
   background-color: var(--color-primary);
   position: fixed;
@@ -23,23 +23,15 @@ export const Button = styled.div`
     /* transition: all 0.2s; */
   }
   & svg {
-    font-size: 3.5rem;
+    font-size: 4.5rem;
     fill: white;
   }
 
-  @media only screen and (max-width: 500px) {
+  /* @media only screen and (max-width: 500px) {
     width: 6rem;
     height: 6rem;
     & svg {
       font-size: 4.5rem;
     }
-  }
-
-  @media only screen and (max-width: 430px) {
-    width: 6.5rem;
-    height: 6.5rem;
-    & svg {
-      font-size: 5rem;
-    }
-  }
+  } */
 `;

@@ -153,6 +153,10 @@ export const ButtonsContainer = styled.div`
   @media only screen and (max-width: 400px) {
     grid-gap: 2rem;
   }
+
+  @media only screen and (max-width: 310px) {
+    grid-auto-flow: row;
+  }
 `;
 
 export const CatalogButton = styled.button`
@@ -204,8 +208,8 @@ export const ProductsGrid = styled(motion.div)`
   grid-gap: 2rem;
   margin-top: 3rem;
 
-  @media only screen and (max-width: 400px) {
-    grid-template-columns: repeat(auto-fit, minmax(32rem, 1fr));
+  @media only screen and (max-width: 320px) {
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
   }
 `;
 

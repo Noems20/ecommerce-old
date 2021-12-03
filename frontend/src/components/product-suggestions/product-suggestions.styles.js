@@ -21,7 +21,7 @@ export const ProductsGrid = styled.div`
   grid-gap: 2rem;
   margin-top: 3rem;
 
-  @media only screen and (max-width: 400px) {
-    grid-template-columns: repeat(auto-fit, minmax(32rem, 1fr));
+  @media only screen and (max-width: 320px) {
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
   }
 `;

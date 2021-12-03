@@ -99,9 +99,7 @@ export const FiltersContainer = styled.div`
 
   @media only screen and (max-width: 650px) {
     grid-gap: 2rem;
-    grid-template-rows: max-content;
     grid-template-columns: 1fr;
-    grid-template-rows: auto;
   }
 `;
 
@@ -122,6 +120,10 @@ export const FilterItem = styled.div`
   &.selected,
   &:hover {
     color: var(--color-primary);
+  }
+
+  @media only screen and (max-width: 320px) {
+    width: auto;
   }
 `;
 
@@ -148,7 +150,7 @@ export const ProductsGrid = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(32rem, 1fr));
   grid-gap: 2rem;
 
-  @media only screen and (max-width: 400px) {
-    grid-template-columns: repeat(auto-fit, minmax(32rem, 1fr));
+  @media only screen and (max-width: 320px) {
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
   }
 `;

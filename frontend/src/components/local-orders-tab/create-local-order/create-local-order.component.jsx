@@ -59,14 +59,15 @@ const CreateLocalOrderTab = ({ variants }) => {
   const [selectedDate, setSelectedDate] = useState(
     getAvailableDate(new Date())
   );
+  console.log(selectedDate.toISOString());
 
   const [products, setProducts] = useState([
     {
       name: '',
       quantity: '0',
       price: '0',
-      // percentage: '0',
-      productTotalPrice: '0',
+      // percentage: 0,
+      productTotalPrice: 0,
     },
   ]);
 
@@ -120,8 +121,8 @@ const CreateLocalOrderTab = ({ variants }) => {
         name: '',
         quantity: '0',
         price: '0',
-        // percentage: '0',
-        productTotalPrice: '0',
+        // percentage: 0,
+        productTotalPrice: 0,
       },
     ]);
   };
@@ -341,20 +342,20 @@ const CreateLocalOrderTab = ({ variants }) => {
             locale='es'
             timeFormat='h:mm aaa'
             timeCaption={'Horario'}
-            timeIntervals={60}
+            timeIntervals={30}
             minDate={
               getHours(new Date()) >= 16 ? addDays(new Date(), 1) : new Date()
             }
             maxDate={addDays(new Date(), 29)}
             minTime={
               getDay(selectedDate) !== 6
-                ? setHours(setMinutes(new Date(), 0), 9)
-                : setHours(setMinutes(new Date(), 0), 9)
+                ? setHours(setMinutes(new Date(), 30), 9)
+                : setHours(setMinutes(new Date(), 30), 9)
             }
             maxTime={
               getDay(selectedDate) !== 6
-                ? setHours(setMinutes(new Date(), 0), 18)
-                : setHours(setMinutes(new Date(), 0), 13)
+                ? setHours(setMinutes(new Date(), 30), 18)
+                : setHours(setMinutes(new Date(), 30), 13)
             }
             filterDate={(date) => date.getDay() !== 0}
             filterTime={filterPassedTime}

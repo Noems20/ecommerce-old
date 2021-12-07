@@ -18,6 +18,7 @@ import globalErrorHandler from './controllers/errorController.js';
 import userRouter from './routes/userRoutes.js';
 import productRouter from './routes/productRoutes.js';
 import reviewRouter from './routes/reviewRoutes.js';
+import localOrderRouter from './routes/localOrderRoutes.js';
 
 dotenv.config();
 
@@ -124,6 +125,7 @@ app.use(cookieParser());
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/products', productRouter);
 app.use('/api/v1/reviews', reviewRouter);
+app.use('/api/v1/localOrders', localOrderRouter);
 
 // --------------------------- SERVE REACT STATIC'S ----------------
 if (process.env.NODE_ENV === 'production') {

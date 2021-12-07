@@ -1,31 +1,30 @@
 import mongoose from 'mongoose';
 import validator from 'validator';
 
-const businessOrderSchema = new mongoose.Schema(
+const localOrderSchema = new mongoose.Schema(
   {
     clientName: {
       type: String,
-      required: [true, 'No puede estar vacío'],
       trim: true,
+      required: [true, 'No puede estar vacío'],
     },
     clientEmail: {
       type: String,
-      required: [true, 'No puede estar vacío'],
       validate: [validator.isEmail, 'Debe ser un email válido'],
+      required: [true, 'No puede estar vacío'],
     },
     clientCellphone: {
       type: Number,
-      required: [true, 'No puede estar vacío'],
       minlength: [10, 'Un Número telefónico tiene 10 digitos'],
+      required: [true, 'No puede estar vacío'],
     },
     employeeName: {
       type: String,
-      required: [true, 'No puede estar vacío'],
       trim: true,
+      required: [true, 'No puede estar vacío'],
     },
     description: {
       type: String,
-      required: [true, 'No puede estar vacío'],
       trim: true,
       validate: {
         validator: function (value) {
@@ -39,6 +38,10 @@ const businessOrderSchema = new mongoose.Schema(
     products: {
       type: [
         {
+          product: {
+            type: String,
+            required: [true, 'No puede estar vacío'],
+          },
           quantity: {
             type: Number,
             required: [true, 'Debe tener una cantidad'],
@@ -47,9 +50,9 @@ const businessOrderSchema = new mongoose.Schema(
             type: Number,
             required: [true, 'Debe tener un precio'],
           },
-          product: {
-            type: String,
-            required: [true, 'No puede estar vacío'],
+          totalPrice: {
+            type: Number,
+            required: [true, 'Debe tener un precio'],
           },
         },
       ],
@@ -87,11 +90,13 @@ const businessOrderSchema = new mongoose.Schema(
 );
 
 // --------------- POPULATE APPOINTMENT -----------------
-businessOrderSchema.pre(/^find/, function (next) {
+localOrderSchema.pre(/^find/, function (next) {
   this.populate('user', 'name photo');
   next();
 });
 
-const BusinessOrder = mongoose.model('BusinessOrder', businessOrderSchema);
+// ------------------- MIDDLEWARES -----------------------
 
-export default BusinessOrder;
+const LocalOrder = mongoose.model('LocalOrder', localOrderSchema);
+
+export default LocalOrder;

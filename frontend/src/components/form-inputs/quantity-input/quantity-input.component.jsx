@@ -13,12 +13,14 @@ const QuantityInput = ({
   return (
     <Container>
       <Operator
+        type='button'
         onClick={() => quantity > 1 && setQuantity(Number(quantity) - 1)}
       >
         -
       </Operator>
       <Input onChange={handleChange} value={quantity} {...props} />
       <Operator
+        type='button'
         onClick={() => quantity < limit && setQuantity(Number(quantity) + 1)}
       >
         +

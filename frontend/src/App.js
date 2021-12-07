@@ -16,6 +16,7 @@ import Shipping from './pages/shipping/shipping.page';
 import GiftsPage from './pages/gifts/gifts.page';
 import diariesPage from './pages/diaries/diaries.page';
 import ClothingPage from './pages/clothing/clothing.page';
+import LocalOrdersPage from './pages/local-orders/local-orders.page';
 import ProductPage from './pages/product/product.page';
 import VerifyAccount from './pages/verify-account/verify-account.page';
 
@@ -74,6 +75,17 @@ const App = () => {
             exact
             path='/perfil'
             render={() => (user ? <Profile /> : <Redirect to='/login' />)}
+          />
+          <Route
+            exact
+            path='/ordenes-locales'
+            render={() =>
+              user && user.role === 'admin' ? (
+                <LocalOrdersPage />
+              ) : (
+                <Redirect to='/login' />
+              )
+            }
           />
           <Route
             exact

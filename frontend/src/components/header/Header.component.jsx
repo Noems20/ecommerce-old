@@ -58,6 +58,7 @@ import {
   FaChevronDown,
   FaChevronRight,
   FaChevronLeft,
+  FaReceipt,
 } from 'react-icons/fa';
 
 function useOutsideAlerter(closer, ref, secondRef) {
@@ -357,6 +358,17 @@ const Header = () => {
                           >
                             <p>Perfil</p>
                           </DropDownItem>
+                          {user.role === 'admin' && (
+                            <DropDownItem
+                              as={NavLink}
+                              to='/ordenes-locales'
+                              exact
+                              activeClassName='is-active'
+                              icon={<FaReceipt />}
+                            >
+                              <p>Ordenes locales</p>
+                            </DropDownItem>
+                          )}
                           <DropDownItem
                             icon={<FiLogOut />}
                             onClick={() => dispatch(logout())}

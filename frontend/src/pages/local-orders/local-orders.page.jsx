@@ -4,7 +4,6 @@ import { AnimatePresence } from 'framer-motion';
 // REDUX
 
 // COMPONENTS
-import ProfileTab from '../../components/profile-tabs/profile/profile-tab.component';
 import CreateLocalOrderTab from '../../components/local-orders-tab/create-local-order/create-local-order.component';
 import ActiveLocalOrders from '../../components/local-orders-tab/active-local-orders/active-local-orders.component';
 
@@ -100,12 +99,12 @@ const LocalOrdersPage = () => {
         return (
           <ActiveLocalOrders
             variants={containerVariants}
-            key={3}
+            key={2}
             active={false}
           />
         );
       default:
-        return <ProfileTab variants={containerVariants} key={1} />;
+        return <CreateLocalOrderTab variants={containerVariants} key={1} />;
     }
   };
 
@@ -157,7 +156,7 @@ const LocalOrdersPage = () => {
       </Settings>
       {/* -------------------------------- TAB CONTENT ---------------------- */}
 
-      <AnimatePresence exitBeforeEnter>{renderSwitch()}</AnimatePresence>
+      {renderSwitch()}
     </PageGrid>
   );
 };

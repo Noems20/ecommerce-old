@@ -9,20 +9,17 @@ const SelectInput = ({ label, error, value, children, ...otherProps }) => {
       <Selector
         className={value.length ? 'active' : ''}
         {...otherProps}
-        error={error ? true : false}
+        error={error ? 1 : 0}
       >
         {children}
       </Selector>
       <SelectLabel
         className={value.length ? 'active' : ''}
-        error={error ? true : false}
+        error={error ? 1 : 0}
       >
         {label}
       </SelectLabel>
-      <Arrow
-        className={value.length ? 'active' : ''}
-        error={error ? true : false}
-      />
+      <Arrow className={value.length ? 'active' : ''} error={error ? 1 : 0} />
     </Container>
   );
 };

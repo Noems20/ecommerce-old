@@ -1,12 +1,5 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
-  border-radius: 8px;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 1px 5px;
-  overflow: hidden;
-  background-color: #fff;
-`;
-
 export const Content = styled.div`
   height: 25rem;
   padding: 2rem;
@@ -195,13 +188,4 @@ export const SizeItem = styled.div`
     color: #fff;
     transition: all 0.2s ease;
   }
-`;
-
-// --------------------------------------------------------------
-// DECORATION
-// --------------------------------------------------------------
-export const Decoration = styled.div`
-  height: 2rem;
-  width: 70%;
-  background-color: var(--color-primary);
 `;

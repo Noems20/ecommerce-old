@@ -17,10 +17,10 @@ import CustomButton from '../custom-button/custom-button.component';
 import Modal from '../modal/modal.component';
 import TextInput from '../form-inputs/text-input/text-input.component';
 import RatingInteractive from '../rating/rating-interactive/rating-interactive.component';
+import DecorationCard from '../decoration-card/decoration-card.component';
 
 // STYLES
 import {
-  ReviewContainer,
   ReviewContent,
   UserPhotoContainer,
   UserPhoto,
@@ -30,8 +30,6 @@ import {
   ReviewDate,
   ReviewText,
   ButtonsContainer,
-  Decoration,
-  // Modal
   ReviewForm,
   FormTitle,
 } from './review.styles';
@@ -103,7 +101,7 @@ const Review = ({ review }) => {
 
   return (
     <>
-      <ReviewContainer>
+      <DecorationCard>
         <ReviewContent>
           <UserPhotoContainer>
             <UserPhoto url={`/img/users/${review.user.photo}`} />
@@ -131,8 +129,7 @@ const Review = ({ review }) => {
             )}
           </ReviewInfo>
         </ReviewContent>
-        <Decoration />
-      </ReviewContainer>
+      </DecorationCard>
 
       <AnimatePresence>
         {open === 'edit' && (

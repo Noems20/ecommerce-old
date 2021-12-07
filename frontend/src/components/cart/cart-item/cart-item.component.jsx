@@ -3,10 +3,10 @@ import React from 'react';
 // COMPONENTS
 import QuantityInput from '../../form-inputs/quantity-input/quantity-input.component';
 import CustomButton from '../../custom-button/custom-button.component';
+import DecorationCard from '../../decoration-card/decoration-card.component';
 
 // STYLES
 import {
-  Container,
   Content,
   ImageContainer,
   InfoContainer,
@@ -18,13 +18,12 @@ import {
   ColorDot,
   SizeItem,
   Price,
-  Decoration,
   InfoSubContainer,
 } from './cart-item.styles';
 
 const CartItem = ({ cartProduct }) => {
   return (
-    <Container>
+    <DecorationCard>
       <Content>
         <ImageContainer>
           <Image
@@ -60,8 +59,7 @@ const CartItem = ({ cartProduct }) => {
           <Price>{`$${cartProduct.quantity * cartProduct.price}`}</Price>
         </PriceContainer>
       </Content>
-      <Decoration />
-    </Container>
+    </DecorationCard>
   );
 };
 

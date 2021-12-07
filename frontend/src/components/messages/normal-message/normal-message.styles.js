@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { RiCloseLine } from 'react-icons/ri';
 
 const errorColor = 'var(--color-red)';
-const successColor = '#41d888';
+const successColor = 'var(--color-success)';
 
 const ErrorBackgroundColor = css`
   background-color: ${errorColor};

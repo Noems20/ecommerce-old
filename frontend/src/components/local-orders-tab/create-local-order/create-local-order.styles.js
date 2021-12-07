@@ -37,12 +37,20 @@ export const ProductRow = styled.div`
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
   align-items: center;
-  justify-items: center;
 
   & div:first-child {
-    justify-self: stretch;
     grid-column: 1 / 4;
+  }
+
+  @media only screen and (max-width: 400px) {
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    & div:first-child {
+      grid-column: auto / auto;
+    }
   }
 `;
 
-export const ProductPrice = styled.h1``;
+export const ProductPrice = styled.h1`
+  justify-self: center;
+`;

@@ -68,11 +68,30 @@ const dangerButtonStyles = css`
   }
 `;
 
+// ------------------ SUCESS BUTTON STYLES ------------
+const successButtonStyles = css`
+  color: #fff;
+  background-color: var(--color-success);
+  border: 0.2px solid var(--color-success);
+
+  &:hover {
+    background-color: var(--color-success-dark);
+    color: #fff;
+    border: 0.2px solid var(--color-success-dark);
+  }
+
+  &:disabled {
+    background-color: #f94415;
+  }
+`;
+
 const getButtonStyles = (props) => {
   if (props.primary) {
     return primaryButtonStyles;
   } else if (props.danger) {
     return dangerButtonStyles;
+  } else if (props.success) {
+    return successButtonStyles;
   } else if (props.black) {
     return blackButtonStyles;
   } else {

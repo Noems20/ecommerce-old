@@ -6,7 +6,6 @@ export const Container = styled(motion.div)`
   margin: 4rem;
 
   @media only screen and (max-width: 400px) {
-    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
     margin: 4rem 0;
   }
 `;

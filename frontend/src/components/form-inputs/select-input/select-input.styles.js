@@ -11,7 +11,7 @@ export const Container = styled.div`
 export const Selector = styled.select`
   font-family: inherit;
   font-size: inherit;
-  color: ${subColor};
+  color: ${({ error }) => (error ? `${errorColor}` : `${subColor}`)};
   font-size: 1.6rem;
   font-weight: 400;
   background-color: white;
@@ -36,16 +36,14 @@ export const Selector = styled.select`
       error
         ? `2px solid ${errorColor}`
         : '2px solid var(--color-primary-light)'};
+    color: #000;
 
     & ~ label,
     & ~ svg {
-      color: var(--color-primary);
+      color: ${({ error }) =>
+        error ? `${errorColor}` : `var(--color-primary)`};
     }
   }
-
-  /* &:focus-within ~ label {
-    color: var(--color-primary);
-  } */
 
   &.active {
     color: var(--color-grey-dark-1);
@@ -103,7 +101,7 @@ export const SelectLabel = styled.label`
 `;
 
 export const Arrow = styled(RiArrowDownSLine)`
-  color: ${subColor};
+  color: ${({ error }) => (error ? `${errorColor}` : `${subColor}`)};
   position: absolute;
   top: 50%;
   right: 12px;
@@ -113,7 +111,7 @@ export const Arrow = styled(RiArrowDownSLine)`
   z-index: 1;
 
   &.active {
-    color: var(--color-primary);
+    color: ${({ error }) => (error ? `${errorColor}` : `var(--color-primary)`)};
   }
 
   @media only screen and (max-width: 430px) {

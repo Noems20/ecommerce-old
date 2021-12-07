@@ -88,7 +88,6 @@ export const fetchProducts =
         type: SET_UI_LOADING,
         payload: { fetchLoader: true },
       });
-      console.log(orderBy);
 
       //ratingsAverage[gte]
 
@@ -187,8 +186,6 @@ export const fetchProductReviews = (productId, filter) => async (dispatch) => {
     };
 
     const filterString = getFilterString();
-
-    console.log(filterString);
 
     const { data } = await axios.get(
       `/api/v1/products/${productId}/reviews${filterString}`

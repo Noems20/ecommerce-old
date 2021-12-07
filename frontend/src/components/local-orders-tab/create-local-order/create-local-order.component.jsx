@@ -11,6 +11,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 // REDUX
 import { useSelector, useDispatch } from 'react-redux';
 import { clearUiErrors } from '../../../redux/ui/uiActions';
+import { createOrder } from '../../../redux/orders/ordersActions';
 
 // COMPONENTS
 import TextInput from '../../form-inputs/text-input/text-input.component';
@@ -54,19 +55,21 @@ const CreateLocalOrderTab = ({ variants }) => {
   // ------------------------------------- STATE AND CONSTANTS ----------------------
 
   const dispatch = useDispatch();
-  const { uiErrors, loading } = useSelector((state) => state.ui);
+  const {
+    uiErrors: { errorsOne },
+    loading,
+  } = useSelector((state) => state.ui);
 
   const [selectedDate, setSelectedDate] = useState(
     getAvailableDate(new Date())
   );
-  console.log(selectedDate.toISOString());
+  // console.log(selectedDate.toISOString());
 
   const [products, setProducts] = useState([
     {
-      name: '',
+      product: '',
       quantity: '0',
       price: '0',
-      // percentage: 0,
       productTotalPrice: 0,
     },
   ]);
@@ -74,7 +77,7 @@ const CreateLocalOrderTab = ({ variants }) => {
   const [userCredentials, setUserCredentials] = useState({
     clientName: '',
     clientEmail: '',
-    clientPhone: '',
+    clientCellphone: '',
     employeeName: '',
     description: '',
     totalPrice: 0,
@@ -83,7 +86,7 @@ const CreateLocalOrderTab = ({ variants }) => {
   const {
     clientName,
     clientEmail,
-    clientPhone,
+    clientCellphone,
     employeeName,
     description,
     totalPrice,
@@ -118,10 +121,9 @@ const CreateLocalOrderTab = ({ variants }) => {
     setProducts([
       ...products,
       {
-        name: '',
+        product: '',
         quantity: '0',
         price: '0',
-        // percentage: 0,
         productTotalPrice: 0,
       },
     ]);
@@ -169,6 +171,17 @@ const CreateLocalOrderTab = ({ variants }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    dispatch(
+      createOrder(
+        clientName,
+        clientCellphone,
+        clientEmail,
+        employeeName,
+        totalPrice,
+        selectedDate,
+        products
+      )
+    );
   };
 
   return (
@@ -189,17 +202,15 @@ const CreateLocalOrderTab = ({ variants }) => {
             handleChange={handleChange}
             value={clientName}
             label='Nombre de cliente'
-            error={uiErrors.errorsOne.clientName}
-            required
+            error={errorsOne.clientName}
           />
           <TextInput
-            name='clientPhone'
+            name='clientCellphone'
             type='text'
             handleChange={handleChange}
-            value={clientPhone}
+            value={clientCellphone}
             label='Teléfono de cliente'
-            error={uiErrors.errorsOne.clientPhone}
-            required
+            error={errorsOne.clientCellphone}
           />
           <TextInput
             name='clientEmail'
@@ -207,15 +218,14 @@ const CreateLocalOrderTab = ({ variants }) => {
             handleChange={handleChange}
             value={clientEmail}
             label='Email de cliente'
-            error={uiErrors.errorsOne.clientEmail}
-            required
+            error={errorsOne.clientEmail}
           />
           <SelectInput
             label='Nombre de quien atiende'
             name='employeeName'
             onChange={handleChange}
             value={employeeName}
-            error={uiErrors.errorsOne.employeeName}
+            error={errorsOne.employeeName}
           >
             <option key={0} value=''>
               Selecciona uno
@@ -249,8 +259,7 @@ const CreateLocalOrderTab = ({ variants }) => {
             handleChange={handleChange}
             value={description}
             label='Descripción'
-            error={uiErrors.errorsOne.description}
-            required
+            error={errorsOne.description}
           />
           {/* ----------------------------- PRODUCTS ------------------------- */}
           <Title>Productos</Title>
@@ -259,13 +268,12 @@ const CreateLocalOrderTab = ({ variants }) => {
               <Fragment key={index}>
                 <ProductRow>
                   <TextInput
-                    name='name'
+                    name='product'
                     type='text'
                     handleChange={(event) => handleProductChange(event, index)}
-                    value={product.name}
+                    value={product.product}
                     label='Producto'
-                    error={uiErrors.errorsOne.name}
-                    required
+                    error={errorsOne[`products.${index}.product`]}
                   />
                   <TextInput
                     name='quantity'
@@ -273,8 +281,7 @@ const CreateLocalOrderTab = ({ variants }) => {
                     handleChange={(event) => handleProductChange(event, index)}
                     value={product.quantity}
                     label='Cantidad'
-                    error={uiErrors.errorsOne.quantity}
-                    required
+                    error={errorsOne[`products.${index}.quantity`]}
                   />
 
                   <TextInput
@@ -283,19 +290,9 @@ const CreateLocalOrderTab = ({ variants }) => {
                     handleChange={(event) => handleProductChange(event, index)}
                     value={product.price}
                     label='Precio'
-                    error={uiErrors.errorsOne.price}
-                    required
+                    error={errorsOne[`products.${index}.price`]}
                   />
                   <ProductPrice>{`Subtotal: $${product.productTotalPrice}`}</ProductPrice>
-                  {/* <TextInput
-                    name='percentage'
-                    type='text'
-                    handleChange={(event) => handleProductChange(event, index)}
-                    value={product.percentage}
-                    label='Porcentaje'
-                    error={uiErrors.errorsOne.percentage}
-                    required
-                  /> */}
                   {index > 0 && (
                     <CustomButton
                       danger
@@ -360,7 +357,7 @@ const CreateLocalOrderTab = ({ variants }) => {
             filterDate={(date) => date.getDay() !== 0}
             filterTime={filterPassedTime}
             dateFormat='MMMM d, yyyy h:mm aa'
-            error={uiErrors.errorsOne.date}
+            error={errorsOne.date}
           />
 
           <CustomButton

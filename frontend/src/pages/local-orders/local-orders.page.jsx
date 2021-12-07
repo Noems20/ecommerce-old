@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 
 // REDUX
 
 // COMPONENTS
 import ProfileTab from '../../components/profile-tabs/profile/profile-tab.component';
 import CreateLocalOrderTab from '../../components/local-orders-tab/create-local-order/create-local-order.component';
+import ActiveLocalOrders from '../../components/local-orders-tab/active-local-orders/active-local-orders.component';
 
 // STYLES
 import {
@@ -82,39 +83,26 @@ const LocalOrdersPage = () => {
     };
   }, []);
 
-  // const handleImageChange = (e) => {
-  //   setSelectedFile(e.target.files[0]);
-  //   dispatch(updateMe(user.name, e.target.files[0]));
-  // };
-
   // --------------------------------- HANDLERS ---------------------
   const renderSwitch = () => {
     switch (tab) {
       case 'profile':
         return <CreateLocalOrderTab variants={containerVariants} key={1} />;
-      case 'current-order':
+      case 'current-orders':
         return (
-          <motion.h1
+          <ActiveLocalOrders
             variants={containerVariants}
-            initial='hidden'
-            animate='visible'
-            exit='hidden'
             key={2}
-          >
-            Pedidos actuales
-          </motion.h1>
+            active={true}
+          />
         );
       case 'orders-history':
         return (
-          <motion.h1
+          <ActiveLocalOrders
             variants={containerVariants}
-            initial='hidden'
-            animate='visible'
-            exit='hidden'
             key={3}
-          >
-            Historial de pedidos
-          </motion.h1>
+            active={false}
+          />
         );
       default:
         return <ProfileTab variants={containerVariants} key={1} />;
@@ -152,8 +140,8 @@ const LocalOrdersPage = () => {
                 Crear orden
               </SettingItem>
               <SettingItem
-                onClick={() => setTab('current-order')}
-                className={tab === 'current-order' ? 'active' : ''}
+                onClick={() => setTab('current-orders')}
+                className={tab === 'current-orders' ? 'active' : ''}
               >
                 Ordenes activas
               </SettingItem>

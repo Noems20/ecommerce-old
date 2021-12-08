@@ -5,7 +5,7 @@ import { AnimatePresence } from 'framer-motion';
 
 // COMPONENTS
 import CreateLocalOrderTab from '../../components/local-orders-tab/create-local-order/create-local-order.component';
-import ActiveLocalOrders from '../../components/local-orders-tab/active-local-orders/active-local-orders.component';
+import LocalOrders from '../../components/local-orders-tab/local-orders/local-orders.component';
 
 // STYLES
 import {
@@ -89,19 +89,11 @@ const LocalOrdersPage = () => {
         return <CreateLocalOrderTab variants={containerVariants} key={1} />;
       case 'current-orders':
         return (
-          <ActiveLocalOrders
-            variants={containerVariants}
-            key={2}
-            active={true}
-          />
+          <LocalOrders variants={containerVariants} key={2} active={true} />
         );
       case 'orders-history':
         return (
-          <ActiveLocalOrders
-            variants={containerVariants}
-            key={2}
-            active={false}
-          />
+          <LocalOrders variants={containerVariants} key={2} active={false} />
         );
       default:
         return <CreateLocalOrderTab variants={containerVariants} key={1} />;

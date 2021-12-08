@@ -1,28 +1,4 @@
 import styled from 'styled-components';
-import { motion } from 'framer-motion';
-
-export const Container = styled(motion.div)`
-  grid-column: full-start / full-end;
-  margin: 4rem;
-
-  @media only screen and (max-width: 440px) {
-    margin: 4rem 0;
-  }
-`;
-
-export const Content = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(46rem, 1fr));
-  grid-gap: 2rem;
-
-  @media only screen and (max-width: 720px) {
-    grid-gap: 3.5rem;
-  }
-
-  @media only screen and (max-width: 400px) {
-    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
-  }
-`;
 
 export const CardContent = styled.div`
   margin: 2rem;
@@ -94,9 +70,9 @@ export const CardText = styled.p`
 export const ButtonsContainer = styled.div`
   display: grid;
   grid-gap: 1rem;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
 
-  @media only screen and (max-width: 440px) {
+  @media only screen and (max-width: 400px) {
     grid-template-columns: none;
   }
 `;

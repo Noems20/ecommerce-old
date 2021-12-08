@@ -33,6 +33,7 @@ import {
   FormContainer,
   ProductRow,
   ProductPrice,
+  ExtraRow,
 } from './create-local-order.styles';
 
 registerLocale('es', es);
@@ -70,7 +71,7 @@ const CreateLocalOrderTab = ({ variants }) => {
       product: '',
       quantity: '0',
       price: '0',
-      productTotalPrice: 0,
+      totalPrice: 0,
     },
   ]);
 
@@ -80,6 +81,8 @@ const CreateLocalOrderTab = ({ variants }) => {
     clientCellphone: '',
     employeeName: '',
     description: '',
+    percentage: '0',
+    paid: '0',
     totalPrice: 0,
   });
 
@@ -89,6 +92,8 @@ const CreateLocalOrderTab = ({ variants }) => {
     clientCellphone,
     employeeName,
     description,
+    percentage,
+    paid,
     totalPrice,
   } = userCredentials;
 
@@ -111,10 +116,25 @@ const CreateLocalOrderTab = ({ variants }) => {
   const handleChange = (event) => {
     const { name, value } = event.target;
 
-    setUserCredentials({
-      ...userCredentials,
-      [name]: value,
-    });
+    if (name === 'percentage') {
+      let newTotalPrice = products.reduce(
+        (total, currentProduct) => total + currentProduct.totalPrice,
+        0
+      );
+
+      newTotalPrice += Math.round(newTotalPrice * (value / 100) * 100) / 100;
+
+      setUserCredentials({
+        ...userCredentials,
+        percentage: value,
+        totalPrice: newTotalPrice,
+      });
+    } else {
+      setUserCredentials({
+        ...userCredentials,
+        [name]: value,
+      });
+    }
   };
 
   const handleAddProduct = () => {
@@ -124,7 +144,7 @@ const CreateLocalOrderTab = ({ variants }) => {
         product: '',
         quantity: '0',
         price: '0',
-        productTotalPrice: 0,
+        totalPrice: 0,
       },
     ]);
   };
@@ -135,7 +155,7 @@ const CreateLocalOrderTab = ({ variants }) => {
     setProducts(newProducts);
 
     let newTotalPrice = newProducts.reduce(
-      (total, currentProduct) => total + currentProduct.productTotalPrice,
+      (total, currentProduct) => total + currentProduct.totalPrice,
       0
     );
 
@@ -151,15 +171,18 @@ const CreateLocalOrderTab = ({ variants }) => {
     newProducts[index][name] = value;
 
     if (name === 'quantity' || name === 'price') {
-      newProducts[index].productTotalPrice =
+      newProducts[index].totalPrice =
         Math.round(
           newProducts[index].price * newProducts[index].quantity * 100
         ) / 100;
 
       let newTotalPrice = newProducts.reduce(
-        (total, currentProduct) => total + currentProduct.productTotalPrice,
+        (total, currentProduct) => total + currentProduct.totalPrice,
         0
       );
+
+      newTotalPrice +=
+        Math.round(newTotalPrice * (percentage / 100) * 100) / 100;
 
       setUserCredentials({
         ...userCredentials,
@@ -177,7 +200,10 @@ const CreateLocalOrderTab = ({ variants }) => {
         clientCellphone,
         clientEmail,
         employeeName,
+        description,
         totalPrice,
+        paid,
+        percentage,
         selectedDate,
         products
       )
@@ -292,7 +318,7 @@ const CreateLocalOrderTab = ({ variants }) => {
                     label='Precio'
                     error={errorsOne[`products.${index}.price`]}
                   />
-                  <ProductPrice>{`Subtotal: $${product.productTotalPrice}`}</ProductPrice>
+                  <ProductPrice>{`Subtotal: $${product.totalPrice}`}</ProductPrice>
                   {index > 0 && (
                     <CustomButton
                       danger
@@ -308,6 +334,24 @@ const CreateLocalOrderTab = ({ variants }) => {
               </Fragment>
             );
           })}
+          <ExtraRow>
+            <TextInput
+              name='paid'
+              type='text'
+              handleChange={handleChange}
+              value={paid}
+              label='Anticipo'
+              error={errorsOne.paid}
+            />
+            <TextInput
+              name='percentage'
+              type='text'
+              handleChange={handleChange}
+              value={percentage}
+              label='Porcentaje añadido (%)'
+              error={errorsOne.percentage}
+            />
+          </ExtraRow>
           <Title
             style={{ textAlign: 'center' }}
           >{`Total: $${totalPrice}`}</Title>

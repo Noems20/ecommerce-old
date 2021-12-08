@@ -24,7 +24,7 @@ router
 router
   .route('/:id')
   .get(getLocalOrder)
-  .patch(checkDate, updateLocalOrder)
+  .patch(updateLocalOrder)
   .delete(deleteLocalOrder);
 
 export default router;

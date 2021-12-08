@@ -3,6 +3,7 @@ import {
   ADD_ORDER,
   UPDATE_ORDER,
   DELETE_ORDER,
+  COMPLETE_ORDER,
   CLEAR_ORDERS,
 } from './ordersTypes';
 import { addItem, updateItem, deleteItem } from '../utils/reducerUtils';
@@ -29,6 +30,7 @@ const localOrderReducer = (state = initialState, action) => {
         orders: updateItem(action.payload, state.orders),
       };
     case DELETE_ORDER:
+    case COMPLETE_ORDER:
       return {
         ...state,
         orders: deleteItem(action.payload, state.orders),

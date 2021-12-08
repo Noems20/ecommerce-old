@@ -14,8 +14,10 @@ const localOrderSchema = new mongoose.Schema(
       required: [true, 'No puede estar vacío'],
     },
     clientCellphone: {
-      type: Number,
-      minlength: [10, 'Un Número telefónico tiene 10 digitos'],
+      type: String,
+      validate: [validator.isNumeric, 'Solo debe contener numeros'],
+      minlength: [10, 'Un número telefónico tiene 10 digitos'],
+      maxlength: [10, 'Un número telefónico tiene 10 digitos'],
       required: [true, 'No puede estar vacío'],
     },
     employeeName: {
@@ -26,14 +28,14 @@ const localOrderSchema = new mongoose.Schema(
     description: {
       type: String,
       trim: true,
-      validate: {
-        validator: function (value) {
-          return validator.isAlphanumeric(value.split(' ').join(''), 'es-ES', {
-            ignore: ',.!¡¿?"()',
-          });
-        },
-        message: 'Solo puede contener caracteres y números',
-      },
+      // validate: {
+      //   validator: function (value) {
+      //     return validator.isAlphanumeric(value.split(' ').join(''), 'es-ES', {
+      //       ignore: ',.!¡¿?"()',
+      //     });
+      //   },
+      //   message: 'Solo puede contener caracteres y números',
+      // },
     },
     products: {
       type: [
@@ -43,15 +45,18 @@ const localOrderSchema = new mongoose.Schema(
             required: [true, 'No puede estar vacío'],
           },
           quantity: {
-            type: Number,
+            type: String,
+            validate: [validator.isNumeric, 'Solo debe contener numeros'],
             required: [true, 'Debe tener una cantidad'],
           },
           price: {
-            type: Number,
+            type: String,
+            validate: [validator.isNumeric, 'Solo debe contener numeros'],
             required: [true, 'Debe tener un precio'],
           },
           totalPrice: {
-            type: Number,
+            type: String,
+            validate: [validator.isNumeric, 'Solo debe contener numeros'],
             required: [true, 'Debe tener un precio'],
           },
         },
@@ -62,8 +67,32 @@ const localOrderSchema = new mongoose.Schema(
       },
     },
     totalPrice: {
-      type: Number,
+      type: String,
+      validate: [validator.isNumeric, 'Solo debe contener numeros'],
       required: [true, 'Debe tener un precio'],
+    },
+    paid: {
+      type: String,
+      validate: {
+        // Only works with CREATE and SAVE
+        // Because this. only points to current doc on NEW document creation
+        validator: function (el) {
+          return !(
+            Number(el) < 0 ||
+            Number(el) > this.totalPrice ||
+            !validator.isNumeric(el)
+          );
+        },
+        message: 'Introduce una cantidad valida',
+      },
+      default: 0,
+    },
+    percentage: {
+      type: String,
+      validate: [validator.isNumeric, 'Solo debe contener numeros'],
+      min: [-100, 'Debe estar entre -100% y 100%'],
+      max: [100, 'Debe estar entre -100% y 100%'],
+      default: 0,
     },
     active: {
       type: Boolean,

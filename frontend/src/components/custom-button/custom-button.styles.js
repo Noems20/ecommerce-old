@@ -81,7 +81,7 @@ const successButtonStyles = css`
   }
 
   &:disabled {
-    background-color: #f94415;
+    background-color: var(--color-success-dark);
   }
 `;
 

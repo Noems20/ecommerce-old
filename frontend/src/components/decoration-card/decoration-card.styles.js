@@ -8,6 +8,7 @@ export const Card = styled.div`
   box-shadow: rgba(0, 0, 0, 0.35) 0px 1px 5px;
   overflow: hidden;
   background-color: #fff;
+  height: max-content;
 `;
 
 // --------------------------------------------------------------
@@ -16,5 +17,5 @@ export const Card = styled.div`
 export const Decoration = styled.div`
   height: 2rem;
   width: 70%;
-  background-color: var(--color-primary);
+  background-color: ${({ color }) => color};
 `;

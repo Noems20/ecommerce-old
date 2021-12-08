@@ -54,3 +54,13 @@ export const ProductRow = styled.div`
 export const ProductPrice = styled.h1`
   justify-self: center;
 `;
+
+export const ExtraRow = styled.div`
+  display: grid;
+  grid-gap: 3rem;
+  grid-template-columns: repeat(2, 1fr);
+
+  @media only screen and (max-width: 550px) {
+    grid-template-columns: none;
+  }
+`;

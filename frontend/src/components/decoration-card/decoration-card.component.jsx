@@ -3,10 +3,10 @@ import React from 'react';
 // STYLES
 import { Card, Decoration } from './decoration-card.styles';
 
-const DecorationCard = ({ children }) => {
+const DecorationCard = ({ children, color = 'var(--color-primary)' }) => {
   return (
     <Card>
-      {children} <Decoration />
+      {children} <Decoration color={color} />
     </Card>
   );
 };

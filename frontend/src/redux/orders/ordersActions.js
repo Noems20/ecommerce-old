@@ -1,12 +1,17 @@
 import {
   SET_ORDERS,
+  SET_ORDER,
   ADD_ORDER,
-  UPDATE_ORDER,
   DELETE_ORDER,
   COMPLETE_ORDER,
   CLEAR_ORDERS,
 } from './ordersTypes';
-import { SET_UI_LOADING, SET_UI_ERRORS, CLEAR_UI_ERRORS } from '../ui/uiTypes';
+import {
+  SET_UI_LOADING,
+  SET_UI_ERRORS,
+  SET_SUCCESS,
+  CLEAR_UI_ERRORS,
+} from '../ui/uiTypes';
 import { batch } from 'react-redux';
 import axios from 'axios';
 
@@ -17,6 +22,32 @@ export const clearOrders = () => async (dispatch) => {
   dispatch({
     type: CLEAR_ORDERS,
   });
+};
+
+// ------------------------------------------------------------------------
+//  FETCH SINGLE ORDER
+// ------------------------------------------------------------------------
+export const fetchSingleOrder = (id) => async (dispatch) => {
+  try {
+    dispatch({
+      type: SET_UI_LOADING,
+      payload: { fetchLoader: true },
+    });
+    const { data } = await axios.get(`/api/v1/localOrders/${id}`);
+
+    batch(() => {
+      dispatch({
+        type: SET_ORDER,
+        payload: data.data,
+      });
+      dispatch({
+        type: SET_UI_LOADING,
+        payload: { fetchLoader: false },
+      });
+    });
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 // ------------------------------------------------------------------------
@@ -106,6 +137,10 @@ export const createOrder =
           type: SET_UI_LOADING,
           payload: { firstLoader: false },
         });
+        dispatch({
+          type: SET_SUCCESS,
+          payload: true,
+        });
       });
     } catch (error) {
       dispatch({
@@ -167,7 +202,7 @@ export const updateOrder =
     try {
       dispatch({
         type: SET_UI_LOADING,
-        payload: { secondLoader: true },
+        payload: { firstLoader: true },
       });
 
       const config = {
@@ -195,12 +230,16 @@ export const updateOrder =
 
       batch(() => {
         dispatch({
-          type: UPDATE_ORDER,
+          type: SET_ORDER,
           payload: data.data,
         });
         dispatch({
           type: SET_UI_LOADING,
-          payload: { secondLoader: false },
+          payload: { firstLoader: false },
+        });
+        dispatch({
+          type: SET_SUCCESS,
+          payload: true,
         });
         dispatch({
           type: CLEAR_UI_ERRORS,
@@ -213,7 +252,7 @@ export const updateOrder =
       });
       dispatch({
         type: SET_UI_LOADING,
-        payload: { secondLoader: false },
+        payload: { firstLoader: false },
       });
       // checkUserPermissions(error, dispatch);
     }

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import moment from 'moment';
 import 'moment/locale/es-us';
 
@@ -14,7 +15,7 @@ import {
 import CustomButton from '../../custom-button/custom-button.component';
 import DecorationCard from '../../decoration-card/decoration-card.component';
 import Modal from '../../modal/modal.component';
-import Message from '../../messages/normal-message/normal-message.component';
+import { Alert } from '../../../general.styles';
 
 // STYLES
 import {
@@ -39,8 +40,8 @@ const LocalOrderCard = ({ order }) => {
   const dispatch = useDispatch();
 
   // -------------------------- HANDLERS ---------------------------
-  const getColor = (date) => {
-    let deliveryDate = moment(date);
+  const getColor = () => {
+    let deliveryDate = moment(order.date);
     let currentDate = moment();
     let hoursDifference = deliveryDate.diff(currentDate, 'hours');
 
@@ -53,11 +54,9 @@ const LocalOrderCard = ({ order }) => {
     }
   };
 
-  // ----------------------------------- HANDLERS ---------------------------
-
-  const handleComplete = () => {
+  const handleComplete = (active) => {
     setCompleteLoader(true);
-    dispatch(setActiveOrder(order._id, false));
+    dispatch(setActiveOrder(order._id, active));
   };
 
   const handleClose = () => {
@@ -71,7 +70,7 @@ const LocalOrderCard = ({ order }) => {
 
   return (
     <>
-      <DecorationCard color={() => getColor(order.date)}>
+      <DecorationCard color={getColor()}>
         <CardContent>
           <CardTitle>{order.clientName}</CardTitle>
           <TwoColumns>
@@ -139,10 +138,17 @@ const LocalOrderCard = ({ order }) => {
           <ButtonsContainer>
             {order.active ? (
               <>
-                <CustomButton primary>Editar</CustomButton>
+                <CustomButton
+                  primary={1}
+                  as={Link}
+                  to={`/ordenes-locales/editar/${order._id}`}
+                  target='_blank'
+                >
+                  Editar
+                </CustomButton>
                 <CustomButton
                   success
-                  onClick={handleComplete}
+                  onClick={() => handleComplete(false)}
                   loading={completeLoader}
                   disabled={completeLoader}
                 >
@@ -151,25 +157,26 @@ const LocalOrderCard = ({ order }) => {
               </>
             ) : (
               <>
-                <CustomButton primary>Activar</CustomButton>
                 <CustomButton
-                  danger
-                  onClick={() => setOpen(true)}
+                  primary
+                  onClick={() => handleComplete(true)}
                   loading={completeLoader}
                   disabled={completeLoader}
                 >
+                  Activar
+                </CustomButton>
+                <CustomButton danger onClick={() => setOpen(true)}>
                   Eliminar
                 </CustomButton>
               </>
             )}
-            {/* <CustomButton danger>Eliminar</CustomButton> */}
           </ButtonsContainer>
         </CardContent>
       </DecorationCard>
       <AnimatePresence>
         {open && (
           <Modal handleClose={handleClose}>
-            <Message
+            <Alert
               title='Cuidado'
               text={`¿Seguro que deseas eliminar la orden de ${order.clientName}?`}
               button='Continuar'

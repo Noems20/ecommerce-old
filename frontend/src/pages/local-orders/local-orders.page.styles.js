@@ -3,9 +3,6 @@ import { motion } from 'framer-motion';
 import background from '../../background.jpg';
 import tokens from '../../tokens';
 
-// const marginRightLeft = '4rem';
-// const marginTopBottom = '3rem';
-
 // -----------------------------------------------------------
 // HEADER
 // -----------------------------------------------------------

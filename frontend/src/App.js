@@ -14,10 +14,11 @@ import Profile from './pages/profile/profile.page';
 import Register from './pages/register/register.page';
 import Shipping from './pages/shipping/shipping.page';
 import GiftsPage from './pages/gifts/gifts.page';
+import ProductPage from './pages/product/product.page';
 import diariesPage from './pages/diaries/diaries.page';
 import ClothingPage from './pages/clothing/clothing.page';
 import LocalOrdersPage from './pages/local-orders/local-orders.page';
-import ProductPage from './pages/product/product.page';
+import EditLocalOrderPage from './pages/edit-local-order/edit-local-order.page';
 import VerifyAccount from './pages/verify-account/verify-account.page';
 
 // COMPONENTS
@@ -61,6 +62,11 @@ const App = () => {
           <Route path='/regalos' component={GiftsPage} />
           <Route exact path='/producto/:slug' component={ProductPage} />
           <Route exact path='/ropa/:for/:category' component={ClothingPage} />
+          <Route
+            exact
+            path='/ordenes-locales/editar/:id'
+            component={EditLocalOrderPage}
+          />
           <Route
             exact
             path='/login'

@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Loader from './components/loaders/loader.component';
+import Message from './components/messages/normal-message/normal-message.component';
 
 // ---------------------------------------------------------
 // PAGE GRID
@@ -157,4 +158,11 @@ export const LoaderModified = styled(Loader)`
   --size: 100px;
 
   margin: 15rem auto;
+`;
+
+// ---------------------------------------------------------------
+// MESSAGE MODIFIED
+// ---------------------------------------------------------------
+export const Alert = styled(Message)`
+  max-width: 55rem;
 `;

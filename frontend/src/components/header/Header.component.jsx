@@ -110,6 +110,318 @@ const Header = () => {
   const dispatch = useDispatch();
   const { user, userLoaded } = useSelector((state) => state.user);
 
+  const renderMenu = () => {
+    switch (activeMenu) {
+      // ---------------------------------------------------------------------------
+      // MAIN
+      // ---------------------------------------------------------------------------
+      case 'main':
+        return (
+          <>
+            {/* ----------- ROPA ---------  */}
+            <NavItem>
+              <NavbarLink
+                as='p'
+                ref={itemExpandedRef2}
+                onClick={() => handleMenu('clothes')}
+                onMouseEnter={handleHover}
+                className={!collapse && itemExpanded && 'is-active'}
+              >
+                Ropa
+                {collapse ? (
+                  <FaChevronRight
+                    style={{
+                      fontSize: '2rem',
+                      marginLeft: '0.5rem',
+                    }}
+                  />
+                ) : (
+                  <FaChevronDown
+                    style={{ fontSize: '1.5rem', marginLeft: '0.2rem' }}
+                  />
+                )}
+              </NavbarLink>
+            </NavItem>
+            {/* ----------- AGENDAS ---------  */}
+            <NavItem>
+              <NavbarLink
+                onMouseEnter={() => setItemExpanded(false)}
+                activeClassName='is-active'
+                onClick={handleLinkClick}
+                to='/agendas'
+                exact
+              >
+                Agendas
+              </NavbarLink>
+            </NavItem>
+            {/* ----------- ENCUADERNACION ---------  */}
+            {/* <NavItem>
+                <NavbarLink
+                  onMouseEnter={() => setItemExpanded(false)}
+                  activeClassName='is-active'
+                  onClick={handleLinkClick}
+                  to='/encuadernacion'
+                  exact
+                >
+                  Encuadernación
+                </NavbarLink>
+              </NavItem> */}
+            {/* ----------- REGALOS ---------  */}
+            <NavItem>
+              <NavbarLink
+                onMouseEnter={() => setItemExpanded(false)}
+                activeClassName='is-active'
+                onClick={handleLinkClick}
+                to='/regalos'
+                exact
+              >
+                Regalos
+              </NavbarLink>
+            </NavItem>
+            {/* ----------- CARRITO ---------  */}
+            <NavItem>
+              <NavbarLink
+                onMouseEnter={() => setItemExpanded(false)}
+                activeClassName='is-active'
+                onClick={handleLinkClick}
+                to='/carrito'
+                exact
+              >
+                {collapse ? (
+                  'Carrito'
+                ) : (
+                  <>
+                    <FiShoppingCart />
+                    <CartCount>
+                      <p>5</p>
+                    </CartCount>
+                  </>
+                )}
+              </NavbarLink>
+            </NavItem>
+
+            {/* ------------------ MENU PARA MOVIL -----------------  */}
+
+            {collapse ? (
+              user ? (
+                <>
+                  <NavItem>
+                    <NavbarLink
+                      as='p'
+                      onClick={() => handleMenu('account')}
+                      onMouseEnter={handleHover}
+                      className={!collapse && itemExpanded && 'is-active'}
+                    >
+                      Cuenta
+                      {collapse ? (
+                        <FaChevronRight
+                          style={{
+                            fontSize: '2rem',
+                            marginLeft: '0.5rem',
+                          }}
+                        />
+                      ) : (
+                        <FaChevronDown
+                          style={{ fontSize: '1.5rem', marginLeft: '0.2rem' }}
+                        />
+                      )}
+                    </NavbarLink>
+                  </NavItem>
+                </>
+              ) : (
+                <NavItem>
+                  <NavbarLink
+                    activeClassName='is-active'
+                    onClick={handleLinkClick}
+                    to='/login'
+                    exact
+                  >
+                    Iniciar sesión
+                  </NavbarLink>
+                </NavItem>
+              )
+            ) : (
+              // ----------------------- MENU GRANDE ----------------
+              // ------------ USUARIO ---------------
+              <NavItem>
+                <NavbarLink
+                  onMouseEnter={() => setItemExpanded(false)}
+                  as='div'
+                  ref={dropdownRef}
+                  onClick={() => setOpen(!open)}
+                >
+                  <FaUserCircle />
+                  <DropDown open={open} setOpen={setOpen}>
+                    {user ? (
+                      <>
+                        <UserInfo to='/perfil' exact>
+                          <UserImage
+                            src={`/img/users/${user.photo}?${photoHash}`}
+                          />
+                          <UserName>{user.name.split(' ')[0]}</UserName>
+                        </UserInfo>
+
+                        <DropDownItem
+                          as={NavLink}
+                          to='/perfil'
+                          exact
+                          activeClassName='is-active'
+                          icon={<FaUser />}
+                        >
+                          <p>Perfil</p>
+                        </DropDownItem>
+                        {user.role === 'admin' && (
+                          <DropDownItem
+                            as={NavLink}
+                            to='/ordenes-locales'
+                            exact
+                            activeClassName='is-active'
+                            icon={<FaReceipt />}
+                          >
+                            <p>Ordenes locales</p>
+                          </DropDownItem>
+                        )}
+                        <DropDownItem
+                          icon={<FiLogOut />}
+                          onClick={() => dispatch(logout())}
+                        >
+                          <p>Cerrar Sesión</p>
+                        </DropDownItem>
+                      </>
+                    ) : (
+                      <>
+                        <DropDownItem
+                          as={NavLink}
+                          to='/registro'
+                          exact
+                          activeClassName='is-active'
+                          icon={<FaUserPlus />}
+                        >
+                          <p>Registrarse</p>
+                        </DropDownItem>
+                        <DropDownItem
+                          as={NavLink}
+                          to='/login'
+                          exact
+                          activeClassName='is-active'
+                          icon={<FiLogIn />}
+                        >
+                          <p>Iniciar Sesión</p>
+                        </DropDownItem>
+                      </>
+                    )}
+                  </DropDown>
+                </NavbarLink>
+              </NavItem>
+            )}
+          </>
+        );
+      // ---------------------------------------------------------------------------
+      // ROPA
+      // ---------------------------------------------------------------------------
+      case 'clothes':
+        return (
+          <>
+            {/* ------------------------ MENU ROPA ------------------ */}
+            <NavItem>
+              <NavbarLink as='div' onClick={() => setActiveMenu('main')}>
+                <FaChevronLeft style={{ fontSize: '3rem' }} />
+              </NavbarLink>
+            </NavItem>
+            <NavItem>
+              <NavbarLink
+                activeClassName='is-active'
+                onClick={handleLinkClick}
+                to='/ropa/general/todo'
+                exact
+              >
+                General
+              </NavbarLink>
+            </NavItem>
+            <NavItem>
+              <NavbarLink
+                activeClassName='is-active'
+                onClick={handleLinkClick}
+                to='/ropa/hombre/todo'
+                exact
+              >
+                Hombre
+              </NavbarLink>
+            </NavItem>
+            <NavItem>
+              <NavbarLink
+                activeClassName='is-active'
+                onClick={handleLinkClick}
+                to='/ropa/mujer/todo'
+                exact
+              >
+                Mujer
+              </NavbarLink>
+            </NavItem>
+            <NavItem>
+              <NavbarLink
+                activeClassName='is-active'
+                onClick={handleLinkClick}
+                to='/ropa/niño/todo'
+                exact
+              >
+                Niño
+              </NavbarLink>
+            </NavItem>
+            <NavItem>
+              <NavbarLink
+                activeClassName='is-active'
+                onClick={handleLinkClick}
+                to='/ropa/niña/todo'
+                exact
+              >
+                Niña
+              </NavbarLink>
+            </NavItem>
+          </>
+        );
+      // ---------------------------------------------------------------------------
+      // CUENTA
+      // ---------------------------------------------------------------------------
+      case 'account':
+        return (
+          <>
+            <NavItem>
+              <NavbarLink as='div' onClick={() => setActiveMenu('main')}>
+                <FaChevronLeft style={{ fontSize: '3rem' }} />
+              </NavbarLink>
+            </NavItem>
+            <NavItem>
+              <NavbarLink
+                activeClassName='is-active'
+                onClick={handleLinkClick}
+                to='/perfil'
+                exact
+              >
+                Perfil
+              </NavbarLink>
+            </NavItem>
+            {user.role === 'admin' && (
+              <NavItem>
+                <NavbarLink
+                  activeClassName='is-active'
+                  onClick={handleLinkClick}
+                  to='/ordenes-locales'
+                  exact
+                >
+                  Ordenes locales
+                </NavbarLink>
+              </NavItem>
+            )}
+            <NavItem onClick={() => dispatch(logout())}>
+              <NavbarLink as='p'>Cerrar sesión</NavbarLink>
+            </NavItem>
+          </>
+        );
+      default:
+    }
+  };
+
   // ------------------------------ USE EFFECT --------------------------
   useEffect(() => {
     if (window.innerWidth > 1300) {
@@ -169,12 +481,12 @@ const Header = () => {
     body.style.overflow = 'auto';
   };
 
-  const handleMenu = () => {
+  const handleMenu = (menu) => {
     if (changeDisplay) {
       setItemExpanded(itemExpanded === 'clothes' ? false : 'clothes');
     }
     if (collapse) {
-      setActiveMenu('clothes');
+      setActiveMenu(menu);
     }
   };
 
@@ -213,256 +525,7 @@ const Header = () => {
 
         <NavMenu className={burguerClass}>
           {/* ------------------------ MAIN MENU --------------------- */}
-          {activeMenu === 'main' ? (
-            <>
-              {/* ----------- ROPA ---------  */}
-              <NavItem>
-                <NavbarLink
-                  as='p'
-                  ref={itemExpandedRef2}
-                  onClick={handleMenu}
-                  onMouseEnter={handleHover}
-                  className={!collapse && itemExpanded && 'is-active'}
-                >
-                  Ropa
-                  {collapse ? (
-                    <FaChevronRight
-                      style={{
-                        fontSize: '2rem',
-                        marginLeft: '0.5rem',
-                      }}
-                    />
-                  ) : (
-                    <FaChevronDown
-                      style={{ fontSize: '1.5rem', marginLeft: '0.2rem' }}
-                    />
-                  )}
-                </NavbarLink>
-              </NavItem>
-              {/* ----------- AGENDAS ---------  */}
-              <NavItem>
-                <NavbarLink
-                  onMouseEnter={() => setItemExpanded(false)}
-                  activeClassName='is-active'
-                  onClick={handleLinkClick}
-                  to='/agendas'
-                  exact
-                >
-                  Agendas
-                </NavbarLink>
-              </NavItem>
-              {/* ----------- ENCUADERNACION ---------  */}
-              {/* <NavItem>
-                <NavbarLink
-                  onMouseEnter={() => setItemExpanded(false)}
-                  activeClassName='is-active'
-                  onClick={handleLinkClick}
-                  to='/encuadernacion'
-                  exact
-                >
-                  Encuadernación
-                </NavbarLink>
-              </NavItem> */}
-              {/* ----------- REGALOS ---------  */}
-              <NavItem>
-                <NavbarLink
-                  onMouseEnter={() => setItemExpanded(false)}
-                  activeClassName='is-active'
-                  onClick={handleLinkClick}
-                  to='/regalos'
-                  exact
-                >
-                  Regalos
-                </NavbarLink>
-              </NavItem>
-              {/* ----------- CARRITO ---------  */}
-              <NavItem>
-                <NavbarLink
-                  onMouseEnter={() => setItemExpanded(false)}
-                  activeClassName='is-active'
-                  onClick={handleLinkClick}
-                  to='/carrito'
-                  exact
-                >
-                  {collapse ? (
-                    'Carrito'
-                  ) : (
-                    <>
-                      <FiShoppingCart />
-                      <CartCount>
-                        <p>5</p>
-                      </CartCount>
-                    </>
-                  )}
-                </NavbarLink>
-              </NavItem>
-
-              {/* ------------------ MENU PARA MOVIL -----------------  */}
-
-              {collapse ? (
-                user ? (
-                  <>
-                    <NavItem>
-                      <NavbarLink
-                        activeClassName='is-active'
-                        onClick={handleLinkClick}
-                        to='/perfil'
-                        exact
-                      >
-                        Perfil
-                      </NavbarLink>
-                    </NavItem>
-                    <NavItem onClick={() => dispatch(logout())}>
-                      <NavbarLink as='p'>Cerrar sesión</NavbarLink>
-                    </NavItem>
-                  </>
-                ) : (
-                  <NavItem>
-                    <NavbarLink
-                      activeClassName='is-active'
-                      onClick={handleLinkClick}
-                      to='/login'
-                      exact
-                    >
-                      Iniciar sesión
-                    </NavbarLink>
-                  </NavItem>
-                )
-              ) : (
-                // ----------------------- MENU GRANDE ----------------
-                // ------------ USUARIO ---------------
-                <NavItem>
-                  <NavbarLink
-                    onMouseEnter={() => setItemExpanded(false)}
-                    as='div'
-                    ref={dropdownRef}
-                    onClick={() => setOpen(!open)}
-                  >
-                    <FaUserCircle />
-                    <DropDown open={open} setOpen={setOpen}>
-                      {user ? (
-                        <>
-                          <UserInfo to='/perfil' exact>
-                            <UserImage
-                              src={`/img/users/${user.photo}?${photoHash}`}
-                            />
-                            <UserName>{user.name.split(' ')[0]}</UserName>
-                          </UserInfo>
-
-                          <DropDownItem
-                            as={NavLink}
-                            to='/perfil'
-                            exact
-                            activeClassName='is-active'
-                            icon={<FaUser />}
-                          >
-                            <p>Perfil</p>
-                          </DropDownItem>
-                          {user.role === 'admin' && (
-                            <DropDownItem
-                              as={NavLink}
-                              to='/ordenes-locales'
-                              exact
-                              activeClassName='is-active'
-                              icon={<FaReceipt />}
-                            >
-                              <p>Ordenes locales</p>
-                            </DropDownItem>
-                          )}
-                          <DropDownItem
-                            icon={<FiLogOut />}
-                            onClick={() => dispatch(logout())}
-                          >
-                            <p>Cerrar Sesión</p>
-                          </DropDownItem>
-                        </>
-                      ) : (
-                        <>
-                          <DropDownItem
-                            as={NavLink}
-                            to='/registro'
-                            exact
-                            activeClassName='is-active'
-                            icon={<FaUserPlus />}
-                          >
-                            <p>Registrarse</p>
-                          </DropDownItem>
-                          <DropDownItem
-                            as={NavLink}
-                            to='/login'
-                            exact
-                            activeClassName='is-active'
-                            icon={<FiLogIn />}
-                          >
-                            <p>Iniciar Sesión</p>
-                          </DropDownItem>
-                        </>
-                      )}
-                    </DropDown>
-                  </NavbarLink>
-                </NavItem>
-              )}
-            </>
-          ) : (
-            <>
-              {/* ------------------------ MENU ROPA ------------------ */}
-              <NavItem>
-                <NavbarLink as='div' onClick={() => setActiveMenu('main')}>
-                  <FaChevronLeft style={{ fontSize: '3rem' }} />
-                </NavbarLink>
-              </NavItem>
-              <NavItem>
-                <NavbarLink
-                  activeClassName='is-active'
-                  onClick={handleLinkClick}
-                  to='/ropa/general/todo'
-                  exact
-                >
-                  General
-                </NavbarLink>
-              </NavItem>
-              <NavItem>
-                <NavbarLink
-                  activeClassName='is-active'
-                  onClick={handleLinkClick}
-                  to='/ropa/hombre/todo'
-                  exact
-                >
-                  Hombre
-                </NavbarLink>
-              </NavItem>
-              <NavItem>
-                <NavbarLink
-                  activeClassName='is-active'
-                  onClick={handleLinkClick}
-                  to='/ropa/mujer/todo'
-                  exact
-                >
-                  Mujer
-                </NavbarLink>
-              </NavItem>
-              <NavItem>
-                <NavbarLink
-                  activeClassName='is-active'
-                  onClick={handleLinkClick}
-                  to='/ropa/niño/todo'
-                  exact
-                >
-                  Niño
-                </NavbarLink>
-              </NavItem>
-              <NavItem>
-                <NavbarLink
-                  activeClassName='is-active'
-                  onClick={handleLinkClick}
-                  to='/ropa/niña/todo'
-                  exact
-                >
-                  Niña
-                </NavbarLink>
-              </NavItem>
-            </>
-          )}
+          {renderMenu()}
         </NavMenu>
       </HeaderContainer>
       {/* ---------------------------- EXPANDED MENU ---------------------------- */}

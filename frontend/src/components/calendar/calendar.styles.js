@@ -86,6 +86,10 @@ export const ChildrenContainer = styled.div`
       @media only screen and (max-width: 430px) {
         font-size: 2.5rem;
       }
+
+      @media only screen and (max-width: 320px) {
+        font-size: 6vw;
+      }
     }
   }
 
@@ -99,6 +103,10 @@ export const ChildrenContainer = styled.div`
 
       @media only screen and (max-width: 430px) {
         font-size: 2.5rem;
+      }
+
+      @media only screen and (max-width: 320px) {
+        font-size: 6vw;
       }
     }
   }
@@ -134,6 +142,9 @@ export const ChildrenContainer = styled.div`
       font-size: 2rem;
       width: 3.6rem;
       margin: 0.5rem;
+    }
+    @media only screen and (max-width: 320px) {
+      width: 8vw;
     }
   }
 

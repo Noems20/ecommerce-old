@@ -6,6 +6,7 @@ export const Container = styled.div`
   grid-auto-flow: column;
   grid-gap: 2rem;
   height: max-content;
+  width: max-content;
 `;
 
 export const Button = styled.button`
@@ -32,10 +33,10 @@ export const Button = styled.button`
 
   & svg {
     font-size: 2rem;
-    color: var(--color-grey-product);
+    color: inherit;
   }
 
-  &.active {
+  &:hover {
     background: rgb(25, 103, 175);
     background: linear-gradient(
       180deg,
@@ -43,13 +44,6 @@ export const Button = styled.button`
       rgba(0, 83, 162, 1) 100%
     );
     color: #fff;
-  }
-
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 1px 10px;
-  }
-  &.active {
     transform: translateY(-2px);
     box-shadow: rgba(0, 0, 0, 0.35) 0px 1px 10px;
   }

@@ -1,5 +1,6 @@
 import {
   SET_ORDERS,
+  SET_ORDERS_PAGES,
   SET_ORDER,
   ADD_ORDER,
   UPDATE_ORDER,
@@ -12,6 +13,7 @@ import { addItem, updateItem, deleteItem } from '../utils/reducerUtils';
 const initialState = {
   orders: [],
   order: null,
+  pages: 1,
 };
 
 const localOrderReducer = (state = initialState, action) => {
@@ -20,6 +22,11 @@ const localOrderReducer = (state = initialState, action) => {
       return {
         ...state,
         orders: [...action.payload],
+      };
+    case SET_ORDERS_PAGES:
+      return {
+        ...state,
+        pages: action.payload,
       };
     case SET_ORDER:
       return {

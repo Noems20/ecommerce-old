@@ -1,5 +1,6 @@
 import {
   SET_ORDERS,
+  SET_ORDERS_PAGES,
   SET_ORDER,
   ADD_ORDER,
   DELETE_ORDER,
@@ -53,30 +54,36 @@ export const fetchSingleOrder = (id) => async (dispatch) => {
 // ------------------------------------------------------------------------
 //  FETCH ORDERS
 // ------------------------------------------------------------------------
-export const fetchOrders = (active) => async (dispatch) => {
-  try {
-    dispatch({
-      type: SET_UI_LOADING,
-      payload: { fetchLoader: true },
-    });
-    const { data } = await axios.get(
-      `/api/v1/localOrders?active=${active}&sort=date`
-    );
-
-    batch(() => {
-      dispatch({
-        type: SET_ORDERS,
-        payload: data.data,
-      });
+export const fetchOrders =
+  (active, limit = 9, page = 1) =>
+  async (dispatch) => {
+    try {
       dispatch({
         type: SET_UI_LOADING,
-        payload: { fetchLoader: false },
+        payload: { fetchLoader: true },
       });
-    });
-  } catch (error) {
-    console.log(error);
-  }
-};
+      const { data } = await axios.get(
+        `/api/v1/localOrders?active=${active}&page=${page}&limit=${limit}&sort=date`
+      );
+
+      batch(() => {
+        dispatch({
+          type: SET_ORDERS,
+          payload: data.data,
+        });
+        dispatch({
+          type: SET_ORDERS_PAGES,
+          payload: data.pages,
+        });
+        dispatch({
+          type: SET_UI_LOADING,
+          payload: { fetchLoader: false },
+        });
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
 // ------------------------------------------------------------------------
 //  CREATE ORDER

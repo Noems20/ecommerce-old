@@ -6,9 +6,9 @@ import { Container, Button } from './pagination.styles';
 // ICONS
 import { FaAngleRight, FaAngleLeft } from 'react-icons/fa';
 
-const Pagination = ({ page = 1, setPage, numOfPages }) => {
+const Pagination = ({ page = 1, setPage, numOfPages, className }) => {
   return (
-    <Container>
+    <Container className={className}>
       <Button
         style={{ visibility: page > 1 ? 'visible' : 'hidden' }}
         onClick={() => page > 1 && setPage(page - 1)}

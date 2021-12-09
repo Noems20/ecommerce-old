@@ -1,4 +1,5 @@
 export const SET_PRODUCTS = 'SET_PRODUCTS';
+export const SET_PRODUCTS_PAGES = 'SET_PRODUCTS_PAGES';
 export const SET_PRODUCT = 'SET_PRODUCT';
 export const SET_PRODUCT_REVIEWS = 'SET_PRODUCT_REVIEWS';
 export const ADD_REVIEW = 'ADD_REVIEW';

@@ -1,5 +1,6 @@
 import {
   SET_PRODUCTS,
+  SET_PRODUCTS_PAGES,
   SET_PRODUCT,
   SET_PRODUCT_REVIEWS,
   SET_PRODUCT_LOADED,
@@ -16,6 +17,7 @@ const initialState = {
   product: null,
   reviews: [],
   productLoaded: false,
+  pages: 1,
 };
 
 const productsReducer = (state = initialState, action) => {
@@ -24,6 +26,11 @@ const productsReducer = (state = initialState, action) => {
       return {
         ...state,
         products: [...action.payload],
+      };
+    case SET_PRODUCTS_PAGES:
+      return {
+        ...state,
+        pages: action.payload,
       };
     case SET_PRODUCT:
       return {

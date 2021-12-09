@@ -72,12 +72,31 @@ export const getAll = (Model) =>
       .limitFields()
       .paginate();
 
+    // MAKE COUNT
+    const queryObj = { ...req.query };
+    const excludedFields = ['page', 'sort', 'limit', 'fields'];
+    excludedFields.forEach((el) => delete queryObj[el]);
+
+    let queryStr = JSON.stringify(queryObj);
+    queryStr = queryStr.replace(
+      /\b(gte|gt|lte|lt|ne)\b/g,
+      (match) => `$${match}`
+    );
+    const count = await Model.countDocuments(JSON.parse(queryStr));
+
+    // GET PAGES
+    let pages = 1;
+    if (req.query.limit) {
+      pages = Math.ceil(count / req.query.limit);
+    }
+
     // features.filter().sort().limitFields().paginate(); -> Also works
     // const doc = await features.query.explain();
     const doc = await features.query;
     res.status(200).json({
       status: 'success',
       results: doc.length,
+      pages,
       data: doc,
     });
   });

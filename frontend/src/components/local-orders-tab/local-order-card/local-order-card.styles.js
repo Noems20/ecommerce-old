@@ -8,6 +8,10 @@ export const CardContent = styled.div`
 
 export const CardTitle = styled.h1`
   color: var(--color-primary);
+
+  @media only screen and (max-width: 1100px) {
+    font-size: 2.2rem;
+  }
 `;
 
 export const TwoColumns = styled.div`
@@ -61,10 +65,16 @@ export const ItemContainer = styled.div`
 
 export const CardSubtitle = styled.h2`
   font-size: 1.7rem;
+  @media only screen and (max-width: 1100px) {
+    font-size: 1.95rem;
+  }
 `;
 
 export const CardText = styled.p`
   font-size: 1.6rem;
+  @media only screen and (max-width: 1100px) {
+    font-size: 1.85rem;
+  }
 `;
 
 export const ButtonsContainer = styled.div`

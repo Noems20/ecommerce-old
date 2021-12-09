@@ -7,6 +7,7 @@ import {
   ADD_REVIEW,
   UPDATE_REVIEW,
   DELETE_REVIEW,
+  SET_PRODUCTS_PAGES,
 } from './productsTypes';
 
 import { SET_USER_REVIEW } from '../user/userTypes';
@@ -77,6 +78,7 @@ export const fetchProducts =
   (
     catalog,
     quantity,
+    page = 1,
     orderBy = '-sold',
     filterRating = 1,
     filterPrice = null,
@@ -96,13 +98,17 @@ export const fetchProducts =
         : '';
       const excludeString = excludeId ? `_id[ne]=${excludeId}` : '';
       const { data } = await axios.get(
-        `/api/v1/products?${excludeString}${excludePriceString}&catalog=${catalog}&limit=${quantity}&ratingsAverage[gte]=${filterRating}&fields=name,slug,catalog,price,ratingsAverage,subcategory&sort=${orderBy},-createdAt`
+        `/api/v1/products?${excludeString}${excludePriceString}&catalog=${catalog}&page=${page}&limit=${quantity}&ratingsAverage[gte]=${filterRating}&fields=name,slug,catalog,price,ratingsAverage,subcategory&sort=${orderBy},-createdAt`
       );
 
       batch(() => {
         dispatch({
           type: SET_PRODUCTS,
           payload: data.data,
+        });
+        dispatch({
+          type: SET_PRODUCTS_PAGES,
+          payload: data.pages,
         });
         dispatch({
           type: SET_UI_LOADING,
@@ -122,6 +128,7 @@ export const fetchClothingProducts =
     forW,
     category,
     quantity,
+    page = 1,
     orderBy = '-sold',
     filterRating = 1,
     filterPrice = null
@@ -140,13 +147,17 @@ export const fetchClothingProducts =
         : '';
 
       const { data } = await axios.get(
-        `/api/v1/products?catalog=ropa${categoryString}${forString}${excludePriceString}&limit=${quantity}&ratingsAverage[gte]=${filterRating}&fields=name,slug,catalog,price,ratingsAverage,subcategory&sort=${orderBy},-createdAt`
+        `/api/v1/products?catalog=ropa${categoryString}${forString}${excludePriceString}&page=${page}&limit=${quantity}&ratingsAverage[gte]=${filterRating}&fields=name,slug,catalog,price,ratingsAverage,subcategory&sort=${orderBy},-createdAt`
       );
 
       batch(() => {
         dispatch({
           type: SET_PRODUCTS,
           payload: data.data,
+        });
+        dispatch({
+          type: SET_PRODUCTS_PAGES,
+          payload: data.pages,
         });
         dispatch({
           type: SET_UI_LOADING,

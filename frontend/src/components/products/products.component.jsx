@@ -12,9 +12,11 @@ import {
 // COMPONENTS
 import ProductCard from '../../components/product-card/product-card.component';
 import Rating from '../../components/rating/rating.component';
+import Pagination from '../pagination/pagination.component';
 
 // STYLES
 import { LoaderModified } from '../../general.styles';
+import { ProductsContainer } from './products.styles';
 
 import {
   Products,
@@ -31,12 +33,13 @@ const ProductsSection = ({ forW = null, category = null, catalog }) => {
   const [orderBy, setOrderBy] = useState('-sold');
   const [filterRating, setFilterRating] = useState(1);
   const [filterPrice, setFilterPrice] = useState(null);
+  const [page, setPage] = useState(1);
 
   const {
     loading: { fetchLoader },
   } = useSelector((state) => state.ui);
 
-  const { products } = useSelector((state) => state.products);
+  const { products, pages } = useSelector((state) => state.products);
 
   const dispatch = useDispatch();
 
@@ -48,18 +51,30 @@ const ProductsSection = ({ forW = null, category = null, catalog }) => {
           forW,
           category,
           12,
+          page,
           orderBy,
           filterRating,
           filterPrice
         )
       );
     } else {
-      dispatch(fetchProducts(catalog, 12, orderBy, filterRating, filterPrice));
+      dispatch(
+        fetchProducts(catalog, 12, page, orderBy, filterRating, filterPrice)
+      );
     }
     return () => {
       dispatch(clearProducts());
     };
-  }, [dispatch, catalog, orderBy, filterRating, filterPrice, category, forW]);
+  }, [
+    dispatch,
+    catalog,
+    orderBy,
+    filterRating,
+    filterPrice,
+    category,
+    forW,
+    page,
+  ]);
 
   return (
     <Products>
@@ -137,27 +152,30 @@ const ProductsSection = ({ forW = null, category = null, catalog }) => {
           </FilterItem>
         </Filter>
       </FiltersContainer>
-      <AnimatePresence exitBeforeEnter>
-        {fetchLoader ? (
-          <LoaderModified
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            key={1}
-          />
-        ) : (
-          <ProductsGrid
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            key={2}
-          >
-            {products.map((product) => {
-              return <ProductCard key={product._id} product={product} />;
-            })}
-          </ProductsGrid>
-        )}
-      </AnimatePresence>
+      <ProductsContainer>
+        <AnimatePresence exitBeforeEnter>
+          {fetchLoader ? (
+            <LoaderModified
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              key={1}
+            />
+          ) : (
+            <ProductsGrid
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              key={2}
+            >
+              {products.map((product) => {
+                return <ProductCard key={product._id} product={product} />;
+              })}
+            </ProductsGrid>
+          )}
+        </AnimatePresence>
+        <Pagination page={page} setPage={setPage} numOfPages={pages} />
+      </ProductsContainer>
     </Products>
   );
 };

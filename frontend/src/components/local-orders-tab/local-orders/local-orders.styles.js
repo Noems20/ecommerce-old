@@ -28,6 +28,19 @@ export const Content = styled.div`
   }
 `;
 
+export const DateTitle = styled.h1`
+  font-size: 3rem;
+  height: max-content;
+  grid-column: 1 / -1;
+  color: var(--color-grey-product);
+  padding-bottom: 2rem;
+  margin: 2rem 0;
+  border-bottom: 1px solid var(--color-grey-product);
+  @media only screen and (max-width: 440px) {
+    margin: 2rem;
+  }
+`;
+
 export const PaginationModified = styled(Pagination)`
   justify-self: center;
 `;

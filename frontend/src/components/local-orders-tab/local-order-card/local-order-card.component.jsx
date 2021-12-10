@@ -30,7 +30,13 @@ import {
   TableHeading,
   TableData,
   ButtonsContainer,
+  TwoColumnsTitle,
+  TwoColumnsPayment,
+  ExpandButton,
 } from './local-order-card.styles';
+
+// ICONS
+import { IoExpandSharp } from 'react-icons/io5';
 
 const LocalOrderCard = ({ order }) => {
   // ---------------------------- STATE AND CONSTANTS -------------------
@@ -72,7 +78,12 @@ const LocalOrderCard = ({ order }) => {
     <>
       <DecorationCard color={getColor()}>
         <CardContent>
-          <CardTitle>{order.clientName}</CardTitle>
+          <TwoColumnsTitle>
+            <CardTitle>{order.clientName}</CardTitle>
+            <ExpandButton onClick={() => setOpen('expand')}>
+              <IoExpandSharp />
+            </ExpandButton>
+          </TwoColumnsTitle>
           <TwoColumns>
             <ItemContainer>
               <CardSubtitle>Teléfono</CardSubtitle>
@@ -88,7 +99,7 @@ const LocalOrderCard = ({ order }) => {
             </ItemContainer>
           </TwoColumns>
           <ItemContainer>
-            <CardSubtitle>Se encargo el</CardSubtitle>
+            <CardSubtitle>Se encargó el</CardSubtitle>
             <CardText>{moment(order.createdAt).format('LLLL')}</CardText>
           </ItemContainer>
           <ItemContainer>
@@ -124,17 +135,24 @@ const LocalOrderCard = ({ order }) => {
               })}
             </tbody>
           </Table>
-          {order.percentage !== 0 && (
-            <CardSubtitle
-              style={{ textAlign: 'center' }}
-            >{`Porcentaje añadido: ${order.percentage}%`}</CardSubtitle>
-          )}
-          <CardSubtitle
-            style={{ textAlign: 'center' }}
-          >{`Total: $${order.totalPrice}`}</CardSubtitle>
-          <CardSubtitle
-            style={{ textAlign: 'center' }}
-          >{`Pagado: $${order.paid}`}</CardSubtitle>
+          <TwoColumnsPayment>
+            <ItemContainer>
+              <CardSubtitle>Total</CardSubtitle>
+              <CardText>{`$${order.totalPrice}`}</CardText>
+            </ItemContainer>
+            <ItemContainer>
+              <CardSubtitle>Porcentaje añadido</CardSubtitle>
+              <CardText>{`${order.percentage}%`}</CardText>
+            </ItemContainer>
+            <ItemContainer>
+              <CardSubtitle>Pagado</CardSubtitle>
+              <CardText>{`$${order.paid}`}</CardText>
+            </ItemContainer>
+            <ItemContainer>
+              <CardSubtitle>Restante</CardSubtitle>
+              <CardText>{`$${order.totalPrice - order.paid}`}</CardText>
+            </ItemContainer>
+          </TwoColumnsPayment>
           <ButtonsContainer>
             {order.active ? (
               <>
@@ -165,7 +183,7 @@ const LocalOrderCard = ({ order }) => {
                 >
                   Activar
                 </CustomButton>
-                <CustomButton danger onClick={() => setOpen(true)}>
+                <CustomButton danger onClick={() => setOpen('delete')}>
                   Eliminar
                 </CustomButton>
               </>
@@ -174,7 +192,7 @@ const LocalOrderCard = ({ order }) => {
         </CardContent>
       </DecorationCard>
       <AnimatePresence>
-        {open && (
+        {open === 'delete' && (
           <Modal handleClose={handleClose}>
             <Alert
               title='Cuidado'
@@ -184,6 +202,87 @@ const LocalOrderCard = ({ order }) => {
               handleClose={handleClose}
               handleAction={handleDelete}
             />
+          </Modal>
+        )}
+        {open === 'expand' && (
+          <Modal handleClose={handleClose}>
+            <DecorationCard color={getColor()}>
+              <CardContent>
+                <CardTitle>{order.clientName}</CardTitle>
+                <TwoColumns>
+                  <ItemContainer>
+                    <CardSubtitle>Teléfono</CardSubtitle>
+                    <CardText>{order.clientCellphone}</CardText>
+                  </ItemContainer>
+                  <ItemContainer>
+                    <CardSubtitle>Email</CardSubtitle>
+                    <CardText>{order.clientEmail}</CardText>
+                  </ItemContainer>
+                  <ItemContainer>
+                    <CardSubtitle>Atendió</CardSubtitle>
+                    <CardText>{order.employeeName}</CardText>
+                  </ItemContainer>
+                  <ItemContainer>
+                    <CardSubtitle>Se encargó el</CardSubtitle>
+                    <CardText>
+                      {moment(order.createdAt).format('LLLL')}
+                    </CardText>
+                  </ItemContainer>
+                </TwoColumns>
+
+                <ItemContainer>
+                  <CardSubtitle>Fecha de entrega</CardSubtitle>
+                  <CardText>{moment(order.date).format('LLLL')}</CardText>
+                </ItemContainer>
+                {order.description && (
+                  <ItemContainer>
+                    <CardSubtitle>Descripción</CardSubtitle>
+                    <CardText>{order.description}</CardText>
+                  </ItemContainer>
+                )}
+                <CardTitle>Productos</CardTitle>
+                <Table>
+                  <thead>
+                    <TableRow>
+                      <TableHeading>Producto</TableHeading>
+                      <TableHeading>Cantidad</TableHeading>
+                      <TableHeading>Precio</TableHeading>
+                      <TableHeading>Precio Total</TableHeading>
+                    </TableRow>
+                  </thead>
+                  <tbody>
+                    {order.products.map((product) => {
+                      return (
+                        <TableRow key={product._id}>
+                          <TableData>{product.product}</TableData>
+                          <TableData>{product.quantity}</TableData>
+                          <TableData>{`$${product.price}`}</TableData>
+                          <TableData>{`$${product.totalPrice}`}</TableData>
+                        </TableRow>
+                      );
+                    })}
+                  </tbody>
+                </Table>
+                <TwoColumnsPayment>
+                  <ItemContainer>
+                    <CardSubtitle>Total</CardSubtitle>
+                    <CardText>{`$${order.totalPrice}`}</CardText>
+                  </ItemContainer>
+                  <ItemContainer>
+                    <CardSubtitle>Porcentaje añadido</CardSubtitle>
+                    <CardText>{`${order.percentage}%`}</CardText>
+                  </ItemContainer>
+                  <ItemContainer>
+                    <CardSubtitle>Pagado</CardSubtitle>
+                    <CardText>{`$${order.paid}`}</CardText>
+                  </ItemContainer>
+                  <ItemContainer>
+                    <CardSubtitle>Restante</CardSubtitle>
+                    <CardText>{`$${order.totalPrice - order.paid}`}</CardText>
+                  </ItemContainer>
+                </TwoColumnsPayment>
+              </CardContent>
+            </DecorationCard>
           </Modal>
         )}
       </AnimatePresence>

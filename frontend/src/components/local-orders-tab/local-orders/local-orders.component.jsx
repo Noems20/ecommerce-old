@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import moment from 'moment';
+import 'moment/locale/es-us';
 
 // REDUX
 import { useDispatch, useSelector } from 'react-redux';
@@ -8,8 +10,14 @@ import { fetchOrders, clearOrders } from '../../../redux/orders/ordersActions';
 import LocalOrderCard from '../local-order-card/local-order-card.component';
 
 // STYLES
-import { Container, Content, PaginationModified } from './local-orders.styles';
+import {
+  Container,
+  Content,
+  DateTitle,
+  PaginationModified,
+} from './local-orders.styles';
 import { LoaderModified } from '../../../general.styles';
+import { Fragment } from 'react';
 
 const LocalOrders = ({ active }) => {
   // ------------------------------ STATE AND CONSTANTS --------------------
@@ -37,8 +45,34 @@ const LocalOrders = ({ active }) => {
           <LoaderModified />
         ) : (
           <Content>
-            {orders.map((order) => {
-              return <LocalOrderCard key={order._id} order={order} />;
+            {orders.map((order, index) => {
+              const formatedDate = moment(order.date).calendar(null, {
+                lastDay: '[Ayer]',
+                sameDay: '[Hoy]',
+                nextDay: '[Mañana]',
+                lastWeek: '[Ultimo] dddd',
+                nextWeek: '[Siguiente] dddd',
+                sameElse: 'L',
+              });
+              const previousFormatedDate =
+                index - 1 >= 0
+                  ? moment(orders[index - 1].date).calendar(null, {
+                      lastDay: '[Ayer]',
+                      sameDay: '[Hoy]',
+                      nextDay: '[Mañana]',
+                      lastWeek: '[Ultimo] dddd',
+                      nextWeek: '[Siguiente] dddd',
+                      sameElse: 'L',
+                    })
+                  : '';
+              return (
+                <Fragment key={order._id}>
+                  {formatedDate !== previousFormatedDate && (
+                    <DateTitle>{formatedDate}</DateTitle>
+                  )}
+                  <LocalOrderCard order={order} />
+                </Fragment>
+              );
             })}
           </Content>
         )}

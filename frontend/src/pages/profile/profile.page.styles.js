@@ -100,6 +100,10 @@ export const UserName = styled.div`
   font-weight: 300;
   font-size: 3rem;
   color: #fff;
+
+  @media only screen and (max-width: 600px) {
+    text-align: center;
+  }
 `;
 
 export const Info = styled.div`

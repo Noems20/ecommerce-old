@@ -24,6 +24,50 @@ export const TwoColumns = styled.div`
   }
 `;
 
+export const TwoColumnsPayment = styled.div`
+  display: grid;
+  grid-gap: 2rem;
+  grid-column-gap: 3rem;
+  grid-template-columns: max-content max-content;
+  justify-items: center;
+  justify-content: center;
+
+  & div {
+    justify-items: center;
+  }
+
+  @media only screen and (max-width: 500px) {
+    grid-template-columns: 1fr;
+    grid-gap: 2rem;
+  }
+`;
+
+export const TwoColumnsTitle = styled.div`
+  display: grid;
+  grid-gap: 2rem;
+  grid-template-columns: max-content 1fr;
+  align-items: center;
+`;
+
+export const ExpandButton = styled.div`
+  justify-self: end;
+  background-color: var(--color-primary);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  cursor: pointer;
+
+  & svg {
+    color: currentcolor;
+    font-size: 20px;
+  }
+`;
+
 export const Table = styled.table`
   width: 100%;
   border-radius: 8px;
@@ -60,6 +104,7 @@ export const TableData = styled.td`
 
 export const ItemContainer = styled.div`
   display: grid;
+  height: max-content;
   grid-gap: 0.5rem;
 `;
 

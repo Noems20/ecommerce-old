@@ -365,7 +365,7 @@ const CreateLocalOrderTab = ({ variants, update = false, order = null }) => {
                 type='text'
                 handleChange={handleChange}
                 value={paid}
-                label='Anticipo'
+                label='Pagado'
                 error={errorsOne.paid}
               />
               <TextInput

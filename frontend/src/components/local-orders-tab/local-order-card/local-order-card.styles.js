@@ -4,6 +4,22 @@ export const CardContent = styled.div`
   margin: 2rem;
   display: grid;
   grid-gap: 2rem;
+  z-index: 3;
+  position: relative;
+  z-index: 1;
+`;
+
+export const BackgroundLogo = styled.img`
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  width: 50%;
+  border: none !important;
+  opacity: 0.05;
+
+  transform: translate(-50%, 0);
+
+  z-index: 0 !important;
 `;
 
 export const CardTitle = styled.h1`

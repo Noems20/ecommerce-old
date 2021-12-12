@@ -9,6 +9,8 @@ export const Card = styled.div`
   overflow: hidden;
   background-color: #fff;
   height: max-content;
+
+  position: relative;
 `;
 
 // --------------------------------------------------------------

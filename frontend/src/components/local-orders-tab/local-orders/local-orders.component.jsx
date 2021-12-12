@@ -52,7 +52,7 @@ const LocalOrders = ({ active }) => {
                 nextDay: '[Mañana]',
                 lastWeek: '[Ultimo] dddd',
                 nextWeek: '[Siguiente] dddd',
-                sameElse: 'L',
+                sameElse: 'll',
               });
               const previousFormatedDate =
                 index - 1 >= 0
@@ -62,7 +62,7 @@ const LocalOrders = ({ active }) => {
                       nextDay: '[Mañana]',
                       lastWeek: '[Ultimo] dddd',
                       nextWeek: '[Siguiente] dddd',
-                      sameElse: 'L',
+                      sameElse: 'll',
                     })
                   : '';
               return (

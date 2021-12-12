@@ -33,10 +33,14 @@ import {
   TwoColumnsTitle,
   TwoColumnsPayment,
   ExpandButton,
+  BackgroundLogo,
 } from './local-order-card.styles';
 
 // ICONS
 import { IoExpandSharp } from 'react-icons/io5';
+
+// IMAGES
+import logo from './logo.png';
 
 const LocalOrderCard = ({ order }) => {
   // ---------------------------- STATE AND CONSTANTS -------------------
@@ -149,8 +153,12 @@ const LocalOrderCard = ({ order }) => {
               <CardText>{`$${order.paid}`}</CardText>
             </ItemContainer>
             <ItemContainer>
-              <CardSubtitle>Restante</CardSubtitle>
-              <CardText>{`$${order.totalPrice - order.paid}`}</CardText>
+              <CardSubtitle>Por pagar</CardSubtitle>
+              <CardText>{`$${
+                Math.round(
+                  (order.totalPrice - order.paid + Number.EPSILON) * 100
+                ) / 100
+              }`}</CardText>
             </ItemContainer>
           </TwoColumnsPayment>
           <ButtonsContainer>
@@ -191,6 +199,7 @@ const LocalOrderCard = ({ order }) => {
           </ButtonsContainer>
         </CardContent>
       </DecorationCard>
+      {/* ------------------------------- MODALS ------------------------------------------------- */}
       <AnimatePresence>
         {open === 'delete' && (
           <Modal handleClose={handleClose}>
@@ -207,6 +216,7 @@ const LocalOrderCard = ({ order }) => {
         {open === 'expand' && (
           <Modal handleClose={handleClose}>
             <DecorationCard color={getColor()}>
+              <BackgroundLogo src={logo} />
               <CardContent>
                 <CardTitle>{order.clientName}</CardTitle>
                 <TwoColumns>
@@ -277,8 +287,12 @@ const LocalOrderCard = ({ order }) => {
                     <CardText>{`$${order.paid}`}</CardText>
                   </ItemContainer>
                   <ItemContainer>
-                    <CardSubtitle>Restante</CardSubtitle>
-                    <CardText>{`$${order.totalPrice - order.paid}`}</CardText>
+                    <CardSubtitle>Por pagar</CardSubtitle>
+                    <CardText>{`$${
+                      Math.round(
+                        (order.totalPrice - order.paid + Number.EPSILON) * 100
+                      ) / 100
+                    }`}</CardText>
                   </ItemContainer>
                 </TwoColumnsPayment>
               </CardContent>

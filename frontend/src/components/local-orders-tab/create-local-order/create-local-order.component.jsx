@@ -54,7 +54,12 @@ const getAvailableDate = (date) => {
   return date;
 };
 
-const CreateLocalOrderTab = ({ variants, update = false, order = null }) => {
+const CreateLocalOrderTab = ({
+  variants,
+  update = false,
+  order = null,
+  setTab,
+}) => {
   // ------------------------------------- STATE AND CONSTANTS ----------------------
   const dispatch = useDispatch();
   const {
@@ -241,6 +246,12 @@ const CreateLocalOrderTab = ({ variants, update = false, order = null }) => {
     dispatch(clearSuccess());
   };
 
+  const handleTabChange = () => {
+    dispatch(clearSuccess());
+    setTab('current-orders');
+    window.scrollTo(0, 0);
+  };
+
   return (
     <>
       <Container
@@ -289,13 +300,12 @@ const CreateLocalOrderTab = ({ variants, update = false, order = null }) => {
               error={errorsOne.employeeName}
             >
               <option value=''>Selecciona uno</option>
-              <option value='Miguel Muñoz'>Miguel Muñoz</option>
-              <option value='Maria'>Maria</option>
-              <option value='Chuy'>Chuy</option>
-              <option value='Miguel Antonio'>Miguel Antonio</option>
               <option value='Gael'>Gael</option>
-              <option value='Jaciel'>Jaciel</option>
-              <option value='Juanito'>Juan</option>
+              <option value='José de Jesús'>José de Jesús</option>
+              <option value='Jassiel'>Jassiel</option>
+              <option value='Miguel Muñoz'>Miguel Muñoz</option>
+              <option value='Miguel Antonio'>Miguel Antonio</option>
+              <option value='María'>María</option>
             </SelectInput>
             <TextInput
               textarea
@@ -448,7 +458,7 @@ const CreateLocalOrderTab = ({ variants, update = false, order = null }) => {
               button='Continuar'
               type='success'
               handleClose={handleClose}
-              handleAction={handleClose}
+              handleAction={handleTabChange}
             />
           </Modal>
         )}

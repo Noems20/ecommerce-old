@@ -86,7 +86,13 @@ const LocalOrdersPage = () => {
   const renderSwitch = () => {
     switch (tab) {
       case 'profile':
-        return <CreateLocalOrderTab variants={containerVariants} key={1} />;
+        return (
+          <CreateLocalOrderTab
+            variants={containerVariants}
+            setTab={setTab}
+            key={1}
+          />
+        );
       case 'current-orders':
         return (
           <LocalOrders variants={containerVariants} key={2} active={true} />

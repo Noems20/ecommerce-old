@@ -62,8 +62,9 @@ export const fetchOrders =
         type: SET_UI_LOADING,
         payload: { fetchLoader: true },
       });
+      const dateStr = active ? 'date' : '-date';
       const { data } = await axios.get(
-        `/api/v1/localOrders?active=${active}&page=${page}&limit=${limit}&sort=date`
+        `/api/v1/localOrders?active=${active}&page=${page}&limit=${limit}&sort=${dateStr}`
       );
 
       batch(() => {

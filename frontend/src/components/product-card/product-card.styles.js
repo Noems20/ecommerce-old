@@ -32,6 +32,7 @@ export const ContentBox = styled.div`
   left: 50%;
   bottom: 2rem;
   transform: translate(-50%, 30%);
+  -webkit-transform: translate(-50%, 30%);
 
   width: 100%;
   padding: 0 2rem;
@@ -59,6 +60,7 @@ export const Button = styled.button`
 
   opacity: 0;
   transform: translateY(60px);
+  -webkit-transform: translateY(60px);
   transition: 0.5s;
 `;
 
@@ -109,6 +111,7 @@ export const Card = styled.div`
     top: 30%;
     left: 50%;
     transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
     font-size: 19rem;
     font-weight: 800;
     font-style: italic;
@@ -122,12 +125,14 @@ export const Card = styled.div`
 
   &:hover ${ContentBox} {
     transform: translate(-50%, 0);
+    -webkit-transform: translate(-50%, 0);
     transition: transform 1s ease;
   }
 
   &:hover ${Button} {
     opacity: 1;
     transform: translateY(0px);
+    -webkit-transform: translateY(0px);
     transition-delay: 0.75s;
   }
 

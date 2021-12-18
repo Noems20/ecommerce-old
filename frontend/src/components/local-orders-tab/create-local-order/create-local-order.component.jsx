@@ -248,8 +248,10 @@ const CreateLocalOrderTab = ({
 
   const handleTabChange = () => {
     dispatch(clearSuccess());
-    setTab('current-orders');
-    window.scrollTo(0, 0);
+    if (!update) {
+      setTab('current-orders');
+      window.scrollTo(0, 0);
+    }
   };
 
   return (

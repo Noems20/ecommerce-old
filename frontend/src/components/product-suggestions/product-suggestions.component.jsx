@@ -23,7 +23,7 @@ const ProductSuggestions = ({ catalog, id }) => {
 
   // ------------------------------- USE EFFECT'S ---------------------------
   useEffect(() => {
-    dispatch(fetchProducts(catalog, 4, '-sold', 1, null, id));
+    dispatch(fetchProducts(catalog, 4, 1, '-sold', 1, null, id));
     return () => {};
   }, [dispatch, catalog, id]);
 

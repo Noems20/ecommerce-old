@@ -12,10 +12,11 @@ export const Spinner = styled(motion.div)`
   --animation-duration: 1000ms;
   width: var(--size);
   height: var(--size);
-  display: flex;
+  display: grid;
+  grid-auto-flow: column;
   justify-content: center;
   align-items: center;
-  gap: 4px;
+  grid-gap: 4px;
 
   & div:nth-child(1) {
     --clr-spinner: var(--clr1);

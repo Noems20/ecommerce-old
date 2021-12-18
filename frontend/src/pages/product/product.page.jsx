@@ -33,7 +33,7 @@ const ProductPage = () => {
     };
   }, [dispatch, slug]);
 
-  console.log(product);
+  // console.log(product);
 
   // --------------------------------- HANDLERS -------------------------
 

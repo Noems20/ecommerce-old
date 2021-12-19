@@ -36,15 +36,13 @@ const ProductCard = ({ product }) => {
     },
   };
 
-  const style = imageLoaded ? { display: 'inline' } : { display: 'none' };
-
   return (
     <Container>
       <Card catalog={`${product.catalog}`.slice(0, 4)}>
         <ImageBox>
           <Image
             src={`/img/products/${product.subcategory.color[0].image}`}
-            style={style}
+            className={imageLoaded ? '' : 'hide'}
             onLoad={() => setImageLoaded(true)}
             alt='Product'
           />

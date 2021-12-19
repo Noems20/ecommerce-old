@@ -16,6 +16,7 @@ export const ImageBox = styled.div`
   display: grid;
   grid-template-rows: 100%;
   justify-content: center;
+  justify-items: center;
   align-items: center;
 `;
 
@@ -31,8 +32,10 @@ export const ContentBox = styled.div`
   position: absolute;
   left: 50%;
   bottom: 2rem;
-  transform: translate(-50%, 30%);
   -webkit-transform: translate(-50%, 30%);
+  -moz-transform: translate(-50%, 30%);
+  -o-transform: translate(-50%, 30%);
+  transform: translate(-50%, 30%);
 
   width: 100%;
   padding: 0 2rem;
@@ -59,8 +62,10 @@ export const Button = styled.button`
   margin-top: 0.5rem;
 
   opacity: 0;
-  transform: translateY(60px);
   -webkit-transform: translateY(60px);
+  -moz-transform: translateY(60px);
+  -o-transform: translateY(60px);
+  transform: translateY(60px);
   transition: 0.5s;
 `;
 
@@ -72,6 +77,16 @@ export const Card = styled.div`
   background: #fff;
   border-radius: 20px;
   overflow: hidden;
+  /* -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden; */
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -webkit-box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  -moz-box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  -o-box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 
@@ -110,8 +125,10 @@ export const Card = styled.div`
     position: absolute;
     top: 30%;
     left: 50%;
-    transform: translateX(-50%);
     -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
     font-size: 19rem;
     font-weight: 800;
     font-style: italic;
@@ -124,15 +141,19 @@ export const Card = styled.div`
   }
 
   &:hover ${ContentBox} {
-    transform: translate(-50%, 0);
     -webkit-transform: translate(-50%, 0);
+    -moz-transform: translate(-50%, 0);
+    -o-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
     transition: transform 1s ease;
   }
 
   &:hover ${Button} {
     opacity: 1;
-    transform: translateY(0px);
     -webkit-transform: translateY(0px);
+    -moz-transform: translateY(0px);
+    -o-transform: translateY(0px);
+    transform: translateY(0px);
     transition-delay: 0.75s;
   }
 
@@ -142,9 +163,17 @@ export const Card = styled.div`
 `;
 
 export const Image = styled.img`
+  position: static;
   max-width: 100%;
   max-height: 100%;
   transition: all 1s ease;
+
+  &.hide {
+    position: absolute;
+    visibility: hidden;
+    width: 0 !important;
+    height: 0 !important;
+  }
 `;
 
 export const Title = styled.h1`

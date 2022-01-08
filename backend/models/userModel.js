@@ -40,6 +40,37 @@ const userSchema = new mongoose.Schema(
       },
       default: 'user',
     },
+    productsCart: {
+      type: [
+        {
+          product: {
+            type: mongoose.Schema.ObjectId,
+            ref: 'Product',
+            required: [true, 'Debe pertenecer a un producto'],
+          },
+          quantity: {
+            type: Number,
+            min: [1, 'Debe tener una cantidad mayor a 1'],
+            required: [true, 'Debe tener una cantidad'],
+          },
+          colorname: {
+            type: String,
+            minlength: [3, 'Necesita ser mayor a 2 caracteres'],
+            maxlength: [6, 'Necesita ser menor a 7 caracteres'],
+            required: [true, 'Debe tener un color'],
+            validate: {
+              validator: (val) => validator.isHexadecimal(val),
+              message: 'Introduce un color en formato hexadecimal',
+            },
+          },
+          size: {
+            type: String,
+            required: [true, 'No puede estar vacío'],
+          },
+        },
+      ],
+      default: [],
+    },
     password: {
       type: String,
       required: [true, 'No puede estar vacío'],
@@ -68,6 +99,11 @@ const userSchema = new mongoose.Schema(
     toObject: { virtuals: true },
   }
 );
+
+// userSchema.pre(/^find/, function (next) {
+//   this.populate('productsCart.product', '-slug name');
+//   next();
+// });
 
 // --------------------------------------- MIDDLEWARE -----------------------------------------------
 

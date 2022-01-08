@@ -25,7 +25,8 @@ Addresses - [{
 ------------------------------------------------------------------
 Product - ProductId
 Quantity - Number
-Sold - Number
+colorName - String
+size - String
 
 ------------------------------------------------------------------
         CART PRODUCT CLOTHES (INHERIT FROM CART PRODUCT)

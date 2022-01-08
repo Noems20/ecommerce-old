@@ -104,8 +104,37 @@ const Product = ({ product }) => {
     setSelectedSubCategory(product.subcategory.color[index]);
     setSelectedColor(`#${product.subcategory.color[index].colorname}`);
     setFocusImage(product.subcategory.color[index].image);
-    setSelectedSize(product.subcategory.color[index].sizes[0].size);
-    setLimit(product.subcategory.color[index].sizes[0].quantity);
+
+    let valid = false;
+    for (let size of product.subcategory.color[index].sizes) {
+      if (size.size === selectedSize && size.quantity > 0) {
+        setLimit(size.quantity);
+        valid = true;
+        if (qty > size.quantity) {
+          setQty(size.quantity);
+        }
+      }
+    }
+
+    if (!valid) {
+      setSelectedSize(product.subcategory.color[index].sizes[0].size);
+      setLimit(product.subcategory.color[index].sizes[0].quantity);
+      if (qty > product.subcategory.color[index].sizes[0].quantity) {
+        setQty(product.subcategory.color[index].sizes[0].quantity);
+      }
+    }
+  };
+
+  const handleSizeChange = (index, size) => {
+    for (let color of product.subcategory.color) {
+      if ('#' + color.colorname === selectedColor) {
+        setLimit(color.sizes[index].quantity);
+        if (qty > color.sizes[index].quantity) {
+          setQty(color.sizes[index].quantity);
+        }
+      }
+    }
+    setSelectedSize(size.size);
   };
 
   const productImages = (
@@ -172,15 +201,17 @@ const Product = ({ product }) => {
           <DetailsContainer>
             <DetailsTitle>Talla</DetailsTitle>
             <SizeItemsContainer>
-              {selectedSubCategory.sizes.map((size) => {
+              {selectedSubCategory.sizes.map((size, index) => {
                 return (
-                  <SizeItem
-                    key={size._id}
-                    className={selectedSize === size.size ? 'selected' : ''}
-                    onClick={() => setSelectedSize(size.size)}
-                  >
-                    {size.size}
-                  </SizeItem>
+                  size.quantity > 0 && (
+                    <SizeItem
+                      key={size._id}
+                      className={selectedSize === size.size ? 'selected' : ''}
+                      onClick={() => handleSizeChange(index, size)}
+                    >
+                      {size.size}
+                    </SizeItem>
+                  )
                 );
               })}
             </SizeItemsContainer>

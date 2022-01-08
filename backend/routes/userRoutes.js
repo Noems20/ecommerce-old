@@ -11,6 +11,7 @@ import {
   changeUserRole,
 } from '../controllers/userController.js';
 
+// USER
 import {
   signup,
   login,
@@ -23,6 +24,12 @@ import {
   resetPassword,
   verifyAccount,
 } from '../controllers/authController.js';
+
+// PRODUCTS CART
+import {
+  getUserCartProducts,
+  addUserCartProducts,
+} from '../controllers/cartProductsController.js';
 
 const router = express.Router();
 
@@ -37,6 +44,11 @@ router.patch('/verifyAccount/:token', verifyAccount);
 
 router.use(protect);
 
+// CART PRODUCTS
+router.get('/cartProducts', getUserCartProducts);
+router.patch('/cartProducts/add', addUserCartProducts);
+
+// USER
 router.patch('/updateMyPassword', updatePassword);
 router.patch('/changeUserRole/:id', restrictTo('admin'), changeUserRole);
 // router.get('/me', getMe, getUser);

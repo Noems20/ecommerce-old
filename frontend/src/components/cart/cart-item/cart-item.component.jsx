@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 // COMPONENTS
 import QuantityInput from '../../form-inputs/quantity-input/quantity-input.component';
@@ -22,6 +22,24 @@ import {
 } from './cart-item.styles';
 
 const CartItem = ({ cartProduct }) => {
+  // --------------------------------- STATE AND CONSTANTS ----------------------
+  const [qty, setQty] = useState(cartProduct.quantity);
+  const limit = 15;
+
+  // -------------------------------- HANDLERS -------------------------------
+  const handleQuantityChange = (e) => {
+    const { value } = e.target;
+
+    if (value === '') {
+      setQty(value);
+    } else if (value > limit) {
+      setQty(limit);
+    } else if (value < 1) {
+      setQty(1);
+    } else {
+      setQty(value);
+    }
+  };
   return (
     <DecorationCard>
       <Content>
@@ -51,7 +69,13 @@ const CartItem = ({ cartProduct }) => {
         </InfoContainer>
         <QuantityContainer>
           <Title>Cantidad</Title>
-          <QuantityInput quantity={cartProduct.quantity} />
+          <QuantityInput
+            quantity={qty}
+            limit={limit}
+            setQuantity={setQty}
+            handleChange={handleQuantityChange}
+            required
+          />
           <CustomButton danger>Eliminar</CustomButton>
         </QuantityContainer>
         <PriceContainer>

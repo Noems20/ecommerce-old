@@ -197,15 +197,15 @@ productSchema.pre('save', function (next) {
 });
 
 // --------------- ADD PRODUCT IMAGE -----------------
-// productSchema.pre('save', async function (next) {
-//   // console.log('-------------- COLOR ARRAY ----------------');
-//   for (const colorId in this.subcategory.color) {
-//     let image = `product-${this.id}-${this.subcategory.color[colorId].colorname}.png`;
-//     this.subcategory.color[colorId].image = image;
-//   }
+productSchema.pre('save', async function (next) {
+  // console.log('-------------- COLOR ARRAY ----------------');
+  for (const colorId in this.subcategory.color) {
+    let image = `product-${this.id}-${this.subcategory.color[colorId].colorname}.png`;
+    this.subcategory.color[colorId].image = image;
+  }
 
-//   next();
-// });
+  next();
+});
 
 // productSchema.pre(/^findOneAnd/, async function (next) {
 //   this.currentDoc = await this.findOne().clone();

@@ -557,7 +557,7 @@ const products = [
   // --------------------------------------------------------------
   {
     _id: '61a3b6b1f9fe62725a87281c',
-    name: 'Playera de Chicago Bulls ',
+    name: 'Playera de Chicago Bulls Hombre',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum, sapien ac tempor blandit, nulla ante semper urna, non gravida erat mauris eu diam. Aenean finibus, eros sit amet semper ornare, dui magna pellentesque purus, et malesuada ligula metus tincidunt mauris. Phasellus vulputate sed eros vel facilisis.',
     specifications: [
@@ -580,8 +580,28 @@ const products = [
           image: 'product-61a3b6b1f9fe62725a87281c-fff.png',
           sizes: [
             {
-              size: 'general',
+              size: 'XS',
               quantity: 15,
+            },
+            {
+              size: 'S',
+              quantity: 14,
+            },
+            {
+              size: 'M',
+              quantity: 13,
+            },
+            {
+              size: 'L',
+              quantity: 0,
+            },
+            {
+              size: 'XL',
+              quantity: 11,
+            },
+            {
+              size: 'XXL',
+              quantity: 0,
             },
           ],
         },
@@ -590,8 +610,28 @@ const products = [
           image: 'product-61a3b6b1f9fe62725a87281c-817f83.png',
           sizes: [
             {
-              size: 'general',
-              quantity: 12,
+              size: 'XS',
+              quantity: 7,
+            },
+            {
+              size: 'S',
+              quantity: 6,
+            },
+            {
+              size: 'M',
+              quantity: 5,
+            },
+            {
+              size: 'L',
+              quantity: 0,
+            },
+            {
+              size: 'XL',
+              quantity: 0,
+            },
+            {
+              size: 'XXL',
+              quantity: 0,
             },
           ],
         },
@@ -600,8 +640,28 @@ const products = [
           image: 'product-61a3b6b1f9fe62725a87281c-000.png',
           sizes: [
             {
-              size: 'general',
-              quantity: 9,
+              size: 'XS',
+              quantity: 5,
+            },
+            {
+              size: 'S',
+              quantity: 4,
+            },
+            {
+              size: 'M',
+              quantity: 3,
+            },
+            {
+              size: 'L',
+              quantity: 2,
+            },
+            {
+              size: 'XL',
+              quantity: 1,
+            },
+            {
+              size: 'XXL',
+              quantity: 0,
             },
           ],
         },
@@ -613,7 +673,7 @@ const products = [
   // --------------------------------------------------------------
   {
     _id: '61a3b89c9ccb6cd81aa0465e',
-    name: 'Playera de Dallas Mavericks ',
+    name: 'Playera de Dallas Mavericks Hombre',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum, sapien ac tempor blandit, nulla ante semper urna, non gravida erat mauris eu diam. Aenean finibus, eros sit amet semper ornare, dui magna pellentesque purus, et malesuada ligula metus tincidunt mauris. Phasellus vulputate sed eros vel facilisis.',
     specifications: [
@@ -636,8 +696,28 @@ const products = [
           image: 'product-61a3b89c9ccb6cd81aa0465e-fff.png',
           sizes: [
             {
-              size: 'general',
+              size: 'XS',
               quantity: 15,
+            },
+            {
+              size: 'S',
+              quantity: 14,
+            },
+            {
+              size: 'M',
+              quantity: 13,
+            },
+            {
+              size: 'L',
+              quantity: 0,
+            },
+            {
+              size: 'XL',
+              quantity: 11,
+            },
+            {
+              size: 'XXL',
+              quantity: 0,
             },
           ],
         },
@@ -646,8 +726,28 @@ const products = [
           image: 'product-61a3b89c9ccb6cd81aa0465e-817f83.png',
           sizes: [
             {
-              size: 'general',
-              quantity: 12,
+              size: 'XS',
+              quantity: 7,
+            },
+            {
+              size: 'S',
+              quantity: 6,
+            },
+            {
+              size: 'M',
+              quantity: 5,
+            },
+            {
+              size: 'L',
+              quantity: 0,
+            },
+            {
+              size: 'XL',
+              quantity: 0,
+            },
+            {
+              size: 'XXL',
+              quantity: 0,
             },
           ],
         },
@@ -656,8 +756,28 @@ const products = [
           image: 'product-61a3b89c9ccb6cd81aa0465e-000.png',
           sizes: [
             {
-              size: 'general',
-              quantity: 9,
+              size: 'XS',
+              quantity: 5,
+            },
+            {
+              size: 'S',
+              quantity: 4,
+            },
+            {
+              size: 'M',
+              quantity: 3,
+            },
+            {
+              size: 'L',
+              quantity: 2,
+            },
+            {
+              size: 'XL',
+              quantity: 1,
+            },
+            {
+              size: 'XXL',
+              quantity: 0,
             },
           ],
         },
@@ -669,7 +789,7 @@ const products = [
   // --------------------------------------------------------------
   {
     _id: '61a3b947c1050b9e08978118',
-    name: 'Playera de Los Angeles Lakers ',
+    name: 'Playera de Los Angeles Lakers Mujer',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum, sapien ac tempor blandit, nulla ante semper urna, non gravida erat mauris eu diam. Aenean finibus, eros sit amet semper ornare, dui magna pellentesque purus, et malesuada ligula metus tincidunt mauris. Phasellus vulputate sed eros vel facilisis.',
     specifications: [
@@ -692,8 +812,28 @@ const products = [
           image: 'product-61a3b947c1050b9e08978118-fff.png',
           sizes: [
             {
-              size: 'general',
+              size: 'XS',
               quantity: 15,
+            },
+            {
+              size: 'S',
+              quantity: 14,
+            },
+            {
+              size: 'M',
+              quantity: 13,
+            },
+            {
+              size: 'L',
+              quantity: 0,
+            },
+            {
+              size: 'XL',
+              quantity: 11,
+            },
+            {
+              size: 'XXL',
+              quantity: 0,
             },
           ],
         },
@@ -702,8 +842,28 @@ const products = [
           image: 'product-61a3b947c1050b9e08978118-817f83.png',
           sizes: [
             {
-              size: 'general',
-              quantity: 12,
+              size: 'XS',
+              quantity: 7,
+            },
+            {
+              size: 'S',
+              quantity: 6,
+            },
+            {
+              size: 'M',
+              quantity: 5,
+            },
+            {
+              size: 'L',
+              quantity: 0,
+            },
+            {
+              size: 'XL',
+              quantity: 0,
+            },
+            {
+              size: 'XXL',
+              quantity: 0,
             },
           ],
         },
@@ -712,8 +872,28 @@ const products = [
           image: 'product-61a3b947c1050b9e08978118-000.png',
           sizes: [
             {
-              size: 'general',
-              quantity: 9,
+              size: 'XS',
+              quantity: 5,
+            },
+            {
+              size: 'S',
+              quantity: 4,
+            },
+            {
+              size: 'M',
+              quantity: 3,
+            },
+            {
+              size: 'L',
+              quantity: 2,
+            },
+            {
+              size: 'XL',
+              quantity: 1,
+            },
+            {
+              size: 'XXL',
+              quantity: 0,
             },
           ],
         },
@@ -725,7 +905,7 @@ const products = [
   // --------------------------------------------------------------
   {
     _id: '61a3ba4082b9a3b9b7b3972b',
-    name: 'Playera de Boston Celtics',
+    name: 'Playera de Boston Celtics Mujer',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum, sapien ac tempor blandit, nulla ante semper urna, non gravida erat mauris eu diam. Aenean finibus, eros sit amet semper ornare, dui magna pellentesque purus, et malesuada ligula metus tincidunt mauris. Phasellus vulputate sed eros vel facilisis.',
     specifications: [
@@ -748,8 +928,28 @@ const products = [
           image: 'product-61a3ba4082b9a3b9b7b3972b-fff.png',
           sizes: [
             {
-              size: 'general',
+              size: 'XS',
               quantity: 15,
+            },
+            {
+              size: 'S',
+              quantity: 14,
+            },
+            {
+              size: 'M',
+              quantity: 13,
+            },
+            {
+              size: 'L',
+              quantity: 0,
+            },
+            {
+              size: 'XL',
+              quantity: 11,
+            },
+            {
+              size: 'XXL',
+              quantity: 0,
             },
           ],
         },
@@ -758,8 +958,28 @@ const products = [
           image: 'product-61a3ba4082b9a3b9b7b3972b-817f83.png',
           sizes: [
             {
-              size: 'general',
-              quantity: 12,
+              size: 'XS',
+              quantity: 7,
+            },
+            {
+              size: 'S',
+              quantity: 6,
+            },
+            {
+              size: 'M',
+              quantity: 5,
+            },
+            {
+              size: 'L',
+              quantity: 0,
+            },
+            {
+              size: 'XL',
+              quantity: 0,
+            },
+            {
+              size: 'XXL',
+              quantity: 0,
             },
           ],
         },
@@ -768,8 +988,28 @@ const products = [
           image: 'product-61a3ba4082b9a3b9b7b3972b-000.png',
           sizes: [
             {
-              size: 'general',
-              quantity: 9,
+              size: 'XS',
+              quantity: 5,
+            },
+            {
+              size: 'S',
+              quantity: 4,
+            },
+            {
+              size: 'M',
+              quantity: 3,
+            },
+            {
+              size: 'L',
+              quantity: 2,
+            },
+            {
+              size: 'XL',
+              quantity: 1,
+            },
+            {
+              size: 'XXL',
+              quantity: 0,
             },
           ],
         },
@@ -781,7 +1021,7 @@ const products = [
   // --------------------------------------------------------------
   {
     _id: '61a3badce0d502d98c409b30',
-    name: 'Playera Mandalorian Samurái ',
+    name: 'Playera Mandalorian Samurái Niño',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum, sapien ac tempor blandit, nulla ante semper urna, non gravida erat mauris eu diam. Aenean finibus, eros sit amet semper ornare, dui magna pellentesque purus, et malesuada ligula metus tincidunt mauris. Phasellus vulputate sed eros vel facilisis.',
     specifications: [
@@ -804,8 +1044,28 @@ const products = [
           image: 'product-61a3badce0d502d98c409b30-fff.png',
           sizes: [
             {
-              size: 'general',
+              size: 'XS',
               quantity: 15,
+            },
+            {
+              size: 'S',
+              quantity: 14,
+            },
+            {
+              size: 'M',
+              quantity: 13,
+            },
+            {
+              size: 'L',
+              quantity: 0,
+            },
+            {
+              size: 'XL',
+              quantity: 11,
+            },
+            {
+              size: 'XXL',
+              quantity: 0,
             },
           ],
         },
@@ -814,8 +1074,28 @@ const products = [
           image: 'product-61a3badce0d502d98c409b30-817f83.png',
           sizes: [
             {
-              size: 'general',
-              quantity: 12,
+              size: 'XS',
+              quantity: 7,
+            },
+            {
+              size: 'S',
+              quantity: 6,
+            },
+            {
+              size: 'M',
+              quantity: 5,
+            },
+            {
+              size: 'L',
+              quantity: 0,
+            },
+            {
+              size: 'XL',
+              quantity: 0,
+            },
+            {
+              size: 'XXL',
+              quantity: 0,
             },
           ],
         },
@@ -824,8 +1104,28 @@ const products = [
           image: 'product-61a3badce0d502d98c409b30-000.png',
           sizes: [
             {
-              size: 'general',
-              quantity: 9,
+              size: 'XS',
+              quantity: 5,
+            },
+            {
+              size: 'S',
+              quantity: 4,
+            },
+            {
+              size: 'M',
+              quantity: 3,
+            },
+            {
+              size: 'L',
+              quantity: 2,
+            },
+            {
+              size: 'XL',
+              quantity: 1,
+            },
+            {
+              size: 'XXL',
+              quantity: 0,
             },
           ],
         },
@@ -837,7 +1137,7 @@ const products = [
   // --------------------------------------------------------------
   {
     _id: '61a3bc4eca5043c0d177eea1',
-    name: 'Playera de Darth Vader ',
+    name: 'Playera de Darth Vader Niño',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum, sapien ac tempor blandit, nulla ante semper urna, non gravida erat mauris eu diam. Aenean finibus, eros sit amet semper ornare, dui magna pellentesque purus, et malesuada ligula metus tincidunt mauris. Phasellus vulputate sed eros vel facilisis.',
     specifications: [
@@ -860,8 +1160,28 @@ const products = [
           image: 'product-61a3bc4eca5043c0d177eea1-fff.png',
           sizes: [
             {
-              size: 'general',
+              size: 'XS',
               quantity: 15,
+            },
+            {
+              size: 'S',
+              quantity: 14,
+            },
+            {
+              size: 'M',
+              quantity: 13,
+            },
+            {
+              size: 'L',
+              quantity: 0,
+            },
+            {
+              size: 'XL',
+              quantity: 11,
+            },
+            {
+              size: 'XXL',
+              quantity: 0,
             },
           ],
         },
@@ -870,8 +1190,28 @@ const products = [
           image: 'product-61a3bc4eca5043c0d177eea1-817f83.png',
           sizes: [
             {
-              size: 'general',
-              quantity: 12,
+              size: 'XS',
+              quantity: 7,
+            },
+            {
+              size: 'S',
+              quantity: 6,
+            },
+            {
+              size: 'M',
+              quantity: 5,
+            },
+            {
+              size: 'L',
+              quantity: 0,
+            },
+            {
+              size: 'XL',
+              quantity: 0,
+            },
+            {
+              size: 'XXL',
+              quantity: 0,
             },
           ],
         },
@@ -880,8 +1220,28 @@ const products = [
           image: 'product-61a3bc4eca5043c0d177eea1-000.png',
           sizes: [
             {
-              size: 'general',
-              quantity: 9,
+              size: 'XS',
+              quantity: 5,
+            },
+            {
+              size: 'S',
+              quantity: 4,
+            },
+            {
+              size: 'M',
+              quantity: 3,
+            },
+            {
+              size: 'L',
+              quantity: 2,
+            },
+            {
+              size: 'XL',
+              quantity: 1,
+            },
+            {
+              size: 'XXL',
+              quantity: 0,
             },
           ],
         },
@@ -893,7 +1253,7 @@ const products = [
   // --------------------------------------------------------------
   {
     _id: '61a3bbad79ac29ae3a18c064',
-    name: 'Playera de Darth Vader Caricatura ',
+    name: 'Playera de Darth Vader Caricatura Niña',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum, sapien ac tempor blandit, nulla ante semper urna, non gravida erat mauris eu diam. Aenean finibus, eros sit amet semper ornare, dui magna pellentesque purus, et malesuada ligula metus tincidunt mauris. Phasellus vulputate sed eros vel facilisis.',
     specifications: [
@@ -916,8 +1276,28 @@ const products = [
           image: 'product-61a3bbad79ac29ae3a18c064-fff.png',
           sizes: [
             {
-              size: 'general',
+              size: 'XS',
               quantity: 15,
+            },
+            {
+              size: 'S',
+              quantity: 14,
+            },
+            {
+              size: 'M',
+              quantity: 13,
+            },
+            {
+              size: 'L',
+              quantity: 0,
+            },
+            {
+              size: 'XL',
+              quantity: 11,
+            },
+            {
+              size: 'XXL',
+              quantity: 0,
             },
           ],
         },
@@ -926,8 +1306,28 @@ const products = [
           image: 'product-61a3bbad79ac29ae3a18c064-817f83.png',
           sizes: [
             {
-              size: 'general',
-              quantity: 12,
+              size: 'XS',
+              quantity: 7,
+            },
+            {
+              size: 'S',
+              quantity: 6,
+            },
+            {
+              size: 'M',
+              quantity: 5,
+            },
+            {
+              size: 'L',
+              quantity: 0,
+            },
+            {
+              size: 'XL',
+              quantity: 0,
+            },
+            {
+              size: 'XXL',
+              quantity: 0,
             },
           ],
         },
@@ -936,8 +1336,28 @@ const products = [
           image: 'product-61a3bbad79ac29ae3a18c064-000.png',
           sizes: [
             {
-              size: 'general',
-              quantity: 9,
+              size: 'XS',
+              quantity: 5,
+            },
+            {
+              size: 'S',
+              quantity: 4,
+            },
+            {
+              size: 'M',
+              quantity: 3,
+            },
+            {
+              size: 'L',
+              quantity: 2,
+            },
+            {
+              size: 'XL',
+              quantity: 1,
+            },
+            {
+              size: 'XXL',
+              quantity: 0,
             },
           ],
         },
@@ -949,7 +1369,7 @@ const products = [
   // --------------------------------------------------------------
   {
     _id: '61a3bcaa6cea21123aea8c88',
-    name: 'Playera de C3PO Caricatura ',
+    name: 'Playera de C3PO Caricatura Niña',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum, sapien ac tempor blandit, nulla ante semper urna, non gravida erat mauris eu diam. Aenean finibus, eros sit amet semper ornare, dui magna pellentesque purus, et malesuada ligula metus tincidunt mauris. Phasellus vulputate sed eros vel facilisis.',
     specifications: [
@@ -972,8 +1392,28 @@ const products = [
           image: 'product-61a3bcaa6cea21123aea8c88-fff.png',
           sizes: [
             {
-              size: 'general',
+              size: 'XS',
               quantity: 15,
+            },
+            {
+              size: 'S',
+              quantity: 14,
+            },
+            {
+              size: 'M',
+              quantity: 13,
+            },
+            {
+              size: 'L',
+              quantity: 0,
+            },
+            {
+              size: 'XL',
+              quantity: 11,
+            },
+            {
+              size: 'XXL',
+              quantity: 0,
             },
           ],
         },
@@ -982,8 +1422,28 @@ const products = [
           image: 'product-61a3bcaa6cea21123aea8c88-817f83.png',
           sizes: [
             {
-              size: 'general',
-              quantity: 12,
+              size: 'XS',
+              quantity: 7,
+            },
+            {
+              size: 'S',
+              quantity: 6,
+            },
+            {
+              size: 'M',
+              quantity: 5,
+            },
+            {
+              size: 'L',
+              quantity: 0,
+            },
+            {
+              size: 'XL',
+              quantity: 0,
+            },
+            {
+              size: 'XXL',
+              quantity: 0,
             },
           ],
         },
@@ -992,8 +1452,28 @@ const products = [
           image: 'product-61a3bcaa6cea21123aea8c88-000.png',
           sizes: [
             {
-              size: 'general',
-              quantity: 9,
+              size: 'XS',
+              quantity: 5,
+            },
+            {
+              size: 'S',
+              quantity: 4,
+            },
+            {
+              size: 'M',
+              quantity: 3,
+            },
+            {
+              size: 'L',
+              quantity: 2,
+            },
+            {
+              size: 'XL',
+              quantity: 1,
+            },
+            {
+              size: 'XXL',
+              quantity: 0,
             },
           ],
         },
@@ -1005,7 +1485,7 @@ const products = [
   // --------------------------------------------------------------
   {
     _id: '61a3bd4441daee33b0ce8bfc',
-    name: 'Playera de Spiderman ',
+    name: 'Playera de Spiderman Hombre',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum, sapien ac tempor blandit, nulla ante semper urna, non gravida erat mauris eu diam. Aenean finibus, eros sit amet semper ornare, dui magna pellentesque purus, et malesuada ligula metus tincidunt mauris. Phasellus vulputate sed eros vel facilisis.',
     specifications: [
@@ -1028,8 +1508,28 @@ const products = [
           image: 'product-61a3bd4441daee33b0ce8bfc-fff.png',
           sizes: [
             {
-              size: 'general',
+              size: 'XS',
               quantity: 15,
+            },
+            {
+              size: 'S',
+              quantity: 14,
+            },
+            {
+              size: 'M',
+              quantity: 13,
+            },
+            {
+              size: 'L',
+              quantity: 0,
+            },
+            {
+              size: 'XL',
+              quantity: 11,
+            },
+            {
+              size: 'XXL',
+              quantity: 0,
             },
           ],
         },
@@ -1038,8 +1538,28 @@ const products = [
           image: 'product-61a3bd4441daee33b0ce8bfc-817f83.png',
           sizes: [
             {
-              size: 'general',
-              quantity: 12,
+              size: 'XS',
+              quantity: 7,
+            },
+            {
+              size: 'S',
+              quantity: 6,
+            },
+            {
+              size: 'M',
+              quantity: 5,
+            },
+            {
+              size: 'L',
+              quantity: 0,
+            },
+            {
+              size: 'XL',
+              quantity: 0,
+            },
+            {
+              size: 'XXL',
+              quantity: 0,
             },
           ],
         },
@@ -1048,8 +1568,28 @@ const products = [
           image: 'product-61a3bd4441daee33b0ce8bfc-000.png',
           sizes: [
             {
-              size: 'general',
-              quantity: 9,
+              size: 'XS',
+              quantity: 5,
+            },
+            {
+              size: 'S',
+              quantity: 4,
+            },
+            {
+              size: 'M',
+              quantity: 3,
+            },
+            {
+              size: 'L',
+              quantity: 2,
+            },
+            {
+              size: 'XL',
+              quantity: 1,
+            },
+            {
+              size: 'XXL',
+              quantity: 0,
             },
           ],
         },
@@ -1061,7 +1601,7 @@ const products = [
   // --------------------------------------------------------------
   {
     _id: '61a3bdb3a161ee4cf1c7483c',
-    name: 'Playera de Ferrari',
+    name: 'Playera de Ferrari Hombre',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum, sapien ac tempor blandit, nulla ante semper urna, non gravida erat mauris eu diam. Aenean finibus, eros sit amet semper ornare, dui magna pellentesque purus, et malesuada ligula metus tincidunt mauris. Phasellus vulputate sed eros vel facilisis.',
     specifications: [
@@ -1084,8 +1624,28 @@ const products = [
           image: 'product-61a3bdb3a161ee4cf1c7483c-fff.png',
           sizes: [
             {
-              size: 'general',
+              size: 'XS',
               quantity: 15,
+            },
+            {
+              size: 'S',
+              quantity: 14,
+            },
+            {
+              size: 'M',
+              quantity: 13,
+            },
+            {
+              size: 'L',
+              quantity: 0,
+            },
+            {
+              size: 'XL',
+              quantity: 11,
+            },
+            {
+              size: 'XXL',
+              quantity: 0,
             },
           ],
         },
@@ -1094,8 +1654,28 @@ const products = [
           image: 'product-61a3bdb3a161ee4cf1c7483c-817f83.png',
           sizes: [
             {
-              size: 'general',
-              quantity: 12,
+              size: 'XS',
+              quantity: 7,
+            },
+            {
+              size: 'S',
+              quantity: 6,
+            },
+            {
+              size: 'M',
+              quantity: 5,
+            },
+            {
+              size: 'L',
+              quantity: 0,
+            },
+            {
+              size: 'XL',
+              quantity: 0,
+            },
+            {
+              size: 'XXL',
+              quantity: 0,
             },
           ],
         },
@@ -1104,8 +1684,28 @@ const products = [
           image: 'product-61a3bdb3a161ee4cf1c7483c-000.png',
           sizes: [
             {
-              size: 'general',
-              quantity: 9,
+              size: 'XS',
+              quantity: 5,
+            },
+            {
+              size: 'S',
+              quantity: 4,
+            },
+            {
+              size: 'M',
+              quantity: 3,
+            },
+            {
+              size: 'L',
+              quantity: 2,
+            },
+            {
+              size: 'XL',
+              quantity: 1,
+            },
+            {
+              size: 'XXL',
+              quantity: 0,
             },
           ],
         },
@@ -1120,7 +1720,7 @@ const products = [
   // --------------------------------------------------------------
   {
     _id: '61a3e9a53aed8c396f8a7f78',
-    name: 'Sudadera de New England Patriots',
+    name: 'Sudadera de New England Patriots Hombre',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum, sapien ac tempor blandit, nulla ante semper urna, non gravida erat mauris eu diam. Aenean finibus, eros sit amet semper ornare, dui magna pellentesque purus, et malesuada ligula metus tincidunt mauris. Phasellus vulputate sed eros vel facilisis.',
     specifications: [
@@ -1143,8 +1743,28 @@ const products = [
           image: 'product-61a3e9a53aed8c396f8a7f78-fff.png',
           sizes: [
             {
-              size: 'general',
+              size: 'XS',
               quantity: 15,
+            },
+            {
+              size: 'S',
+              quantity: 14,
+            },
+            {
+              size: 'M',
+              quantity: 13,
+            },
+            {
+              size: 'L',
+              quantity: 0,
+            },
+            {
+              size: 'XL',
+              quantity: 11,
+            },
+            {
+              size: 'XXL',
+              quantity: 0,
             },
           ],
         },
@@ -1153,8 +1773,28 @@ const products = [
           image: 'product-61a3e9a53aed8c396f8a7f78-7e7e7e.png',
           sizes: [
             {
-              size: 'general',
-              quantity: 12,
+              size: 'XS',
+              quantity: 7,
+            },
+            {
+              size: 'S',
+              quantity: 6,
+            },
+            {
+              size: 'M',
+              quantity: 5,
+            },
+            {
+              size: 'L',
+              quantity: 0,
+            },
+            {
+              size: 'XL',
+              quantity: 0,
+            },
+            {
+              size: 'XXL',
+              quantity: 0,
             },
           ],
         },
@@ -1163,8 +1803,28 @@ const products = [
           image: 'product-61a3e9a53aed8c396f8a7f78-000.png',
           sizes: [
             {
-              size: 'general',
-              quantity: 9,
+              size: 'XS',
+              quantity: 5,
+            },
+            {
+              size: 'S',
+              quantity: 4,
+            },
+            {
+              size: 'M',
+              quantity: 3,
+            },
+            {
+              size: 'L',
+              quantity: 2,
+            },
+            {
+              size: 'XL',
+              quantity: 1,
+            },
+            {
+              size: 'XXL',
+              quantity: 0,
             },
           ],
         },
@@ -1176,7 +1836,7 @@ const products = [
   // --------------------------------------------------------------
   {
     _id: '61a3eb25a227f02ee080745e',
-    name: 'Sudadera de Chicago Bulls',
+    name: 'Sudadera de Chicago Bulls Hombre',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum, sapien ac tempor blandit, nulla ante semper urna, non gravida erat mauris eu diam. Aenean finibus, eros sit amet semper ornare, dui magna pellentesque purus, et malesuada ligula metus tincidunt mauris. Phasellus vulputate sed eros vel facilisis.',
     specifications: [
@@ -1199,8 +1859,28 @@ const products = [
           image: 'product-61a3eb25a227f02ee080745e-fff.png',
           sizes: [
             {
-              size: 'general',
+              size: 'XS',
               quantity: 15,
+            },
+            {
+              size: 'S',
+              quantity: 14,
+            },
+            {
+              size: 'M',
+              quantity: 13,
+            },
+            {
+              size: 'L',
+              quantity: 0,
+            },
+            {
+              size: 'XL',
+              quantity: 11,
+            },
+            {
+              size: 'XXL',
+              quantity: 0,
             },
           ],
         },
@@ -1209,8 +1889,28 @@ const products = [
           image: 'product-61a3eb25a227f02ee080745e-7e7e7e.png',
           sizes: [
             {
-              size: 'general',
-              quantity: 12,
+              size: 'XS',
+              quantity: 7,
+            },
+            {
+              size: 'S',
+              quantity: 6,
+            },
+            {
+              size: 'M',
+              quantity: 5,
+            },
+            {
+              size: 'L',
+              quantity: 0,
+            },
+            {
+              size: 'XL',
+              quantity: 0,
+            },
+            {
+              size: 'XXL',
+              quantity: 0,
             },
           ],
         },
@@ -1219,8 +1919,28 @@ const products = [
           image: 'product-61a3eb25a227f02ee080745e-000.png',
           sizes: [
             {
-              size: 'general',
-              quantity: 9,
+              size: 'XS',
+              quantity: 5,
+            },
+            {
+              size: 'S',
+              quantity: 4,
+            },
+            {
+              size: 'M',
+              quantity: 3,
+            },
+            {
+              size: 'L',
+              quantity: 2,
+            },
+            {
+              size: 'XL',
+              quantity: 1,
+            },
+            {
+              size: 'XXL',
+              quantity: 0,
             },
           ],
         },
@@ -1232,7 +1952,7 @@ const products = [
   // --------------------------------------------------------------
   {
     _id: '61a3eb9425a4dda5335ba67d',
-    name: 'Sudadera de Mandalorian Samurái',
+    name: 'Sudadera de Mandalorian Samurái Niño',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum, sapien ac tempor blandit, nulla ante semper urna, non gravida erat mauris eu diam. Aenean finibus, eros sit amet semper ornare, dui magna pellentesque purus, et malesuada ligula metus tincidunt mauris. Phasellus vulputate sed eros vel facilisis.',
     specifications: [
@@ -1255,8 +1975,28 @@ const products = [
           image: 'product-61a3eb9425a4dda5335ba67d-fff.png',
           sizes: [
             {
-              size: 'general',
+              size: 'XS',
               quantity: 15,
+            },
+            {
+              size: 'S',
+              quantity: 14,
+            },
+            {
+              size: 'M',
+              quantity: 13,
+            },
+            {
+              size: 'L',
+              quantity: 0,
+            },
+            {
+              size: 'XL',
+              quantity: 11,
+            },
+            {
+              size: 'XXL',
+              quantity: 0,
             },
           ],
         },
@@ -1265,8 +2005,28 @@ const products = [
           image: 'product-61a3eb9425a4dda5335ba67d-7e7e7e.png',
           sizes: [
             {
-              size: 'general',
-              quantity: 12,
+              size: 'XS',
+              quantity: 7,
+            },
+            {
+              size: 'S',
+              quantity: 6,
+            },
+            {
+              size: 'M',
+              quantity: 5,
+            },
+            {
+              size: 'L',
+              quantity: 0,
+            },
+            {
+              size: 'XL',
+              quantity: 0,
+            },
+            {
+              size: 'XXL',
+              quantity: 0,
             },
           ],
         },
@@ -1275,8 +2035,28 @@ const products = [
           image: 'product-61a3eb9425a4dda5335ba67d-000.png',
           sizes: [
             {
-              size: 'general',
-              quantity: 9,
+              size: 'XS',
+              quantity: 5,
+            },
+            {
+              size: 'S',
+              quantity: 4,
+            },
+            {
+              size: 'M',
+              quantity: 3,
+            },
+            {
+              size: 'L',
+              quantity: 2,
+            },
+            {
+              size: 'XL',
+              quantity: 1,
+            },
+            {
+              size: 'XXL',
+              quantity: 0,
             },
           ],
         },
@@ -1288,7 +2068,7 @@ const products = [
   // --------------------------------------------------------------
   {
     _id: '61a3ebdc5ed7530f88969285',
-    name: 'Sudadera de Stormtrooper azul',
+    name: 'Sudadera de Stormtrooper azul Niño',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum, sapien ac tempor blandit, nulla ante semper urna, non gravida erat mauris eu diam. Aenean finibus, eros sit amet semper ornare, dui magna pellentesque purus, et malesuada ligula metus tincidunt mauris. Phasellus vulputate sed eros vel facilisis.',
     specifications: [
@@ -1311,8 +2091,28 @@ const products = [
           image: 'product-61a3ebdc5ed7530f88969285-fff.png',
           sizes: [
             {
-              size: 'general',
+              size: 'XS',
               quantity: 15,
+            },
+            {
+              size: 'S',
+              quantity: 14,
+            },
+            {
+              size: 'M',
+              quantity: 13,
+            },
+            {
+              size: 'L',
+              quantity: 0,
+            },
+            {
+              size: 'XL',
+              quantity: 11,
+            },
+            {
+              size: 'XXL',
+              quantity: 0,
             },
           ],
         },
@@ -1321,8 +2121,28 @@ const products = [
           image: 'product-61a3ebdc5ed7530f88969285-7e7e7e.png',
           sizes: [
             {
-              size: 'general',
-              quantity: 12,
+              size: 'XS',
+              quantity: 7,
+            },
+            {
+              size: 'S',
+              quantity: 6,
+            },
+            {
+              size: 'M',
+              quantity: 5,
+            },
+            {
+              size: 'L',
+              quantity: 0,
+            },
+            {
+              size: 'XL',
+              quantity: 0,
+            },
+            {
+              size: 'XXL',
+              quantity: 0,
             },
           ],
         },
@@ -1331,8 +2151,28 @@ const products = [
           image: 'product-61a3ebdc5ed7530f88969285-000.png',
           sizes: [
             {
-              size: 'general',
-              quantity: 9,
+              size: 'XS',
+              quantity: 5,
+            },
+            {
+              size: 'S',
+              quantity: 4,
+            },
+            {
+              size: 'M',
+              quantity: 3,
+            },
+            {
+              size: 'L',
+              quantity: 2,
+            },
+            {
+              size: 'XL',
+              quantity: 1,
+            },
+            {
+              size: 'XXL',
+              quantity: 0,
             },
           ],
         },
@@ -1344,7 +2184,7 @@ const products = [
   // --------------------------------------------------------------
   {
     _id: '61a3ed1f80db0e660b4cd374',
-    name: 'Sudadera de Boston Celtics',
+    name: 'Sudadera de Boston Celtics Mujer',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum, sapien ac tempor blandit, nulla ante semper urna, non gravida erat mauris eu diam. Aenean finibus, eros sit amet semper ornare, dui magna pellentesque purus, et malesuada ligula metus tincidunt mauris. Phasellus vulputate sed eros vel facilisis.',
     specifications: [
@@ -1367,8 +2207,28 @@ const products = [
           image: 'product-61a3ed1f80db0e660b4cd374-fff.png',
           sizes: [
             {
-              size: 'general',
+              size: 'XS',
               quantity: 15,
+            },
+            {
+              size: 'S',
+              quantity: 14,
+            },
+            {
+              size: 'M',
+              quantity: 13,
+            },
+            {
+              size: 'L',
+              quantity: 0,
+            },
+            {
+              size: 'XL',
+              quantity: 11,
+            },
+            {
+              size: 'XXL',
+              quantity: 0,
             },
           ],
         },
@@ -1377,8 +2237,28 @@ const products = [
           image: 'product-61a3ed1f80db0e660b4cd374-7e7e7e.png',
           sizes: [
             {
-              size: 'general',
-              quantity: 12,
+              size: 'XS',
+              quantity: 7,
+            },
+            {
+              size: 'S',
+              quantity: 6,
+            },
+            {
+              size: 'M',
+              quantity: 5,
+            },
+            {
+              size: 'L',
+              quantity: 0,
+            },
+            {
+              size: 'XL',
+              quantity: 0,
+            },
+            {
+              size: 'XXL',
+              quantity: 0,
             },
           ],
         },
@@ -1387,8 +2267,28 @@ const products = [
           image: 'product-61a3ed1f80db0e660b4cd374-000.png',
           sizes: [
             {
-              size: 'general',
-              quantity: 9,
+              size: 'XS',
+              quantity: 5,
+            },
+            {
+              size: 'S',
+              quantity: 4,
+            },
+            {
+              size: 'M',
+              quantity: 3,
+            },
+            {
+              size: 'L',
+              quantity: 2,
+            },
+            {
+              size: 'XL',
+              quantity: 1,
+            },
+            {
+              size: 'XXL',
+              quantity: 0,
             },
           ],
         },
@@ -1400,7 +2300,7 @@ const products = [
   // --------------------------------------------------------------
   {
     _id: '61a3ed9e472abb94ac2e96f4',
-    name: 'Sudadera de New York Giants',
+    name: 'Sudadera de New York Giants Mujer',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum, sapien ac tempor blandit, nulla ante semper urna, non gravida erat mauris eu diam. Aenean finibus, eros sit amet semper ornare, dui magna pellentesque purus, et malesuada ligula metus tincidunt mauris. Phasellus vulputate sed eros vel facilisis.',
     specifications: [
@@ -1423,8 +2323,28 @@ const products = [
           image: 'product-61a3ed9e472abb94ac2e96f4-fff.png',
           sizes: [
             {
-              size: 'general',
+              size: 'XS',
               quantity: 15,
+            },
+            {
+              size: 'S',
+              quantity: 14,
+            },
+            {
+              size: 'M',
+              quantity: 13,
+            },
+            {
+              size: 'L',
+              quantity: 0,
+            },
+            {
+              size: 'XL',
+              quantity: 11,
+            },
+            {
+              size: 'XXL',
+              quantity: 0,
             },
           ],
         },
@@ -1433,8 +2353,28 @@ const products = [
           image: 'product-61a3ed9e472abb94ac2e96f4-7e7e7e.png',
           sizes: [
             {
-              size: 'general',
-              quantity: 12,
+              size: 'XS',
+              quantity: 7,
+            },
+            {
+              size: 'S',
+              quantity: 6,
+            },
+            {
+              size: 'M',
+              quantity: 5,
+            },
+            {
+              size: 'L',
+              quantity: 0,
+            },
+            {
+              size: 'XL',
+              quantity: 0,
+            },
+            {
+              size: 'XXL',
+              quantity: 0,
             },
           ],
         },
@@ -1443,8 +2383,28 @@ const products = [
           image: 'product-61a3ed9e472abb94ac2e96f4-000.png',
           sizes: [
             {
-              size: 'general',
-              quantity: 9,
+              size: 'XS',
+              quantity: 5,
+            },
+            {
+              size: 'S',
+              quantity: 4,
+            },
+            {
+              size: 'M',
+              quantity: 3,
+            },
+            {
+              size: 'L',
+              quantity: 2,
+            },
+            {
+              size: 'XL',
+              quantity: 1,
+            },
+            {
+              size: 'XXL',
+              quantity: 0,
             },
           ],
         },
@@ -1456,7 +2416,7 @@ const products = [
   // --------------------------------------------------------------
   {
     _id: '61a3ee1c5a0b627628e61a45',
-    name: 'Sudadera de C3PO Caricatura',
+    name: 'Sudadera de C3PO Caricatura Niña',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum, sapien ac tempor blandit, nulla ante semper urna, non gravida erat mauris eu diam. Aenean finibus, eros sit amet semper ornare, dui magna pellentesque purus, et malesuada ligula metus tincidunt mauris. Phasellus vulputate sed eros vel facilisis.',
     specifications: [
@@ -1479,8 +2439,28 @@ const products = [
           image: 'product-61a3ee1c5a0b627628e61a45-fff.png',
           sizes: [
             {
-              size: 'general',
+              size: 'XS',
               quantity: 15,
+            },
+            {
+              size: 'S',
+              quantity: 14,
+            },
+            {
+              size: 'M',
+              quantity: 13,
+            },
+            {
+              size: 'L',
+              quantity: 0,
+            },
+            {
+              size: 'XL',
+              quantity: 11,
+            },
+            {
+              size: 'XXL',
+              quantity: 0,
             },
           ],
         },
@@ -1489,8 +2469,28 @@ const products = [
           image: 'product-61a3ee1c5a0b627628e61a45-7e7e7e.png',
           sizes: [
             {
-              size: 'general',
-              quantity: 12,
+              size: 'XS',
+              quantity: 7,
+            },
+            {
+              size: 'S',
+              quantity: 6,
+            },
+            {
+              size: 'M',
+              quantity: 5,
+            },
+            {
+              size: 'L',
+              quantity: 0,
+            },
+            {
+              size: 'XL',
+              quantity: 0,
+            },
+            {
+              size: 'XXL',
+              quantity: 0,
             },
           ],
         },
@@ -1499,8 +2499,28 @@ const products = [
           image: 'product-61a3ee1c5a0b627628e61a45-000.png',
           sizes: [
             {
-              size: 'general',
-              quantity: 9,
+              size: 'XS',
+              quantity: 5,
+            },
+            {
+              size: 'S',
+              quantity: 4,
+            },
+            {
+              size: 'M',
+              quantity: 3,
+            },
+            {
+              size: 'L',
+              quantity: 2,
+            },
+            {
+              size: 'XL',
+              quantity: 1,
+            },
+            {
+              size: 'XXL',
+              quantity: 0,
             },
           ],
         },
@@ -1512,7 +2532,7 @@ const products = [
   // --------------------------------------------------------------
   {
     _id: '61a3ee72a9b6796d1c86360f',
-    name: 'Sudadera de Green Bay Packers',
+    name: 'Sudadera de Green Bay Packers Niña',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum, sapien ac tempor blandit, nulla ante semper urna, non gravida erat mauris eu diam. Aenean finibus, eros sit amet semper ornare, dui magna pellentesque purus, et malesuada ligula metus tincidunt mauris. Phasellus vulputate sed eros vel facilisis.',
     specifications: [
@@ -1535,8 +2555,28 @@ const products = [
           image: 'product-61a3ee72a9b6796d1c86360f-fff.png',
           sizes: [
             {
-              size: 'general',
+              size: 'XS',
               quantity: 15,
+            },
+            {
+              size: 'S',
+              quantity: 14,
+            },
+            {
+              size: 'M',
+              quantity: 13,
+            },
+            {
+              size: 'L',
+              quantity: 0,
+            },
+            {
+              size: 'XL',
+              quantity: 11,
+            },
+            {
+              size: 'XXL',
+              quantity: 0,
             },
           ],
         },
@@ -1545,8 +2585,28 @@ const products = [
           image: 'product-61a3ee72a9b6796d1c86360f-7e7e7e.png',
           sizes: [
             {
-              size: 'general',
-              quantity: 12,
+              size: 'XS',
+              quantity: 7,
+            },
+            {
+              size: 'S',
+              quantity: 6,
+            },
+            {
+              size: 'M',
+              quantity: 5,
+            },
+            {
+              size: 'L',
+              quantity: 0,
+            },
+            {
+              size: 'XL',
+              quantity: 0,
+            },
+            {
+              size: 'XXL',
+              quantity: 0,
             },
           ],
         },
@@ -1555,8 +2615,28 @@ const products = [
           image: 'product-61a3ee72a9b6796d1c86360f-000.png',
           sizes: [
             {
-              size: 'general',
-              quantity: 9,
+              size: 'XS',
+              quantity: 5,
+            },
+            {
+              size: 'S',
+              quantity: 4,
+            },
+            {
+              size: 'M',
+              quantity: 3,
+            },
+            {
+              size: 'L',
+              quantity: 2,
+            },
+            {
+              size: 'XL',
+              quantity: 1,
+            },
+            {
+              size: 'XXL',
+              quantity: 0,
             },
           ],
         },
@@ -1568,7 +2648,7 @@ const products = [
   // --------------------------------------------------------------
   {
     _id: '61a3ef22727ec63a9a577fb5',
-    name: 'Sudadera de Ferrari',
+    name: 'Sudadera de Ferrari Hombre',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum, sapien ac tempor blandit, nulla ante semper urna, non gravida erat mauris eu diam. Aenean finibus, eros sit amet semper ornare, dui magna pellentesque purus, et malesuada ligula metus tincidunt mauris. Phasellus vulputate sed eros vel facilisis.',
     specifications: [
@@ -1591,8 +2671,28 @@ const products = [
           image: 'product-61a3ef22727ec63a9a577fb5-fff.png',
           sizes: [
             {
-              size: 'general',
+              size: 'XS',
               quantity: 15,
+            },
+            {
+              size: 'S',
+              quantity: 14,
+            },
+            {
+              size: 'M',
+              quantity: 13,
+            },
+            {
+              size: 'L',
+              quantity: 0,
+            },
+            {
+              size: 'XL',
+              quantity: 11,
+            },
+            {
+              size: 'XXL',
+              quantity: 0,
             },
           ],
         },
@@ -1601,8 +2701,28 @@ const products = [
           image: 'product-61a3ef22727ec63a9a577fb5-7e7e7e.png',
           sizes: [
             {
-              size: 'general',
-              quantity: 12,
+              size: 'XS',
+              quantity: 7,
+            },
+            {
+              size: 'S',
+              quantity: 6,
+            },
+            {
+              size: 'M',
+              quantity: 5,
+            },
+            {
+              size: 'L',
+              quantity: 0,
+            },
+            {
+              size: 'XL',
+              quantity: 0,
+            },
+            {
+              size: 'XXL',
+              quantity: 0,
             },
           ],
         },
@@ -1611,8 +2731,28 @@ const products = [
           image: 'product-61a3ef22727ec63a9a577fb5-000.png',
           sizes: [
             {
-              size: 'general',
-              quantity: 9,
+              size: 'XS',
+              quantity: 5,
+            },
+            {
+              size: 'S',
+              quantity: 4,
+            },
+            {
+              size: 'M',
+              quantity: 3,
+            },
+            {
+              size: 'L',
+              quantity: 2,
+            },
+            {
+              size: 'XL',
+              quantity: 1,
+            },
+            {
+              size: 'XXL',
+              quantity: 0,
             },
           ],
         },
@@ -1624,7 +2764,7 @@ const products = [
   // --------------------------------------------------------------
   {
     _id: '61a3ef46d2f72ac1c1bf1757',
-    name: 'Sudadera de Real Madrid',
+    name: 'Sudadera de Real Madrid Hombre',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum, sapien ac tempor blandit, nulla ante semper urna, non gravida erat mauris eu diam. Aenean finibus, eros sit amet semper ornare, dui magna pellentesque purus, et malesuada ligula metus tincidunt mauris. Phasellus vulputate sed eros vel facilisis.',
     specifications: [
@@ -1647,8 +2787,28 @@ const products = [
           image: 'product-61a3ef46d2f72ac1c1bf1757-fff.png',
           sizes: [
             {
-              size: 'general',
+              size: 'XS',
               quantity: 15,
+            },
+            {
+              size: 'S',
+              quantity: 14,
+            },
+            {
+              size: 'M',
+              quantity: 13,
+            },
+            {
+              size: 'L',
+              quantity: 0,
+            },
+            {
+              size: 'XL',
+              quantity: 11,
+            },
+            {
+              size: 'XXL',
+              quantity: 0,
             },
           ],
         },
@@ -1657,8 +2817,28 @@ const products = [
           image: 'product-61a3ef46d2f72ac1c1bf1757-7e7e7e.png',
           sizes: [
             {
-              size: 'general',
-              quantity: 12,
+              size: 'XS',
+              quantity: 7,
+            },
+            {
+              size: 'S',
+              quantity: 6,
+            },
+            {
+              size: 'M',
+              quantity: 5,
+            },
+            {
+              size: 'L',
+              quantity: 0,
+            },
+            {
+              size: 'XL',
+              quantity: 0,
+            },
+            {
+              size: 'XXL',
+              quantity: 0,
             },
           ],
         },
@@ -1667,8 +2847,28 @@ const products = [
           image: 'product-61a3ef46d2f72ac1c1bf1757-000.png',
           sizes: [
             {
-              size: 'general',
-              quantity: 9,
+              size: 'XS',
+              quantity: 5,
+            },
+            {
+              size: 'S',
+              quantity: 4,
+            },
+            {
+              size: 'M',
+              quantity: 3,
+            },
+            {
+              size: 'L',
+              quantity: 2,
+            },
+            {
+              size: 'XL',
+              quantity: 1,
+            },
+            {
+              size: 'XXL',
+              quantity: 0,
             },
           ],
         },

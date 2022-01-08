@@ -86,27 +86,28 @@ const Product = ({ product }) => {
   // --------------------------------- HANDLERS -------------------------
 
   const handleQuantityChange = (e) => {
-    const { value } = e.target;
+    let { value } = e.target;
 
     if (value === '') {
       setQty(value);
-    } else if (value > limit) {
+    } else if (isNaN(value)) {
+      setQty(1);
+    } else if (Math.round(value) > limit) {
       setQty(limit);
-    } else if (value < 1) {
+    } else if (Math.round(value) < 1) {
       setQty(1);
     } else {
-      setQty(value);
+      setQty(Math.round(value));
     }
   };
 
-  const handleSubcategoryChange = (index) => {
-    // console.log(index);
-    setSelectedSubCategory(product.subcategory.color[index]);
-    setSelectedColor(`#${product.subcategory.color[index].colorname}`);
-    setFocusImage(product.subcategory.color[index].image);
+  const handleSubcategoryChange = (color) => {
+    setSelectedSubCategory(color);
+    setSelectedColor(`#${color.colorname}`);
+    setFocusImage(color.image);
 
     let valid = false;
-    for (let size of product.subcategory.color[index].sizes) {
+    for (let size of color.sizes) {
       if (size.size === selectedSize && size.quantity > 0) {
         setLimit(size.quantity);
         valid = true;
@@ -117,20 +118,20 @@ const Product = ({ product }) => {
     }
 
     if (!valid) {
-      setSelectedSize(product.subcategory.color[index].sizes[0].size);
-      setLimit(product.subcategory.color[index].sizes[0].quantity);
-      if (qty > product.subcategory.color[index].sizes[0].quantity) {
-        setQty(product.subcategory.color[index].sizes[0].quantity);
+      setSelectedSize(color.sizes[0].size);
+      setLimit(color.sizes[0].quantity);
+      if (qty > color.sizes[0].quantity) {
+        setQty(color.sizes[0].quantity);
       }
     }
   };
 
-  const handleSizeChange = (index, size) => {
+  const handleSizeChange = (size) => {
     for (let color of product.subcategory.color) {
       if ('#' + color.colorname === selectedColor) {
-        setLimit(color.sizes[index].quantity);
-        if (qty > color.sizes[index].quantity) {
-          setQty(color.sizes[index].quantity);
+        setLimit(size.quantity);
+        if (qty > size.quantity) {
+          setQty(size.quantity);
         }
       }
     }
@@ -149,7 +150,7 @@ const Product = ({ product }) => {
               <ProductImage
                 key={color._id}
                 src={`/img/products/${color.image}`}
-                onClick={() => handleSubcategoryChange(index)}
+                onClick={() => handleSubcategoryChange(color)}
                 variants={imageVariants}
                 whileHover='hover'
               />
@@ -189,7 +190,7 @@ const Product = ({ product }) => {
                     className={
                       selectedColor === `#${color.colorname}` ? 'selected' : ''
                     }
-                    onClick={() => handleSubcategoryChange(index)}
+                    onClick={() => handleSubcategoryChange(color)}
                   />
                 );
               })}
@@ -201,13 +202,13 @@ const Product = ({ product }) => {
           <DetailsContainer>
             <DetailsTitle>Talla</DetailsTitle>
             <SizeItemsContainer>
-              {selectedSubCategory.sizes.map((size, index) => {
+              {selectedSubCategory.sizes.map((size) => {
                 return (
                   size.quantity > 0 && (
                     <SizeItem
                       key={size._id}
                       className={selectedSize === size.size ? 'selected' : ''}
-                      onClick={() => handleSizeChange(index, size)}
+                      onClick={() => handleSizeChange(size)}
                     >
                       {size.size}
                     </SizeItem>

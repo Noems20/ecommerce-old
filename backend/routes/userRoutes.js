@@ -29,7 +29,7 @@ import {
 import {
   getUserCartProducts,
   addUserCartProducts,
-} from '../controllers/cartProductsController.js';
+} from '../controllers/productsCartController.js';
 
 const router = express.Router();
 

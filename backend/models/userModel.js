@@ -50,7 +50,11 @@ const userSchema = new mongoose.Schema(
           },
           quantity: {
             type: Number,
-            min: [1, 'Debe tener una cantidad mayor a 1'],
+            min: [1, 'Debe tener una cantidad mayor a 0'],
+            // validate: {
+            //   validator: Number.isInteger,
+            //   message: '{VALUE} is not an integer value',
+            // },
             required: [true, 'Debe tener una cantidad'],
           },
           colorname: {
@@ -100,10 +104,10 @@ const userSchema = new mongoose.Schema(
   }
 );
 
-// userSchema.pre(/^find/, function (next) {
-//   this.populate('productsCart.product', '-slug name');
-//   next();
-// });
+userSchema.pre(/^find/, function (next) {
+  this.populate('productsCart.product');
+  next();
+});
 
 // --------------------------------------- MIDDLEWARE -----------------------------------------------
 

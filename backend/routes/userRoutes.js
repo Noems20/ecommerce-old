@@ -28,7 +28,7 @@ import {
 // PRODUCTS CART
 import {
   getUserCartProducts,
-  addUserCartProducts,
+  updateCartProducts,
 } from '../controllers/productsCartController.js';
 
 const router = express.Router();
@@ -45,8 +45,10 @@ router.patch('/verifyAccount/:token', verifyAccount);
 router.use(protect);
 
 // CART PRODUCTS
-router.get('/cartProducts', getUserCartProducts);
-router.patch('/cartProducts/add', addUserCartProducts);
+router
+  .route('/cartProducts')
+  .get(getUserCartProducts)
+  .patch(updateCartProducts);
 
 // USER
 router.patch('/updateMyPassword', updatePassword);

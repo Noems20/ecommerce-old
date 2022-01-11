@@ -4,7 +4,7 @@ import Product from '../models/productModel.js';
 import catchAsync from '../utils/catchAsync.js';
 import AppError from '../utils/appError.js';
 // -------------------------------------------------------------------------------
-// GET LOGGER USER CART PRODUCTS
+// GET LOGGED USER CART PRODUCTS
 // -------------------------------------------------------------------------------
 
 export const getUserCartProducts = catchAsync(async (req, res, next) => {
@@ -16,10 +16,10 @@ export const getUserCartProducts = catchAsync(async (req, res, next) => {
 });
 
 // -------------------------------------------------------------------------------
-// ADD CART PRODUCT
+// ADD-REMOVE CART PRODUCT
 // -------------------------------------------------------------------------------
 
-export const addUserCartProducts = catchAsync(async (req, res, next) => {
+export const updateCartProducts = catchAsync(async (req, res, next) => {
   // Info
   const { product, quantity, colorname, size } = req.body;
 
@@ -52,8 +52,10 @@ export const addUserCartProducts = catchAsync(async (req, res, next) => {
         if (colorSize.size === size) {
           valid = true;
           productSize = colorSize;
+          break;
         }
       }
+      break;
     }
   }
 
@@ -69,25 +71,29 @@ export const addUserCartProducts = catchAsync(async (req, res, next) => {
 
   // Check if product already in cart
   let exists = false;
-  for (let cartProduct of productsCart) {
+  for (let idx in productsCart) {
     if (
-      cartProduct.product.id == product &&
-      cartProduct.colorname === colorname &&
-      cartProduct.size === size
+      productsCart[idx].product.id == product &&
+      productsCart[idx].colorname === colorname &&
+      productsCart[idx].size === size
     ) {
-      if (cartProduct.quantity + quantity > productSize.quantity) {
+      if (productsCart[idx].quantity + quantity > productSize.quantity) {
         return next(
           new AppError('Quantity exceeds existence', 400, {
             quantity: 'La cantidad excede la existencia',
           })
         );
+      } else if (productsCart[idx].quantity + quantity <= 0) {
+        productsCart.splice(idx, 1);
+      } else {
+        productsCart[idx].quantity += quantity;
       }
-      cartProduct.quantity += quantity;
       exists = true;
+      break;
     }
   }
 
-  if (!exists) {
+  if (!exists && quantity > 0) {
     if (quantity > productSize.quantity) {
       return next(
         new AppError('Quantity exceeds existence', 400, {

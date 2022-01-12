@@ -70,7 +70,8 @@ const App = () => {
           <Route
             exact
             path='/login'
-            render={() => (user ? <Redirect to='/perfil' /> : <Login />)}
+            component={Login}
+            // render={() => (user ? <Redirect to='/perfil' /> : <Login />)}
           />
           <Route
             exact

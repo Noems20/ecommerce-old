@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 // REDUX
 import { useDispatch, useSelector } from 'react-redux';
@@ -36,7 +36,7 @@ import {
 
 const Product = ({ product }) => {
   // --------------------------------- STATE AND CONSTANTS ----------------------------
-
+  const history = useHistory();
   const [qty, setQty] = useState(1);
   const [selectedSubCategory, setSelectedSubCategory] = useState(
     product.subcategory.color[0]
@@ -150,6 +150,10 @@ const Product = ({ product }) => {
     );
   };
 
+  const redirectHandler = () => {
+    history.push(`/login?redirect=producto/${product.slug}`);
+  };
+
   const productImages = (
     <>
       <ImageContainer>
@@ -247,7 +251,7 @@ const Product = ({ product }) => {
             Añadir a carrito
           </CustomButton>
         ) : (
-          <CustomButton as={Link} to='/login' primary={1}>
+          <CustomButton onClick={redirectHandler} primary>
             Añadir a carrito
           </CustomButton>
         )}

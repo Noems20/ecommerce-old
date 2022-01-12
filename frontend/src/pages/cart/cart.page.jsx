@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 // REDUX
 import { useSelector } from 'react-redux';
@@ -16,11 +16,21 @@ import { Container, EmptyTitle } from './cart.page.styles';
 import { PageGrid } from '../../general.styles';
 
 const Cart = () => {
+  // ------------------------ STATE AND CONSTANTS -------------------
   const { cart, productsAmmount, totalPrice } = useSelector(
     (state) => state.cart
   );
 
   const { user } = useSelector((state) => state.user);
+  const history = useHistory();
+
+  // -------------------------- USE EFFECT'S ----------------------
+
+  // ------------------------- HANDLERS ---------------------------
+
+  const redirectHandler = () => {
+    history.push('/login?redirect=carrito');
+  };
 
   return (
     <PageGrid>
@@ -36,9 +46,8 @@ const Cart = () => {
               {!user && (
                 <CustomButton
                   style={{ marginTop: '3rem', justifySelf: 'center' }}
-                  as={Link}
-                  to='/login'
-                  primary={1}
+                  onClick={redirectHandler}
+                  primary
                 >
                   Iniciar Sesión
                 </CustomButton>

@@ -11,6 +11,8 @@ export const Input = styled.input`
   font-size: 2rem;
   font-weight: 700;
   color: var(--color-grey-product);
+  -webkit-text-fill-color: var(--color-grey-product);
+  opacity: 1; /* required on iOS */
   border: none;
   outline: none;
   width: 3.5rem;

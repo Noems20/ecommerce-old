@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useHistory } from 'react-router-dom';
 
 // REDUX
 import { useDispatch, useSelector } from 'react-redux';
@@ -32,14 +32,15 @@ import logo4 from '../form-container/logo4.svg';
 const SignIn = ({ setTab, variants }) => {
   // ---------------------------- STATE AND CONSTANTS --------------------
   let location = useLocation();
+  const history = useHistory();
   const [userCredentials, setUserCredentials] = useState({
     email: '',
     password: '',
   });
   const { email, password } = userCredentials;
-  const redirect = location.search ? location.search.split('=')[1] : '/';
   const dispatch = useDispatch();
   const { uiErrors, loading } = useSelector((state) => state.ui);
+  const { user } = useSelector((state) => state.user);
   const { errorsOne } = uiErrors;
 
   // ----------------------------- USE EFFECT'S ------------------------
@@ -54,6 +55,14 @@ const SignIn = ({ setTab, variants }) => {
       dispatch(clearUiErrors());
     };
   }, [dispatch]);
+
+  const redirect = location.search ? location.search.split('=')[1] : '/';
+
+  useEffect(() => {
+    if (user) {
+      history.push(redirect);
+    }
+  }, [history, user, redirect]);
 
   // ------------------------------- HANDLERS -------------------------
 

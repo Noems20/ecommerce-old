@@ -179,46 +179,6 @@ export const checkUser = () => async (dispatch) => {
     type: SET_USER,
     payload: data.user,
   });
-  // if (data.user) {
-  //   let {
-  //     data: { data },
-  //   } = await axios.get('/api/v1/appointments/MyAppointments');
-
-  //   if (data.length === 0) {
-  //     dispatch({
-  //       type: SET_APPOINTMENTS,
-  //       payload: [],
-  //     });
-  //     dispatch({
-  //       type: SET_ACTIVE_APPOINTMENT,
-  //       payload: null,
-  //     });
-  //   } else {
-  //     if (data[data.length - 1].active === true) {
-  //       dispatch({
-  //         type: SET_ACTIVE_APPOINTMENT,
-  //         payload: data.pop(),
-  //       });
-  //     } else {
-  //       dispatch({
-  //         type: SET_ACTIVE_APPOINTMENT,
-  //         payload: null,
-  //       });
-  //     }
-  //     // Check after popping last appointment
-  //     if (data.length === 0) {
-  //       dispatch({
-  //         type: SET_APPOINTMENTS,
-  //         payload: [],
-  //       });
-  //     } else {
-  //       dispatch({
-  //         type: SET_APPOINTMENTS,
-  //         payload: data,
-  //       });
-  //     }
-  //   }
-  // }
 
   dispatch({
     type: SET_USER_LOADED,

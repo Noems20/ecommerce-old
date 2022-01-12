@@ -16,6 +16,10 @@ export const Container = styled.div`
   @media only screen and (max-width: 360px) {
     margin: 3rem;
   }
+
+  @media only screen and (max-width: 300px) {
+    margin: 3rem 2rem;
+  }
 `;
 
 export const EmptyTitle = styled.h1`

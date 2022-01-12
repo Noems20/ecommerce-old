@@ -37,8 +37,6 @@ const SignUp = ({ variants }) => {
 
   const { name, email, password, passwordConfirm } = userCredentials;
 
-  const redirect = location.search ? location.search.split('=')[1] : '/';
-
   const dispatch = useDispatch();
   const { uiErrors, loading } = useSelector((state) => state.ui);
 
@@ -67,6 +65,8 @@ const SignUp = ({ variants }) => {
     event.preventDefault();
     dispatch(signUp(name, email, password, passwordConfirm));
   };
+
+  const redirect = location.search ? location.search.split('=')[1] : '/';
 
   return (
     <SignCard

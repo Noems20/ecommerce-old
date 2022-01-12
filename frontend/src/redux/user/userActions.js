@@ -22,6 +22,7 @@ import {
 import axios from 'axios';
 
 import { batch } from 'react-redux';
+import { SET_CART } from '../cart/cartTypes';
 
 // ---------------------------- CLEAR APPOINTMENTS ----------------------------
 export const clearUsers = () => async (dispatch) => {
@@ -148,10 +149,19 @@ export const checkLogged = () => async (dispatch) => {
     payload: { general: false },
   });
   const { data } = await axios.get('/api/v1/users/logged');
+
   dispatch({
     type: SET_USER,
     payload: data.user,
   });
+
+  if (data.user !== null) {
+    dispatch({
+      type: SET_CART,
+      payload: data.user.productsCart,
+    });
+  }
+
   dispatch({
     type: SET_USER_LOADED,
     payload: { general: true },

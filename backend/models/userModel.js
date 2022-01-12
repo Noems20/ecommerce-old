@@ -48,14 +48,14 @@ const userSchema = new mongoose.Schema(
             ref: 'Product',
             required: [true, 'Debe pertenecer a un producto'],
           },
-          quantity: {
-            type: Number,
-            min: [1, 'Debe tener una cantidad mayor a 0'],
-            // validate: {
-            //   validator: Number.isInteger,
-            //   message: '{VALUE} is not an integer value',
-            // },
-            required: [true, 'Debe tener una cantidad'],
+          name: { type: String, required: [true, 'No puede estar vacío'] },
+          slug: {
+            type: String,
+          },
+          for: { type: String, required: [true, 'No puede estar vacío'] },
+          image: {
+            type: String,
+            required: [true, 'No puede estar vacío'],
           },
           colorname: {
             type: String,
@@ -70,6 +70,23 @@ const userSchema = new mongoose.Schema(
           size: {
             type: String,
             required: [true, 'No puede estar vacío'],
+          },
+          quantity: {
+            type: Number,
+            min: [1, 'Debe tener una cantidad mayor a 0'],
+            // validate: {
+            //   validator: Number.isInteger,
+            //   message: '{VALUE} is not an integer value',
+            // },
+            required: [true, 'Debe tener una cantidad'],
+          },
+          price: {
+            type: Number,
+            required: [true, 'Debe tener un precio'],
+          },
+          totalprice: {
+            type: Number,
+            required: [true, 'Debe tener un precio'],
           },
         },
       ],
@@ -104,10 +121,10 @@ const userSchema = new mongoose.Schema(
   }
 );
 
-userSchema.pre(/^find/, function (next) {
-  this.populate('productsCart.product');
-  next();
-});
+// userSchema.pre(/^find/, function (next) {
+//   this.populate('productsCart.product');
+//   next();
+// });
 
 // --------------------------------------- MIDDLEWARE -----------------------------------------------
 

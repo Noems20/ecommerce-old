@@ -23,7 +23,7 @@ const products = [
       color: [
         {
           colorname: 'fff',
-          image: 'product-61a179b861a268b3e16b8b05-fff.png',
+          // image: 'product-61a179b861a268b3e16b8b05-fff.png',
           sizes: [
             {
               size: 'general',
@@ -33,7 +33,7 @@ const products = [
         },
         {
           colorname: '828282',
-          image: 'product-61a179b861a268b3e16b8b05-828282.png',
+          // image: 'product-61a179b861a268b3e16b8b05-828282.png',
           sizes: [
             {
               size: 'general',
@@ -43,7 +43,7 @@ const products = [
         },
         {
           colorname: '000',
-          image: 'product-61a179b861a268b3e16b8b05-000.png',
+          // image: 'product-61a179b861a268b3e16b8b05-000.png',
           sizes: [
             {
               size: 'general',
@@ -78,7 +78,7 @@ const products = [
       color: [
         {
           colorname: 'fff',
-          image: 'product-61a18682230136eb2b49ccfe-fff.png',
+          // image: 'product-61a18682230136eb2b49ccfe-fff.png',
           sizes: [
             {
               size: 'general',
@@ -88,7 +88,7 @@ const products = [
         },
         {
           colorname: '828282',
-          image: 'product-61a18682230136eb2b49ccfe-828282.png',
+          // image: 'product-61a18682230136eb2b49ccfe-828282.png',
           sizes: [
             {
               size: 'general',
@@ -98,7 +98,7 @@ const products = [
         },
         {
           colorname: '000',
-          image: 'product-61a18682230136eb2b49ccfe-000.png',
+          // image: 'product-61a18682230136eb2b49ccfe-000.png',
           sizes: [
             {
               size: 'general',
@@ -133,7 +133,7 @@ const products = [
       color: [
         {
           colorname: 'fff',
-          image: 'product-61a1868c54817f635b177def-fff.png',
+          // image: 'product-61a1868c54817f635b177def-fff.png',
           sizes: [
             {
               size: 'general',
@@ -143,7 +143,7 @@ const products = [
         },
         {
           colorname: '828282',
-          image: 'product-61a1868c54817f635b177def-828282.png',
+          // image: 'product-61a1868c54817f635b177def-828282.png',
           sizes: [
             {
               size: 'general',
@@ -153,7 +153,7 @@ const products = [
         },
         {
           colorname: '000',
-          image: 'product-61a1868c54817f635b177def-000.png',
+          // image: 'product-61a1868c54817f635b177def-000.png',
           sizes: [
             {
               size: 'general',
@@ -188,7 +188,7 @@ const products = [
       color: [
         {
           colorname: 'fff',
-          image: 'product-61a1878396a2889688d08f97-fff.png',
+          // image: 'product-61a1878396a2889688d08f97-fff.png',
           sizes: [
             {
               size: 'general',
@@ -198,7 +198,7 @@ const products = [
         },
         {
           colorname: '828282',
-          image: 'product-61a1878396a2889688d08f97-828282.png',
+          // image: 'product-61a1878396a2889688d08f97-828282.png',
           sizes: [
             {
               size: 'general',
@@ -208,7 +208,7 @@ const products = [
         },
         {
           colorname: '000',
-          image: 'product-61a1878396a2889688d08f97-000.png',
+          // image: 'product-61a1878396a2889688d08f97-000.png',
           sizes: [
             {
               size: 'general',
@@ -243,7 +243,7 @@ const products = [
       color: [
         {
           colorname: 'fff',
-          image: 'product-61a187b4be8bef3ce91cddb2-fff.png',
+          // image: 'product-61a187b4be8bef3ce91cddb2-fff.png',
           sizes: [
             {
               size: 'general',
@@ -253,7 +253,7 @@ const products = [
         },
         {
           colorname: '828282',
-          image: 'product-61a187b4be8bef3ce91cddb2-828282.png',
+          // image: 'product-61a187b4be8bef3ce91cddb2-828282.png',
           sizes: [
             {
               size: 'general',
@@ -263,7 +263,7 @@ const products = [
         },
         {
           colorname: '000',
-          image: 'product-61a187b4be8bef3ce91cddb2-000.png',
+          // image: 'product-61a187b4be8bef3ce91cddb2-000.png',
           sizes: [
             {
               size: 'general',
@@ -298,7 +298,7 @@ const products = [
       color: [
         {
           colorname: 'fff',
-          image: 'product-61a18816dd3050a0a263e348-fff.png',
+          // image: 'product-61a18816dd3050a0a263e348-fff.png',
           sizes: [
             {
               size: 'general',
@@ -308,7 +308,7 @@ const products = [
         },
         {
           colorname: '828282',
-          image: 'product-61a18816dd3050a0a263e348-828282.png',
+          // image: 'product-61a18816dd3050a0a263e348-828282.png',
           sizes: [
             {
               size: 'general',
@@ -318,7 +318,7 @@ const products = [
         },
         {
           colorname: '000',
-          image: 'product-61a18816dd3050a0a263e348-000.png',
+          // image: 'product-61a18816dd3050a0a263e348-000.png',
           sizes: [
             {
               size: 'general',
@@ -353,7 +353,7 @@ const products = [
       color: [
         {
           colorname: 'fff',
-          image: 'product-61a188829d081e2a31e6e545-fff.png',
+          // image: 'product-61a188829d081e2a31e6e545-fff.png',
           sizes: [
             {
               size: 'general',
@@ -363,7 +363,7 @@ const products = [
         },
         {
           colorname: '828282',
-          image: 'product-61a188829d081e2a31e6e545-828282.png',
+          // image: 'product-61a188829d081e2a31e6e545-828282.png',
           sizes: [
             {
               size: 'general',
@@ -373,7 +373,7 @@ const products = [
         },
         {
           colorname: '000',
-          image: 'product-61a188829d081e2a31e6e545-000.png',
+          // image: 'product-61a188829d081e2a31e6e545-000.png',
           sizes: [
             {
               size: 'general',
@@ -408,7 +408,7 @@ const products = [
       color: [
         {
           colorname: 'fff',
-          image: 'product-61a188b8c142167b39f0abff-fff.png',
+          // image: 'product-61a188b8c142167b39f0abff-fff.png',
           sizes: [
             {
               size: 'general',
@@ -418,7 +418,7 @@ const products = [
         },
         {
           colorname: '828282',
-          image: 'product-61a188b8c142167b39f0abff-828282.png',
+          // image: 'product-61a188b8c142167b39f0abff-828282.png',
           sizes: [
             {
               size: 'general',
@@ -428,7 +428,7 @@ const products = [
         },
         {
           colorname: '000',
-          image: 'product-61a188b8c142167b39f0abff-000.png',
+          // image: 'product-61a188b8c142167b39f0abff-000.png',
           sizes: [
             {
               size: 'general',
@@ -463,7 +463,7 @@ const products = [
       color: [
         {
           colorname: 'fff',
-          image: 'product-61a1891af82282146fd1ca41-fff.png',
+          // image: 'product-61a1891af82282146fd1ca41-fff.png',
           sizes: [
             {
               size: 'general',
@@ -473,7 +473,7 @@ const products = [
         },
         {
           colorname: '828282',
-          image: 'product-61a1891af82282146fd1ca41-828282.png',
+          // image: 'product-61a1891af82282146fd1ca41-828282.png',
           sizes: [
             {
               size: 'general',
@@ -483,7 +483,7 @@ const products = [
         },
         {
           colorname: '000',
-          image: 'product-61a1891af82282146fd1ca41-000.png',
+          // image: 'product-61a1891af82282146fd1ca41-000.png',
           sizes: [
             {
               size: 'general',
@@ -518,7 +518,7 @@ const products = [
       color: [
         {
           colorname: 'fff',
-          image: 'product-61a189a761ce1510f472f625-fff.png',
+          // image: 'product-61a189a761ce1510f472f625-fff.png',
           sizes: [
             {
               size: 'general',
@@ -528,7 +528,7 @@ const products = [
         },
         {
           colorname: '828282',
-          image: 'product-61a189a761ce1510f472f625-828282.png',
+          // image: 'product-61a189a761ce1510f472f625-828282.png',
           sizes: [
             {
               size: 'general',
@@ -538,7 +538,7 @@ const products = [
         },
         {
           colorname: '000',
-          image: 'product-61a189a761ce1510f472f625-000.png',
+          // image: 'product-61a189a761ce1510f472f625-000.png',
           sizes: [
             {
               size: 'general',
@@ -557,7 +557,7 @@ const products = [
   // --------------------------------------------------------------
   {
     _id: '61a3b6b1f9fe62725a87281c',
-    name: 'Playera de Chicago Bulls Hombre',
+    name: 'Playera de Chicago Bulls',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum, sapien ac tempor blandit, nulla ante semper urna, non gravida erat mauris eu diam. Aenean finibus, eros sit amet semper ornare, dui magna pellentesque purus, et malesuada ligula metus tincidunt mauris. Phasellus vulputate sed eros vel facilisis.',
     specifications: [
@@ -577,7 +577,7 @@ const products = [
       color: [
         {
           colorname: 'fff',
-          image: 'product-61a3b6b1f9fe62725a87281c-fff.png',
+          // image: 'product-61a3b6b1f9fe62725a87281c-fff.png',
           sizes: [
             {
               size: 'XS',
@@ -607,7 +607,7 @@ const products = [
         },
         {
           colorname: '817f83',
-          image: 'product-61a3b6b1f9fe62725a87281c-817f83.png',
+          // image: 'product-61a3b6b1f9fe62725a87281c-817f83.png',
           sizes: [
             {
               size: 'XS',
@@ -637,7 +637,7 @@ const products = [
         },
         {
           colorname: '000',
-          image: 'product-61a3b6b1f9fe62725a87281c-000.png',
+          // image: 'product-61a3b6b1f9fe62725a87281c-000.png',
           sizes: [
             {
               size: 'XS',
@@ -673,7 +673,7 @@ const products = [
   // --------------------------------------------------------------
   {
     _id: '61a3b89c9ccb6cd81aa0465e',
-    name: 'Playera de Dallas Mavericks Hombre',
+    name: 'Playera de Dallas Mavericks',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum, sapien ac tempor blandit, nulla ante semper urna, non gravida erat mauris eu diam. Aenean finibus, eros sit amet semper ornare, dui magna pellentesque purus, et malesuada ligula metus tincidunt mauris. Phasellus vulputate sed eros vel facilisis.',
     specifications: [
@@ -693,7 +693,7 @@ const products = [
       color: [
         {
           colorname: 'fff',
-          image: 'product-61a3b89c9ccb6cd81aa0465e-fff.png',
+          // image: 'product-61a3b89c9ccb6cd81aa0465e-fff.png',
           sizes: [
             {
               size: 'XS',
@@ -723,7 +723,7 @@ const products = [
         },
         {
           colorname: '817f83',
-          image: 'product-61a3b89c9ccb6cd81aa0465e-817f83.png',
+          // image: 'product-61a3b89c9ccb6cd81aa0465e-817f83.png',
           sizes: [
             {
               size: 'XS',
@@ -753,7 +753,7 @@ const products = [
         },
         {
           colorname: '000',
-          image: 'product-61a3b89c9ccb6cd81aa0465e-000.png',
+          // image: 'product-61a3b89c9ccb6cd81aa0465e-000.png',
           sizes: [
             {
               size: 'XS',
@@ -789,7 +789,7 @@ const products = [
   // --------------------------------------------------------------
   {
     _id: '61a3b947c1050b9e08978118',
-    name: 'Playera de Los Angeles Lakers Mujer',
+    name: 'Playera de Los Angeles Lakers',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum, sapien ac tempor blandit, nulla ante semper urna, non gravida erat mauris eu diam. Aenean finibus, eros sit amet semper ornare, dui magna pellentesque purus, et malesuada ligula metus tincidunt mauris. Phasellus vulputate sed eros vel facilisis.',
     specifications: [
@@ -809,7 +809,7 @@ const products = [
       color: [
         {
           colorname: 'fff',
-          image: 'product-61a3b947c1050b9e08978118-fff.png',
+          // image: 'product-61a3b947c1050b9e08978118-fff.png',
           sizes: [
             {
               size: 'XS',
@@ -839,7 +839,7 @@ const products = [
         },
         {
           colorname: '817f83',
-          image: 'product-61a3b947c1050b9e08978118-817f83.png',
+          // image: 'product-61a3b947c1050b9e08978118-817f83.png',
           sizes: [
             {
               size: 'XS',
@@ -869,7 +869,7 @@ const products = [
         },
         {
           colorname: '000',
-          image: 'product-61a3b947c1050b9e08978118-000.png',
+          // image: 'product-61a3b947c1050b9e08978118-000.png',
           sizes: [
             {
               size: 'XS',
@@ -905,7 +905,7 @@ const products = [
   // --------------------------------------------------------------
   {
     _id: '61a3ba4082b9a3b9b7b3972b',
-    name: 'Playera de Boston Celtics Mujer',
+    name: 'Playera de Boston Celtics',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum, sapien ac tempor blandit, nulla ante semper urna, non gravida erat mauris eu diam. Aenean finibus, eros sit amet semper ornare, dui magna pellentesque purus, et malesuada ligula metus tincidunt mauris. Phasellus vulputate sed eros vel facilisis.',
     specifications: [
@@ -925,7 +925,7 @@ const products = [
       color: [
         {
           colorname: 'fff',
-          image: 'product-61a3ba4082b9a3b9b7b3972b-fff.png',
+          // image: 'product-61a3ba4082b9a3b9b7b3972b-fff.png',
           sizes: [
             {
               size: 'XS',
@@ -955,7 +955,7 @@ const products = [
         },
         {
           colorname: '817f83',
-          image: 'product-61a3ba4082b9a3b9b7b3972b-817f83.png',
+          // image: 'product-61a3ba4082b9a3b9b7b3972b-817f83.png',
           sizes: [
             {
               size: 'XS',
@@ -985,7 +985,7 @@ const products = [
         },
         {
           colorname: '000',
-          image: 'product-61a3ba4082b9a3b9b7b3972b-000.png',
+          // image: 'product-61a3ba4082b9a3b9b7b3972b-000.png',
           sizes: [
             {
               size: 'XS',
@@ -1021,7 +1021,7 @@ const products = [
   // --------------------------------------------------------------
   {
     _id: '61a3badce0d502d98c409b30',
-    name: 'Playera Mandalorian Samurái Niño',
+    name: 'Playera Mandalorian Samurái',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum, sapien ac tempor blandit, nulla ante semper urna, non gravida erat mauris eu diam. Aenean finibus, eros sit amet semper ornare, dui magna pellentesque purus, et malesuada ligula metus tincidunt mauris. Phasellus vulputate sed eros vel facilisis.',
     specifications: [
@@ -1041,7 +1041,7 @@ const products = [
       color: [
         {
           colorname: 'fff',
-          image: 'product-61a3badce0d502d98c409b30-fff.png',
+          // image: 'product-61a3badce0d502d98c409b30-fff.png',
           sizes: [
             {
               size: 'XS',
@@ -1071,7 +1071,7 @@ const products = [
         },
         {
           colorname: '817f83',
-          image: 'product-61a3badce0d502d98c409b30-817f83.png',
+          // image: 'product-61a3badce0d502d98c409b30-817f83.png',
           sizes: [
             {
               size: 'XS',
@@ -1101,7 +1101,7 @@ const products = [
         },
         {
           colorname: '000',
-          image: 'product-61a3badce0d502d98c409b30-000.png',
+          // image: 'product-61a3badce0d502d98c409b30-000.png',
           sizes: [
             {
               size: 'XS',
@@ -1137,7 +1137,7 @@ const products = [
   // --------------------------------------------------------------
   {
     _id: '61a3bc4eca5043c0d177eea1',
-    name: 'Playera de Darth Vader Niño',
+    name: 'Playera de Darth Vader',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum, sapien ac tempor blandit, nulla ante semper urna, non gravida erat mauris eu diam. Aenean finibus, eros sit amet semper ornare, dui magna pellentesque purus, et malesuada ligula metus tincidunt mauris. Phasellus vulputate sed eros vel facilisis.',
     specifications: [
@@ -1157,7 +1157,7 @@ const products = [
       color: [
         {
           colorname: 'fff',
-          image: 'product-61a3bc4eca5043c0d177eea1-fff.png',
+          // image: 'product-61a3bc4eca5043c0d177eea1-fff.png',
           sizes: [
             {
               size: 'XS',
@@ -1187,7 +1187,7 @@ const products = [
         },
         {
           colorname: '817f83',
-          image: 'product-61a3bc4eca5043c0d177eea1-817f83.png',
+          // image: 'product-61a3bc4eca5043c0d177eea1-817f83.png',
           sizes: [
             {
               size: 'XS',
@@ -1217,7 +1217,7 @@ const products = [
         },
         {
           colorname: '000',
-          image: 'product-61a3bc4eca5043c0d177eea1-000.png',
+          // image: 'product-61a3bc4eca5043c0d177eea1-000.png',
           sizes: [
             {
               size: 'XS',
@@ -1253,7 +1253,7 @@ const products = [
   // --------------------------------------------------------------
   {
     _id: '61a3bbad79ac29ae3a18c064',
-    name: 'Playera de Darth Vader Caricatura Niña',
+    name: 'Playera de Darth Vader Caricatura',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum, sapien ac tempor blandit, nulla ante semper urna, non gravida erat mauris eu diam. Aenean finibus, eros sit amet semper ornare, dui magna pellentesque purus, et malesuada ligula metus tincidunt mauris. Phasellus vulputate sed eros vel facilisis.',
     specifications: [
@@ -1273,7 +1273,7 @@ const products = [
       color: [
         {
           colorname: 'fff',
-          image: 'product-61a3bbad79ac29ae3a18c064-fff.png',
+          // image: 'product-61a3bbad79ac29ae3a18c064-fff.png',
           sizes: [
             {
               size: 'XS',
@@ -1303,7 +1303,7 @@ const products = [
         },
         {
           colorname: '817f83',
-          image: 'product-61a3bbad79ac29ae3a18c064-817f83.png',
+          // image: 'product-61a3bbad79ac29ae3a18c064-817f83.png',
           sizes: [
             {
               size: 'XS',
@@ -1333,7 +1333,7 @@ const products = [
         },
         {
           colorname: '000',
-          image: 'product-61a3bbad79ac29ae3a18c064-000.png',
+          // image: 'product-61a3bbad79ac29ae3a18c064-000.png',
           sizes: [
             {
               size: 'XS',
@@ -1369,7 +1369,7 @@ const products = [
   // --------------------------------------------------------------
   {
     _id: '61a3bcaa6cea21123aea8c88',
-    name: 'Playera de C3PO Caricatura Niña',
+    name: 'Playera de C3PO Caricatura',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum, sapien ac tempor blandit, nulla ante semper urna, non gravida erat mauris eu diam. Aenean finibus, eros sit amet semper ornare, dui magna pellentesque purus, et malesuada ligula metus tincidunt mauris. Phasellus vulputate sed eros vel facilisis.',
     specifications: [
@@ -1389,7 +1389,7 @@ const products = [
       color: [
         {
           colorname: 'fff',
-          image: 'product-61a3bcaa6cea21123aea8c88-fff.png',
+          // image: 'product-61a3bcaa6cea21123aea8c88-fff.png',
           sizes: [
             {
               size: 'XS',
@@ -1419,7 +1419,7 @@ const products = [
         },
         {
           colorname: '817f83',
-          image: 'product-61a3bcaa6cea21123aea8c88-817f83.png',
+          // image: 'product-61a3bcaa6cea21123aea8c88-817f83.png',
           sizes: [
             {
               size: 'XS',
@@ -1449,7 +1449,7 @@ const products = [
         },
         {
           colorname: '000',
-          image: 'product-61a3bcaa6cea21123aea8c88-000.png',
+          // image: 'product-61a3bcaa6cea21123aea8c88-000.png',
           sizes: [
             {
               size: 'XS',
@@ -1485,7 +1485,7 @@ const products = [
   // --------------------------------------------------------------
   {
     _id: '61a3bd4441daee33b0ce8bfc',
-    name: 'Playera de Spiderman Hombre',
+    name: 'Playera de Spiderman',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum, sapien ac tempor blandit, nulla ante semper urna, non gravida erat mauris eu diam. Aenean finibus, eros sit amet semper ornare, dui magna pellentesque purus, et malesuada ligula metus tincidunt mauris. Phasellus vulputate sed eros vel facilisis.',
     specifications: [
@@ -1505,7 +1505,7 @@ const products = [
       color: [
         {
           colorname: 'fff',
-          image: 'product-61a3bd4441daee33b0ce8bfc-fff.png',
+          // image: 'product-61a3bd4441daee33b0ce8bfc-fff.png',
           sizes: [
             {
               size: 'XS',
@@ -1535,7 +1535,7 @@ const products = [
         },
         {
           colorname: '817f83',
-          image: 'product-61a3bd4441daee33b0ce8bfc-817f83.png',
+          // image: 'product-61a3bd4441daee33b0ce8bfc-817f83.png',
           sizes: [
             {
               size: 'XS',
@@ -1565,7 +1565,7 @@ const products = [
         },
         {
           colorname: '000',
-          image: 'product-61a3bd4441daee33b0ce8bfc-000.png',
+          // image: 'product-61a3bd4441daee33b0ce8bfc-000.png',
           sizes: [
             {
               size: 'XS',
@@ -1601,7 +1601,7 @@ const products = [
   // --------------------------------------------------------------
   {
     _id: '61a3bdb3a161ee4cf1c7483c',
-    name: 'Playera de Ferrari Hombre',
+    name: 'Playera de Ferrari',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum, sapien ac tempor blandit, nulla ante semper urna, non gravida erat mauris eu diam. Aenean finibus, eros sit amet semper ornare, dui magna pellentesque purus, et malesuada ligula metus tincidunt mauris. Phasellus vulputate sed eros vel facilisis.',
     specifications: [
@@ -1621,7 +1621,7 @@ const products = [
       color: [
         {
           colorname: 'fff',
-          image: 'product-61a3bdb3a161ee4cf1c7483c-fff.png',
+          // image: 'product-61a3bdb3a161ee4cf1c7483c-fff.png',
           sizes: [
             {
               size: 'XS',
@@ -1651,7 +1651,7 @@ const products = [
         },
         {
           colorname: '817f83',
-          image: 'product-61a3bdb3a161ee4cf1c7483c-817f83.png',
+          // image: 'product-61a3bdb3a161ee4cf1c7483c-817f83.png',
           sizes: [
             {
               size: 'XS',
@@ -1681,7 +1681,7 @@ const products = [
         },
         {
           colorname: '000',
-          image: 'product-61a3bdb3a161ee4cf1c7483c-000.png',
+          // image: 'product-61a3bdb3a161ee4cf1c7483c-000.png',
           sizes: [
             {
               size: 'XS',
@@ -1720,7 +1720,7 @@ const products = [
   // --------------------------------------------------------------
   {
     _id: '61a3e9a53aed8c396f8a7f78',
-    name: 'Sudadera de New England Patriots Hombre',
+    name: 'Sudadera de New England Patriots',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum, sapien ac tempor blandit, nulla ante semper urna, non gravida erat mauris eu diam. Aenean finibus, eros sit amet semper ornare, dui magna pellentesque purus, et malesuada ligula metus tincidunt mauris. Phasellus vulputate sed eros vel facilisis.',
     specifications: [
@@ -1740,7 +1740,7 @@ const products = [
       color: [
         {
           colorname: 'fff',
-          image: 'product-61a3e9a53aed8c396f8a7f78-fff.png',
+          // image: 'product-61a3e9a53aed8c396f8a7f78-fff.png',
           sizes: [
             {
               size: 'XS',
@@ -1770,7 +1770,7 @@ const products = [
         },
         {
           colorname: '7e7e7e',
-          image: 'product-61a3e9a53aed8c396f8a7f78-7e7e7e.png',
+          // image: 'product-61a3e9a53aed8c396f8a7f78-7e7e7e.png',
           sizes: [
             {
               size: 'XS',
@@ -1800,7 +1800,7 @@ const products = [
         },
         {
           colorname: '000',
-          image: 'product-61a3e9a53aed8c396f8a7f78-000.png',
+          // image: 'product-61a3e9a53aed8c396f8a7f78-000.png',
           sizes: [
             {
               size: 'XS',
@@ -1836,7 +1836,7 @@ const products = [
   // --------------------------------------------------------------
   {
     _id: '61a3eb25a227f02ee080745e',
-    name: 'Sudadera de Chicago Bulls Hombre',
+    name: 'Sudadera de Chicago Bulls',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum, sapien ac tempor blandit, nulla ante semper urna, non gravida erat mauris eu diam. Aenean finibus, eros sit amet semper ornare, dui magna pellentesque purus, et malesuada ligula metus tincidunt mauris. Phasellus vulputate sed eros vel facilisis.',
     specifications: [
@@ -1856,7 +1856,7 @@ const products = [
       color: [
         {
           colorname: 'fff',
-          image: 'product-61a3eb25a227f02ee080745e-fff.png',
+          // image: 'product-61a3eb25a227f02ee080745e-fff.png',
           sizes: [
             {
               size: 'XS',
@@ -1886,7 +1886,7 @@ const products = [
         },
         {
           colorname: '7e7e7e',
-          image: 'product-61a3eb25a227f02ee080745e-7e7e7e.png',
+          // image: 'product-61a3eb25a227f02ee080745e-7e7e7e.png',
           sizes: [
             {
               size: 'XS',
@@ -1916,7 +1916,7 @@ const products = [
         },
         {
           colorname: '000',
-          image: 'product-61a3eb25a227f02ee080745e-000.png',
+          // image: 'product-61a3eb25a227f02ee080745e-000.png',
           sizes: [
             {
               size: 'XS',
@@ -1952,7 +1952,7 @@ const products = [
   // --------------------------------------------------------------
   {
     _id: '61a3eb9425a4dda5335ba67d',
-    name: 'Sudadera de Mandalorian Samurái Niño',
+    name: 'Sudadera de Mandalorian Samurái',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum, sapien ac tempor blandit, nulla ante semper urna, non gravida erat mauris eu diam. Aenean finibus, eros sit amet semper ornare, dui magna pellentesque purus, et malesuada ligula metus tincidunt mauris. Phasellus vulputate sed eros vel facilisis.',
     specifications: [
@@ -1972,7 +1972,7 @@ const products = [
       color: [
         {
           colorname: 'fff',
-          image: 'product-61a3eb9425a4dda5335ba67d-fff.png',
+          // image: 'product-61a3eb9425a4dda5335ba67d-fff.png',
           sizes: [
             {
               size: 'XS',
@@ -2002,7 +2002,7 @@ const products = [
         },
         {
           colorname: '7e7e7e',
-          image: 'product-61a3eb9425a4dda5335ba67d-7e7e7e.png',
+          // image: 'product-61a3eb9425a4dda5335ba67d-7e7e7e.png',
           sizes: [
             {
               size: 'XS',
@@ -2032,7 +2032,7 @@ const products = [
         },
         {
           colorname: '000',
-          image: 'product-61a3eb9425a4dda5335ba67d-000.png',
+          // image: 'product-61a3eb9425a4dda5335ba67d-000.png',
           sizes: [
             {
               size: 'XS',
@@ -2068,7 +2068,7 @@ const products = [
   // --------------------------------------------------------------
   {
     _id: '61a3ebdc5ed7530f88969285',
-    name: 'Sudadera de Stormtrooper azul Niño',
+    name: 'Sudadera de Stormtrooper azul',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum, sapien ac tempor blandit, nulla ante semper urna, non gravida erat mauris eu diam. Aenean finibus, eros sit amet semper ornare, dui magna pellentesque purus, et malesuada ligula metus tincidunt mauris. Phasellus vulputate sed eros vel facilisis.',
     specifications: [
@@ -2088,7 +2088,7 @@ const products = [
       color: [
         {
           colorname: 'fff',
-          image: 'product-61a3ebdc5ed7530f88969285-fff.png',
+          // image: 'product-61a3ebdc5ed7530f88969285-fff.png',
           sizes: [
             {
               size: 'XS',
@@ -2118,7 +2118,7 @@ const products = [
         },
         {
           colorname: '7e7e7e',
-          image: 'product-61a3ebdc5ed7530f88969285-7e7e7e.png',
+          // image: 'product-61a3ebdc5ed7530f88969285-7e7e7e.png',
           sizes: [
             {
               size: 'XS',
@@ -2148,7 +2148,7 @@ const products = [
         },
         {
           colorname: '000',
-          image: 'product-61a3ebdc5ed7530f88969285-000.png',
+          // image: 'product-61a3ebdc5ed7530f88969285-000.png',
           sizes: [
             {
               size: 'XS',
@@ -2184,7 +2184,7 @@ const products = [
   // --------------------------------------------------------------
   {
     _id: '61a3ed1f80db0e660b4cd374',
-    name: 'Sudadera de Boston Celtics Mujer',
+    name: 'Sudadera de Boston Celtics',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum, sapien ac tempor blandit, nulla ante semper urna, non gravida erat mauris eu diam. Aenean finibus, eros sit amet semper ornare, dui magna pellentesque purus, et malesuada ligula metus tincidunt mauris. Phasellus vulputate sed eros vel facilisis.',
     specifications: [
@@ -2204,7 +2204,7 @@ const products = [
       color: [
         {
           colorname: 'fff',
-          image: 'product-61a3ed1f80db0e660b4cd374-fff.png',
+          // image: 'product-61a3ed1f80db0e660b4cd374-fff.png',
           sizes: [
             {
               size: 'XS',
@@ -2234,7 +2234,7 @@ const products = [
         },
         {
           colorname: '7e7e7e',
-          image: 'product-61a3ed1f80db0e660b4cd374-7e7e7e.png',
+          // image: 'product-61a3ed1f80db0e660b4cd374-7e7e7e.png',
           sizes: [
             {
               size: 'XS',
@@ -2264,7 +2264,7 @@ const products = [
         },
         {
           colorname: '000',
-          image: 'product-61a3ed1f80db0e660b4cd374-000.png',
+          // image: 'product-61a3ed1f80db0e660b4cd374-000.png',
           sizes: [
             {
               size: 'XS',
@@ -2300,7 +2300,7 @@ const products = [
   // --------------------------------------------------------------
   {
     _id: '61a3ed9e472abb94ac2e96f4',
-    name: 'Sudadera de New York Giants Mujer',
+    name: 'Sudadera de New York Giants',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum, sapien ac tempor blandit, nulla ante semper urna, non gravida erat mauris eu diam. Aenean finibus, eros sit amet semper ornare, dui magna pellentesque purus, et malesuada ligula metus tincidunt mauris. Phasellus vulputate sed eros vel facilisis.',
     specifications: [
@@ -2320,7 +2320,7 @@ const products = [
       color: [
         {
           colorname: 'fff',
-          image: 'product-61a3ed9e472abb94ac2e96f4-fff.png',
+          // image: 'product-61a3ed9e472abb94ac2e96f4-fff.png',
           sizes: [
             {
               size: 'XS',
@@ -2350,7 +2350,7 @@ const products = [
         },
         {
           colorname: '7e7e7e',
-          image: 'product-61a3ed9e472abb94ac2e96f4-7e7e7e.png',
+          // image: 'product-61a3ed9e472abb94ac2e96f4-7e7e7e.png',
           sizes: [
             {
               size: 'XS',
@@ -2380,7 +2380,7 @@ const products = [
         },
         {
           colorname: '000',
-          image: 'product-61a3ed9e472abb94ac2e96f4-000.png',
+          // image: 'product-61a3ed9e472abb94ac2e96f4-000.png',
           sizes: [
             {
               size: 'XS',
@@ -2416,7 +2416,7 @@ const products = [
   // --------------------------------------------------------------
   {
     _id: '61a3ee1c5a0b627628e61a45',
-    name: 'Sudadera de C3PO Caricatura Niña',
+    name: 'Sudadera de C3PO Caricatura',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum, sapien ac tempor blandit, nulla ante semper urna, non gravida erat mauris eu diam. Aenean finibus, eros sit amet semper ornare, dui magna pellentesque purus, et malesuada ligula metus tincidunt mauris. Phasellus vulputate sed eros vel facilisis.',
     specifications: [
@@ -2436,7 +2436,7 @@ const products = [
       color: [
         {
           colorname: 'fff',
-          image: 'product-61a3ee1c5a0b627628e61a45-fff.png',
+          // image: 'product-61a3ee1c5a0b627628e61a45-fff.png',
           sizes: [
             {
               size: 'XS',
@@ -2466,7 +2466,7 @@ const products = [
         },
         {
           colorname: '7e7e7e',
-          image: 'product-61a3ee1c5a0b627628e61a45-7e7e7e.png',
+          // image: 'product-61a3ee1c5a0b627628e61a45-7e7e7e.png',
           sizes: [
             {
               size: 'XS',
@@ -2496,7 +2496,7 @@ const products = [
         },
         {
           colorname: '000',
-          image: 'product-61a3ee1c5a0b627628e61a45-000.png',
+          // image: 'product-61a3ee1c5a0b627628e61a45-000.png',
           sizes: [
             {
               size: 'XS',
@@ -2532,7 +2532,7 @@ const products = [
   // --------------------------------------------------------------
   {
     _id: '61a3ee72a9b6796d1c86360f',
-    name: 'Sudadera de Green Bay Packers Niña',
+    name: 'Sudadera de Green Bay Packers',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum, sapien ac tempor blandit, nulla ante semper urna, non gravida erat mauris eu diam. Aenean finibus, eros sit amet semper ornare, dui magna pellentesque purus, et malesuada ligula metus tincidunt mauris. Phasellus vulputate sed eros vel facilisis.',
     specifications: [
@@ -2552,7 +2552,7 @@ const products = [
       color: [
         {
           colorname: 'fff',
-          image: 'product-61a3ee72a9b6796d1c86360f-fff.png',
+          // image: 'product-61a3ee72a9b6796d1c86360f-fff.png',
           sizes: [
             {
               size: 'XS',
@@ -2582,7 +2582,7 @@ const products = [
         },
         {
           colorname: '7e7e7e',
-          image: 'product-61a3ee72a9b6796d1c86360f-7e7e7e.png',
+          // image: 'product-61a3ee72a9b6796d1c86360f-7e7e7e.png',
           sizes: [
             {
               size: 'XS',
@@ -2612,7 +2612,7 @@ const products = [
         },
         {
           colorname: '000',
-          image: 'product-61a3ee72a9b6796d1c86360f-000.png',
+          // image: 'product-61a3ee72a9b6796d1c86360f-000.png',
           sizes: [
             {
               size: 'XS',
@@ -2648,7 +2648,7 @@ const products = [
   // --------------------------------------------------------------
   {
     _id: '61a3ef22727ec63a9a577fb5',
-    name: 'Sudadera de Ferrari Hombre',
+    name: 'Sudadera de Ferrari',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum, sapien ac tempor blandit, nulla ante semper urna, non gravida erat mauris eu diam. Aenean finibus, eros sit amet semper ornare, dui magna pellentesque purus, et malesuada ligula metus tincidunt mauris. Phasellus vulputate sed eros vel facilisis.',
     specifications: [
@@ -2668,7 +2668,7 @@ const products = [
       color: [
         {
           colorname: 'fff',
-          image: 'product-61a3ef22727ec63a9a577fb5-fff.png',
+          // image: 'product-61a3ef22727ec63a9a577fb5-fff.png',
           sizes: [
             {
               size: 'XS',
@@ -2698,7 +2698,7 @@ const products = [
         },
         {
           colorname: '7e7e7e',
-          image: 'product-61a3ef22727ec63a9a577fb5-7e7e7e.png',
+          // image: 'product-61a3ef22727ec63a9a577fb5-7e7e7e.png',
           sizes: [
             {
               size: 'XS',
@@ -2728,7 +2728,7 @@ const products = [
         },
         {
           colorname: '000',
-          image: 'product-61a3ef22727ec63a9a577fb5-000.png',
+          // image: 'product-61a3ef22727ec63a9a577fb5-000.png',
           sizes: [
             {
               size: 'XS',
@@ -2764,7 +2764,7 @@ const products = [
   // --------------------------------------------------------------
   {
     _id: '61a3ef46d2f72ac1c1bf1757',
-    name: 'Sudadera de Real Madrid Hombre',
+    name: 'Sudadera de Real Madrid',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum, sapien ac tempor blandit, nulla ante semper urna, non gravida erat mauris eu diam. Aenean finibus, eros sit amet semper ornare, dui magna pellentesque purus, et malesuada ligula metus tincidunt mauris. Phasellus vulputate sed eros vel facilisis.',
     specifications: [
@@ -2784,7 +2784,7 @@ const products = [
       color: [
         {
           colorname: 'fff',
-          image: 'product-61a3ef46d2f72ac1c1bf1757-fff.png',
+          // image: 'product-61a3ef46d2f72ac1c1bf1757-fff.png',
           sizes: [
             {
               size: 'XS',
@@ -2814,7 +2814,7 @@ const products = [
         },
         {
           colorname: '7e7e7e',
-          image: 'product-61a3ef46d2f72ac1c1bf1757-7e7e7e.png',
+          // image: 'product-61a3ef46d2f72ac1c1bf1757-7e7e7e.png',
           sizes: [
             {
               size: 'XS',
@@ -2844,7 +2844,7 @@ const products = [
         },
         {
           colorname: '000',
-          image: 'product-61a3ef46d2f72ac1c1bf1757-000.png',
+          // image: 'product-61a3ef46d2f72ac1c1bf1757-000.png',
           sizes: [
             {
               size: 'XS',
@@ -2901,7 +2901,7 @@ const products = [
       color: [
         {
           colorname: '0e5e4f',
-          image: 'product-61a3fd3ecd16ad476ef424ee-0e5e4f.png',
+          // image: 'product-61a3fd3ecd16ad476ef424ee-0e5e4f.png',
           sizes: [
             {
               size: 'general',
@@ -2911,7 +2911,7 @@ const products = [
         },
         {
           colorname: '1e2e4a',
-          image: 'product-61a3fd3ecd16ad476ef424ee-1e2e4a.png',
+          // image: 'product-61a3fd3ecd16ad476ef424ee-1e2e4a.png',
           sizes: [
             {
               size: 'general',
@@ -2921,7 +2921,7 @@ const products = [
         },
         {
           colorname: '87253b',
-          image: 'product-61a3fd3ecd16ad476ef424ee-87253b.png',
+          // image: 'product-61a3fd3ecd16ad476ef424ee-87253b.png',
           sizes: [
             {
               size: 'general',
@@ -2955,7 +2955,7 @@ const products = [
       color: [
         {
           colorname: 'b49f88',
-          image: 'product-61a40d0c1683fb5757111882-b49f88.png',
+          // image: 'product-61a40d0c1683fb5757111882-b49f88.png',
           sizes: [
             {
               size: 'general',
@@ -2965,7 +2965,7 @@ const products = [
         },
         {
           colorname: 'd39958',
-          image: 'product-61a40d0c1683fb5757111882-d39958.png',
+          // image: 'product-61a40d0c1683fb5757111882-d39958.png',
           sizes: [
             {
               size: 'general',
@@ -2999,7 +2999,7 @@ const products = [
       color: [
         {
           colorname: '1e2e4a',
-          image: 'product-61a40f412d1ab90a95ef03b5-1e2e4a.png',
+          // image: 'product-61a40f412d1ab90a95ef03b5-1e2e4a.png',
           sizes: [
             {
               size: 'general',
@@ -3033,7 +3033,7 @@ const products = [
       color: [
         {
           colorname: 'edbf5b',
-          image: 'product-61a40fe61f5682408b095ba8-edbf5b.png',
+          // image: 'product-61a40fe61f5682408b095ba8-edbf5b.png',
           sizes: [
             {
               size: 'general',
@@ -3067,7 +3067,7 @@ const products = [
       color: [
         {
           colorname: 'fff',
-          image: 'product-61a410746b875b84e7f81f65-fff.png',
+          // image: 'product-61a410746b875b84e7f81f65-fff.png',
           sizes: [
             {
               size: 'general',
@@ -3101,7 +3101,7 @@ const products = [
       color: [
         {
           colorname: 'fff',
-          image: 'product-61a410e29883eb2b44fcf3d8-fff.png',
+          // image: 'product-61a410e29883eb2b44fcf3d8-fff.png',
           sizes: [
             {
               size: 'general',
@@ -3135,7 +3135,7 @@ const products = [
       color: [
         {
           colorname: '1e2e4a',
-          image: 'product-61a411b1128957e0cb6b062a-1e2e4a.png',
+          // image: 'product-61a411b1128957e0cb6b062a-1e2e4a.png',
           sizes: [
             {
               size: 'general',
@@ -3169,7 +3169,7 @@ const products = [
       color: [
         {
           colorname: 'af7640',
-          image: 'product-61a4122c9d583629ea8e02ca-af7640.png',
+          // image: 'product-61a4122c9d583629ea8e02ca-af7640.png',
           sizes: [
             {
               size: 'general',
@@ -3179,7 +3179,7 @@ const products = [
         },
         {
           colorname: 'fff',
-          image: 'product-61a4122c9d583629ea8e02ca-fff.png',
+          // image: 'product-61a4122c9d583629ea8e02ca-fff.png',
           sizes: [
             {
               size: 'general',
@@ -3213,7 +3213,7 @@ const products = [
       color: [
         {
           colorname: 'daa13f',
-          image: 'product-61a412d51151de4f5ccb9ae5-daa13f.png',
+          // image: 'product-61a412d51151de4f5ccb9ae5-daa13f.png',
           sizes: [
             {
               size: 'general',
@@ -3223,7 +3223,7 @@ const products = [
         },
         {
           colorname: 'e5c380',
-          image: 'product-61a412d51151de4f5ccb9ae5-e5c380.png',
+          // image: 'product-61a412d51151de4f5ccb9ae5-e5c380.png',
           sizes: [
             {
               size: 'general',
@@ -3233,7 +3233,7 @@ const products = [
         },
         {
           colorname: 'fff',
-          image: 'product-61a412d51151de4f5ccb9ae5-fff.png',
+          // image: 'product-61a412d51151de4f5ccb9ae5-fff.png',
           sizes: [
             {
               size: 'general',
@@ -3267,7 +3267,7 @@ const products = [
       color: [
         {
           colorname: 'edbf5b',
-          image: 'product-61a41378edc43572b6a3d835-edbf5b.png',
+          // image: 'product-61a41378edc43572b6a3d835-edbf5b.png',
           sizes: [
             {
               size: 'general',
@@ -3301,7 +3301,7 @@ const products = [
       color: [
         {
           colorname: 'fff',
-          image: 'product-61a41484471e5f315bb17f47-fff.png',
+          // image: 'product-61a41484471e5f315bb17f47-fff.png',
           sizes: [
             {
               size: 'general',
@@ -3335,7 +3335,7 @@ const products = [
       color: [
         {
           colorname: 'fff',
-          image: 'product-61a414edf0de015fbe75af0f-fff.png',
+          // image: 'product-61a414edf0de015fbe75af0f-fff.png',
           sizes: [
             {
               size: 'general',
@@ -3369,7 +3369,7 @@ const products = [
       color: [
         {
           colorname: 'fff',
-          image: 'product-61a41585147a482fe4962e4c-fff.png',
+          // image: 'product-61a41585147a482fe4962e4c-fff.png',
           sizes: [
             {
               size: 'general',
@@ -3403,7 +3403,7 @@ const products = [
       color: [
         {
           colorname: 'fff',
-          image: 'product-61a4162ee7547e6c0c506d95-fff.png',
+          // image: 'product-61a4162ee7547e6c0c506d95-fff.png',
           sizes: [
             {
               size: 'general',
@@ -3437,7 +3437,7 @@ const products = [
       color: [
         {
           colorname: 'fff',
-          image: 'product-61a4168fdf676287ed54f2d1-fff.png',
+          // image: 'product-61a4168fdf676287ed54f2d1-fff.png',
           sizes: [
             {
               size: 'general',
@@ -3471,7 +3471,7 @@ const products = [
       color: [
         {
           colorname: 'fff',
-          image: 'product-61a416d4a8694fcc22ef3138-fff.png',
+          // image: 'product-61a416d4a8694fcc22ef3138-fff.png',
           sizes: [
             {
               size: 'general',

@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 
 import localOrderReducer from './orders/ordersReducer';
 import productsReducer from './products/productsReducer';
-import cartReducer from './cart/cartReducers';
+import cartReducer from './cart/cartReducer';
 import userReducer from './user/userReducer';
 import uiReducer from './ui/uiReducer';
 

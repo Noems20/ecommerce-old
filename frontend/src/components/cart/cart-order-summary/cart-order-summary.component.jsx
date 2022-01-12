@@ -26,37 +26,42 @@ const OrderInfoItem = ({ name, price, quantity = null }) => {
   );
 };
 
-const CartOrderSummary = () => {
+const CartOrderSummary = ({ cart, productsAmmount, totalPrice }) => {
   return (
     <Container>
       <Title>Resumen de orden</Title>
       <OrderInfo>
-        <OrderInfoTitle>Productos</OrderInfoTitle>
-        <ItemsContainer>
-          <OrderInfoItem
-            name='Taza de los Golden State Warriors'
-            price='225'
-            quantity={5}
-          />
-          <OrderInfoItem
-            name='Taza de los Dallas Mavericks'
-            price='225'
-            quantity={5}
-          />
-          <OrderInfoItem
-            name='Taza de los Angeles Lakers'
-            price='225'
-            quantity={5}
-          />
-          <OrderInfoItem name='Agenda 2022' price='225' quantity={5} />
-        </ItemsContainer>
-        <OrderInfoTitle>Total</OrderInfoTitle>
-        <TotalContainer>
-          <OrderInfoItem name={`Subtotal(20)`} price='2250' />
-          <OrderInfoItem name='Envio' price='50' />
-          <OrderInfoItem name='Precio total' price='2300' />
-        </TotalContainer>
-        <CustomButton primary>Proceder al pago</CustomButton>
+        {cart.length > 0 ? (
+          <>
+            <OrderInfoTitle>Productos</OrderInfoTitle>
+            <ItemsContainer>
+              {cart.map((cartItem) => {
+                return (
+                  <OrderInfoItem
+                    name={cartItem.name}
+                    price={cartItem.totalprice}
+                    quantity={cartItem.quantity}
+                    key={cartItem._id}
+                  />
+                );
+              })}
+            </ItemsContainer>
+            <OrderInfoTitle>Total</OrderInfoTitle>
+            <TotalContainer>
+              <OrderInfoItem
+                name={`Subtotal(${productsAmmount})`}
+                price={totalPrice}
+              />
+              <OrderInfoItem name='Envio' price='50' />
+              <OrderInfoItem name='Precio total' price={totalPrice + 50} />
+            </TotalContainer>
+            <CustomButton primary>Proceder al pago</CustomButton>{' '}
+          </>
+        ) : (
+          <OrderInfoTitle style={{ textAlign: 'center' }}>
+            Tu carrito esta vacío
+          </OrderInfoTitle>
+        )}
       </OrderInfo>
     </Container>
   );

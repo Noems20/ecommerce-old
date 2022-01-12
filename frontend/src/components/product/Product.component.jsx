@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 // REDUX
+import { useDispatch, useSelector } from 'react-redux';
+import { setCart } from '../../redux/cart/cartActions';
 
 // COMPONENTS
 import CustomButton from '../custom-button/custom-button.component';
@@ -47,6 +50,9 @@ const Product = ({ product }) => {
   );
   const [collapse, setCollapse] = useState(false);
   const [limit, setLimit] = useState(selectedSubCategory.sizes[0].quantity);
+
+  const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.user);
 
   const imageVariants = {
     hidden: {
@@ -136,6 +142,12 @@ const Product = ({ product }) => {
       }
     }
     setSelectedSize(size.size);
+  };
+
+  const handleAddToCart = () => {
+    dispatch(
+      setCart(product._id, selectedColor.replace('#', ''), selectedSize, qty)
+    );
   };
 
   const productImages = (
@@ -230,10 +242,18 @@ const Product = ({ product }) => {
           />
         </DetailsContainer>
         {/* ------------- ADD TO CART ------------- */}
-        <CustomButton primary>Añadir a carrito</CustomButton>
+        {user ? (
+          <CustomButton primary onClick={handleAddToCart}>
+            Añadir a carrito
+          </CustomButton>
+        ) : (
+          <CustomButton as={Link} to='/login' primary={1}>
+            Añadir a carrito
+          </CustomButton>
+        )}
+
         {/* ------------ PRODUCT IMGAES ------------- */}
         {collapse && productImages}
-
         {/* ------------- DESCRIPTION ------------- */}
         <Description>
           <InfoTitle>Descripción</InfoTitle>

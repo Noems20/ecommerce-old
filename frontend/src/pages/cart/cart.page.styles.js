@@ -17,3 +17,11 @@ export const Container = styled.div`
     margin: 3rem;
   }
 `;
+
+export const EmptyTitle = styled.h1`
+  text-align: center;
+  font-size: 3rem;
+  color: var(--color-grey-product);
+
+  margin-top: 5rem;
+`;

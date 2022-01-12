@@ -44,10 +44,12 @@ export const updateCartProducts = catchAsync(async (req, res, next) => {
 
   let valid = false;
   let productSize = {};
+  let productColor = {};
 
   // Check if is a valid product (Color and size)
   for (let color of doc.subcategory.color) {
     if (color.colorname === colorname) {
+      productColor = color;
       for (let colorSize of color.sizes) {
         if (colorSize.size === size) {
           valid = true;
@@ -73,7 +75,7 @@ export const updateCartProducts = catchAsync(async (req, res, next) => {
   let exists = false;
   for (let idx in productsCart) {
     if (
-      productsCart[idx].product.id == product &&
+      productsCart[idx].product == product &&
       productsCart[idx].colorname === colorname &&
       productsCart[idx].size === size
     ) {
@@ -87,6 +89,8 @@ export const updateCartProducts = catchAsync(async (req, res, next) => {
         productsCart.splice(idx, 1);
       } else {
         productsCart[idx].quantity += quantity;
+        productsCart[idx].totalprice =
+          Math.round(doc.price * productsCart[idx].quantity * 100) / 100;
       }
       exists = true;
       break;
@@ -101,7 +105,19 @@ export const updateCartProducts = catchAsync(async (req, res, next) => {
         })
       );
     }
-    productsCart.push({ product, quantity, colorname, size });
+    const totalprice = quantity * doc.price;
+    productsCart.push({
+      product,
+      name: doc.name,
+      slug: doc.slug,
+      for: doc.for,
+      image: productColor.image,
+      quantity,
+      price: Math.round(doc.price * 100) / 100,
+      totalprice: Math.round(totalprice * 100) / 100,
+      colorname,
+      size,
+    });
   }
 
   const updatedUser = await User.findByIdAndUpdate(
@@ -116,8 +132,6 @@ export const updateCartProducts = catchAsync(async (req, res, next) => {
   res.status(200).json({
     status: 'success',
     results: productsCart.length,
-    data: updatedUser,
+    data: updatedUser.productsCart,
   });
 });
-// export const updateUserCartProducts = updateOne(User);
-// export const deleteUserCartProducts = deleteOne(User);

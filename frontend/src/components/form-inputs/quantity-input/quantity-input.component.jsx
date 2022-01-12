@@ -7,22 +7,36 @@ const QuantityInput = ({
   handleChange,
   limit = 10,
   quantity,
-  setQuantity,
+  setQuantity = null,
+  incHandler = null,
+  decHandler = null,
   ...props
 }) => {
+  const dec = () => {
+    if (quantity > 1) {
+      if (setQuantity !== null) setQuantity(Number(quantity) - 1);
+      if (decHandler !== null) {
+        decHandler();
+      }
+    }
+  };
+
+  const inc = () => {
+    if (quantity < limit) {
+      if (setQuantity !== null) setQuantity(Number(quantity) + 1);
+      if (incHandler !== null) {
+        incHandler();
+      }
+    }
+  };
+
   return (
     <Container>
-      <Operator
-        type='button'
-        onClick={() => quantity > 1 && setQuantity(Number(quantity) - 1)}
-      >
+      <Operator type='button' onClick={dec}>
         -
       </Operator>
       <Input onChange={handleChange} value={quantity} {...props} />
-      <Operator
-        type='button'
-        onClick={() => quantity < limit && setQuantity(Number(quantity) + 1)}
-      >
+      <Operator type='button' onClick={inc}>
         +
       </Operator>
     </Container>

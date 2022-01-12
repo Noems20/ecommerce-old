@@ -109,6 +109,7 @@ const Header = () => {
 
   const dispatch = useDispatch();
   const { user, userLoaded } = useSelector((state) => state.user);
+  const { productsAmmount } = useSelector((state) => state.cart);
 
   const renderMenu = () => {
     switch (activeMenu) {
@@ -193,7 +194,7 @@ const Header = () => {
                   <>
                     <FiShoppingCart />
                     <CartCount>
-                      <p>5</p>
+                      <p>{productsAmmount}</p>
                     </CartCount>
                   </>
                 )}

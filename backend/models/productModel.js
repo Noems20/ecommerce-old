@@ -192,7 +192,7 @@ productSchema.virtual('reviews', {
 
 // DOCUMENT MIDDLEWARE runs before .save() and .create() not insertMany(), update(), findOneAndUpdate()
 productSchema.pre('save', function (next) {
-  this.slug = slugify(this.name, { lower: true });
+  this.slug = slugify(this.name + ' ' + this.for, { lower: true });
   next();
 });
 

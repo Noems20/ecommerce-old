@@ -82,6 +82,8 @@ export const Image = styled.img`
 export const Title = styled.h2`
   font-size: 1.8rem;
   font-weight: 600;
+  color: #000;
+  text-decoration: none;
 
   @media only screen and (max-width: 700px) {
     text-align: center;

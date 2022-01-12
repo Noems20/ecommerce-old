@@ -16,6 +16,11 @@ export const Input = styled.input`
   width: 3.5rem;
 
   text-align: center;
+
+  &:disabled {
+    background-color: transparent;
+    /* cursor: not-allowed; */
+  }
 `;
 
 export const Operator = styled.button`

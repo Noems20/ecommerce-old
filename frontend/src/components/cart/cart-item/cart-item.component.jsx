@@ -1,4 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
+
+// REDUX
+import { useDispatch } from 'react-redux';
+import { setCart } from '../../../redux/cart/cartActions';
 
 // COMPONENTS
 import QuantityInput from '../../form-inputs/quantity-input/quantity-input.component';
@@ -21,48 +27,78 @@ import {
   InfoSubContainer,
 } from './cart-item.styles';
 
-const CartItem = ({ cartProduct }) => {
+const CartItem = ({
+  cartProduct: {
+    product,
+    name,
+    slug,
+    for: forString,
+    colorname,
+    image,
+    size,
+    quantity,
+    price,
+  },
+}) => {
   // --------------------------------- STATE AND CONSTANTS ----------------------
-  const [qty, setQty] = useState(cartProduct.quantity);
-  const limit = 15;
+  const [limit, setLimit] = useState(0);
+
+  const dispatch = useDispatch();
+
+  // ---------------------------------- USE EFFECTS ---------------------------
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+      const { data } = await axios.get(`/api/v1/products/${product}`);
+      for (let color of data.data.subcategory.color) {
+        if (color.colorname === colorname) {
+          for (let colorSize of color.sizes) {
+            if (colorSize.size === size) {
+              console.log(colorSize.quantity);
+              setLimit(colorSize.quantity);
+              break;
+            }
+          }
+          break;
+        }
+      }
+    };
+    fetchProduct();
+  }, [colorname, product, size]);
 
   // -------------------------------- HANDLERS -------------------------------
-  const handleQuantityChange = (e) => {
-    const { value } = e.target;
 
-    if (value === '') {
-      setQty(value);
-    } else if (value > limit) {
-      setQty(limit);
-    } else if (value < 1) {
-      setQty(1);
-    } else {
-      setQty(value);
-    }
+  const deleteFromCart = () => {
+    dispatch(setCart(product, colorname, size, quantity * -1));
   };
+
+  const incHandler = () => {
+    dispatch(setCart(product, colorname, size, 1));
+  };
+  const decHandler = () => {
+    dispatch(setCart(product, colorname, size, -1));
+  };
+
   return (
     <DecorationCard>
       <Content>
         <ImageContainer>
-          <Image
-            src={`/img/products/product-${cartProduct._id}-${cartProduct.colorname}.png`}
-            alt='producto'
-          />
+          <Image src={`/img/products/${image}`} alt='producto' />
         </ImageContainer>
         <InfoContainer>
-          <Title>{cartProduct.name}</Title>
+          <Title to={`/producto/${slug}`} as={Link}>
+            {name}
+          </Title>
           <InfoSubContainer>
-            {cartProduct.for !== 'general' && (
-              <Detail>Para: {cartProduct.for}</Detail>
-            )}
+            {forString !== 'general' && <Detail>Para: {forString}</Detail>}
             <Detail>
               Color:
-              <ColorDot color={`#${cartProduct.colorname}`} />
+              <ColorDot color={`#${colorname}`} />
             </Detail>
-            {cartProduct.size !== 'general' && (
+            {size !== 'general' && (
               <Detail>
                 Talla:
-                <SizeItem className={'selected'}>{cartProduct.size}</SizeItem>
+                <SizeItem className={'selected'}>{size}</SizeItem>
               </Detail>
             )}
           </InfoSubContainer>
@@ -70,17 +106,20 @@ const CartItem = ({ cartProduct }) => {
         <QuantityContainer>
           <Title>Cantidad</Title>
           <QuantityInput
-            quantity={qty}
+            quantity={quantity}
             limit={limit}
-            setQuantity={setQty}
-            handleChange={handleQuantityChange}
+            incHandler={incHandler}
+            decHandler={decHandler}
             required
+            disabled
           />
-          <CustomButton danger>Eliminar</CustomButton>
+          <CustomButton danger onClick={deleteFromCart}>
+            Eliminar
+          </CustomButton>
         </QuantityContainer>
         <PriceContainer>
           <Title>Precio</Title>
-          <Price>{`$${cartProduct.quantity * cartProduct.price}`}</Price>
+          <Price>{`$${price}`}</Price>
         </PriceContainer>
       </Content>
     </DecorationCard>

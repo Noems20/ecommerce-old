@@ -8,6 +8,9 @@ import crypto from 'crypto';
 
 const userSchema = new mongoose.Schema(
   {
+    // -----------------------------------------------------------------
+    //                           USER INFO
+    // -----------------------------------------------------------------
     name: {
       type: String,
       required: [true, 'No puede estar vacío'],
@@ -40,6 +43,9 @@ const userSchema = new mongoose.Schema(
       },
       default: 'user',
     },
+    // -----------------------------------------------------------------
+    //                           PRODUCTS CART
+    // -----------------------------------------------------------------
     productsCart: {
       type: [
         {
@@ -74,10 +80,6 @@ const userSchema = new mongoose.Schema(
           quantity: {
             type: Number,
             min: [1, 'Debe tener una cantidad mayor a 0'],
-            // validate: {
-            //   validator: Number.isInteger,
-            //   message: '{VALUE} is not an integer value',
-            // },
             required: [true, 'Debe tener una cantidad'],
           },
           price: {
@@ -92,6 +94,108 @@ const userSchema = new mongoose.Schema(
       ],
       default: [],
     },
+    // -----------------------------------------------------------------
+    //                             ADDRESSES
+    // -----------------------------------------------------------------
+    addresses: {
+      type: [
+        {
+          default: {
+            type: Boolean,
+            default: false,
+          },
+          state: {
+            type: String,
+            enum: {
+              values: ['Zacatecas'],
+              message: 'Selecciona un estado valido',
+            },
+            required: [true, 'No puede estar vacío'],
+          },
+          city: {
+            type: String,
+            enum: {
+              values: ['Zacatecas', 'Guadalupe'],
+              message: 'Selecciona una ciudad valida',
+            },
+            required: [true, 'No puede estar vacío'],
+          },
+          suburb: {
+            type: String,
+            trim: true,
+            required: [true, 'No puede estar vacío'],
+          },
+          postalcode: {
+            type: String,
+            trim: true,
+            minlength: [5, 'Debe ser un código postal valido'],
+            maxlength: [5, 'Debe ser un código postal valido'],
+            required: [true, 'No puede estar vacío'],
+          },
+          address: {
+            type: String,
+            trim: true,
+            required: [true, 'No puede estar vacío'],
+          },
+          phone: {
+            type: String,
+            trim: true,
+            validate: [validator.isNumeric, 'Solo debe contener numeros'],
+            minlength: [10, 'Un número telefónico tiene 10 digitos'],
+            maxlength: [10, 'Un número telefónico tiene 10 digitos'],
+            required: [true, 'No puede estar vacío'],
+          },
+          references: {
+            type: String,
+            trim: true,
+            default: '',
+            validate: {
+              validator: function (value) {
+                if (value !== '') {
+                  return validator.isAlphanumeric(
+                    value.split(' ').join(''),
+                    'es-ES',
+                    {
+                      ignore: ',.!¡¿?"()',
+                    }
+                  );
+                }
+                return true;
+              },
+              message: 'Solo puede contener caracteres y números',
+            },
+          },
+          instructions: {
+            type: String,
+            trim: true,
+            default: '',
+            validate: {
+              validator: function (value) {
+                if (value !== '') {
+                  return validator.isAlphanumeric(
+                    value.split(' ').join(''),
+                    'es-ES',
+                    {
+                      ignore: ',.!¡¿?"()',
+                    }
+                  );
+                }
+                return true;
+              },
+              message: 'Solo puede contener caracteres y números',
+            },
+          },
+        },
+      ],
+      default: [],
+      validate: {
+        validator: (v) => Array.isArray(v) && v.length <= 3,
+        message: 'Solo puede tener un maximo de 3 direcciones',
+      },
+    },
+    // -----------------------------------------------------------------
+    //                           PASSWORDS
+    // -----------------------------------------------------------------
     password: {
       type: String,
       required: [true, 'No puede estar vacío'],
@@ -122,7 +226,7 @@ const userSchema = new mongoose.Schema(
 );
 
 // userSchema.pre(/^find/, function (next) {
-//   this.populate('productsCart.product');
+//   this.populate('productsCart.product', 'name slug for subcategory');
 //   next();
 // });
 

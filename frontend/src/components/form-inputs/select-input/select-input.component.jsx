@@ -8,6 +8,7 @@ const SelectInput = ({ label, error, value, children, ...otherProps }) => {
     <Container>
       <Selector
         className={value.length ? 'active' : ''}
+        defaultValue={value ? value : ''}
         {...otherProps}
         error={error ? 1 : 0}
       >

@@ -54,7 +54,6 @@ const CartItem = ({
         if (color.colorname === colorname) {
           for (let colorSize of color.sizes) {
             if (colorSize.size === size) {
-              console.log(colorSize.quantity);
               setLimit(colorSize.quantity);
               break;
             }

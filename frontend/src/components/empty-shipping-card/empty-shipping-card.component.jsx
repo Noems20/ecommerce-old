@@ -1,5 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { AnimatePresence } from 'framer-motion';
+
+// REDUX
+import { useDispatch, useSelector } from 'react-redux';
+import { setAddresses } from '../../redux/addresses/addressesActions';
+import { clearUiErrors, clearSuccess } from '../../redux/ui/uiActions';
 
 // COMPONENTS
 import Modal from '../modal/modal.component';
@@ -20,7 +25,7 @@ import {
 // ICONS
 import { BsPlusCircle } from 'react-icons/bs';
 
-const EmptyShippingCard = () => {
+const EmptyShippingCard = ({ index }) => {
   // ----------------------------- STATE AND CONSTANTS ----------------
   const [open, setOpen] = useState(false);
   // const [city, setCity] = useState('');
@@ -46,11 +51,58 @@ const EmptyShippingCard = () => {
     instructions,
   } = addressData;
 
+  const dispatch = useDispatch();
+  const {
+    uiErrors: { errorsOne },
+    loading,
+    success,
+  } = useSelector((state) => state.ui);
+
+  // ---------------------------------- USE EFFECT'S ---------------------------
+  useEffect(() => {
+    if (success) {
+      setOpen(false);
+      setAddressData({
+        state: '',
+        city: '',
+        suburb: '',
+        postalCode: '',
+        address: '',
+        phone: '',
+        references: '',
+        instructions: '',
+      });
+      dispatch(clearUiErrors());
+      dispatch(clearSuccess());
+    }
+  }, [success, dispatch]);
   // ---------------------------------- HANDLERS ---------------------------
   const handleChange = (event) => {
     const { name, value } = event.target;
 
     setAddressData({ ...addressData, [name]: value });
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+    dispatch(clearUiErrors());
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(
+      setAddresses(
+        index,
+        state,
+        city,
+        postalCode,
+        phone,
+        suburb,
+        address,
+        references,
+        instructions
+      )
+    );
   };
 
   return (
@@ -64,8 +116,8 @@ const EmptyShippingCard = () => {
 
       <AnimatePresence>
         {open && (
-          <Modal handleClose={() => setOpen(false)}>
-            <EditForm>
+          <Modal handleClose={handleClose}>
+            <EditForm onSubmit={handleSubmit}>
               <FormTitle>Añadir dirección</FormTitle>
               <TwoColumnsModal>
                 <SelectInput
@@ -73,6 +125,7 @@ const EmptyShippingCard = () => {
                   name='state'
                   onChange={handleChange}
                   value={state}
+                  error={errorsOne[`addresses.${index}.state`]}
                 >
                   <option key={0} value=''>
                     Selecciona tu estado
@@ -86,6 +139,7 @@ const EmptyShippingCard = () => {
                   name='city'
                   onChange={handleChange}
                   value={city}
+                  error={errorsOne[`addresses.${index}.city`]}
                 >
                   <option key={0} value=''>
                     Selecciona tu ciudad
@@ -103,7 +157,7 @@ const EmptyShippingCard = () => {
                   name='postalCode'
                   value={postalCode}
                   handleChange={handleChange}
-                  required
+                  error={errorsOne[`addresses.${index}.postalcode`]}
                 />
                 <TextInput
                   type='text'
@@ -111,7 +165,7 @@ const EmptyShippingCard = () => {
                   name='phone'
                   value={phone}
                   handleChange={handleChange}
-                  required
+                  error={errorsOne[`addresses.${index}.phone`]}
                 />
               </TwoColumnsModal>
               <TextInput
@@ -120,7 +174,7 @@ const EmptyShippingCard = () => {
                 name='suburb'
                 value={suburb}
                 handleChange={handleChange}
-                required
+                error={errorsOne[`addresses.${index}.suburb`]}
               />
               <TextInput
                 type='text'
@@ -128,7 +182,7 @@ const EmptyShippingCard = () => {
                 name='address'
                 value={address}
                 handleChange={handleChange}
-                required
+                error={errorsOne[`addresses.${index}.address`]}
               />
               <TextInput
                 textarea
@@ -137,16 +191,25 @@ const EmptyShippingCard = () => {
                 name='references'
                 value={references}
                 handleChange={handleChange}
+                error={errorsOne[`addresses.${index}.references`]}
               />
               <TextInput
-                textarea
                 type='text'
+                textarea
                 label='Instrucciones de entrega'
                 name='instructions'
                 value={instructions}
                 handleChange={handleChange}
+                error={errorsOne[`addresses.${index}.instructions`]}
               />
-              <CustomButton primary>Añadir dirección</CustomButton>
+              <CustomButton
+                primary
+                type='submit'
+                loading={loading.firstLoader}
+                disabled={loading.firstLoader}
+              >
+                Añadir dirección
+              </CustomButton>
             </EditForm>
           </Modal>
         )}

@@ -1,6 +1,14 @@
 import React, { useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
 
+// REDUX
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  setAddresses,
+  removeAddress,
+} from '../../redux/addresses/addressesActions';
+import { clearUiErrors } from '../../redux/ui/uiActions';
+
 // COMPONENTS
 import Modal from '../modal/modal.component';
 import Message from '../messages/normal-message/normal-message.component';
@@ -29,18 +37,18 @@ import {
 // ICONS
 import { FaEdit, FaTrashAlt } from 'react-icons/fa';
 
-const ShippingCard = () => {
+const ShippingCard = ({ address, index }) => {
   // ---------------------------- STATE AND CONSTANTS ------------------
   const [open, setOpen] = useState(false);
   const [addressData, setAddressData] = useState({
-    state: '',
-    city: '',
-    suburb: '',
-    postalCode: '',
-    address: '',
-    phone: '',
-    references: '',
-    instructions: '',
+    state: address.state,
+    city: address.city,
+    suburb: address.suburb,
+    postalCode: address.postalcode,
+    addressInput: address.address,
+    phone: address.phone,
+    references: address.references,
+    instructions: address.instructions,
   });
 
   const {
@@ -48,17 +56,59 @@ const ShippingCard = () => {
     city,
     suburb,
     postalCode,
-    address,
+    addressInput,
     phone,
     references,
     instructions,
   } = addressData;
 
+  const dispatch = useDispatch();
+  const {
+    uiErrors: { errorsOne },
+    loading,
+  } = useSelector((state) => state.ui);
+
   // ---------------------------------- HANDLERS ---------------------------
+  const handleClose = () => {
+    setOpen(false);
+    setAddressData({
+      state: address.state,
+      city: address.city,
+      suburb: address.suburb,
+      postalCode: address.postalcode,
+      addressInput: address.address,
+      phone: address.phone,
+      references: address.references,
+      instructions: address.instructions,
+    });
+    dispatch(clearUiErrors());
+  };
+
   const handleChange = (event) => {
     const { name, value } = event.target;
 
     setAddressData({ ...addressData, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(
+      setAddresses(
+        index,
+        state,
+        city,
+        postalCode,
+        phone,
+        suburb,
+        addressInput,
+        references,
+        instructions
+      )
+    );
+  };
+
+  const handleDelete = () => {
+    dispatch(removeAddress(index));
   };
 
   return (
@@ -73,47 +123,48 @@ const ShippingCard = () => {
           </IconContainer>
         </CardMenu>
         <CardHeader>
-          <State>Zacatecas</State>
-          <City>Guadalupe</City>
+          <State>{address.state}</State>
+          <City>{address.city}</City>
         </CardHeader>
         <CardBody>
           <TwoColumns>
             <InfoContainer>
               <InfoTitle>Colonia</InfoTitle>
-              <Info>El salero</Info>
+              <Info>{address.suburb}</Info>
             </InfoContainer>
             <InfoContainer>
               <InfoTitle>Dirección</InfoTitle>
-              <Info>Andador laurel 108A</Info>
+              <Info>{address.address}</Info>
             </InfoContainer>
             <InfoContainer>
               <InfoTitle>Codigo postal</InfoTitle>
-              <Info>98607</Info>
+              <Info>{address.postalcode}</Info>
             </InfoContainer>
             <InfoContainer>
               <InfoTitle>Teléfono</InfoTitle>
-              <Info>(492) 134 7258</Info>
+              <Info>{address.phone}</Info>
             </InfoContainer>
           </TwoColumns>
-          <InfoContainer>
-            <InfoTitle>Referencias</InfoTitle>
-            <Info>
-              Primer casa del andador laurel, color verde al lado de
-              estacionamiento
-            </Info>
-          </InfoContainer>
-          <InfoContainer>
-            <InfoTitle>Instrucciones de entrega</InfoTitle>
-            <Info>Tocar tres veces y decir la contraseña 1122</Info>
-          </InfoContainer>
+          {address.references && (
+            <InfoContainer>
+              <InfoTitle>Referencias</InfoTitle>
+              <Info>{address.references}</Info>
+            </InfoContainer>
+          )}
+          {address.instructions && (
+            <InfoContainer>
+              <InfoTitle>Instrucciones de entrega</InfoTitle>
+              <Info>{address.instructions}</Info>
+            </InfoContainer>
+          )}
         </CardBody>
       </Card>
 
       {/* -------------------------- MODAL ----------------------------- */}
       <AnimatePresence>
         {open === 'edit' && (
-          <Modal handleClose={() => setOpen(false)}>
-            <EditForm>
+          <Modal handleClose={handleClose}>
+            <EditForm onSubmit={handleSubmit}>
               <FormTitle>Editar dirección</FormTitle>
               <TwoColumnsModal>
                 <SelectInput
@@ -121,6 +172,7 @@ const ShippingCard = () => {
                   name='state'
                   onChange={handleChange}
                   value={state}
+                  error={errorsOne[`addresses.${index}.state`]}
                 >
                   <option key={0} value=''>
                     Selecciona tu estado
@@ -134,6 +186,7 @@ const ShippingCard = () => {
                   name='city'
                   onChange={handleChange}
                   value={city}
+                  error={errorsOne[`addresses.${index}.city`]}
                 >
                   <option key={0} value=''>
                     Selecciona tu ciudad
@@ -151,6 +204,7 @@ const ShippingCard = () => {
                   name='postalCode'
                   value={postalCode}
                   handleChange={handleChange}
+                  error={errorsOne[`addresses.${index}.postalcode`]}
                 />
                 <TextInput
                   type='text'
@@ -158,6 +212,7 @@ const ShippingCard = () => {
                   name='phone'
                   value={phone}
                   handleChange={handleChange}
+                  error={errorsOne[`addresses.${index}.phone`]}
                 />
               </TwoColumnsModal>
               <TextInput
@@ -166,13 +221,15 @@ const ShippingCard = () => {
                 name='suburb'
                 value={suburb}
                 handleChange={handleChange}
+                error={errorsOne[`addresses.${index}.suburb`]}
               />
               <TextInput
                 type='text'
                 label='Dirección'
-                name='address'
-                value={address}
+                name='addressInput'
+                value={addressInput}
                 handleChange={handleChange}
+                error={errorsOne[`addresses.${index}.address`]}
               />
               <TextInput
                 textarea
@@ -181,6 +238,7 @@ const ShippingCard = () => {
                 name='references'
                 value={references}
                 handleChange={handleChange}
+                error={errorsOne[`addresses.${index}.references`]}
               />
               <TextInput
                 type='text'
@@ -189,19 +247,28 @@ const ShippingCard = () => {
                 name='instructions'
                 value={instructions}
                 handleChange={handleChange}
+                error={errorsOne[`addresses.${index}.instructions`]}
               />
-              <CustomButton primary>Actualizar dirección</CustomButton>
+              <CustomButton
+                primary
+                type='submit'
+                loading={loading.firstLoader}
+                disabled={loading.firstLoader}
+              >
+                Actualizar dirección
+              </CustomButton>
             </EditForm>
           </Modal>
         )}
         {open === 'delete' && (
-          <Modal handleClose={() => setOpen(false)}>
+          <Modal handleClose={handleClose}>
             <Message
               type='error'
               title='Cuidado'
               text='¿Seguro que quieres eliminar esta dirección?'
               button='Continuar'
-              handleClose={() => setOpen(false)}
+              handleClose={handleClose}
+              handleAction={handleDelete}
             />
           </Modal>
         )}

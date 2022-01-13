@@ -9,6 +9,8 @@ import {
   sendContactMail,
   deleteUser,
   changeUserRole,
+  updateAddress,
+  removeAddress,
 } from '../controllers/userController.js';
 
 // USER
@@ -50,11 +52,14 @@ router
   .get(getUserCartProducts)
   .patch(updateCartProducts);
 
+// USER ADDRESSES
+router.route('/address/:idx').patch(updateAddress).delete(removeAddress);
+
 // USER
 router.patch('/updateMyPassword', updatePassword);
 router.patch('/changeUserRole/:id', restrictTo('admin'), changeUserRole);
-// router.get('/me', getMe, getUser);
 router.patch('/updateMe', uploadUserPhoto, updateMe, resizeUserPhoto);
+// router.get('/me', getMe, getUser);
 // router.delete('/deleteMe', deleteMe);
 
 // ----------- GENERIC ROUTES --------

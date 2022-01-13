@@ -35,7 +35,8 @@ export const Input = styled(motion.input)`
     error ? `2px solid ${errorColor}` : `2px solid ${subColor}`};
   border-radius: 2px;
 
-  /* -webkit-text-fill-color: var(--color-grey-dark-1); */
+  -webkit-text-fill-color: var(--color-grey-dark-1);
+  opacity: 1; /* required on iOS */
 
   display: block;
   width: 100%;

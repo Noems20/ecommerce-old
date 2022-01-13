@@ -8,11 +8,6 @@ import {
   DELETE_USER,
 } from './userTypes';
 
-// import {
-//   SET_APPOINTMENTS,
-//   SET_ACTIVE_APPOINTMENT,
-// } from '../appointments/appointmentsTypes';
-
 import {
   CLEAR_UI_ERRORS,
   SET_SUCCESS,
@@ -21,8 +16,9 @@ import {
 } from '../ui/uiTypes';
 import axios from 'axios';
 
-import { batch } from 'react-redux';
 import { SET_CART } from '../cart/cartTypes';
+import { SET_ADDRESSES } from '../addresses/addressesTypes';
+import { batch } from 'react-redux';
 
 // ---------------------------- CLEAR APPOINTMENTS ----------------------------
 export const clearUsers = () => async (dispatch) => {
@@ -159,6 +155,10 @@ export const checkLogged = () => async (dispatch) => {
     dispatch({
       type: SET_CART,
       payload: data.user.productsCart,
+    });
+    dispatch({
+      type: SET_ADDRESSES,
+      payload: data.user.addresses,
     });
   }
 

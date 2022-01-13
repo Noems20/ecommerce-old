@@ -1,4 +1,6 @@
 import User from '../models/userModel.js';
+import mongoose from 'mongoose';
+
 // import Appointment from '../models/appointmentModel.js';
 
 import catchAsync from '../utils/catchAsync.js';
@@ -9,7 +11,9 @@ import sharp from 'sharp';
 import { getAll } from './handlerFactory.js';
 import { validateMailData } from '../utils/validators.js';
 
-// ----------------- FILE UPLOAD ----------------
+// ----------------------------------------------------------------------
+//                             FILE UPLOAD
+// ----------------------------------------------------------------------
 
 // Image stores as a buffer
 const multerStorage = multer.memoryStorage();
@@ -34,7 +38,9 @@ export const upload = multer({
 
 export const uploadUserPhoto = upload.single('photo');
 
-// ----------------- RESIZE USER PHOTO ----------------
+// ----------------------------------------------------------------------
+//                          RESIZE USER PHOTO
+// ----------------------------------------------------------------------
 export const resizeUserPhoto = (req, res, next) => {
   // As we saved image in memory filename doesn't exist but updateMe needs it
   if (req.file) {
@@ -60,7 +66,9 @@ export const resizeUserPhoto = (req, res, next) => {
   }
 };
 
-// ------------------ FILTER OBJECT -------------
+// ----------------------------------------------------------------------
+//                          FILTER OBJECT
+// ----------------------------------------------------------------------
 const filterObj = (obj, ...allowedFields) => {
   const newObj = {};
   Object.keys(obj).forEach((el) => {
@@ -69,10 +77,14 @@ const filterObj = (obj, ...allowedFields) => {
   return newObj;
 };
 
-// ------------------ GET ALL USERS --------------
+// ----------------------------------------------------------------------
+//                            GET ALL USERS
+// ----------------------------------------------------------------------
 export const getAllUsers = getAll(User);
 
-// ------------------- UPDATE USER -------------------
+// ----------------------------------------------------------------------
+//                          UPDATE USER INFO
+// ----------------------------------------------------------------------
 export const updateMe = catchAsync(async (req, res, next) => {
   // 1) Create error if user POSTs password data
   if (req.body.password || req.body.confirmPassword) {
@@ -99,7 +111,9 @@ export const updateMe = catchAsync(async (req, res, next) => {
   next();
 });
 
-// ------------------- SEND MAIL -------------------
+// ----------------------------------------------------------------------
+//                          SEND EMAIL
+// ----------------------------------------------------------------------
 export const sendContactMail = catchAsync(async (req, res, next) => {
   const { name, email, subject, message } = req.body;
 
@@ -142,7 +156,9 @@ export const sendContactMail = catchAsync(async (req, res, next) => {
   });
 });
 
-// ------------------------------- CHANGE USER ROLE --------------------------------
+// ----------------------------------------------------------------------
+//                          CHECK USER ROLE
+// ----------------------------------------------------------------------
 export const changeUserRole = catchAsync(async (req, res, next) => {
   const updatedUser = await User.findByIdAndUpdate(
     req.params.id,
@@ -163,16 +179,67 @@ export const changeUserRole = catchAsync(async (req, res, next) => {
   });
 });
 
-// ------------------------------- DELETE USER AND HIS APPOINTMENTS --------------------
+// ----------------------------------------------------------------------
+//                  DELETE USER AND HIS APPOINTMENTS
+// ----------------------------------------------------------------------
 export const deleteUser = catchAsync(async (req, res, next) => {
   const userDeleted = await User.findByIdAndDelete(req.params.id);
 
   if (!userDeleted) {
     return next(new AppError('No document found with that ID', 404));
   }
-  await Appointment.deleteMany({
-    user: req.params.id,
-  });
+  // await Appointment.deleteMany({
+  //   user: req.params.id,
+  // });
 
   res.status(204).json({ status: 'success', data: null });
+});
+// ----------------------------------------------------------------------
+//                       UPDATE AND ADD USER ADDRESS
+// ----------------------------------------------------------------------
+export const updateAddress = catchAsync(async (req, res, next) => {
+  const { idx: addressIdx } = req.params;
+  let { addresses } = req.user;
+
+  addresses[addressIdx] = req.body;
+
+  const updatedUser = await User.findByIdAndUpdate(
+    req.user.id,
+    { addresses },
+    {
+      new: true,
+      runValidators: true,
+    }
+  );
+
+  res.status(200).json({
+    status: 'success',
+    results: updatedUser.addresses.length,
+    data: updatedUser.addresses,
+  });
+});
+
+// ----------------------------------------------------------------------
+//                       REMOVE USER ADDRESS
+// ----------------------------------------------------------------------
+export const removeAddress = catchAsync(async (req, res, next) => {
+  const { idx: addressIdx } = req.params;
+  let { addresses } = req.user;
+
+  addresses.splice(addressIdx, 1);
+
+  const updatedUser = await User.findByIdAndUpdate(
+    req.user.id,
+    { addresses },
+    {
+      new: true,
+      runValidators: true,
+    }
+  );
+
+  res.status(200).json({
+    status: 'success',
+    results: updatedUser.addresses.length,
+    data: updatedUser.addresses,
+  });
 });

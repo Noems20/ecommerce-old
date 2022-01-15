@@ -157,7 +157,10 @@ const Product = ({ product }) => {
   const productImages = (
     <>
       <ImageContainer>
-        <ImageMagnifier src={`/img/products/${focusImage}`} width={'56%'} />
+        <ImageMagnifier
+          src={`https://copiasnoe-ecommerce.s3.amazonaws.com/products/${focusImage}`}
+          width={'56%'}
+        />
       </ImageContainer>
       <SecondaryImagesContainer>
         {product.subcategory.color.length > 1 &&
@@ -165,7 +168,7 @@ const Product = ({ product }) => {
             return (
               <ProductImage
                 key={color._id}
-                src={`/img/products/${color.image}`}
+                src={`https://copiasnoe-ecommerce.s3.amazonaws.com/products/${color.image}`}
                 onClick={() => handleSubcategoryChange(color)}
                 variants={imageVariants}
                 whileHover='hover'

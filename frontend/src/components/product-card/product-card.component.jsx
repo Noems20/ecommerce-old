@@ -41,7 +41,7 @@ const ProductCard = ({ product }) => {
       <Card catalog={`${product.catalog}`.slice(0, 4)}>
         <ImageBox>
           <Image
-            src={`/img/products/${product.subcategory.color[0].image}`}
+            src={`https://copiasnoe-ecommerce.s3.amazonaws.com/products/${product.subcategory.color[0].image}`}
             className={imageLoaded ? '' : 'hide'}
             onLoad={() => setImageLoaded(true)}
             alt='Product'

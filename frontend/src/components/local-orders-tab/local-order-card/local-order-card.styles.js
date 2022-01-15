@@ -104,6 +104,10 @@ export const TableHeading = styled.th`
   padding: 0 1rem;
   border: 1px solid #ddd;
   background-color: var(--color-primary);
+  -webkit-print-color-adjust: exact;
+  /* -moz-print-color-adjust: exact;
+  -o-print-color-adjust: exact;
+  -ms-print-color-adjust: exact; */
 `;
 
 export const TableData = styled.td`

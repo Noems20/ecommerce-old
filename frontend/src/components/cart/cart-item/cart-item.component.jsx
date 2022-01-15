@@ -82,7 +82,10 @@ const CartItem = ({
     <DecorationCard>
       <Content>
         <ImageContainer>
-          <Image src={`/img/products/${image}`} alt='producto' />
+          <Image
+            src={`https://copiasnoe-ecommerce.s3.amazonaws.com/products/${image}`}
+            alt='producto'
+          />
         </ImageContainer>
         <InfoContainer>
           <Title to={`/producto/${slug}`} as={Link}>

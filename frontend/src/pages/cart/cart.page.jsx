@@ -42,7 +42,10 @@ const Cart = () => {
             })
           ) : (
             <>
-              <EmptyTitle>Tu carrito de Copias Noé está vacío </EmptyTitle>
+              <EmptyTitle>
+                Tu carrito de Copias Noé está vacío <br />
+                <span style={{ fontSize: '7rem' }}>😥</span>
+              </EmptyTitle>
               {!user && (
                 <CustomButton
                   style={{ marginTop: '3rem', justifySelf: 'center' }}

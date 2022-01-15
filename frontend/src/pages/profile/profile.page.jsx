@@ -40,7 +40,7 @@ const Profile = () => {
 
   const { user, userLoaded } = useSelector((state) => state.user);
   const { uiErrors } = useSelector((state) => state.ui);
-  const userImageSrc = `/img/users/${user.photo}`;
+  const userImageSrc = `https://copiasnoe-ecommerce.s3.amazonaws.com/users/${user.photo}`;
 
   const dispatch = useDispatch();
 

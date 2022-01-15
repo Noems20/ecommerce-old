@@ -257,7 +257,7 @@ const Header = () => {
                       <>
                         <UserInfo to='/perfil' exact>
                           <UserImage
-                            src={`/img/users/${user.photo}?${photoHash}`}
+                            src={`https://copiasnoe-ecommerce.s3.amazonaws.com/users/${user.photo}?${photoHash}`}
                           />
                           <UserName>{user.name.split(' ')[0]}</UserName>
                         </UserInfo>

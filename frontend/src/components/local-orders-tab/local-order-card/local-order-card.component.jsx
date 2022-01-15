@@ -48,6 +48,7 @@ const LocalOrderCard = ({ order }) => {
   const [open, setOpen] = useState(false);
 
   const dispatch = useDispatch();
+  // const body = document.querySelector('body');
 
   // -------------------------- HANDLERS ---------------------------
   const getColor = () => {
@@ -70,6 +71,7 @@ const LocalOrderCard = ({ order }) => {
   };
 
   const handleClose = () => {
+    // body.style.overflow = 'auto';
     setOpen(false);
   };
 
@@ -78,13 +80,18 @@ const LocalOrderCard = ({ order }) => {
     dispatch(deleteLocalOrder(order._id));
   };
 
+  const handleExpand = () => {
+    setOpen('expand');
+    // body.style.overflow = 'hidden';
+  };
+
   return (
     <>
       <DecorationCard color={getColor()}>
         <CardContent>
           <TwoColumnsTitle>
             <CardTitle>{order.clientName}</CardTitle>
-            <ExpandButton onClick={() => setOpen('expand')}>
+            <ExpandButton onClick={handleExpand}>
               <IoExpandSharp />
             </ExpandButton>
           </TwoColumnsTitle>

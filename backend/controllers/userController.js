@@ -1,7 +1,8 @@
 import User from '../models/userModel.js';
-import mongoose from 'mongoose';
+import S3 from 'aws-sdk/clients/s3.js';
 
-// import Appointment from '../models/appointmentModel.js';
+import { uploadFile } from '../config/s3.js';
+import multerSharp from 'multer-sharp-s3';
 
 import catchAsync from '../utils/catchAsync.js';
 import AppError from '../utils/appError.js';
@@ -10,13 +11,27 @@ import multer from 'multer';
 import sharp from 'sharp';
 import { getAll } from './handlerFactory.js';
 import { validateMailData } from '../utils/validators.js';
+import dotenv from 'dotenv';
+
+dotenv.config();
+
+const bucketName = process.env.AWS_BUCKET;
+const region = process.env.AWS_BUCKET_REGION;
+const accessKeyId = process.env.AWS_ACCESS_KEY;
+const secretAccessKey = process.env.AWS_SECRET_KEY;
+
+const s3 = new S3({
+  region,
+  accessKeyId,
+  secretAccessKey,
+});
 
 // ----------------------------------------------------------------------
 //                             FILE UPLOAD
 // ----------------------------------------------------------------------
 
 // Image stores as a buffer
-const multerStorage = multer.memoryStorage();
+// const multerStorage = multer.memoryStorage();
 
 const multerFilter = (req, file, cb) => {
   if (file.mimetype.startsWith('image')) {
@@ -31,9 +46,37 @@ const multerFilter = (req, file, cb) => {
   }
 };
 
-export const upload = multer({
-  storage: multerStorage,
+// export const upload = multer({
+//   storage: multerStorage,
+//   fileFilter: multerFilter,
+// });
+
+const upload = multer({
   fileFilter: multerFilter,
+  storage: multerSharp({
+    Key: (req, file, cb) => {
+      const folder = 'users/';
+      const strOne = 'user-';
+      const userId = `${req.user.id}.`;
+      const extension = file.mimetype.split('/')[1];
+      const finalStr = folder + strOne.concat(userId, extension);
+      cb(null, finalStr);
+    },
+    s3,
+    Bucket: bucketName,
+    ACL: 'private',
+    resize: {
+      width: 500,
+      height: 500,
+    },
+    toFormat: {
+      type: 'jpeg',
+      options: {
+        progressive: true,
+        quality: 90,
+      },
+    },
+  }),
 });
 
 export const uploadUserPhoto = upload.single('photo');
@@ -43,27 +86,33 @@ export const uploadUserPhoto = upload.single('photo');
 // ----------------------------------------------------------------------
 export const resizeUserPhoto = (req, res, next) => {
   // As we saved image in memory filename doesn't exist but updateMe needs it
-  if (req.file) {
-    req.file.filename = `user-${req.doc.id}.jpg`;
+  // if (req.file) {
+  //   req.file.filename = `user-${req.doc.id}.jpg`;
+  //   console.log(req.file);
 
-    sharp(req.file.buffer)
-      .resize(500, 500)
-      .withMetadata()
-      .toFormat('jpg')
-      .jpeg({ quality: 90 })
-      .toFile(`backend/public/img/users/${req.file.filename}`)
-      .then(() => {
-        return res.status(200).json({
-          status: 'success',
-          user: req.doc,
-        });
-      });
-  } else {
-    res.status(200).json({
-      status: 'success',
-      user: req.doc,
-    });
-  }
+  //   sharp(req.file.buffer)
+  //     .resize(500, 500)
+  //     .withMetadata()
+  //     .toFormat('jpg')
+  //     .jpeg({ quality: 90 })
+  //     .toFile(`backend/public/img/users/${req.file.filename}`)
+  //     .then(() => {
+  //       return res.status(200).json({
+  //         status: 'success',
+  //         user: req.doc,
+  //       });
+  //     });
+  // } else {
+  //   res.status(200).json({
+  //     status: 'success',
+  //     user: req.doc,
+  //   });
+  // }
+
+  res.status(200).json({
+    status: 'success',
+    user: req.doc,
+  });
 };
 
 // ----------------------------------------------------------------------
@@ -99,7 +148,7 @@ export const updateMe = catchAsync(async (req, res, next) => {
   // console.log(req.body);
   // 2) Filtered out unwanted fields names that are not allowed to be updated
   const filteredBody = filterObj(req.body, 'name');
-  if (req.file) filteredBody.photo = `user-${req.user.id}.jpg`;
+  if (req.file) filteredBody.photo = `user-${req.user.id}.jpeg`;
 
   // 3) Update user document
   const updatedUser = await User.findByIdAndUpdate(req.user.id, filteredBody, {

@@ -27,6 +27,7 @@ const app = express();
 app.enable('trust proxy');
 
 const __dirname = path.resolve();
+// app.use(express.static('https://copiasnoe-ecommerce.s3.amazonaws.com'));
 app.use(express.static(path.join(__dirname, '/backend/public')));
 
 // ---------------------------- MIDDLEWARES ---------------------------

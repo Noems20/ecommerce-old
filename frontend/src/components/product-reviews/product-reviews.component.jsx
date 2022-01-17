@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   createProductReview,
   fetchProductReviews,
-  clearProducts,
 } from '../../redux/products/productsActions';
 import { clearUiErrors } from '../../redux/ui/uiActions';
 
@@ -59,7 +58,6 @@ const ProductReviews = ({
     dispatch(fetchProductReviews(productId, 0));
     return () => {
       dispatch(clearUiErrors());
-      dispatch(clearProducts());
     };
   }, [dispatch, productId]);
 

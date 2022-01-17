@@ -68,7 +68,12 @@ app.use(
           'https://m.stripe.network',
         ],
         childSrc: ["'self'", 'blob:'],
-        imgSrc: ["'self'", 'data:', 'blob:'],
+        imgSrc: [
+          "'self'",
+          'https://copiasnoe-ecommerce.s3.amazonaws.com',
+          'data:',
+          'blob:',
+        ],
         formAction: ["'self'"],
         connectSrc: [
           "'self'",

@@ -27,6 +27,7 @@ import {
   ColumnItem,
   ColumnImage,
 } from './expand-item/expand-item.styles';
+import SearchBar from '../search-bar/search-bar.component';
 
 // STYLES
 import {
@@ -39,9 +40,6 @@ import {
   UserName,
   MenuIcon,
   MenuIconLine,
-  SearchBar,
-  SearchInput,
-  SearchButton,
   NavMenu,
   NavItem,
   NavbarLink,
@@ -54,7 +52,6 @@ import {
   FaUserCircle,
   FaUser,
   FaUserPlus,
-  FaSearch,
   FaChevronDown,
   FaChevronRight,
   FaChevronLeft,
@@ -506,12 +503,7 @@ const Header = () => {
         </NavLogoLink>
 
         {/* ----------------- SEARCH BAR ------------------ */}
-        <SearchBar action='#'>
-          <SearchInput type='text' placeholder='Buscar productos' />
-          <SearchButton>
-            <FaSearch />
-          </SearchButton>
-        </SearchBar>
+        <SearchBar />
 
         {/* --------------- BURGER BUTTON ------------- */}
         <MenuIcon

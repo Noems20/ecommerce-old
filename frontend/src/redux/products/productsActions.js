@@ -12,7 +12,12 @@ import {
 
 import { SET_USER_REVIEW } from '../user/userTypes';
 
-import { SET_UI_LOADING, SET_UI_ERRORS, CLEAR_UI_ERRORS } from '../ui/uiTypes';
+import {
+  SET_UI_LOADING,
+  SET_UI_ERRORS,
+  CLEAR_UI_ERRORS,
+  SET_SUCCESS,
+} from '../ui/uiTypes';
 import { batch } from 'react-redux';
 import axios from 'axios';
 
@@ -22,6 +27,10 @@ import axios from 'axios';
 export const clearProducts = () => async (dispatch) => {
   dispatch({
     type: CLEAR_PRODUCTS,
+  });
+  dispatch({
+    type: SET_SUCCESS,
+    payload: false,
   });
 };
 
@@ -76,13 +85,14 @@ export const fetchProductBySlug = (slug) => async (dispatch, getState) => {
 // ------------------------------------------------------------------------
 export const fetchProducts =
   (
-    catalog,
+    catalog = null,
     quantity,
     page = 1,
     orderBy = '-sold',
     filterRating = 1,
     filterPrice = null,
-    excludeId = null
+    excludeId = null,
+    keyword
   ) =>
   async (dispatch) => {
     try {
@@ -92,13 +102,15 @@ export const fetchProducts =
       });
 
       //ratingsAverage[gte]
-
+      const keywordString = keyword ? `&keyword=${keyword}` : '';
+      const catalogString = catalog ? `&catalog=${catalog}` : '';
       const excludePriceString = filterPrice
         ? `&price[lte]=${filterPrice}`
         : '';
       const excludeString = excludeId ? `_id[ne]=${excludeId}` : '';
+
       const { data } = await axios.get(
-        `/api/v1/products?${excludeString}${excludePriceString}&catalog=${catalog}&page=${page}&limit=${quantity}&ratingsAverage[gte]=${filterRating}&fields=name,slug,catalog,price,ratingsAverage,subcategory&sort=${orderBy},-createdAt`
+        `/api/v1/products?${excludeString}${excludePriceString}${catalogString}${keywordString}&page=${page}&limit=${quantity}&ratingsAverage[gte]=${filterRating}&fields=name,slug,catalog,price,ratingsAverage,subcategory&sort=${orderBy},-createdAt`
       );
 
       batch(() => {
@@ -113,6 +125,10 @@ export const fetchProducts =
         dispatch({
           type: SET_UI_LOADING,
           payload: { fetchLoader: false },
+        });
+        dispatch({
+          type: SET_SUCCESS,
+          payload: true,
         });
       });
     } catch (error) {

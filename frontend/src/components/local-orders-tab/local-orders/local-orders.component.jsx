@@ -21,7 +21,8 @@ import { Fragment } from 'react';
 
 const LocalOrders = ({ active }) => {
   // ------------------------------ STATE AND CONSTANTS --------------------
-  const [page, setPage] = useState(1);
+  // console.log('Entra');
+  const [page, setPage] = useState(sessionStorage.getItem('page') || 1);
   const dispatch = useDispatch();
   const { orders, pages } = useSelector((state) => state.orders);
   const {

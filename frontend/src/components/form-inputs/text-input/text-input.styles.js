@@ -45,6 +45,12 @@ export const Input = styled(motion.input)`
     outline: none;
   }
 
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+  }
+
   &:focus-within {
     border: ${({ error }) =>
       error

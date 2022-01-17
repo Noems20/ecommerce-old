@@ -138,7 +138,7 @@ const CreateLocalOrderTab = ({
       setUserCredentials({
         ...userCredentials,
         percentage: value,
-        totalPrice: newTotalPrice,
+        totalPrice: Math.round(newTotalPrice * 100) / 100,
       });
     } else {
       setUserCredentials({
@@ -172,7 +172,7 @@ const CreateLocalOrderTab = ({
 
     setUserCredentials({
       ...userCredentials,
-      totalPrice: newTotalPrice,
+      totalPrice: Math.round(newTotalPrice * 100) / 100,
     });
   };
 
@@ -199,7 +199,7 @@ const CreateLocalOrderTab = ({
 
       setUserCredentials({
         ...userCredentials,
-        totalPrice: newTotalPrice,
+        totalPrice: Math.round(newTotalPrice * 100) / 100,
       });
     }
     setProducts(newProducts); //set the new state
@@ -249,7 +249,7 @@ const CreateLocalOrderTab = ({
   const handleTabChange = () => {
     dispatch(clearSuccess());
     if (!update) {
-      setTab('current-orders');
+      setTab('ordenes-actuales');
       window.scrollTo(0, 0);
     }
   };

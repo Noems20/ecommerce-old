@@ -104,7 +104,9 @@ const Review = ({ review }) => {
       <DecorationCard>
         <ReviewContent>
           <UserPhotoContainer>
-            <UserPhoto url={`/img/users/${review.user.photo}`} />
+            <UserPhoto
+              url={`https://copiasnoe-ecommerce.s3.amazonaws.com/users/${review.user.photo}`}
+            />
             <UserName>{review.user.name}</UserName>
           </UserPhotoContainer>
           <ReviewInfo>

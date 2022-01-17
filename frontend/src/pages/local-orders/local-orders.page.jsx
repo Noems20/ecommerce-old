@@ -23,7 +23,7 @@ import { FaCaretDown } from 'react-icons/fa';
 
 const LocalOrdersPage = () => {
   // ------------------------------- STATE AND CONSTANTS ----------------
-  const [tab, setTab] = useState('profile');
+  const [tab, setTab] = useState(sessionStorage.getItem('tab') || 'crear');
   const [open, setOpen] = useState(false);
 
   const containerVariants = {
@@ -62,6 +62,10 @@ const LocalOrdersPage = () => {
   // --------------------------------- USE EFFECT ------------------
 
   useEffect(() => {
+    sessionStorage.setItem('tab', tab);
+  }, [tab]);
+
+  useEffect(() => {
     if (window.innerWidth > 500) {
       setOpen(true);
     } else {
@@ -79,13 +83,14 @@ const LocalOrdersPage = () => {
 
     return () => {
       window.removeEventListener('resize', handleResize);
+      sessionStorage.removeItem('tab');
     };
   }, []);
 
   // --------------------------------- HANDLERS ---------------------
   const renderSwitch = () => {
     switch (tab) {
-      case 'profile':
+      case 'crear':
         return (
           <CreateLocalOrderTab
             variants={containerVariants}
@@ -93,17 +98,23 @@ const LocalOrdersPage = () => {
             key={1}
           />
         );
-      case 'current-orders':
+      case 'ordenes-actuales':
         return (
           <LocalOrders variants={containerVariants} key={2} active={true} />
         );
-      case 'orders-history':
+      case 'historial':
         return (
-          <LocalOrders variants={containerVariants} key={2} active={false} />
+          <LocalOrders variants={containerVariants} key={3} active={false} />
         );
       default:
         return <CreateLocalOrderTab variants={containerVariants} key={1} />;
     }
+  };
+
+  const tabHandler = (tab) => {
+    sessionStorage.removeItem('page');
+    setTab(tab);
+    sessionStorage.setItem('tab', tab);
   };
 
   return (
@@ -131,20 +142,20 @@ const LocalOrdersPage = () => {
               exit='hidden'
             >
               <SettingItem
-                onClick={() => setTab('profile')}
-                className={tab === 'profile' ? 'active' : ''}
+                onClick={() => tabHandler('crear')}
+                className={tab === 'crear' ? 'active' : ''}
               >
                 Crear orden
               </SettingItem>
               <SettingItem
-                onClick={() => setTab('current-orders')}
-                className={tab === 'current-orders' ? 'active' : ''}
+                onClick={() => tabHandler('ordenes-actuales')}
+                className={tab === 'ordenes-actuales' ? 'active' : ''}
               >
                 Ordenes activas
               </SettingItem>
               <SettingItem
-                onClick={() => setTab('orders-history')}
-                className={tab === 'orders-history' ? 'active' : ''}
+                onClick={() => tabHandler('historial')}
+                className={tab === 'historial' ? 'active' : ''}
               >
                 Ordenes pasadas
               </SettingItem>

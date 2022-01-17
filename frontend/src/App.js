@@ -20,6 +20,7 @@ import ClothingPage from './pages/clothing/clothing.page';
 import LocalOrdersPage from './pages/local-orders/local-orders.page';
 import EditLocalOrderPage from './pages/edit-local-order/edit-local-order.page';
 import VerifyAccount from './pages/verify-account/verify-account.page';
+import SearchPage from './pages/search/search.page';
 
 // COMPONENTS
 import Header from './components/header/header.component';
@@ -57,6 +58,7 @@ const App = () => {
       {userLoaded.general ? (
         <Switch>
           <Route exact path='/' component={Home} />
+          <Route path='/search/:keyword' component={SearchPage} />
           <Route exact path='/carrito' component={Cart} />
           <Route path='/agendas' component={diariesPage} />
           <Route path='/regalos' component={GiftsPage} />

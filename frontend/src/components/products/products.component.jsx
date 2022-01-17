@@ -28,12 +28,17 @@ import {
   ProductsGrid,
 } from '../../category-page.styles';
 
-const ProductsSection = ({ forW = null, category = null, catalog }) => {
+const ProductsSection = ({
+  forW = null,
+  category = null,
+  catalog,
+  keyword,
+}) => {
   // ------------------------- STATE AND CONSTANTS ---------------
   const [orderBy, setOrderBy] = useState('-sold');
   const [filterRating, setFilterRating] = useState(1);
   const [filterPrice, setFilterPrice] = useState(null);
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(sessionStorage.getItem('page') || 1);
 
   const {
     loading: { fetchLoader },
@@ -59,7 +64,16 @@ const ProductsSection = ({ forW = null, category = null, catalog }) => {
       );
     } else {
       dispatch(
-        fetchProducts(catalog, 12, page, orderBy, filterRating, filterPrice)
+        fetchProducts(
+          catalog,
+          12,
+          page,
+          orderBy,
+          filterRating,
+          filterPrice,
+          null,
+          keyword
+        )
       );
     }
     return () => {
@@ -74,6 +88,7 @@ const ProductsSection = ({ forW = null, category = null, catalog }) => {
     category,
     forW,
     page,
+    keyword,
   ]);
 
   return (

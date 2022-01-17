@@ -2,7 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
 
 // REDUX
-import { fetchProducts } from '../../redux/products/productsActions';
+import {
+  fetchProducts,
+  clearProducts,
+} from '../../redux/products/productsActions';
+
 import { useSelector, useDispatch } from 'react-redux';
 
 // COMPONENTS
@@ -77,7 +81,9 @@ const Home = () => {
   // -------------------- USE EFFECT'S -------------------
   useEffect(() => {
     dispatch(fetchProducts(selectedCatalog, 8));
-    return () => {};
+    return () => {
+      dispatch(clearProducts());
+    };
   }, [selectedCatalog, dispatch]);
 
   return (

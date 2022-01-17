@@ -65,6 +65,15 @@ export const getAll = (Model) =>
     // To allow for nested GET reviews on product
     let filter = {};
     if (req.params.productId) filter = { product: req.params.productId };
+    if (req.query.keyword) {
+      filter = {
+        ...filter,
+        name: {
+          $regex: req.query.keyword,
+          $options: 'i',
+        },
+      };
+    }
     // Execute query
     const features = new APIFeatures(Model.find(filter), req.query)
       .filter()
@@ -76,13 +85,16 @@ export const getAll = (Model) =>
     const queryObj = { ...req.query };
     const excludedFields = ['page', 'sort', 'limit', 'fields'];
     excludedFields.forEach((el) => delete queryObj[el]);
-
     let queryStr = JSON.stringify(queryObj);
     queryStr = queryStr.replace(
       /\b(gte|gt|lte|lt|ne)\b/g,
       (match) => `$${match}`
     );
-    const count = await Model.countDocuments(JSON.parse(queryStr));
+
+    const count = await Model.countDocuments({
+      ...JSON.parse(queryStr),
+      ...filter,
+    });
 
     // GET PAGES
     let pages = 1;
@@ -90,8 +102,6 @@ export const getAll = (Model) =>
       pages = Math.ceil(count / req.query.limit);
     }
 
-    // features.filter().sort().limitFields().paginate(); -> Also works
-    // const doc = await features.query.explain();
     const doc = await features.query;
     res.status(200).json({
       status: 'success',

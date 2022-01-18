@@ -3,10 +3,7 @@ import { useParams } from 'react-router';
 
 // REDUX
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  fetchProductBySlug,
-  clearProducts,
-} from '../../redux/products/productsActions';
+import { fetchProductBySlug } from '../../redux/products/productsActions';
 
 // COMPONENTS
 import Product from '../../components/product/product.component';
@@ -28,9 +25,6 @@ const ProductPage = () => {
   // ------------------------------ USE EFFECT'S --------------------------------
   useEffect(() => {
     dispatch(fetchProductBySlug(slug));
-    return () => {
-      dispatch(clearProducts());
-    };
   }, [dispatch, slug]);
 
   // console.log(product);

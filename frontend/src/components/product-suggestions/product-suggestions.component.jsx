@@ -2,7 +2,10 @@ import React, { useEffect } from 'react';
 
 // REDUX
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchProducts } from '../../redux/products/productsActions';
+import {
+  fetchProducts,
+  clearProducts,
+} from '../../redux/products/productsActions';
 
 // COMPONENTS
 import ProductCard from '../product-card/product-card.component';
@@ -24,7 +27,9 @@ const ProductSuggestions = ({ catalog, id }) => {
   // ------------------------------- USE EFFECT'S ---------------------------
   useEffect(() => {
     dispatch(fetchProducts(catalog, 4, 1, '-sold', 1, null, id));
-    return () => {};
+    return () => {
+      dispatch(clearProducts());
+    };
   }, [dispatch, catalog, id]);
 
   return (
